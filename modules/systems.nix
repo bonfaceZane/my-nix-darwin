@@ -23,14 +23,22 @@
       dock.autohide = true;
 
       # apps to show in dock
-      # dock.persistent-apps = [
-      #   "${pkgs.obsidian}/Applications/Obsidian.app"
-      #   "${pkgs.firefox}/Applications/Firefox.app"
-      #   "${pkgs.notion}/Applications/Notion.app"
-      #   "${pkgs.visual-studio-code}/Applications/Visual Studio Code.app"
-      # ];
+      dock.persistent-apps = [
+        "/Applications/Obsidian.app"
+        "/Applications/Notion.app"
+        "/Applications/WebStorm.app"
+        "/Applications/Proxyman.app"
+        "/Applications/slack.app"
+        "/Applications/Postman.app"
+        "/Applications/Playgrounds.app"
+        "/Applications/Visual Studio Code.app"
+      ];
+
 
       finder.FXPreferredViewStyle = "clmv";
+      loginwindow.GuestEnabled = false;
+      NSGlobalDomain.AppleICUForce24HourTime = true;
+      NSGlobalDomain.AppleInterfaceStyle = "Dark";
 
 
       # other macOS's defaults configuration.
