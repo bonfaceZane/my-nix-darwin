@@ -55,16 +55,16 @@
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       inherit system specialArgs;
       modules = [
-        ./modules/nix-core.nix
-        ./modules/system.nix
-        ./modules/apps.nix
-        ./modules/host-users.nix
+        # ./modules/nix-core.nix
+        ./modules/systems.nix
+        # ./modules/apps.nix
+        # ./modules/host-users.nix
       ];
     };
 
 
     # nix code formatter
-    # formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     # Expose the package set, including overlays, for convenience.
     darwinPackages = self.darwinConfigurations."${hostname}".pkgs;
