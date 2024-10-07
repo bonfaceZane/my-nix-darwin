@@ -5,9 +5,20 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+     # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs,  nix-homebrew, homebrew-core, homebrew-cask, ...}:
   let
     configuration = { pkgs, ... }: {
 
@@ -19,11 +30,13 @@
         [ 
           pkgs.zsh
           pkgs.alacritty
-          pkgs.bat
-          pkgs.fzf
           pkgs.neovim
           pkgs.wget
-          pkgs.git
+          pkgs.mkalias
+        ];
+
+        fonts.packages = [
+          (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
         ];
 
       # Auto upgrade nix package and the daemon service.
@@ -52,7 +65,25 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
     darwinConfigurations."rafiki" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [ 
+        configuration 
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+          # Install Homebrew under the default prefix
+          enable = true;
+
+          # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+          enableRosetta = true;
+
+          # User owning the Homebrew prefix
+            user = "obwoni000";
+
+          # Automatically migrate existing Homebrew installations
+          autoMigrate = true;
+          };
+        }
+      ];
     };
 
     # Expose the package set, including overlays, for convenience.
