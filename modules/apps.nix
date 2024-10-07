@@ -48,11 +48,6 @@
       # TODO Feel free to add your favorite apps here.
 
       Xcode = 497799835;
-      # Wechat = 836500024;
-      # NeteaseCloudMusic = 944848654;
-      # QQ = 451108668;
-      # WeCom = 1189898970;  # Wechat for Work
-      # TecentMetting = 1484048379;
       # QQMusic = 595615424;
     };
 
