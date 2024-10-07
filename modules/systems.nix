@@ -23,12 +23,12 @@
       dock.autohide = true;
 
       # apps to show in dock
-      dock.persistent-apps = [
-        "${pkgs.obsidian}/Applications/Obsidian.app"
-        "${pkgs.firefox}/Applications/Firefox.app"
-        "${pkgs.notion}/Applications/Notion.app"
-        "${pkgs.visual-studio-code}/Applications/Visual Studio Code.app"
-      ];
+      # dock.persistent-apps = [
+      #   "${pkgs.obsidian}/Applications/Obsidian.app"
+      #   "${pkgs.firefox}/Applications/Firefox.app"
+      #   "${pkgs.notion}/Applications/Notion.app"
+      #   "${pkgs.visual-studio-code}/Applications/Visual Studio Code.app"
+      # ];
 
       finder.FXPreferredViewStyle = "clmv";
 

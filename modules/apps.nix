@@ -74,34 +74,33 @@
     # TODO Feel free to add your favorite apps here.
     casks = [
       "firefox"
-      "google-chrome"
-      "visual-studio-code"
+      # "google-chrome"
 
       # IM & audio & remote desktop & meeting
       "telegram"
-      "discord"
+      # "discord"
 
       "anki"
       "iina" # video player
-      "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
+      # "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
       "stats" # beautiful system monitor
-      "spotify"
+      # "spotify"
       "zoom"
       "hammerspoon" # macOS automation
 
       # Development
       "insomnia" # REST client
-      "wireshark" # network analyzer
-      "proxyman" # proxy manager
-      "postman" # REST client
-      "visual-studio-code" # IDE
+      # "wireshark" # network analyzer
+      # "proxyman" # proxy manager
+      # "postman" # REST client
+      # "visual-studio-code" # IDE
 
       # Productivity
       "alfred" # hotkey app
       "bettertouchtool" # hotkey app
-      "obsidian" # markdown editor
-      "notion" # markdown editor
-      "slack" # chat app  
+      # "obsidian" # markdown editor
+      # "notion" # markdown editor
+      # "slack" # chat app  
     ];
 
 
