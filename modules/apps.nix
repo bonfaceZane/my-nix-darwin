@@ -18,8 +18,12 @@
     neovim
     git
     just # use Justfile to simplify nix-darwin's commands 
+    mkalias
+    fzf
   ];
-  environment.variables.EDITOR = "nvim";
+
+  # todo: update this to desired one
+  # environment.variables.EDITOR = "nvim";
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   # 
@@ -31,6 +35,7 @@
     onActivation = {
       autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
+
       # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
       cleanup = "zap";
     };
@@ -62,6 +67,7 @@
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
       "aria2" # download tool
       "httpie" # http client
+      "mas"
     ];
 
     # `brew install --cask`
@@ -79,11 +85,25 @@
       "iina" # video player
       "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
       "stats" # beautiful system monitor
-      "eudic" # 欧路词典
+      "spotify"
+      "zoom"
+      "hammerspoon" # macOS automation
 
       # Development
       "insomnia" # REST client
       "wireshark" # network analyzer
+      "proxyman" # proxy manager
+      "postman" # REST client
+      "visual-studio-code" # IDE
+
+      # Productivity
+      "alfred" # hotkey app
+      "bettertouchtool" # hotkey app
+      "obsidian" # markdown editor
+      "notion" # markdown editor
+      "slack" # chat app  
     ];
+
+
   };
 }

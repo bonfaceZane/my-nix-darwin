@@ -57,7 +57,7 @@
       modules = [
         # ./modules/nix-core.nix
         ./modules/systems.nix
-        # ./modules/apps.nix
+        ./modules/apps.nix
         # ./modules/host-users.nix
       ];
     };
