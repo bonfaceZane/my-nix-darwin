@@ -1,9 +1,9 @@
 {
-  description = "Nix for macOS configuration";
+  description = "Darwin system flake for Zane";
 
   ##################################################################################################################
   #
-  # Want to know Nix in details? Looking for a beginner-friendly tutorial?
+  # Nix in details? beginner-friendly tutorial
   # Check out https://github.com/ryan4yin/nixos-and-flakes-book !
   #
   ##################################################################################################################
@@ -20,11 +20,10 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -35,13 +34,15 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    darwin,
+    nix-darwin,
+    nix-homebrew,
     ...
   }: let
     # TODO replace with your own username, system and hostname
     username = "obwoni000";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
     hostname = "rafiki";
+
 
     specialArgs =
       inputs
@@ -51,13 +52,12 @@
   in {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#rafiki
-    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+    darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       inherit system specialArgs;
       modules = [
         ./modules/nix-core.nix
         ./modules/system.nix
         ./modules/apps.nix
-
         ./modules/host-users.nix
       ];
     };
