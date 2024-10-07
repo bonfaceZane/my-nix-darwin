@@ -64,6 +64,7 @@
       "httpie" # http client
       "mas"
       "zsh"
+      "mise"
     ];
 
     # `brew install --cask`

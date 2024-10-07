@@ -31,6 +31,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-utils.url = "github:numtide/flake-utils";
+
+
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -44,6 +47,7 @@
     nix-darwin,
     nix-homebrew,
     home-manager,
+    flake-utils,
     ...
   }: let
     # TODO replace with your own username, system and hostname
@@ -78,6 +82,7 @@
           home-manager.extraSpecialArgs = specialArgs;
           home-manager.users.${username} = import ./home;
         }
+
 
       ];
     };
