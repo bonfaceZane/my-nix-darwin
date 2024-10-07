@@ -63,7 +63,7 @@
       "aria2" # download tool
       "httpie" # http client
       "mas"
-      "gh"
+      "zsh"
     ];
 
     # `brew install --cask`

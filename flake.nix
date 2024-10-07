@@ -24,6 +24,13 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    # home-manager, used for managing user configuration
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -36,6 +43,7 @@
     nixpkgs,
     nix-darwin,
     nix-homebrew,
+    home-manager,
     ...
   }: let
     # TODO replace with your own username, system and hostname
@@ -60,6 +68,17 @@
         ./modules/nix-core.nix
         ./modules/systems.nix
         ./modules/host-users.nix
+
+
+        # home manager
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.users.${username} = import ./home;
+        }
+
       ];
     };
 
