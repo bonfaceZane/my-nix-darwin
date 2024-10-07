@@ -9,13 +9,13 @@
   ##################################################################################################################
 
   # the nixConfig here only affects the flake itself, not the system configuration!
-  # nixConfig = {
-  #   substituters = [
-  #     # Query the mirror of USTC first, and then the official cache.
-  #     "https://mirrors.ustc.edu.cn/nix-channels/store"
-  #     "https://cache.nixos.org"
-  #   ];
-  # };
+  nixConfig = {
+    substituters = [
+      # Query the mirror of USTC first, and then the official cache.
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://cache.nixos.org"
+    ];
+  };
 
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
@@ -40,6 +40,7 @@
   }: let
     # TODO replace with your own username, system and hostname
     username = "obwoni000";
+    useremail = "bonfacezane@gmail.com";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
     hostname = "rafiki";
 
