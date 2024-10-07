@@ -55,9 +55,9 @@
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       inherit system specialArgs;
       modules = [
-        # ./modules/nix-core.nix
-        ./modules/systems.nix
         ./modules/apps.nix
+        ./modules/nix-core.nix
+        ./modules/systems.nix
         # ./modules/host-users.nix
       ];
     };

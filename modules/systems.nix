@@ -20,6 +20,18 @@
 
     defaults = {
       menuExtraClock.Show24Hour = true;  # show 24 hour clock
+      dock.autohide = true;
+
+      # apps to show in dock
+      dock.persistent-apps = [
+        "${pkgs.obsidian}/Applications/Obsidian.app"
+        "${pkgs.firefox}/Applications/Firefox.app"
+        "${pkgs.notion}/Applications/Notion.app"
+        "${pkgs.visual-studio-code}/Applications/Visual Studio Code.app"
+      ];
+
+      finder.FXPreferredViewStyle = "clmv";
+
 
       # other macOS's defaults configuration.
       # ......
