@@ -65,6 +65,7 @@
       "zsh"
       "mise"
       "gh"
+      "stow"
     ];
 
     # `brew install --cask`

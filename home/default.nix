@@ -13,6 +13,21 @@
     username = username;
     homeDirectory = "/Users/${username}";
 
+    # Makes sense for user specific applications that shouldn't be available system-wide
+    # packages = [
+    # ];
+
+    # Home Manager is pretty good at managing dotfiles. The primary way to manage
+    # plain files is through 'home.file'.
+    file = {
+      # ".zshrc".source = ~/Document/baantu/dotfiles/zshrc/.zshrc;
+      # ".config/starship".source = ~/Document/baantu/dotfiles/starship;
+      # ".config/zellij".source = ~/Document/baantu/dotfiles/zellij;
+      # ".config/nvim".source = ~/Document/baantu/dotfiles/nvim;
+      # # ".config/nix".source = ~/dotfiles/nix;
+      # ".config/nix-darwin".source = ~/dotfiles/nix-darwin;
+    };
+
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards

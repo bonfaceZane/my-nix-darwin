@@ -84,13 +84,6 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = specialArgs;
           home-manager.users.${username} = import ./home;
-
-          home-manager.file = {
-            ".zshrc".source = ~/Documents/baantu/dotfiles/zshrc/.zshrc;
-
-            ".config/starship.toml".source = ~/Documents/baantu/dotfiles/starship.toml;
-            ".config/zellij".source = ~/Documents/baantu/dotfiles/zellij;
-          };
         }
       ];
     };
