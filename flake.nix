@@ -52,7 +52,6 @@
     alejandra,
     ...
   }: let
-    # TODO replace with your own username, system and hostname
     username = "obwoni000";
     useremail = "bonfacezane@gmail.com";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
@@ -85,6 +84,13 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = specialArgs;
           home-manager.users.${username} = import ./home;
+
+          home-manager.file = {
+            ".zshrc".source = ~/Documents/baantu/dotfiles/zshrc/.zshrc;
+
+            ".config/starship.toml".source = ~/Documents/baantu/dotfiles/starship.toml;
+            ".config/zellij".source = ~/Documents/baantu/dotfiles/zellij;
+          };
         }
       ];
     };

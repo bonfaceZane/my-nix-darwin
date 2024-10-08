@@ -64,6 +64,7 @@
       "mas"
       "zsh"
       "mise"
+      "gh"
     ];
 
     # `brew install --cask`
