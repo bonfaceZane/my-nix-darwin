@@ -24,7 +24,6 @@
       ".config/starship.toml".source = /Users/${username}/Documents/baantu/dotfiles/starship/starship.toml;
       ".config/zellij".source = /Users/${username}/Documents/baantu/dotfiles/zellij;
       # ".config/nvim".source = ~/Document/baantu/dotfiles/nvim;
-      # ".config/nix-darwin".source = ~/dotfiles/nix-darwin;
     };
 
     # This value determines the Home Manager release that your
