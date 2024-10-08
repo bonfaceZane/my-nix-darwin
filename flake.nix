@@ -33,7 +33,8 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -48,6 +49,7 @@
     nix-homebrew,
     home-manager,
     flake-utils,
+    alejandra,
     ...
   }: let
     # TODO replace with your own username, system and hostname
@@ -55,7 +57,6 @@
     useremail = "bonfacezane@gmail.com";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
     hostname = "rafiki";
-
 
     specialArgs =
       inputs
@@ -68,11 +69,14 @@
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       inherit system specialArgs;
       modules = [
+        {
+          environment.systemPackages = [alejandra.defaultPackage.${system}];
+        }
+
         ./modules/apps.nix
         ./modules/nix-core.nix
         ./modules/systems.nix
         ./modules/host-users.nix
-
 
         # home manager
         home-manager.darwinModules.home-manager
@@ -82,11 +86,8 @@
           home-manager.extraSpecialArgs = specialArgs;
           home-manager.users.${username} = import ./home;
         }
-
-
       ];
     };
-
 
     # nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
