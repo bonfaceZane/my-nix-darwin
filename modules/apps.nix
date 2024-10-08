@@ -66,10 +66,10 @@
       "mise"
       "gh"
       "stow"
+      "jump"
     ];
 
     # `brew install --cask`
-    # TODO Feel free to add your favorite apps here.
     casks = [
       "firefox"
       # "google-chrome"
