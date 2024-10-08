@@ -1,5 +1,5 @@
 rebuild:
-    darwin-rebuild switch --flake .#rafiki --show-trace
+    darwin-rebuild switch --flake .#rafiki --show-trace --impure
 
 update: 
     nix flake update
