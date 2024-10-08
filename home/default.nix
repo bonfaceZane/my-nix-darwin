@@ -20,11 +20,10 @@
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     file = {
-      ".zshrc".source = /Users/obwoni000/Documents/baantu/dotfiles/zshrc/.zshrc;
-      ".config/starship.toml".source = /Users/obwoni000/Documents/baantu/dotfiles/starship/starship.toml;
-      # ".config/zellij".source = ~/Document/baantu/dotfiles/zellij;
+      ".zshrc".source = /Users/${username}/Documents/baantu/dotfiles/zshrc/.zshrc;
+      ".config/starship.toml".source = /Users/${username}/Documents/baantu/dotfiles/starship/starship.toml;
+      ".config/zellij".source = /Users/${username}/Documents/baantu/dotfiles/zellij;
       # ".config/nvim".source = ~/Document/baantu/dotfiles/nvim;
-      # # ".config/nix".source = ~/dotfiles/nix
       # ".config/nix-darwin".source = ~/dotfiles/nix-darwin;
     };
 
