@@ -67,6 +67,8 @@
       "gh"
       "stow"
       "jump"
+      "gmp"
+      "libyaml"
     ];
 
     # `brew install --cask`

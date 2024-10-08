@@ -32,6 +32,7 @@
         "/Applications/slack.app"
         "/Applications/Postman.app"
         "/Applications/Playgrounds.app"
+        "/Applications/WhatsApp.app"
         "/Applications/Visual Studio Code.app"
       ];
 
