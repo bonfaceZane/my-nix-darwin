@@ -76,6 +76,7 @@
         ./modules/nix-core.nix
         ./modules/systems.nix
         ./modules/host-users.nix
+        # ./modules/mise.nix
 
         # home manager
         home-manager.darwinModules.home-manager

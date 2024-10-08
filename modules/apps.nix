@@ -19,6 +19,11 @@
     just # use Justfile to simplify nix-darwin's commands
     mkalias
     fzf
+    openssl
+    nodejs_18
+    python3
+    nodePackages.yarn
+    nodePackages.node-gyp-build
   ];
 
   # todo: update this to desired one
@@ -63,12 +68,14 @@
       "httpie" # http client
       "mas"
       "zsh"
-      "mise"
       "gh"
       "stow"
       "jump"
       "gmp"
       "libyaml"
+      "watchman"
+      "yarn"
+      "rbenv"
     ];
 
     # `brew install --cask`
@@ -94,6 +101,7 @@
       # "proxyman" # proxy manager
       # "postman" # REST client
       # "visual-studio-code" # IDE
+      "microsoft-openjdk@17"
 
       # Productivity
       "alfred" # hotkey app
