@@ -21,10 +21,10 @@
     # plain files is through 'home.file'.
     file = {
       ".zshrc".source = /Users/obwoni000/Documents/baantu/dotfiles/zshrc/.zshrc;
-      # ".config/starship".source = ~/Document/baantu/dotfiles/starship;
+      ".config/starship.toml".source = /Users/obwoni000/Documents/baantu/dotfiles/starship/starship.toml;
       # ".config/zellij".source = ~/Document/baantu/dotfiles/zellij;
       # ".config/nvim".source = ~/Document/baantu/dotfiles/nvim;
-      # # ".config/nix".source = ~/dotfiles/nix;
+      # # ".config/nix".source = ~/dotfiles/nix
       # ".config/nix-darwin".source = ~/dotfiles/nix-darwin;
     };
 
