@@ -34,6 +34,7 @@
         "/Applications/Postman.app"
         "/Applications/Playgrounds.app"
         "/Applications/Spotify.app"
+        "/Applications/Xcode.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
