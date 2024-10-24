@@ -24,16 +24,16 @@
       # apps to show in dock
       dock.persistent-apps = [
         "/Applications/Obsidian.app"
+        "/Applications/slack.app"
         "/Applications/Notion.app"
-        "/Applications/Warp.app"
-        "/Applications/Cursor.app"
         "/Applications/Arc.app"
         "/Applications/Proxyman.app"
-        "/Applications/slack.app"
+        "/Applications/Warp.app"
+        "/Applications/Cursor.app"
+        "/Applications/Visual Studio Code.app"
         "/Applications/Postman.app"
         "/Applications/Playgrounds.app"
-        "/Applications/WhatsApp.app"
-        "/Applications/Visual Studio Code.app"
+        "/Applications/Spotify.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";

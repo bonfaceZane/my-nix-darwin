@@ -3,7 +3,7 @@ rebuild:
 
 update: 
     nix flake update
-    darwin-rebuild switch --flake .#rafiki
+    darwin-rebuild switch --flake .#rafiki --show-trace --impure
 
 clean:
     sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d

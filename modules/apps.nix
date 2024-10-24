@@ -83,7 +83,7 @@
     # `brew install --cask`
     casks = [
       "firefox"
-      "google-chrome"
+      # "google-chrome"
 
       # IM & audio & remote desktop & meeting
       "telegram"
