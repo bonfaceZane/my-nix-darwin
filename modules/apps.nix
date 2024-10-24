@@ -19,7 +19,6 @@
     just # use Justfile to simplify nix-darwin's commands
     mkalias
     fzf
-    openssl
     nodejs_18
     python3
     nodePackages.yarn
@@ -78,6 +77,12 @@
       "rbenv"
       "deno"
       "helix"
+      "openssl"
+      "coreutils"
+      "libtool"
+      "libksba"
+      "automake"
+      "zlib"
     ];
 
     # `brew install --cask`
