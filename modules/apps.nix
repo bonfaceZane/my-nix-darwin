@@ -131,6 +131,12 @@
       # parsers
       "jc" # json parser cli
       "jq" # json parser
+
+      # kubernetes
+      "k9s" # kubernetes cli
+      "kubectx" # kubernetes context switcher
+      # "kubens" # kubernetes namespace switcher
+      "kube-ps1" # kubernetes prompt
     ];
 
     # `brew install --cask`
