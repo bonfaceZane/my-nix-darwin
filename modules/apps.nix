@@ -15,10 +15,7 @@
   # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
   environment.systemPackages = with pkgs; [
     neovim
-    git
-    just # use Justfile to simplify nix-darwin's commands
     mkalias
-    fzf
     nodejs_18
     python3
     nodePackages.yarn
@@ -50,7 +47,7 @@
     masApps = {
       # TODO Feel free to add your favorite apps here.
 
-      Xcode = 497799835;
+      # Xcode = 497799835;
       # QQMusic = 595615424;
     };
 
@@ -61,28 +58,73 @@
     # `brew install`
     # TODO Feel free to add your favorite apps here.
     brews = [
-      "wget" # download tool
-      "curl" # no not install curl via nixpkgs, it's not working well on macOS!
-      "aria2" # download tool
-      "httpie" # http client
-      "mas"
+      # zsh
+      "zsh-completions" # zsh completions
       "zsh"
+
+      # apple
+      "mas"
+      "libksba" # libksba is a library to make X.509 certificates and CMS easily accessible by C programs
+
+      # git
       "gh"
-      "stow"
-      "jump"
+      "git"
+
       "gmp"
       "libyaml"
-      "watchman"
-      "yarn"
+
+      # ruby
       "rbenv"
+
+      # node and relatives tools
+      "yarn"
       "deno"
-      "helix"
       "openssl"
-      "coreutils"
-      "libtool"
-      "libksba"
+
+      # IDEs
+      "helix"
+      # "visual-studio-code"
+
       "automake"
       "zlib"
+
+      "zstd" # zstd
+      "caddy" # caddy web server
+      "glow" # markdown previewer in terminal
+
+      #miscellaneous
+      "sk" # grep with preview
+
+      # tools
+      "watchman"
+      "libtool"
+      "jump" # jump to frequently used directories
+      "tree" # list files in tree structure
+      "bat" # cat with syntax highlight
+      "fd" # find with syntax highlight
+      "ripgrep" # grep with syntax highlight
+      "fzf" # fuzzy finder
+      "just" # justfile to simplify nix-darwin's commands
+
+      # GNU
+      "coreutils" # GNU core utilities
+      "gawk" # awk with GNU extensions
+
+      # network
+      "nmap" # network scanner
+      "wget" # download tool
+      "curl" # no not install curl via nixpkgs, it's not working well on macOS!
+      "aria2" # download tool supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink
+      "httpie" # http client
+
+      # files * file managers
+      "zip" # zip tool for compressing files
+      "unzip" # unzip tool for decompressing files
+      "file" # file command to determine file type
+
+      # parsers
+      "jc" # json parser cli
+      "jq" # json parser
     ];
 
     # `brew install --cask`
