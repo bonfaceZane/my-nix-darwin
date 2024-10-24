@@ -25,7 +25,7 @@
       ".config/zellij".source = /Users/${username}/Documents/baantu/dotfiles/zellij;
       ".config/helix".source = /Users/${username}/Documents/baantu/dotfiles/helix;
       ".config/nushell".source = /Users/${username}/Documents/baantu/dotfiles/nushell;
-      # ".config/nvim".source = ~/Document/baantu/dotfiles/nvim;
+      ".config/nvim".source = /Users/${username}/Documents/baantu/dotfiles/nvim;
     };
 
     # This value determines the Home Manager release that your
