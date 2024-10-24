@@ -19,12 +19,13 @@
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
+    # make sure this files/directories exist before running home-manager
     file = {
       ".zshrc".source = /Users/${username}/Documents/baantu/dotfiles/zshrc/.zshrc;
       ".config/starship.toml".source = /Users/${username}/Documents/baantu/dotfiles/starship/starship.toml;
       ".config/zellij".source = /Users/${username}/Documents/baantu/dotfiles/zellij;
       ".config/helix".source = /Users/${username}/Documents/baantu/dotfiles/helix;
-      ".config/nushell".source = /Users/${username}/Documents/baantu/dotfiles/nushell;
+      "/Users/obwoni000/Library/Application\ Support/nushell/".source = /Users/${username}/Documents/baantu/dotfiles/nushell;
       ".config/nvim".source = /Users/${username}/Documents/baantu/dotfiles/nvim;
     };
 

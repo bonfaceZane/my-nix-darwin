@@ -23,7 +23,7 @@
   ];
 
   # todo: update this to desired one
-  # environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "nvim";
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #
@@ -59,7 +59,7 @@
     # TODO Feel free to add your favorite apps here.
     brews = [
       # zsh
-      "zsh-completions" # zsh completions
+      # "zsh-completions" # zsh completions
       "zsh"
 
       # nushell
