@@ -62,6 +62,12 @@
       "zsh-completions" # zsh completions
       "zsh"
 
+      # nushell
+      "nushell"
+
+      # zellij
+      "zellij"
+
       # apple
       "mas"
       "libksba" # libksba is a library to make X.509 certificates and CMS easily accessible by C programs
