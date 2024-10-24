@@ -111,6 +111,7 @@
       "ripgrep" # grep with syntax highlight
       "fzf" # fuzzy finder
       "just" # justfile to simplify nix-darwin's commands
+      "starship" # cross-shell prompt
 
       # GNU
       "coreutils" # GNU core utilities

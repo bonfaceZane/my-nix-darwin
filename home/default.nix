@@ -23,6 +23,8 @@
       ".zshrc".source = /Users/${username}/Documents/baantu/dotfiles/zshrc/.zshrc;
       ".config/starship.toml".source = /Users/${username}/Documents/baantu/dotfiles/starship/starship.toml;
       ".config/zellij".source = /Users/${username}/Documents/baantu/dotfiles/zellij;
+      ".config/helix".source = /Users/${username}/Documents/baantu/dotfiles/helix;
+      ".config/nushell".source = /Users/${username}/Documents/baantu/dotfiles/nushell;
       # ".config/nvim".source = ~/Document/baantu/dotfiles/nvim;
     };
 
