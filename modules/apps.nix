@@ -112,6 +112,8 @@
       "fzf" # fuzzy finder
       "just" # justfile to simplify nix-darwin's commands
       "starship" # cross-shell prompt
+      # "1password-cli" # 1password cli
+      "scrcpy" # screen copy for android
 
       # GNU
       "coreutils" # GNU core utilities
