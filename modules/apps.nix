@@ -16,7 +16,8 @@
   environment.systemPackages = with pkgs; [
     neovim
     mkalias
-    nodejs_18
+    # nodejs_18
+    nodejs_22
     python3
     nodePackages.yarn
     nodePackages.node-gyp-build
