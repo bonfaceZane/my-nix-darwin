@@ -17,7 +17,7 @@
     neovim
     mkalias
     # nodejs_18
-    nodejs_21
+    nodejs_20
     python3
     nodePackages.yarn
     nodePackages.node-gyp-build
