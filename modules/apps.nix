@@ -151,14 +151,14 @@
       "iina" # video player
       # "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
       "stats" # beautiful system monitor
-      # "spotify"
+      "spotify"
       "zoom"
       "hammerspoon" # macOS automation
 
       # Development
       "insomnia" # REST client
       "wireshark" # network analyzer
-      # "proxyman" # proxy manager
+      "proxyman" # proxy manager
       "postman" # REST client
       # "visual-studio-code" # IDE
       "microsoft-openjdk@17"
