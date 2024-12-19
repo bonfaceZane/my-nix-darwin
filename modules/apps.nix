@@ -145,7 +145,7 @@
     # if app already exists make sure you uninstall it first and let nix do it by itself
     casks = [
       "firefox"
-      # "google-chrome"
+      "google-chrome"
 
       # IM & audio & remote desktop & meeting
       "telegram"
@@ -153,7 +153,7 @@
 
       "anki"
       "iina" # video player
-      # "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
+      "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
       "stats" # beautiful system monitor
       "spotify"
       "zoom"
@@ -164,7 +164,7 @@
       "wireshark" # network analyzer
       "proxyman" # proxy manager
       "postman" # REST client
-      # "visual-studio-code" # IDE
+      "visual-studio-code" # IDE
       "microsoft-openjdk@17"
       "bruno"
 
@@ -173,7 +173,7 @@
       "bettertouchtool" # hotkey app
       "obsidian" # markdown editor
       "notion" # markdown editor
-      # "slack" # chat app
+      "slack" # chat app
     ];
   };
 }
