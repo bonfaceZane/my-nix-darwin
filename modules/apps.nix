@@ -174,6 +174,9 @@
       # "obsidian" # markdown editor
       # "notion" # markdown editor
       # "slack" # chat app
+
+      # api development
+      "bruno"
     ];
   };
 }
