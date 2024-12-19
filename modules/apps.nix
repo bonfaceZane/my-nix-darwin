@@ -162,6 +162,7 @@
       "postman" # REST client
       # "visual-studio-code" # IDE
       "microsoft-openjdk@17"
+      "bruno"
 
       # Productivity
       "alfred" # hotkey app
@@ -169,9 +170,6 @@
       "obsidian" # markdown editor
       "notion" # markdown editor
       # "slack" # chat app
-
-      # api development
-      "bruno"
     ];
   };
 }
