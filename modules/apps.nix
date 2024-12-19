@@ -116,6 +116,12 @@
       # "1password-cli" # 1password cli
       "scrcpy" # screen copy for android
 
+      # bun
+      # "bun" # fast javascript runtime
+
+      # deno
+      "deno" # fast javascript runtime
+
       # GNU
       "coreutils" # GNU core utilities
       "gawk" # awk with GNU extensions
