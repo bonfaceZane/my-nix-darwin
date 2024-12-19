@@ -135,22 +135,17 @@
       # parsers
       "jc" # json parser cli
       "jq" # json parser
-
-      # kubernetes
-      "k9s" # kubernetes cli
-      "kubectx" # kubernetes context switcher
-      # "kubens" # kubernetes namespace switcher
-      "kube-ps1" # kubernetes prompt
     ];
 
     # `brew install --cask`
+    # if app already exists make sure you uninstall it first and let nix do it by itself
     casks = [
       "firefox"
       # "google-chrome"
 
       # IM & audio & remote desktop & meeting
       "telegram"
-      # "discord"
+      "discord"
 
       "anki"
       "iina" # video player
@@ -162,17 +157,17 @@
 
       # Development
       "insomnia" # REST client
-      # "wireshark" # network analyzer
+      "wireshark" # network analyzer
       # "proxyman" # proxy manager
-      # "postman" # REST client
+      "postman" # REST client
       # "visual-studio-code" # IDE
       "microsoft-openjdk@17"
 
       # Productivity
       "alfred" # hotkey app
       "bettertouchtool" # hotkey app
-      # "obsidian" # markdown editor
-      # "notion" # markdown editor
+      "obsidian" # markdown editor
+      "notion" # markdown editor
       # "slack" # chat app
 
       # api development
