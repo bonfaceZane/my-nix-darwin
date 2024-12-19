@@ -46,9 +46,7 @@
     # otherwise Apple Store will refuse to install them.
     # For details, see https://github.com/mas-cli/mas
     masApps = {
-      # TODO Feel free to add your favorite apps here.
-
-      # Xcode = 497799835;
+      Xcode = 497799835;
       # QQMusic = 595615424;
     };
 
