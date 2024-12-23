@@ -32,7 +32,7 @@
         "/Applications/Warp.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/Postman.app"
-        "/Applications/Playgrounds.app"
+        # "/Applications/Playgrounds.app"
         "/Applications/Spotify.app"
         "/Applications/Xcode.app"
       ];
