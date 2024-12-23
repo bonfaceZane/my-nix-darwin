@@ -13,3 +13,6 @@ show:
 
 check:
     nix flake check
+
+build:
+    nix run nix-darwin -- switch --flake .#rafiki --show-trace --impure
