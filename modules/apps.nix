@@ -46,7 +46,7 @@
     # otherwise Apple Store will refuse to install them.
     # For details, see https://github.com/mas-cli/mas
     masApps = {
-#      Xcode = 497799835;
+    # Xcode = 497799835;
     };
 
     taps = [
@@ -87,7 +87,7 @@
 
       # IDEs
       "helix"
-      # "visual-studio-code"
+      "visual-studio-code"
 
       "automake"
       "zlib"
@@ -173,6 +173,7 @@
       "obsidian" # markdown editor
       "notion" # markdown editor
       "slack" # chat app
+      "alt-tab"
     ];
   };
 }
