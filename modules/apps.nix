@@ -90,7 +90,7 @@
 
       # IDEs
       "helix"
-      "visual-studio-code"
+      # "visual-studio-code"
 
       "automake"
       "zlib"
@@ -141,6 +141,9 @@
       # parsers
       "jc" # json parser cli
       "jq" # json parser
+
+      # misc
+      "llvm" # llvm compiler for c++, c and rust
     ];
 
     # `brew install --cask`
@@ -153,14 +156,6 @@
       "telegram"
       "discord"
 
-      "anki"
-      "iina" # video player
-      "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
-      "stats" # beautiful system monitor
-      "spotify"
-      "zoom"
-      "hammerspoon" # macOS automation
-
       # Development
       "insomnia" # REST client
       "wireshark" # network analyzer
@@ -169,6 +164,7 @@
       "visual-studio-code" # IDE
       "microsoft-openjdk@17"
       "bruno"
+      "ghostty"
 
       # Productivity
       "alfred" # hotkey app
@@ -177,6 +173,15 @@
       "notion" # markdown editor
       "slack" # chat app
       "alt-tab"
+
+     # misc
+       "anki"
+      "iina" # video player
+      "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
+      "stats" # beautiful system monitor
+      "spotify"
+      "zoom"
+      "hammerspoon" # macOS automation
     ];
   };
 }

@@ -23,15 +23,13 @@
 
       # apps to show in dock
       dock.persistent-apps = [
-        "/Applications/Obsidian.app"
         "/Applications/slack.app"
         "/Applications/Notion.app"
         "/Applications/Arc.app"
         "/Applications/Proxyman.app"
-        "/Applications/Cursor.app"
+        "/Applications/Windsurf.app"
         "/Applications/Warp.app"
-        "/Applications/Visual Studio Code.app"
-        "/Applications/Postman.app"
+        "/Applications/Ghostty.app"
         # "/Applications/Playgrounds.app"
         "/Applications/Spotify.app"
         "/Applications/Xcode.app"
