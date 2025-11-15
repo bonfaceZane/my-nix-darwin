@@ -118,6 +118,12 @@ Then in `flake.nix` expose multiple `darwinConfigurations`. This repo currently 
 - Homebrew integration not working?
   - Make sure you have Homebrew installed already, then let nix-darwin manage packages via `homebrew` in `modules/apps.nix`.
 
+### Dotfile ownership & conflicts
+
+- Prefer first-class Home Manager modules to own their files (e.g. `programs.zsh` owns `~/.zshrc`, `programs.starship.settings` owns Starship’s config). Do not also link these via `home.file`.
+- External dotfiles are linked centrally in `home/dotfiles.nix` using out-of-store symlinks and `force = true` with existence checks to avoid conflicts.
+- Backups: `flake.nix` sets `home-manager.backupFileExtension = ".hm-bak"`. The first time Home Manager takes over an existing file, it will move it to `*.hm-bak`. This happens once; subsequent rebuilds won’t keep backing up the same file.
+
 ## Learning resources
 
 - Nix and Flakes Book: https://github.com/ryan4yin/nixos-and-flakes-book

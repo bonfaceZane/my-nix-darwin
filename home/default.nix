@@ -13,6 +13,7 @@
   # import sub modules
   imports = [
     ./shell.nix
+    ./dotfiles.nix
     ./apps.nix
     ./core.nix
     ./git.nix
@@ -29,21 +30,12 @@
     # packages = [
     # ];
 
-    # Home Manager is pretty good at managing dotfiles. The primary way to manage
-    # plain files is through `home.file`.
-    # make sure this files/directories exist before running home-manager
-    file = {
-      # Managed by Home Manager modules to avoid conflicts:
-      # - programs.zsh handles the zsh configuration
-      # - programs.starship writes $XDG_CONFIG_HOME/starship.toml from `programs.starship.settings`
-      # Therefore, do not manage these files via home.file to prevent duplicate targets.
-      # ".zshrc".source = /Users/${username}/Documents/baantu/dotfiles/zshrc/.zshrc;
-      # ".config/starship.toml".source = /Users/${username}/Documents/baantu/dotfiles/starship/starship.toml;
-      ".config/zellij".source = /Users/${username}/Documents/baantu/dotfiles/zellij;
-      ".config/helix".source = /Users/${username}/Documents/baantu/dotfiles/helix;
-      "Library/Application Support/nushell".source = /Users/${username}/Documents/baantu/dotfiles/nushell;
-      ".config/nvim".source = /Users/${username}/Documents/baantu/dotfiles/nvim;
-    };
+    # Dotfiles linking policy
+    # - Prefer first-class modules (programs.*) over home.file to avoid HM
+    #   double-management conflicts.
+    # - External dotfiles are linked centrally in `home/dotfiles.nix` using
+    #   out-of-store symlinks and force=true. Keep this attribute set empty here.
+    file = {};
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
