@@ -9,6 +9,7 @@ let
   zellijPath = "${dotfilesRoot}/zellij";
   nvimPath = "${dotfilesRoot}/nvim";
   nushellPath = "${dotfilesRoot}/nushell";
+  ghosttyPath = "${dotfilesRoot}/ghostty";
 in
 {
   # Central place to safely link external dotfiles into $HOME.
@@ -51,6 +52,13 @@ in
     # Nushell config directory
     "Library/Application Support/nushell" = lib.mkIf (builtins.pathExists nushellPath) {
       source = ext nushellPath;
+      recursive = true;
+      force = true;
+    };
+
+    #    ghostty
+    ".config/ghostty" = lib.mkIf (builtins.pathExists ghosttyPath) {
+      source = ext ghosttyPath;
       recursive = true;
       force = true;
     };

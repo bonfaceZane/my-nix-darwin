@@ -27,7 +27,6 @@
         "/Applications/Warp.app"
         "/Applications/Ghostty.app"
         # "/Applications/Playgrounds.app"
-        "/Applications/Spotify.app"
         "/Applications/Xcode.app"
       ];
 
