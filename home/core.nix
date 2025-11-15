@@ -5,11 +5,11 @@
   # items under `home.packages`.
 
   programs = {
-    # modern vim
+    # Editor: prefer Helix system-wide; disable Neovim here to avoid conflicts
     neovim = {
-      enable = true;
-      defaultEditor = true;
-      vimAlias = true;
+      enable = false;
+      defaultEditor = false;
+      vimAlias = true; # keep `vim` alias available if Neovim is enabled later
     };
 
     # A modern replacement for ‘ls’

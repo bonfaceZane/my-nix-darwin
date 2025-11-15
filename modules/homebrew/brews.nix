@@ -31,11 +31,11 @@
     "deno"
     "openssl"
 
-    # editors
-    "helix"
-
     "automake"
     "zlib"
+
+    "neovim"
+    "helix"
 
     "zstd" # zstd
     "caddy" # caddy web server

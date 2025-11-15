@@ -7,10 +7,13 @@
   ##########################################################################
 
   environment.systemPackages = with pkgs; [
-    neovim
     mkalias
   ];
 
   # Global EDITOR; user can override in their shell if desired.
-  environment.variables.EDITOR = "nvim";
+  # Helix's CLI is `hx`.
+  environment.variables = {
+    EDITOR = "hx";
+    VISUAL = "hx"; # many tools respect VISUAL if set
+  };
 }
