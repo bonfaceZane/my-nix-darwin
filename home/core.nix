@@ -1,36 +1,8 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    # archives
-    # zip
-    # xz
-    # unzip
-    # p7zip
-
-    # utils
-    # ripgrep # recursively searches directories for a regex pattern
-    # jq # A lightweight and flexible command-line JSON processor
-    # yq-go # yaml processer https://github.com/mikefarah/yq
-    # fzf # A command-line fuzzy finder
-
-    # aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    # socat # replacement of openbsd-netcat
-    # nmap # A utility for network discovery and security auditing
-
-    # misc
-    # cowsay
-    # file
-    which # which command to find the path of a command
-    # tree
-    gnused
-    gnutar
-    # gawk
-    # zstd
-    # caddy
-    # gnupg
-
-    # productivity
-    # glow # markdown previewer in terminal
-  ];
+  # Packages note:
+  # User-local packages are now declared in `home/apps.nix` to keep app concerns
+  # separate from program/module configuration. See that file to add/remove
+  # items under `home.packages`.
 
   programs = {
     # modern vim

@@ -1,7 +1,19 @@
 {username, ...}: {
+  # Home Manager entrypoint for user `${username}`
+  #
+  # This file composes user-level modules that manage dotfiles and user packages.
+  # Add new user modules to the `imports` list below to keep things modular.
+  #
+  # Tip: Prefer keeping system-wide apps in `modules/apps.nix` and user-specific
+  # tools here in Home Manager.
+  #
+  # Inputs provided via `specialArgs` from flake.nix include `username` and
+  # `useremail` (used by `home/git.nix`).
+  #
   # import sub modules
   imports = [
     ./shell.nix
+    ./apps.nix
     ./core.nix
     ./git.nix
     ./starship.nix
@@ -18,7 +30,7 @@
     # ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
-    # plain files is through 'home.file'.
+    # plain files is through `home.file`.
     # make sure this files/directories exist before running home-manager
     file = {
       # Managed by Home Manager modules to avoid conflicts:

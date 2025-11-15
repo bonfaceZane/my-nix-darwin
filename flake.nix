@@ -1,4 +1,10 @@
 {
+  # Entry point for nix-darwin + Home Manager configuration
+  #
+  # Tips:
+  # - To add another Mac host, see the "Add another machine" section in README.md.
+  # - Values like `username`, `useremail`, `system`, and `hostname` are passed to
+  #   both system and Home Manager modules via `specialArgs` for convenience.
   description = "Darwin system flakes for Zane";
 
   ##################################################################################################################
@@ -64,12 +70,13 @@
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       inherit system specialArgs;
       modules = [
+        # --- System modules (nix-darwin) ---
         ./modules/apps.nix
         ./modules/nix-core.nix
         ./modules/systems.nix
         ./modules/host-users.nix
 
-        # home manager
+        # --- Home Manager (user) modules ---
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

@@ -36,29 +36,6 @@
       }
     ];
 
-    # signing = {
-    #   key = "xxx";
-    #   signByDefault = true;
-    # };
-
-    # delta configuration moved to top-level `programs.delta`
-
-    # aliases = {
-    #   # common aliases
-    #   br = "branch";
-    #   co = "checkout";
-    #   st = "status";
-    #   ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
-    #   ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
-    #   cm = "commit -m";
-    #   ca = "commit -am";
-    #   dc = "diff --cached";
-    #   amend = "commit --amend -m";
-
-    #   # aliases for submodule
-    #   update = "submodule update --init --recursive";
-    #   foreach = "submodule foreach";
-    # };
   };
 
   # New location for delta config per HM deprecation notices
