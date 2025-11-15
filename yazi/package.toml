@@ -1,9 +1,0 @@
-[[plugin.deps]]
-use  = "owner/my-plugin"
-rev  = "0573024"
-hash = "d81b64a39432fcd6224cd75d296e7510"
-
-[[plugin.deps]]
-use  = "yazi-rs/plugins:git"
-rev  = "9a1129c"
-hash = "a8e15d3c21c02a5af41d46ed04778a02"
