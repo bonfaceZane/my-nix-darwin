@@ -16,8 +16,17 @@
     enable = true;
     lfs.enable = true;
 
-    userName = username;
-    userEmail = useremail;
+    # Per Home Manager deprecations, user info now lives under `settings.user.*`
+    settings = {
+      user = {
+        name = username;
+        email = useremail;
+      };
+      # migrated from extraConfig
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+      pull.rebase = true;
+    };
 
     includes = [
       {
@@ -27,23 +36,12 @@
       }
     ];
 
-    extraConfig = {
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-      pull.rebase = true;
-    };
-
     # signing = {
     #   key = "xxx";
     #   signByDefault = true;
     # };
 
-    delta = {
-      enable = true;
-      options = {
-        features = "side-by-side";
-      };
-    };
+    # delta configuration moved to top-level `programs.delta`
 
     # aliases = {
     #   # common aliases
@@ -61,5 +59,15 @@
     #   update = "submodule update --init --recursive";
     #   foreach = "submodule foreach";
     # };
+  };
+
+  # New location for delta config per HM deprecation notices
+  programs.delta = {
+    enable = true;
+    # Explicitly enable Git integration (no longer automatically enabled)
+    enableGitIntegration = true;
+    options = {
+      features = "side-by-side";
+    };
   };
 }

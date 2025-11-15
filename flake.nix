@@ -1,5 +1,5 @@
 {
-  description = "Darwin system flake for Zane";
+  description = "Darwin system flakes for Zane";
 
   ##################################################################################################################
   #
@@ -32,9 +32,6 @@
     };
 
     flake-utils.url = "github:numtide/flake-utils";
-
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -49,7 +46,6 @@
     nix-homebrew,
     home-manager,
     flake-utils,
-    alejandra,
     ...
   }: let
     username = "obwoni000";
@@ -60,7 +56,7 @@
     specialArgs =
       inputs
       // {
-        inherit username hostname;
+        inherit username useremail hostname;
       };
   in {
     # Build darwin flake using:
@@ -68,10 +64,6 @@
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       inherit system specialArgs;
       modules = [
-        {
-          environment.systemPackages = [alejandra.defaultPackage.${system}];
-        }
-
         ./modules/apps.nix
         ./modules/nix-core.nix
         ./modules/systems.nix
@@ -82,6 +74,10 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          # Safely handle existing dotfiles managed by Home Manager by creating backups
+          # instead of refusing to overwrite. This avoids clobber errors like for ~/.zshenv.
+          # The original file will be moved to filename.hm-bak on first write.
+          home-manager.backupFileExtension = ".hm-bak";
           home-manager.extraSpecialArgs = specialArgs;
           home-manager.users.${username} = import ./home;
         }
@@ -89,7 +85,7 @@
     };
 
     # nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
 
     # Expose the package set, including overlays, for convenience.
     darwinPackages = self.darwinConfigurations."${hostname}".pkgs;

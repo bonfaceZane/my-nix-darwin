@@ -4,7 +4,8 @@
     enableCompletion = true;
 
     # start of shell extra logic
-    initExtra = ''
+    # `initExtra` is deprecated; use `initContent` instead.
+    initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
 
       if [[ $(uname -m) == 'arm64' ]]; then

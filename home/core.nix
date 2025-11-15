@@ -45,12 +45,13 @@
     eza = {
       enable = true;
       git = true;
-      icons = true;
+      # Boolean is deprecated; use a string. Suggested: "auto"
+      icons = "auto";
       enableZshIntegration = true;
     };
 
     # terminal file manager
-    programs.yazi = {
+    yazi = {
       enable = true;
       enableZshIntegration = true;
       settings = {

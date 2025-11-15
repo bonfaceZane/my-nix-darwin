@@ -16,11 +16,6 @@
   environment.systemPackages = with pkgs; [
     neovim
     mkalias
-    # nodejs_18
-    nodejs_20
-    python3
-    nodePackages.yarn
-    nodePackages.node-gyp-build
   ];
 
   # todo: update this to desired one
@@ -33,12 +28,14 @@
   homebrew = {
     enable = true;
 
+    global.brewfile = true;
+
     onActivation = {
       autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
 
       # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
-      cleanup = "zap";
+      # cleanup = "zap";
     };
 
     # Applications to install from Mac App Store using mas.
@@ -56,17 +53,14 @@
     # `brew install`
     # TODO Feel free to add your favorite apps here.
     brews = [
-      # zsh
-      # "zsh-completions" # zsh completions
+      # shells
       "zsh"
-
-      # nushell
       "nushell"
 
-      # zellij
+      # terminal multiplexer
       "zellij"
 
-      # rust
+      # languages
       "rust"
 
       # apple
@@ -84,13 +78,13 @@
       "rbenv"
 
       # node and relatives tools
+      "node"
       "yarn"
       "deno"
       "openssl"
 
-      # IDEs
+      # editors
       "helix"
-      # "visual-studio-code"
 
       "automake"
       "zlib"
@@ -116,11 +110,6 @@
       # "1password-cli" # 1password cli
       "scrcpy" # screen copy for android
 
-      # bun
-      # "bun" # fast javascript runtime
-
-      # deno
-      "deno" # fast javascript runtime
 
       # GNU
       "coreutils" # GNU core utilities

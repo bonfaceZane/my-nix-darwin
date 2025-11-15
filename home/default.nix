@@ -1,10 +1,10 @@
 {username, ...}: {
   # import sub modules
   imports = [
-    # ./shell.nix
-    # ./core.nix
-    # ./git.nix
-    # ./starship.nix
+    ./shell.nix
+    ./core.nix
+    ./git.nix
+    ./starship.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -21,11 +21,15 @@
     # plain files is through 'home.file'.
     # make sure this files/directories exist before running home-manager
     file = {
-      ".zshrc".source = /Users/${username}/Documents/baantu/dotfiles/zshrc/.zshrc;
-      ".config/starship.toml".source = /Users/${username}/Documents/baantu/dotfiles/starship/starship.toml;
+      # Managed by Home Manager modules to avoid conflicts:
+      # - programs.zsh handles the zsh configuration
+      # - programs.starship writes $XDG_CONFIG_HOME/starship.toml from `programs.starship.settings`
+      # Therefore, do not manage these files via home.file to prevent duplicate targets.
+      # ".zshrc".source = /Users/${username}/Documents/baantu/dotfiles/zshrc/.zshrc;
+      # ".config/starship.toml".source = /Users/${username}/Documents/baantu/dotfiles/starship/starship.toml;
       ".config/zellij".source = /Users/${username}/Documents/baantu/dotfiles/zellij;
       ".config/helix".source = /Users/${username}/Documents/baantu/dotfiles/helix;
-      "/Users/obwoni000/Library/Application\ Support/nushell/".source = /Users/${username}/Documents/baantu/dotfiles/nushell;
+      "Library/Application Support/nushell".source = /Users/${username}/Documents/baantu/dotfiles/nushell;
       ".config/nvim".source = /Users/${username}/Documents/baantu/dotfiles/nvim;
     };
 
