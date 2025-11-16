@@ -21,13 +21,15 @@
       dock.persistent-apps = [
         "/Applications/slack.app"
         "/Applications/Notion.app"
+        "/Applications/Warp.app"
+        "/Applications/webstorm.app"
+        "/Applications/Visual Studio Code.app"
+        "/Applications/Xcode.app"
+        "/Applications/Windsurf.app"
         "/Applications/Arc.app"
         "/Applications/Proxyman.app"
-        "/Applications/Windsurf.app"
-        "/Applications/Warp.app"
         "/Applications/Ghostty.app"
         # "/Applications/Playgrounds.app"
-        "/Applications/Xcode.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";

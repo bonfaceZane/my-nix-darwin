@@ -4,12 +4,17 @@
     # shells
     "zsh"
     "nushell"
+    "zsh-autosuggestions"
+    "zsh-syntax-highlighting"
+    "zsh-autocomplete"
 
     # terminal multiplexer
     "zellij"
 
     # languages
     "rust"
+
+    "htop"
 
     # apple
     "mas"
@@ -57,6 +62,8 @@
     "starship" # cross-shell prompt
     # "1password-cli" # 1password cli
     "scrcpy" # screen copy for android
+    "mise" # package manager
+    "zoxide"
 
     # GNU
     "coreutils" # GNU core utilities
