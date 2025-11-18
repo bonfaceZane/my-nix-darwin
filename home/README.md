@@ -11,7 +11,7 @@ Files
 - shell.nix — Zsh configuration and shell aliases.
 - git.nix — Git configuration (name/email taken from flake `specialArgs`).
 - starship.nix — Prompt settings.
-- dotfiles.nix — Centralized, safe links to external dotfiles (Helix, Zellij, Nushell, Neovim). Uses out-of-store symlinks and guards to avoid conflicts.
+- dotfiles.nix — Centralized, safe links to dotfiles tracked inside this repo (Helix, Zellij, Nushell, Neovim). Uses guards to avoid conflicts.
 
 Add a new user module
 ---------------------
@@ -29,20 +29,20 @@ Dotfiles
 Prefer program-specific options (e.g. `programs.zsh.*`, `programs.git.*`,
 `programs.starship.settings`) over `home.file` when the program is supported by Home Manager. This avoids conflicts and keeps configs declarative.
 
-Use `home.file` for configs that don’t yet have first-class modules. Example:
+Use `home.file` for configs that don’t yet have first-class modules. Example (dotfiles now live in this repo under `./dotfiles`):
 
 ```
 home.file = {
-  ".config/helix".source = /Users/${username}/Documents/baantu/dotfiles/helix;
+  ".config/helix".source = ../dotfiles/helix;
 };
 ```
 
 Recommended pattern (already implemented here):
 
-- Do not scatter `home.file` across multiple modules. Instead, keep all external
+- Do not scatter `home.file` across multiple modules. Instead, keep all
   dotfile links in `home/dotfiles.nix`.
-- `home/dotfiles.nix` links external paths using `config.lib.file.mkOutOfStoreSymlink`
-  so your edits in the dotfiles repo take effect without a rebuild.
+- `home/dotfiles.nix` now references paths under `../dotfiles` inside this
+  repository. Edits to files there will be picked up on rebuild.
 - Links are guarded with `builtins.pathExists` and created with `force = true` to
   avoid “conflicting managed target files” errors when files already exist.
 - Avoid managing targets owned by first-class modules:

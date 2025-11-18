@@ -8,7 +8,8 @@
     # If the file is missing, we just write the HM bits.
     # Note: `initContent` supersedes the deprecated `initExtra`.
     initContent = let
-      userZshrc = "/Users/${username}/Documents/baantu/dotfiles/zshrc/.zshrc";
+      # Read user .zshrc tracked inside this repo (dotfiles/zshrc/.zshrc)
+      userZshrc = ../dotfiles/zshrc/.zshrc;
       userZshrcContent = if builtins.pathExists userZshrc then builtins.readFile userZshrc else "";
     in
       userZshrcContent + ''

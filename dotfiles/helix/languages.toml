@@ -1,0 +1,61 @@
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+auto-format = true
+language-servers = ["rust-analyzer"]
+indent = { tab-width = 4, unit = "    " }
+
+[language.config.rust]
+checkOnSave = { command = "clippy" }
+
+[[language]]         
+name = "typescript"
+scope = "source.ts"
+injection-regex = "^(ts|typescript)$"
+file-types = ["ts", "mts", "cts"]
+shebangs = ["deno", "node"]
+roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
+language-servers = ["typescript-language-server"]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+injection-regex = "^(js|javascript)$"
+file-types = ["js", "mjs", "cjs"]
+shebangs = ["deno", "node"]
+roots = ["deno.json", "deno.jsonc", "package.json"]
+language-servers = ["typescript-language-server"]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "prettier", args = ["--parser", "javascript"] }
+auto-format = true
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language-server.typescript-language-server.config]
+format.enable = true
+preferences.importModuleSpecifierPreference = "relative"
+inlayHints.includeInlayParameterNameHints = "all"
+inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName = true
+inlayHints.includeInlayFunctionParameterTypeHints = true
+inlayHints.includeInlayVariableTypeHints = true
+inlayHints.includeInlayPropertyDeclarationTypeHints = true
+inlayHints.includeInlayFunctionLikeReturnTypeHints = true
+inlayHints.includeInlayEnumMemberValueHints = true
+completion.completeFunctionCalls = true
+completion.autoImport = true
+completion.preferredQuoteStyle = "single"
+completion.includeCompletionsForModuleExports = true
+completion.includeAutomaticOptionalChainCompletions = true
+suggest.includeCompletionsForImportStatements = true
+suggest.autoImports = true
+suggest.completeFunctionCalls = true
+suggest.includeAutomaticOptionalChainCompletions = true
+suggest.includeCompletionsForModuleExports = true

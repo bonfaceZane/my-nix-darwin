@@ -1,24 +1,20 @@
-{ lib, config, username, ... }:
+{ lib, config, ... }:
 let
-  # Convenience: create out-of-store symlinks
-  # Home Manager exposes mkOutOfStoreSymlink under config.lib.file
-  ext = config.lib.file.mkOutOfStoreSymlink;
-
-  dotfilesRoot = "/Users/${username}/Documents/baantu/dotfiles";
-  helixPath = "${dotfilesRoot}/helix";
-  zellijPath = "${dotfilesRoot}/zellij";
-  nvimPath = "${dotfilesRoot}/nvim";
-  nushellPath = "${dotfilesRoot}/nushell";
-  ghosttyPath = "${dotfilesRoot}/ghostty";
-in
-{
-  # Central place to safely link external dotfiles into $HOME.
+  # Dotfiles now live inside this repository under ../dotfiles
+  # Use direct path literals so types remain paths, not strings.
+  helixPath = ../dotfiles/helix;
+  zellijPath = ../dotfiles/zellij;
+  nvimPath = ../dotfiles/nvim;
+  nushellPath = ../dotfiles/nushell;
+  ghosttyPath = ../dotfiles/ghostty;
+in {
+  # Central place to safely link repo-tracked dotfiles into $HOME.
   #
   # Goals:
   # - Avoid conflicts/failures when files already exist (use force = true).
   # - Only attempt to link when the external source actually exists.
-  # - Prefer out-of-store symlinks so changes to your dotfiles repo take effect
-  #   without a rebuild.
+  # - Dotfiles are tracked under ../dotfiles inside this repo; changes are
+  #   picked up on rebuild.
   # - Do NOT manage targets that are already owned by first-class HM modules
   #   (e.g., programs.zsh manages ~/.zshrc; programs.starship manages its config).
   #
@@ -30,35 +26,35 @@ in
   home.file = {
     # Helix config directory
     ".config/helix" = lib.mkIf (builtins.pathExists helixPath) {
-      source = ext helixPath;
+      source = helixPath;
       recursive = true;
       force = true;
     };
 
     # Zellij config directory
     ".config/zellij" = lib.mkIf (builtins.pathExists zellijPath) {
-      source = ext zellijPath;
+      source = zellijPath;
       recursive = true;
       force = true;
     };
 
     # Neovim config directory (kept even if Neovim isn’t installed, harmless)
     ".config/nvim" = lib.mkIf (builtins.pathExists nvimPath) {
-      source = ext nvimPath;
+      source = nvimPath;
       recursive = true;
       force = true;
     };
 
     # Nushell config directory
     "Library/Application Support/nushell" = lib.mkIf (builtins.pathExists nushellPath) {
-      source = ext nushellPath;
+      source = nushellPath;
       recursive = true;
       force = true;
     };
 
     #    ghostty
     ".config/ghostty" = lib.mkIf (builtins.pathExists ghosttyPath) {
-      source = ext ghosttyPath;
+      source = ghosttyPath;
       recursive = true;
       force = true;
     };

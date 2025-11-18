@@ -121,7 +121,7 @@ Then in `flake.nix` expose multiple `darwinConfigurations`. This repo currently 
 ### Dotfile ownership & conflicts
 
 - Prefer first-class Home Manager modules to own their files (e.g. `programs.zsh` owns `~/.zshrc`, `programs.starship.settings` owns Starship’s config). Do not also link these via `home.file`.
-- External dotfiles are linked centrally in `home/dotfiles.nix` using out-of-store symlinks and `force = true` with existence checks to avoid conflicts.
+- Dotfiles are tracked inside this repository under `./dotfiles` and linked centrally by `home/dotfiles.nix` with `force = true` and existence checks to avoid conflicts.
 - Backups: `flake.nix` sets `home-manager.backupFileExtension = ".hm-bak"`. The first time Home Manager takes over an existing file, it will move it to `*.hm-bak`. This happens once; subsequent rebuilds won’t keep backing up the same file.
 
 ## Learning resources
