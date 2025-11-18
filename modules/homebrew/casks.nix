@@ -31,6 +31,7 @@
       "notion" # markdown editor
       "slack" # chat app
       "alt-tab"
+      "font-fira-code-nerd-font"
 
       # misc
       "anki"
