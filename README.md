@@ -85,6 +85,55 @@ See also:
 - Change Nix behavior (garbage collection, unfree packages): edit `modules/nix-core.nix`.
 - Add dotfiles or user programs: edit files in `home/` (e.g. `home/apps.nix` for user packages, `home/core.nix` for program configs, `home/shell.nix` for zsh).
 
+## Secrets Management
+
+This project uses [sops-nix](https://github.com/Mic92/sops-nix) to manage secrets. Secrets are encrypted in `secrets.yaml` and can be decrypted using the `age` key specified in `.sops.yaml`.
+
+### Viewing Secrets
+
+To view the decrypted secrets, run:
+
+```bash
+sops -d secrets.yaml
+```
+
+### Editing Secrets
+
+To edit the secrets, run:
+
+```bash
+sops secrets.yaml
+```
+
+This will open the file in your default editor. When you save and close the file, `sops` will automatically encrypt it again.
+
+### Using Secrets
+
+Secrets are made available to the system through the `sops` module. You can access them in your Nix configuration. For example, to use a secret in `home/core.nix`:
+
+```nix
+{ config, pkgs, ... }:
+
+{
+  sops.secrets.my-secret = {};
+
+  # Use the secret in a program
+  programs.my-program = {
+    enable = true;
+    passwordFile = config.sops.secrets.my-secret.path;
+  };
+}
+```
+
+Then, add the secret to `secrets.yaml`:
+
+```yaml
+my-secret: "my-password"
+```
+
+After running `darwin-rebuild switch`, the secret will be available at the specified path.
+
+
 ## Add another machine (recommended pattern)
 
 When you add a second Mac, it’s best to create a `hosts/` folder and split per-host modules. Example sketch:

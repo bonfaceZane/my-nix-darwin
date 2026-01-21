@@ -20,15 +20,11 @@
     settings = {
       user = {
         name = username;
+        email = "!echo $USER_EMAIL";
       };
-      # migrated from extraConfig
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
-    };
-
-    extraConfig = {
-      user.email = "!echo $USER_EMAIL";
     };
 
     includes = [
