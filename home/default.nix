@@ -1,4 +1,8 @@
-{username, ...}: {
+{
+  username,
+  sops-nix,
+  ...
+}: {
   # Home Manager entrypoint for user `${username}`
   #
   # This file composes user-level modules that manage dotfiles and user packages.
@@ -18,7 +22,14 @@
     ./core.nix
     ./git.nix
     ./starship.nix
+    sops-nix.homeManagerModules.sops
   ];
+
+  sops = {
+    defaultSopsFile = ../secrets.yaml;
+    age.sshKeyPaths = [ "/Users/obwoni000/.ssh/id_ed25519" ];
+    secrets.useremail = {};
+  };
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

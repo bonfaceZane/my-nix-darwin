@@ -1,7 +1,7 @@
 {
   lib,
+  config,
   username,
-  useremail,
   ...
 }: {
   # `programs.git` will generate the config file: ~/.config/git/config
@@ -20,12 +20,15 @@
     settings = {
       user = {
         name = username;
-        email = useremail;
       };
       # migrated from extraConfig
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
+    };
+
+    extraConfig = {
+      user.email = "!echo $USER_EMAIL";
     };
 
     includes = [

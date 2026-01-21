@@ -38,6 +38,12 @@
     };
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    # For secrets management
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -52,17 +58,17 @@
     nix-homebrew,
     home-manager,
     flake-utils,
+    sops-nix,
     ...
   }: let
     username = "obwoni000";
-    useremail = "bonfacezane@gmail.com";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
     hostname = "rafiki";
 
     specialArgs =
       inputs
       // {
-        inherit username useremail hostname;
+        inherit username hostname sops-nix;
       };
   in {
     # Build darwin flake using:
@@ -76,6 +82,9 @@
         ./modules/systems.nix
         ./modules/host-users.nix
 
+        # --- Sops (secrets management) ---
+        sops-nix.darwinModules.sops
+
         # --- Home Manager (user) modules ---
         home-manager.darwinModules.home-manager
         {
@@ -86,7 +95,7 @@
           # The original file will be moved to filename.hm-bak on first write.
           home-manager.backupFileExtension = ".hm-bak";
           home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users.${username} = import ./home;
+          home-manager.users.${username} = { imports = [ ./home ]; };
         }
       ];
     };
