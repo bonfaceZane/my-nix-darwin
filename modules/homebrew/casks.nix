@@ -16,7 +16,7 @@
 
       # Development
       "insomnia" # REST client
-      "wireshark" # network analyzer
+      "wireshark-app" # network analyzer
       "proxyman" # proxy manager
       "postman" # REST client
       "visual-studio-code" # IDE
