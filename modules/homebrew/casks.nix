@@ -23,6 +23,7 @@
       "microsoft-openjdk@17"
       "bruno"
       "ghostty"
+      "zed"
 
       # Productivity
       "alfred" # hotkey app

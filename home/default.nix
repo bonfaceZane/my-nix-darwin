@@ -22,6 +22,7 @@
     ./core.nix
     ./git.nix
     ./starship.nix
+    ./zed.nix
     sops-nix.homeManagerModules.sops
   ];
 
