@@ -1,6 +1,5 @@
 { lib, config, ... }:
 let
-  # Dotfiles now live inside this repository under ../dotfiles
   # Use direct path literals so types remain paths, not strings.
   helixPath = ../dotfiles/helix;
   zellijPath = ../dotfiles/zellij;

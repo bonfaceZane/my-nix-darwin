@@ -22,14 +22,12 @@
         "/Applications/slack.app"
         "/Applications/Notion.app"
         "/Applications/Warp.app"
-        "/Applications/webstorm.app"
-        "/Applications/Visual Studio Code.app"
-        "/Applications/Xcode.app"
-        "/Applications/Windsurf.app"
+        "/Applications/Antigravity.app"
+        "/Applications/zed.app"
         "/Applications/Arc.app"
+        "/Applications/Visual Studio Code.app"
         "/Applications/Proxyman.app"
-        "/Applications/Ghostty.app"
-        # "/Applications/Playgrounds.app"
+        "/Applications/Maestro Studio.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
