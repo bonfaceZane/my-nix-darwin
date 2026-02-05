@@ -13,6 +13,7 @@
 
     # languages
     "rust"
+    "rustup"
 
     "htop"
 
@@ -75,6 +76,7 @@
     "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
     "aria2" # download tool supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink
     "httpie" # http client
+    "tailscale"
 
     # files * file managers
     "zip" # zip tool for compressing files
