@@ -1,0 +1,6 @@
+- [ ] make sure only mise manages node packages
+- [ ] make sure only mise manages python packages
+- [ ] make sure only mise manages ruby packages
+- [ ] make sure only mise manages go packages
+- [ ] make sure only mise manages rust packages
+- [ ] make mise manage java packages

@@ -99,9 +99,9 @@ plugins=(
   dotenv
   macos
   react-native
-  zsh-autosuggestions 
-  zsh-syntax-highlighting 
-  fast-syntax-highlighting 
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  fast-syntax-highlighting
   zsh-autocomplete
 )
 
@@ -215,6 +215,16 @@ export PATH="$GEM_HOME/bin:$PATH"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=~/.rbenv/completions:"$FPATH"
 
+# zsh-syntax-highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh-autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# mise
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+mise activate zsh
+
 
 # this should be the end of the file
 eval "$(starship init zsh)"
@@ -224,5 +234,3 @@ export ZSH="$HOME/.oh-my-zsh"
 
 
 source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
-
-

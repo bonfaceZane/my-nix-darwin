@@ -17,10 +17,6 @@
 
     globalConfig = {
       tools = {
-        dart = ["latest" "2.19.2"];
-        elixir = ["latest" "1.14.3-otp-25" "1.12.0-otp-22"];
-        erlang = ["latest" "25.2.3"];
-        flutter = ["latest" "3.7.5-stable"];
         java = ["adoptopenjdk-latest" "adoptopenjdk-19.0.2+7"];
         kotlin = ["latest" "1.8.0"];
         node = ["latest" "lts"];
@@ -39,7 +35,7 @@
       asdf_compat = false;
       jobs = 1;
       raw = false;
-      disable_tools = ["node"];
+      disable_tools = [];
       experimental = false;
       log_level = "debug";
     };

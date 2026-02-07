@@ -1,0 +1,21 @@
+
+[tools]
+node = "latest"
+rust = "latest"
+zig = "latest"
+
+[tasks.upgrade-globals]
+description = "Update all global tools to the latest versions"
+run = "mise upgrade"
+
+[tasks.upgrade-all]
+description = "Update all tools to the latest versions"
+run = "mise upgrade --all"
+
+[tasks.upgrade-local]
+description = "Update all local tools to the latest versions"
+run = "mise upgrade --local"
+
+[tasks.upgrade-all-local]
+description = "Update all local tools to the latest versions"
+run = "mise upgrade --all --local"
