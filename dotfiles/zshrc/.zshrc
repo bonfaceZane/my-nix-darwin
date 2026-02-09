@@ -223,7 +223,6 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # mise
 export PATH="$HOME/.local/share/mise/shims:$PATH"
-mise activate zsh
 
 
 # this should be the end of the file
