@@ -2,10 +2,10 @@
 [tools]
 node = "latest"
 yarn = "latest"
+pnpm = "latest"
 rust = "latest"
 zig = "latest"
 swift = "latest"
-pnpm = "latest"
 
 [tasks.upgrade-globals]
 description = "Update all global tools to the latest versions"
