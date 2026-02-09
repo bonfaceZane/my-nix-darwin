@@ -6,6 +6,7 @@ let
   nvimPath = ../dotfiles/nvim;
   nushellPath = ../dotfiles/nushell;
   ghosttyPath = ../dotfiles/ghostty;
+  misePath = ../dotfiles/mise;
 in {
   # Central place to safely link repo-tracked dotfiles into $HOME.
   #
@@ -26,6 +27,13 @@ in {
     # Helix config directory
     ".config/helix" = lib.mkIf (builtins.pathExists helixPath) {
       source = helixPath;
+      recursive = true;
+      force = true;
+    };
+
+    # Mise config directory
+    ".config/mise" = lib.mkIf (builtins.pathExists misePath) {
+      source = misePath;
       recursive = true;
       force = true;
     };

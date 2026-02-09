@@ -31,10 +31,6 @@
     # ruby
     "rbenv"
 
-    # node and relatives tools
-    "node"
-    "yarn"
-    "deno"
     "openssl"
 
     "automake"

@@ -99,3 +99,6 @@ $env.NU_PLUGIN_DIRS = [
 
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
+
+# Add mise shims to PATH
+$env.PATH = ($env.PATH | split row (char esep) | prepend ($env.HOME | path join ".local" "share" "mise" "shims"))
