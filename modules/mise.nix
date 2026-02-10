@@ -23,7 +23,7 @@
         sqlite = ["latest"];
         python = ["latest"];
         ruby = ["latest"];
-        yarn = ["latest"];
+        yarn = ["latest", "1.22.22"];
         pnpm = ["latest"];
         rust = ["latest"];
         zig = ["latest"];
