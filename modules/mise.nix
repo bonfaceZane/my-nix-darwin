@@ -18,12 +18,16 @@
     globalConfig = {
       tools = {
         java = ["adoptopenjdk-latest" "adoptopenjdk-19.0.2+7"];
-        kotlin = ["latest" "1.8.0"];
+        kotlin = ["latest"];
         node = ["latest" "lts"];
-        postgres = ["latest" "14.8"];
-        sqlite = ["latest" "3.39.4"];
-        python = ["latest" "3.10.12"];
-        ruby = ["latest" "3.1.4"];
+        sqlite = ["latest"];
+        python = ["latest"];
+        ruby = ["latest"];
+        yarn = ["latest"];
+        pnpm = ["latest"];
+        rust = ["latest"];
+        zig = ["latest"];
+        swift = ["latest"];
       };
     };
 
