@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  libs,
   ...
 }:
 {
@@ -12,14 +11,21 @@
 
   programs.mise = {
     enable = true;
-    package = unstable.mise;
+    package = pkgs.mise;
     enableZshIntegration = true;
 
     globalConfig = {
+      env = {
+        MISE_RUBY_COMPILE = "false";
+      };
       tools = {
-        # kotlin = ["latest"];
-        # sqlite = ["latest"];
-        zig = ["latest"];
+        node = "lts";
+        yarn = "1.22.22";
+        pnpm = "latest";
+        rust = "latest";
+        ruby = "3.2.2";
+        java = "17";
+        zig = "latest";
       };
     };
 
@@ -37,4 +43,3 @@
     };
   };
 }
-1
