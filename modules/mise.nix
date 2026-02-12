@@ -19,13 +19,7 @@
       tools = {
         java = ["adoptopenjdk-latest" "adoptopenjdk-19.0.2+7"];
         # kotlin = ["latest"];
-        node = ["latest" "lts"];
         # sqlite = ["latest"];
-        python = ["latest"];
-        ruby = ["latest"];
-        yarn = ["latest", "1.22.22"];
-        pnpm = ["latest"];
-        rust = ["latest"];
         zig = ["latest"];
       };
     };

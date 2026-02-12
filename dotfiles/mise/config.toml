@@ -4,7 +4,7 @@ node = "latest"
 yarn = "1.22.22"
 pnpm = "latest"
 rust = "latest"
-zig = "latest"
+ruby = "3.2.2"
 
 [tasks.upgrade-globals]
 description = "Update all global tools to the latest versions"

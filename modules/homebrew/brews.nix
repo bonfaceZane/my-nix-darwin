@@ -28,8 +28,6 @@
     "gmp"
     "libyaml"
 
-    # ruby
-    "rbenv"
 
     "openssl"
 
