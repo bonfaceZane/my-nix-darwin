@@ -35,6 +35,7 @@
 
       # customize finder
       finder = {
+        AppleShowAllFiles = true; # show hidden files
         _FXShowPosixPathInTitle = true; # show full path in finder title
         AppleShowAllExtensions = true; # show all file extensions
         FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
