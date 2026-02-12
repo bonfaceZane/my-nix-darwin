@@ -1,0 +1,22 @@
+[tasks.build]
+description = "Build the system configuration"
+run = "sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure"
+
+[tasks.update]
+description = "Update flake inputs and rebuild system"
+run = """
+nix flake update
+sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure
+"""
+
+[tasks.clean]
+description = "Clean up old generations"
+run = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d"
+
+[tasks.show]
+description = "Show flake outputs"
+run = "nix flake show"
+
+[tasks.check]
+description = "Check flake"
+run = "nix flake check"
