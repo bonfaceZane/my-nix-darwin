@@ -7,6 +7,7 @@ let
   nushellPath = ../dotfiles/nushell;
   ghosttyPath = ../dotfiles/ghostty;
   misePath = ../dotfiles/mise;
+  bashAliasesPath = ../dotfiles/.bash_aliases;
 in {
   # Central place to safely link repo-tracked dotfiles into $HOME.
   #
@@ -28,6 +29,12 @@ in {
     ".config/helix" = lib.mkIf (builtins.pathExists helixPath) {
       source = helixPath;
       recursive = true;
+      force = true;
+    };
+
+    # Bash aliases file
+    ".bash_aliases" = lib.mkIf (builtins.pathExists bashAliasesPath) {
+      source = bashAliasesPath;
       force = true;
     };
 
