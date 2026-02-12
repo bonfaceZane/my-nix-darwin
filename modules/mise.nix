@@ -17,7 +17,6 @@
 
     globalConfig = {
       tools = {
-        java = ["adoptopenjdk-latest" "adoptopenjdk-19.0.2+7"];
         # kotlin = ["latest"];
         # sqlite = ["latest"];
         zig = ["latest"];

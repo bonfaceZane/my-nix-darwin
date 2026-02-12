@@ -12,8 +12,6 @@
     "zellij"
 
     # languages
-    "rust"
-    "rustup"
 
     "htop"
 
@@ -27,8 +25,6 @@
 
     "gmp"
     "libyaml"
-
-
     "openssl"
 
     "automake"
@@ -55,17 +51,14 @@
     "fzf" # fuzzy finder
     "just" # justfile to simplify nix-darwin's commands
     "starship" # cross-shell prompt
-    # "1password-cli" # 1password cli
     "scrcpy" # screen copy for android
     "mise" # package manager
     "zoxide"
 
     # GNU
     "coreutils" # GNU core utilities
-    "gawk" # awk with GNU extensions
 
     # network
-    "nmap" # network scanner
     "wget" # download tool
     "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
     "aria2" # download tool supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink

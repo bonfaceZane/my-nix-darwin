@@ -92,7 +92,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# Example format: plugins=(rails git textmate lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
@@ -201,16 +201,9 @@ export PATH="$PATH":"$HOME/.maestro/bin"
 
 
 # Java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:$PATH
-
-
-# RVM can encounter errors if it's not the last thing in .bash_profile
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to path for scripting (to manage Ruby versions)
-export PATH="$GEM_HOME/bin:$PATH"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*
-
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home
+# export JAVA_HOME=$(/usr/libexec/java_home)
+# export PATH=$JAVA_HOME/bin:$PATH
 
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=~/.rbenv/completions:"$FPATH"

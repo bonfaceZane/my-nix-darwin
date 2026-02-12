@@ -52,7 +52,7 @@ in {
       force = true;
     };
 
-    # Neovim config directory (kept even if Neovim isn’t installed, harmless)
+    # Neovim config directory (keep even if Neovim isn’t installed, harmless)
     ".config/nvim" = lib.mkIf (builtins.pathExists nvimPath) {
       source = nvimPath;
       recursive = true;
