@@ -26,6 +26,7 @@
         ruby = "3.2.2";
         java = "17";
         zig = "latest";
+        swift = "latest";
       };
     };
 
