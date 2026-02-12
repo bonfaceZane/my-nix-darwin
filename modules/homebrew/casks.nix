@@ -42,8 +42,8 @@
       "zoom"
       "hammerspoon" # macOS automation
 
-      "claude-code",
-      "maestro"
+      "claude-code"
+      # "maestro"
 
     ];
   };
