@@ -1,4 +1,3 @@
-
 alias gt='ghostty'
 alias dash='gh dash'
 alias ls='ls --color=auto'
@@ -14,3 +13,6 @@ alias p='pnpm'
 alias i='pnpm i'
 alias d='pnpx npkill -D -y'
 alias c='pnpm cache'
+
+# yasi
+alias y='yazi'
