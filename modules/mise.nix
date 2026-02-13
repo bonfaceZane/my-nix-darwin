@@ -38,7 +38,7 @@
         raw = false;
         disable_tools = [];
         experimental = false;
-        log_level = "debug";
+        # log_level = "debug";
         idiomatic_version_file_enable_tools = ["ruby"];
       };
     };
