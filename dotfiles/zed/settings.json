@@ -45,7 +45,7 @@
     "helix_mode": true,
 
     // vim
-    "vim_mode": false,
+    "vim_mode": true,
 
     "auto_signature_help": false,
 }
