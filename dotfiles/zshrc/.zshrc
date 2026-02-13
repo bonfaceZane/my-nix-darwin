@@ -112,13 +112,6 @@ plugins=(
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -168,11 +161,6 @@ export MODULAR_HOME="/Users/obwoni000/.modular"
 export PATH="/Users/obwoni000/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
 
-
-PATH=~/.console-ninja/.bin:$PATH
-export MODULAR_HOME="/Users/obwoni000/.modular"
-export PATH="/bin:$PATH"
-
 # proto
 export PROTO_HOME="$HOME/.proto";
 export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH";
@@ -184,10 +172,8 @@ export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH";
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 export PATH=$PATH:$HOME/.maestro/bin
 
-
-export GEM_HOME=$HOME/.gem
-export PATH=$GEM_HOME/bin:$PATH
-
+# export GEM_HOME=$HOME/.gem
+# export PATH=$GEM_HOME/bin:$PATH
 
 # FIDDLER_EVERYWHERE_SCRIPT_START
 if [ -n "$FE_STARTED" ] && [ -s '/Applications/Fiddler Everywhere.app/Contents/Resources/app/out/assets/scripts/startup-mac.sh' ] && [ "$STARTUP_SOURCED" != "true" ] ; then
@@ -195,18 +181,8 @@ if [ -n "$FE_STARTED" ] && [ -s '/Applications/Fiddler Everywhere.app/Contents/R
     STARTUP_SOURCED="true"
 fi
 
-
 # maestro
 export PATH="$PATH":"$HOME/.maestro/bin"
-
-
-# Java
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home
-# export JAVA_HOME=$(/usr/libexec/java_home)
-# export PATH=$JAVA_HOME/bin:$PATH
-
-# assuming that rbenv was installed to `~/.rbenv`
-FPATH=~/.rbenv/completions:"$FPATH"
 
 # mise
 export PATH="$HOME/.local/share/mise/shims:$PATH"
