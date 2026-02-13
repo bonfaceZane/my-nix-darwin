@@ -28,19 +28,19 @@
         zig = "latest";
         swift = "latest";
       };
-    };
-
-    settings = {
-      always_keep_download = true;
-      plugin_autoupdate_last_check_duration = "6 hours";
-      trusted_config_paths = ["~/.config" "~/dev"];
-      verbose = false;
-      asdf_compat = false;
-      jobs = 1;
-      raw = false;
-      disable_tools = [];
-      experimental = false;
-      log_level = "debug";
+      settings = {
+        always_keep_download = true;
+        plugin_autoupdate_last_check_duration = "6 hours";
+        trusted_config_paths = ["~/.config" "~/dev"];
+        verbose = false;
+        asdf_compat = false;
+        jobs = 1;
+        raw = false;
+        disable_tools = [];
+        experimental = false;
+        log_level = "debug";
+        idiomatic_version_file_enable_tools = ["ruby"];
+      };
     };
   };
 }
