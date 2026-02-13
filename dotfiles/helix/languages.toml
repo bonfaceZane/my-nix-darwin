@@ -8,17 +8,17 @@ auto-format = true
 language-servers = ["rust-analyzer"]
 indent = { tab-width = 4, unit = "    " }
 
-[language.config.rust]
+[language-server.rust-analyzer.config]
 checkOnSave = { command = "clippy" }
 
-[[language]]         
+[[language]]
 name = "typescript"
 scope = "source.ts"
 injection-regex = "^(ts|typescript)$"
 file-types = ["ts", "mts", "cts"]
 shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
-language-servers = ["typescript-language-server"]
+language-servers = ["typescript-language-server", "eslint"]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
@@ -30,17 +30,47 @@ injection-regex = "^(js|javascript)$"
 file-types = ["js", "mjs", "cjs"]
 shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json"]
-language-servers = ["typescript-language-server"]
+language-servers = ["typescript-language-server", "eslint"]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "prettier", args = ["--parser", "javascript"] }
 auto-format = true
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+injection-regex = "^(tsx|typescript)$"
+file-types = ["tsx"]
+roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
+language-servers = ["typescript-language-server", "eslint"]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+scope = "source.jsx"
+injection-regex = "^(jsx|javascript)$"
+file-types = ["jsx"]
+roots = ["deno.json", "deno.jsonc", "package.json"]
+language-servers = ["typescript-language-server", "eslint"]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "prettier", args = ["--parser", "javascript"] }
+auto-format = true
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+validate = "on"
+codeActionOnSave = { mode = "all", "source.fixAll.eslint" = true }
 
 [language-server.typescript-language-server]
 command = "typescript-language-server"
 args = ["--stdio"]
 
 [language-server.typescript-language-server.config]
-format.enable = true
+format.enable = false # Use Prettier instead
 preferences.importModuleSpecifierPreference = "relative"
 inlayHints.includeInlayParameterNameHints = "all"
 inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName = true

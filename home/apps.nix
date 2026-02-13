@@ -8,6 +8,12 @@
     gnutar
     sops
     zed-editor
+
+    # Language Servers & Formatters
+    nodePackages.typescript-language-server
+    vscode-langservers-extracted # eslint, html, css, json
+    nodePackages.prettier
+
     # Add more user-only tools here, e.g.:
     # ripgrep jq yq-go fzf tree zstd glow
   ];
