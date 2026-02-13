@@ -6,6 +6,7 @@ let
   nvimPath = ../dotfiles/nvim;
   nushellPath = ../dotfiles/nushell;
   ghosttyPath = ../dotfiles/ghostty;
+  zedPath = ../dotfiles/zed;
   bashAliasesPath = ../dotfiles/.bash_aliases;
 in {
   # Central place to safely link repo-tracked dotfiles into $HOME.
@@ -42,6 +43,11 @@ in {
       source = zellijPath;
       recursive = true;
       force = true;
+    };
+
+    # Zed config directory
+    ".config/zed" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/zed";
     };
 
     # Neovim config directory (keep even if Neovim isn’t installed, harmless)

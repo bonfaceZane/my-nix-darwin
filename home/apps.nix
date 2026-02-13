@@ -7,6 +7,7 @@
     gnused
     gnutar
     sops
+    zed-editor
     # Add more user-only tools here, e.g.:
     # ripgrep jq yq-go fzf tree zstd glow
   ];
