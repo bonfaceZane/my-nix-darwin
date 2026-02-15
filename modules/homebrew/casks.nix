@@ -9,6 +9,7 @@
     casks = [
       "firefox"
       "google-chrome"
+      "fluor"
 
       # IM & audio & remote desktop & meeting
       "telegram"

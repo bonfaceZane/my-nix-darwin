@@ -19,14 +19,14 @@
 
       # apps to show in dock
       dock.persistent-apps = [
+        "/Applications/Arc.app"
         "/Applications/slack.app"
+        "/Applications/Antigravity.app"
         "/Applications/Notion.app"
         "/Applications/Warp.app"
-        "/Applications/Antigravity.app"
         "/Applications/zed.app"
-        "/Applications/Arc.app"
-        "/Applications/Proxyman.app"
         "/Applications/Maestro Studio.app"
+        "/Applications/Proxyman.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
