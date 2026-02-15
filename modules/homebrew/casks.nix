@@ -9,6 +9,8 @@
     casks = [
       "firefox"
       "google-chrome"
+
+      # for managing fn keys for different keyboards in macOS
       "fluor"
 
       # IM & audio & remote desktop & meeting
