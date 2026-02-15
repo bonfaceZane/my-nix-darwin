@@ -25,7 +25,6 @@
         "/Applications/Antigravity.app"
         "/Applications/zed.app"
         "/Applications/Arc.app"
-        "/Applications/Visual Studio Code.app"
         "/Applications/Proxyman.app"
         "/Applications/Maestro Studio.app"
       ];

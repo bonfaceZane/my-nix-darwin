@@ -20,7 +20,6 @@
       "proxyman" # proxy manager
       "postman" # REST client
       "visual-studio-code" # IDE
-      "microsoft-openjdk@17"
       "bruno"
       "ghostty"
 
