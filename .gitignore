@@ -3,3 +3,4 @@ result/
 .DS_Store
 .idea
 .vscode
+dotfiles/zed/prompts/

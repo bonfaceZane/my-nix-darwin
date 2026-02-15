@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # run curl to download the latest nix package
 curl \
