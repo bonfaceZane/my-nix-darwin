@@ -1,6 +1,8 @@
 {...}: {
   # Homebrew formulae (brew install <name>)
   homebrew.brews = [
+      "fastlane"
+
     # shells
     "zsh"
     "nushell"
