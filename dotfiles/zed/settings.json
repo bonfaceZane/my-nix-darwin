@@ -8,13 +8,16 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
+    "terminal": {
+        "font_size": 15.0,
+    },
     "base_keymap": "JetBrains",
     "theme": {
         "mode": "dark",
         "light": "Night Owl Light",
         "dark": "One Dark Pro",
     },
-    "ui_font_size": 16,
+    "ui_font_size": 18.0,
     "buffer_font_size": 18.0,
     "autosave": "on_focus_change",
     "project_panel": {
@@ -32,6 +35,7 @@
 
     // git
     "git_panel": {
+        "tree_view": true,
         "dock": "left",
     },
 

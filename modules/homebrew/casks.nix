@@ -16,17 +16,10 @@
     casks = [
       "firefox"
       "google-chrome"
-
       # for managing fn keys for different keyboards in macOS
       "fluor"
-
-      # IM & audio & remote desktop & meeting
-      "telegram"
       "discord"
-      "insomnia" # REST client
-      "wireshark-app" # network analyzer
       "proxyman" # proxy manager
-      "postman" # REST client
       "visual-studio-code" # IDE
       "bruno" # todo: do i need this?
       "ghostty" # todo: do i need this?

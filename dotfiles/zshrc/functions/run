@@ -1,4 +1,0 @@
-local app=${1:-"gpd"}
-local os=${2:-"ios"}
-
-yarn $app $os
