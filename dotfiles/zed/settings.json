@@ -10,9 +10,9 @@
     // editor
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "light",
+        "mode": "dark",
         "light": "Night Owl Light",
-        "dark": "One Dark - Darkened",
+        "dark": "One Dark Pro",
     },
     "ui_font_size": 16,
     "buffer_font_size": 18.0,

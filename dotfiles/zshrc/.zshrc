@@ -122,15 +122,12 @@ alias j="jump"
 alias python=python3
 alias shell="source ~/.zshrc"
 
-prebuild()
-{
-  yarn $1 prebuild --clean
-}
-
-build()
-{
-  eas build --platform=$1 --profile=$2
-}
+# Autoload custom functions
+ZSH_FUNCTIONS_DIR=${0:A:h}/functions
+if [[ -d $ZSH_FUNCTIONS_DIR ]]; then
+  fpath=($ZSH_FUNCTIONS_DIR $fpath)
+  autoload -Uz $ZSH_FUNCTIONS_DIR/*(.:t)
+fi
 
 MY_PYTHON="/Users/obwoni000/Library/Python/3.12/bin"
 PATH=$MY_PYTHON:$PATH

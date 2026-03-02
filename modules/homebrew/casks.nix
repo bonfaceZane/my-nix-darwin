@@ -23,36 +23,27 @@
       # IM & audio & remote desktop & meeting
       "telegram"
       "discord"
-
-      # Development
       "insomnia" # REST client
       "wireshark-app" # network analyzer
       "proxyman" # proxy manager
       "postman" # REST client
       "visual-studio-code" # IDE
-      "bruno"
-      "ghostty"
-
-      # Productivity
+      "bruno" # todo: do i need this?
+      "ghostty" # todo: do i need this?
+      # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "alfred" # hotkey app
       "bettertouchtool" # hotkey app
       "obsidian" # markdown editor
       "notion" # markdown editor
       "alt-tab"
-      "font-fira-code-nerd-font"
-
-      # misc
-      "anki"
-      "iina" # video player
+      "font-fira-code-nerd-font" # todo:  move this ups to important
+      "anki" # todo: ?
+      "iina" # video player todo: do i need this?
       "raycast" # launcher and automation
       "stats" # system monitor
-      "spotify"
       "zoom"
       "hammerspoon" # macOS automation
-
-      "claude-code"
-      # "maestro"
-
+      "claude-code" # AI assistant
     ];
   };
 }
