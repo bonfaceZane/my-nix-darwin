@@ -1,9 +1,16 @@
 {...}: {
-  # Homebrew casks (GUI apps) and Mac App Store apps via `mas`.
+  # Homebrew casks (GUI apps) and Mac App Store apps via `mas`
+  # To find the ID of an app in the Mac App Store, run:
+  # `mas search <app name>`
   homebrew = {
     masApps = {
-      # Example:
-      # Xcode = 497799835;
+      "Be Focused" = 973134470;
+      "Letter Opener" = 411897373;
+      "Notion Web Clipper" = 1559269364;
+      "Okta Verify" = 490179405;
+      "Slack" = 803453959;
+      "Tailscale" = 1475387142;
+      "Xcode" = 497799835;
     };
 
     casks = [
@@ -31,7 +38,6 @@
       "bettertouchtool" # hotkey app
       "obsidian" # markdown editor
       "notion" # markdown editor
-      "slack" # chat app
       "alt-tab"
       "font-fira-code-nerd-font"
 
