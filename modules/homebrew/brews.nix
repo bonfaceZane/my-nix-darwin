@@ -9,6 +9,7 @@
     "zsh-autosuggestions"
     "zsh-syntax-highlighting"
     "zsh-autocomplete"
+    "mole" # for cleaning your Mac computer
 
     # terminal multiplexer
     "zellij"

@@ -115,7 +115,6 @@ plugins=(
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias j="jump"
@@ -138,8 +137,12 @@ function build() {
   eas build --platform=$1 --profile=$2
 }
 
-MY_PYTHON="/Users/obwoni000/Library/Python/3.12/bin"
-PATH=$MY_PYTHON:$PATH
+function osha() {
+    pnpx npkill -D -y
+}
+
+# MY_PYTHON="/Users/obwoni000/Library/Python/3.12/bin"
+# PATH=$MY_PYTHON:$PATH
 
 # pnpm
 export PNPM_HOME="/Users/obwoni000/Library/pnpm"

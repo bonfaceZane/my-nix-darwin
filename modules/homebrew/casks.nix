@@ -37,6 +37,7 @@
       "zoom"
       "hammerspoon" # macOS automation
       "claude-code" # AI assistant
+      "cmux" # terminal built on ghostty
     ];
   };
 }
