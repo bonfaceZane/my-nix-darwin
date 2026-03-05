@@ -16,3 +16,9 @@ alias c='pnpm cache'
 
 # yasi
 alias y='yazi'
+
+# mise
+alias m='mise'
+alias dev='mise dev'
+alias ios='mise ios'
+alias android='mise android'
