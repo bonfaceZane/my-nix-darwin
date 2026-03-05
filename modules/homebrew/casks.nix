@@ -10,7 +10,7 @@
       "Okta Verify" = 490179405;
       "Slack" = 803453959;
       "Tailscale" = 1475387142;
-      "Xcode" = 497799835;
+      # "Xcode" = 497799835;
     };
 
     casks = [

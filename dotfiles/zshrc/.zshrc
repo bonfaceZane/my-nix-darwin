@@ -127,10 +127,10 @@ function prebuild() {
   yarn $app prebuild --clean
 }
 
-function ran() {
+function run() {
   local app=${1:-"gpd"}
   local os=${2:-"ios"}
-  yarn $app $os
+  yarn $app $os--device='Iphone Air'
 }
 
 function build() {
@@ -138,7 +138,7 @@ function build() {
 }
 
 function osha() {
-    pnpx npkill -D -y
+    npx npkill -D -y
 }
 
 # MY_PYTHON="/Users/obwoni000/Library/Python/3.12/bin"

@@ -13,9 +13,9 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "dark",
-        "light": "Night Owl Light",
-        "dark": "One Dark Pro",
+        "mode": "light",
+        "light": "Ayu Light",
+        "dark": "Rainbow (Dim)",
     },
     "ui_font_size": 18.0,
     "buffer_font_size": 18.0,
@@ -52,4 +52,15 @@
     "vim_mode": true,
 
     "auto_signature_help": false,
+
+    "agent": {
+        "default_model": {
+            "provider": "google",
+            "model": "gemini-3.1-pro",
+        },
+        "commit_message_model": {
+            "provider": "google",
+            "model": "gemini-3.1-pro",
+        },
+    },
 }

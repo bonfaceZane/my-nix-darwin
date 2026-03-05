@@ -1,50 +1,31 @@
 {...}: {
   # Homebrew formulae (brew install <name>)
   homebrew.brews = [
-      "fastlane"
-
-    # shells
+    "fastlane"
     "zsh"
     "nushell"
     "zsh-autosuggestions"
     "zsh-syntax-highlighting"
     "zsh-autocomplete"
     "mole" # for cleaning your Mac computer
-
-    # terminal multiplexer
     "zellij"
-
-    # languages
-
     "htop"
-
-    # apple
     "mas"
     "libksba" # libksba is a library to make X.509 certificates and CMS easily accessible by C programs
-
-    # git
     "gh"
     "git"
-
     "gmp"
     "libyaml"
     "openssl"
-
     "automake"
     "zlib"
-
     "neovim"
     "helix"
-
     "zstd" # zstd
     "caddy" # caddy web server
     "glow" # markdown previewer in terminal
-
-    # miscellaneous
     "sk" # grep with preview
-
-    # tools
-    "watchman"
+    "watchman" # watchman file system watcher
     "libtool"
     "jump" # jump to frequently used directories
     "tree" # list files in tree structure
@@ -57,29 +38,16 @@
     "scrcpy" # screen copy for android
     "mise" # package manager
     "zoxide"
-
-    # GNU
     "coreutils" # GNU core utilities
-
-    # network
     "wget" # download tool
     "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
     "aria2" # download tool supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink
     "httpie" # http client
     "tailscale"
-
-    # files * file managers
-    "zip" # zip tool for compressing files
-    "unzip" # unzip tool for decompressing files
     "file" # file command to determine file type
-
-    # parsers
     "jc" # json parser cli
     "jq" # json parser
-
-    # misc
     "llvm" # llvm compiler for c++, c and rust
-
     "mobile-dev-inc/tap/maestro"
   ];
 }

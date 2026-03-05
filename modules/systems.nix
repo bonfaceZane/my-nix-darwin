@@ -48,7 +48,7 @@
         AppleICUForce24HourTime = true;
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
 
-        NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
+        NSAutomaticCapitalizationEnabled = true; # disable auto capitalization(自动大写)
 
         # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
         # This is very useful for vim users, they use `hjkl` to move cursor.
