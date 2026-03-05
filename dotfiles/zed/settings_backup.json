@@ -8,9 +8,6 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
-    "session": {
-        "trust_all_worktrees": true,
-    },
     "terminal": {
         "font_size": 15.0,
     },
@@ -25,11 +22,11 @@
     "autosave": "on_focus_change",
     "project_panel": {
         "button": true,
-        "default_width": 449.0,
+        "default_width": 400,
         /* This controls the horizontal indentation of folders */
-        "indent_size": 31.0,
+        "indent_size": 30,
         /* Use "compact" for more items or "comfortable" for more padding */
-        "entry_spacing": "comfortable",
+        // "entry_spacing": "comfortable",
         "git_status": true,
         "dock": "right",
     },
@@ -40,10 +37,14 @@
     "git_panel": {
         "tree_view": true,
         "dock": "right",
-        "default_width": 450,
+        "default_width": 400,
     },
 
     "show_whitespaces": "none",
+    "which_key": {
+        "delay_ms": 200,
+        "enabled": true,
+    },
 
     // helix
     "helix_mode": true,

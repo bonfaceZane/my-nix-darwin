@@ -65,6 +65,9 @@ in {
     ".gitconfig_work" = {
        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_work";
     };
+    ".gitconfig_personal" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_personal";
+    };
 
     # Neovim config directory (keep even if Neovim isn’t installed, harmless)
     ".config/nvim" = lib.mkIf (builtins.pathExists nvimPath) {

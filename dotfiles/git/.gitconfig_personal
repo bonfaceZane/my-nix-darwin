@@ -1,8 +1,7 @@
 [user]
 	name = rafiki
-	email = bonface.zane@autoscout24.com
+	email = bonfacezane@gmail.com
 	signingkey = ~/.ssh/id_ed25519.pub
-
 [core]
     editor = hx
 
@@ -13,3 +12,5 @@
 [rebase]
     # Auto-stash uncommitted changes before rebasing
     autoStash = true
+[gpg]
+	format = ssh

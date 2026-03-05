@@ -18,10 +18,6 @@
 
     # Per Home Manager deprecations, user info now lives under `settings.user.*`
     settings = {
-      user = {
-        name = username;
-        email = "!echo $USER_EMAIL";
-      };
       core.excludesfile = "~/.gitignore_global";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
@@ -29,6 +25,9 @@
     };
 
     includes = [
+      {
+        path = "~/.gitconfig_personal";
+      }
       {
         # use diffrent email & name for work
         path = "~/.gitconfig_work";
