@@ -64,6 +64,12 @@
         },
     },
 
+    "assistant": {
+        "default_model": {
+            "provider": "google",
+            "model": "gemini-2.0-flash",
+        },
+    },
     "agent": {
         "tool_permissions": {
             "default": "allow",
@@ -75,11 +81,11 @@
         },
         "default_model": {
             "provider": "google",
-            "model": "gemini-1.5-pro",
+            "model": "gemini-2.0-flash",
         },
         "commit_message_model": {
             "provider": "google",
-            "model": "gemini-1.5-pro",
+            "model": "gemini-2.0-flash",
         },
     },
     "experimental.theme_overrides": {
