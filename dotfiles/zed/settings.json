@@ -13,9 +13,9 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "light",
+        "mode": "dark",
         "light": "Ayu Light",
-        "dark": "Rainbow (Dim)",
+        "dark": "Rainbow (Dark)",
     },
     "ui_font_size": 18.0,
     "buffer_font_size": 18.0,
@@ -53,14 +53,36 @@
 
     "auto_signature_help": false,
 
+    "context_servers": {
+        "memory": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-memory"],
+        },
+        "git": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-git"],
+        },
+    },
+
     "agent": {
+        "tool_permissions": {
+            "default": "allow",
+            "tools": {
+                "terminal": {
+                    "default": "allow",
+                },
+            },
+        },
         "default_model": {
             "provider": "google",
-            "model": "gemini-3.1-pro",
+            "model": "gemini-1.5-pro",
         },
         "commit_message_model": {
             "provider": "google",
-            "model": "gemini-3.1-pro",
+            "model": "gemini-1.5-pro",
         },
+    },
+    "experimental.theme_overrides": {
+        "editor.active_line.background": "#ADECE415",
     },
 }

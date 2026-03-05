@@ -22,6 +22,7 @@
         name = username;
         email = "!echo $USER_EMAIL";
       };
+      core.excludesfile = "~/.gitignore_global";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
@@ -30,8 +31,12 @@
     includes = [
       {
         # use diffrent email & name for work
-        path = "~/work/.gitconfig";
-        condition = "gitdir:~/work/";
+        path = "~/.gitconfig_work";
+        condition = "gitdir:~/Documents/work/";
+      }
+      {
+        path = "~/.gitconfig_amv_apps";
+        condition = "gitdir:~/Documents/work/amv-apps/";
       }
     ];
 

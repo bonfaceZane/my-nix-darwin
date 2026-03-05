@@ -1,12 +1,13 @@
 {
-  "mcpServers": {
-    "nx-mcp": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "nx",
-        "mcp"
-      ]
+    "mcpServers": {
+        "nx-mcp": {
+            "type": "stdio",
+            "command": "npx",
+            "args": ["nx", "mcp"]
+        },
+        "git": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-git"]
+        }
     }
-  }
 }

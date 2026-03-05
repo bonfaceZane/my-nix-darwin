@@ -50,6 +50,22 @@ in {
        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/zed";
     };
 
+    # Global Git Ignore
+    ".gitignore_global" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_global";
+    };
+
+    # AMV Apps Git Ignore Configs
+    ".gitignore_amv_apps" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_amv_apps";
+    };
+    ".gitconfig_amv_apps" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_amv_apps";
+    };
+    ".gitconfig_work" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_work";
+    };
+
     # Neovim config directory (keep even if Neovim isn’t installed, harmless)
     ".config/nvim" = lib.mkIf (builtins.pathExists nvimPath) {
       source = nvimPath;
