@@ -24,7 +24,7 @@
     "buffer_font_size": 18.0,
     "autosave": "on_focus_change",
     "project_panel": {
-        "button": true,
+        // "button": true,
         "default_width": 449.0,
         /* This controls the horizontal indentation of folders */
         "indent_size": 31.0,
@@ -40,7 +40,7 @@
     "git_panel": {
         "tree_view": true,
         "dock": "right",
-        "default_width": 450,
+        "default_width": 449.0,
     },
 
     "show_whitespaces": "none",
@@ -75,11 +75,11 @@
         },
         "default_model": {
             "provider": "google",
-            "model": "gemini-2.0-flash",
+            "model": "gemini-2.5-flash",
         },
         "commit_message_model": {
             "provider": "google",
-            "model": "gemini-2.0-flash",
+            "model": "gemini-2.5-flash",
         },
     },
     "experimental.theme_overrides": {
