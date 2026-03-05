@@ -1,0 +1,220 @@
+[tools]
+node = "22.19.0"
+ruby = "3.2.3"
+java = "17"
+
+[env]
+# this envs are loaded in the order they are listed, so the last one wins
+_.file = [".env", ".env.production", ".env.development", ".env.local"]
+
+[tasks."env:dev"]
+description = "Pull Development environment → .env.local"
+dir = "apps/gaspedaal"
+run = "eas env:pull development --non-interactive"
+
+[tasks."env:acc"]
+description = "Pull ACC (preview) environment → .env.local"
+dir = "apps/gaspedaal"
+run = "eas env:pull preview --non-interactive"
+
+[tasks."env:qa"]
+description = "Pull QA (staging) environment → .env.local"
+dir = "apps/gaspedaal"
+run = "eas env:pull staging --non-interactive"
+
+[tasks."env:prod"]
+description = "Pull Production environment → .env.local"
+dir = "apps/gaspedaal"
+run = "eas env:pull production --non-interactive"
+
+[tasks."watchman:reset"]
+description = "Clear watchman watches (Runs only when yarn.lock changes)"
+run = [
+  "watchman watch-del-all || true",
+  "mkdir -p .mise/cache && touch .mise/cache/watchman-reset"
+]
+sources = ["yarn.lock"]
+outputs = [".mise/cache/watchman-reset"]
+
+[tasks."dev"]
+description = "Start Gaspedaal (Dev Client)"
+depends = ["setup", "watchman:reset"]
+run = "yarn workspace @amv/gaspedaal start"
+
+[tasks."ios"]
+description = "Run Gaspedaal iOS"
+depends = ["setup", "watchman:reset", "prebuild"]
+run = "yarn workspace @amv/gaspedaal ios"
+
+[tasks."android"]
+description = "Run Gaspedaal Android"
+depends = ["setup", "watchman:reset", "prebuild"]
+run = "yarn workspace @amv/gaspedaal android"
+
+[tasks."prebuild"]
+description = "Prebuild Gaspedaal (Cached)"
+run = "yarn workspace @amv/gaspedaal prebuild"
+sources = ["apps/gaspedaal/app.json", "apps/gaspedaal/package.json", "yarn.lock"]
+outputs = ["apps/gaspedaal/ios/Podfile", "apps/gaspedaal/android/build.gradle"]
+
+[tasks."gp:pods"]
+description = "Run pod install for Gaspedaal iOS"
+dir = "apps/gaspedaal/ios"
+run = 'pod install'
+
+[tasks."gp:pods:clean"]
+description = "Nuke and reinstall pods from scratch"
+dir = "apps/gaspedaal/ios"
+run = '''
+echo "🧹 Cleaning pods..."
+rm -rf Pods Podfile.lock
+pod install --repo-update
+echo "✅ Pods reinstalled from scratch."
+'''
+
+[tasks."lint:staged"]
+description = "Unified pre-commit quality gate"
+run = "npx lint-staged"
+
+[tasks."pre-commit"]
+description = "Runs all checks in parallel before commit"
+depends = ["typecheck", "lint:staged"]
+
+[tasks.typecheck]
+description = "Fast Typecheck (cached)"
+run = [
+  "yarn workspace @amv/gaspedaal run type-check",
+  "yarn workspace @amv/autotrack run type-check",
+  "yarn workspace @amv/shared run type-check",
+  "yarn workspace @amv/consent run type-check",
+  "yarn workspace @amv/expo-blueconic run type-check",
+  "yarn workspace @amv/tracking-sdk run type-check",
+  "mkdir -p .mise/cache && touch .mise/cache/typecheck-ok"
+]
+sources = ["apps/**/*.{ts,tsx}", "shared/**/*.{ts,tsx}", "modules/**/*.{ts,tsx}", "packages/**/*.{ts,tsx}", "**/tsconfig.json"]
+outputs = [".mise/cache/typecheck-ok"]
+
+[tasks.lint]
+description = "Run linting (cached)"
+run = [
+  "yarn workspace @amv/gaspedaal run lint",
+  "yarn workspace @amv/autotrack run lint",
+  "yarn workspace @amv/shared run lint",
+  "yarn workspace @amv/consent run lint",
+  "yarn workspace @amv/expo-blueconic run lint",
+  "yarn workspace @amv/tracking-sdk run lint",
+  "mkdir -p .mise/cache && touch .mise/cache/lint-success"
+]
+sources = ["apps/**/*.{js,ts,tsx}", "shared/**/*.{js,ts,tsx}", "modules/**/*.{js,ts,tsx}", "packages/**/*.{js,ts,tsx}", ".eslintrc.js"]
+outputs = [".mise/cache/lint-success"]
+
+[tasks."format:check"]
+description = "Check formatting (cached)"
+run = [
+  "yarn workspace @amv/gaspedaal run format-check",
+  "yarn workspace @amv/autotrack run format-check",
+  "yarn workspace @amv/shared run format-check",
+  "yarn workspace @amv/consent run format-check",
+  "yarn workspace @amv/expo-blueconic run format-check",
+  "yarn workspace @amv/tracking-sdk run format-check",
+  "mkdir -p .mise/cache && touch .mise/cache/prettier-success"
+]
+sources = ["apps/**/*.{js,ts,tsx}", "shared/**/*.{js,ts,tsx}", "modules/**/*.{js,ts,tsx}", "packages/**/*.{js,ts,tsx}", ".prettierrc.js"]
+outputs = [".mise/cache/prettier-success"]
+
+[tasks."format:fix"]
+description = "Fix formatting"
+run = [
+  "yarn workspace @amv/gaspedaal run format-code",
+  "yarn workspace @amv/autotrack run format-code",
+  "yarn workspace @amv/shared run format-code",
+  "yarn workspace @amv/consent run format-code",
+  "yarn workspace @amv/expo-blueconic run format-code",
+  "yarn workspace @amv/tracking-sdk run format-code"
+]
+
+[tasks."test"]
+description = "Run tests (cached)"
+run = [
+  "yarn workspace @amv/gaspedaal run test",
+  "yarn workspace @amv/autotrack run test",
+  "yarn workspace @amv/shared run test",
+  "mkdir -p .mise/cache && touch .mise/cache/test-success"
+]
+sources = ["apps/**/*.{js,ts,tsx}", "shared/**/*.{js,ts,tsx}", "modules/**/*.{js,ts,tsx}", "packages/**/*.{js,ts,tsx}", "**/package.json", "**/jest.config.js"]
+outputs = [".mise/cache/test-success"]
+
+[tasks."check"]
+description = "Run all static analysis (typecheck, lint, format)"
+depends = ["typecheck", "lint", "format:check"]
+
+[tasks."setup"]
+description = "Install dependencies (cached)"
+run = "yarn install"
+sources = ["package.json", "yarn.lock", "**/package.json"]
+outputs = ["node_modules/.yarn-integrity"]
+
+[tasks."gp:maestro:ios"]
+description = "Run Maestro iOS — usage: mise run gp:maestro:ios [dev|acc|qa|prod] [flow-path]"
+dir = "apps/gaspedaal"
+run = './scripts/maestro-run.sh ios ${1:-dev} ${2:-.maestro}'
+
+[tasks."gp:maestro:android"]
+description = "Run Maestro Android — usage: mise run gp:maestro:android [dev|acc|qa|prod] [flow-path]"
+dir = "apps/gaspedaal"
+run = './scripts/maestro-run.sh android ${1:-dev} ${2:-.maestro}'
+
+[tasks."clean"]
+description = "Clean node_modules and caches"
+run = "yarn node:clear && rm -rf .mise/cache"
+
+# you can run this task to setup your project quickly or onboard on a new machine
+[tasks.onboard]
+description = "Install dependencies and setup git hooks | quick onboarding"
+run = """
+npm install
+npx husky init
+chmod +x .husky/pre-commit
+chmod +x .husky/prepare-commit-msg
+chmod +x bin/commit-append-issue-number.sh
+echo "✅ Setup complete! You are ready to develop."
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# --- Autotrack (at) ---
+
+[tasks."at:dev"]
+alias = ["at"]
+description = "Start Autotrack (Dev Client)"
+depends = ["setup", "watchman:reset"]
+run = "yarn workspace @amv/autotrack start"
+
+[tasks."at:ios"]
+description = "Run Autotrack iOS"
+depends = ["setup", "watchman:reset", "at:prebuild"]
+run = "yarn workspace @amv/autotrack ios"
+
+[tasks."at:android"]
+description = "Run Autotrack Android"
+depends = ["setup", "watchman:reset", "at:prebuild"]
+run = "yarn workspace @amv/autotrack android"
+
+[tasks."at:prebuild"]
+description = "Prebuild Autotrack (Cached)"
+run = "yarn workspace @amv/autotrack prebuild"
+sources = ["apps/autotrack/app.json", "apps/autotrack/package.json", "yarn.lock"]
+outputs = ["apps/autotrack/ios/Podfile", "apps/autotrack/android/build.gradle"]

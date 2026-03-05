@@ -89,5 +89,10 @@ in {
       recursive = true;
       force = true;
     };
+
+    # AMV Apps mise config
+    "Documents/work/amv-apps/mise.toml" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/AMV/mise.toml";
+    };
   };
 }

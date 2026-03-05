@@ -25,7 +25,7 @@
     "autosave": "on_focus_change",
     "project_panel": {
         // "button": true,
-        "default_width": 449.0,
+        "default_width": 550.0,
         /* This controls the horizontal indentation of folders */
         "indent_size": 31.0,
         /* Use "compact" for more items or "comfortable" for more padding */
@@ -40,7 +40,7 @@
     "git_panel": {
         "tree_view": true,
         "dock": "right",
-        "default_width": 449.0,
+        "default_width": 550.0,
     },
 
     "show_whitespaces": "none",
