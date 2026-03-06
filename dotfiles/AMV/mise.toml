@@ -1,7 +1,9 @@
 [tools]
-node = "22.19.0"
-ruby = "3.2.3"
+node = "22"
+ruby = "3.2.2"
 java = "17"
+maestro = "latest"
+"npm:eas-cli" = "latest"
 
 [env]
 # this envs are loaded in the order they are listed, so the last one wins
