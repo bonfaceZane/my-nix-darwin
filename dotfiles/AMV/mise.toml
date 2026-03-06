@@ -174,7 +174,7 @@ yarn node:clear
 
 echo "🧹 Cleaning iOS Pods & build folders..."
 find . -name "Pods" -type d -prune -exec rm -rf '{}' +
-find . -type d -name "build" -exec rm -rf "{}" +
+find . -type d -name "build" -not -path "*/.eas/*" -prune -exec rm -rf "{}" +
 find . -type d -name ".expo" -exec rm -rf "{}" +
 
 echo "🧹 Cleaning Metro & Yarn caches..."
