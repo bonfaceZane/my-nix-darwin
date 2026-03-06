@@ -154,15 +154,15 @@ run = "yarn install"
 sources = ["package.json", "yarn.lock", "**/package.json"]
 outputs = ["node_modules/.yarn-integrity"]
 
-[tasks."gp:maestro:ios"]
-description = "Run Maestro iOS — usage: mise run gp:maestro:ios [dev|acc|qa|prod] [flow-path]"
+[tasks."maestro:ios"]
+description = "Run Maestro iOS — usage: mise run maestro:ios [dev|acc|qa|prod] [flow-path]"
 dir = "apps/gaspedaal"
-run = './scripts/maestro-run.sh ios ${1:-dev} ${2:-.maestro}'
+run = "./scripts/maestro-run.sh ios {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}}"
 
-[tasks."gp:maestro:android"]
-description = "Run Maestro Android — usage: mise run gp:maestro:android [dev|acc|qa|prod] [flow-path]"
+[tasks."maestro:android"]
+description = "Run Maestro Android — usage: mise run maestro:android [dev|acc|qa|prod] [flow-path]"
 dir = "apps/gaspedaal"
-run = './scripts/maestro-run.sh android ${1:-dev} ${2:-.maestro}'
+run = "./scripts/maestro-run.sh android {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}}"
 
 [tasks."clean"]
 description = "Clean node_modules and caches"
@@ -179,42 +179,3 @@ chmod +x .husky/prepare-commit-msg
 chmod +x bin/commit-append-issue-number.sh
 echo "✅ Setup complete! You are ready to develop."
 """
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# --- Autotrack (at) ---
-
-[tasks."at:dev"]
-alias = ["at"]
-description = "Start Autotrack (Dev Client)"
-depends = ["setup", "watchman:reset"]
-run = "yarn workspace @amv/autotrack start"
-
-[tasks."at:ios"]
-description = "Run Autotrack iOS"
-depends = ["setup", "watchman:reset", "at:prebuild"]
-run = "yarn workspace @amv/autotrack ios"
-
-[tasks."at:android"]
-description = "Run Autotrack Android"
-depends = ["setup", "watchman:reset", "at:prebuild"]
-run = "yarn workspace @amv/autotrack android"
-
-[tasks."at:prebuild"]
-description = "Prebuild Autotrack (Cached)"
-run = "yarn workspace @amv/autotrack prebuild"
-sources = ["apps/autotrack/app.json", "apps/autotrack/package.json", "yarn.lock"]
-outputs = ["apps/autotrack/ios/Podfile", "apps/autotrack/android/build.gradle"]

@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Homebrew casks (GUI apps) and Mac App Store apps via `mas`
   # To find the ID of an app in the Mac App Store, run:
   # `mas search <app name>`
@@ -14,17 +15,16 @@
     };
 
     casks = [
+      "nordpass"
       "firefox"
       "google-chrome"
-      # for managing fn keys for different keyboards in macOS
-      "fluor"
+      "fluor" # for managing fn keys for different keyboards in macOS
       "discord"
       "proxyman" # proxy manager
       "visual-studio-code" # IDE
       "bruno" # todo: do i need this?
       "ghostty" # todo: do i need this?
-      # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
-      "alfred" # hotkey app
+      "alfred"  # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "bettertouchtool" # hotkey app
       "obsidian" # markdown editor
       "notion" # markdown editor

@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 ###################################################################################
 #
 #  macOS's System configuration
@@ -68,6 +68,21 @@
         NSGlobalDomain = {
           # Add a context menu item for showing the Web Inspector in web views
           WebKitDeveloperExtras = true;
+        };
+
+        "com.apple.Safari" = {
+          AutoFillPasswords = false;
+          AutoFillCreditCardData = false;
+          AutoFillFromAddressBook = false;
+          AutoFillMiscellaneousForms = false;
+        };
+
+        "com.apple.Safari.SandboxBroker" = {
+          AutoFillPasswords = false;
+        };
+
+        "com.apple.AuthenticationServices" = {
+          EnabledProviders = [ "com.nordpass.macos" ];
         };
 
         "com.apple.desktopservices" = {
