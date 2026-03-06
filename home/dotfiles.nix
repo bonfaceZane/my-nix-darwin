@@ -50,6 +50,17 @@ in {
        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/zed";
     };
 
+    # Antigravity config files
+    ".gemini/antigravity/mcp_config.json" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/mcp_config.json";
+    };
+    ".gemini/antigravity/user_settings.pb" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/user_settings.pb";
+    };
+    ".gemini/antigravity/browserAllowlist.txt" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/browserAllowlist.txt";
+    };
+
     # Global Git Ignore
     ".gitignore_global" = {
        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_global";
