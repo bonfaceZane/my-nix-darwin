@@ -167,8 +167,25 @@ dir = "apps/gaspedaal"
 run = "./scripts/maestro-run.sh android {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}}"
 
 [tasks."clean"]
-description = "Clean node_modules and caches"
-run = "yarn node:clear && rm -rf .mise/cache"
+description = "Nuclear clean: node_modules, Pods, Android builds, and Metro/Yarn caches"
+run = '''
+echo "🧹 Cleaning node_modules..."
+yarn node:clear
+
+echo "🧹 Cleaning iOS Pods & build folders..."
+find . -name "Pods" -type d -prune -exec rm -rf '{}' +
+find . -type d -name "build" -exec rm -rf "{}" +
+find . -type d -name ".expo" -exec rm -rf "{}" +
+
+echo "🧹 Cleaning Metro & Yarn caches..."
+rm -rf $TMPDIR/metro-*
+yarn cache clean
+
+echo "🧹 Cleaning mise caches..."
+rm -rf .mise/cache
+
+echo "✅ Clean pristine!"
+'''
 
 # you can run this task to setup your project quickly or onboard on a new machine
 [tasks.onboard]
