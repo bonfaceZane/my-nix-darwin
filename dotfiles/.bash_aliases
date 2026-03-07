@@ -22,3 +22,6 @@ alias m='mise'
 alias dev='mise dev'
 alias ios='mise ios'
 alias android='mise android'
+
+# yeet
+alias ye='yeet'
