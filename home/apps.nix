@@ -14,6 +14,7 @@
     vscode-langservers-extracted # eslint, html, css, json
     nodePackages.prettier
     nil # Nix language server
+    biome
 
     # Add more user-only tools here, e.g.:
     # ripgrep jq yq-go fzf tree zstd glow

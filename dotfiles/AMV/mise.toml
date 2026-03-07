@@ -157,14 +157,14 @@ sources = ["package.json", "yarn.lock", "**/package.json"]
 outputs = ["node_modules/.yarn-integrity"]
 
 [tasks."maestro:ios"]
-description = "Run Maestro iOS — usage: mise run maestro:ios [dev|acc|qa|prod] [flow-path]"
+description = "Run Maestro iOS — usage: mise run maestro:ios [dev|acc|qa|prod] [flow-path] [format]"
 dir = "apps/gaspedaal"
-run = "./scripts/maestro-run.sh ios {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}}"
+run = "./scripts/maestro-run.sh ios {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}} {{arg(name='format', default='')}}"
 
 [tasks."maestro:android"]
-description = "Run Maestro Android — usage: mise run maestro:android [dev|acc|qa|prod] [flow-path]"
+description = "Run Maestro Android — usage: mise run maestro:android [dev|acc|qa|prod] [flow-path] [format]"
 dir = "apps/gaspedaal"
-run = "./scripts/maestro-run.sh android {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}}"
+run = "./scripts/maestro-run.sh android {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}} {{arg(name='format', default='')}}"
 
 [tasks."clean"]
 description = "Nuclear clean: node_modules, Pods, Android builds, and Metro/Yarn caches"
