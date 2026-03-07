@@ -37,7 +37,10 @@
       "zoom"
       "hammerspoon" # macOS automation
       "claude-code" # AI assistant
+      "cursor" # AI Code Editor
+      "codex-app" # OpenAI Codex Desktop App
       "cmux" # terminal built on ghostty
+      "affine" # workspace app
     ];
   };
 }

@@ -1,0 +1,18 @@
+# General work ignores
+mise.toml
+.mise.toml
+.agents
+.mise/
+
+# IDE
+.idea/
+.vscode/
+.claude/
+.cursor/
+.cursorrules
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

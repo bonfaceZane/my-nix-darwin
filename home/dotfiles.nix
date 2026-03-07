@@ -66,6 +66,11 @@ in {
        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_global";
     };
 
+    # Work Git Ignore
+    ".gitignore_work" = {
+       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_work";
+    };
+
     # AMV Apps Git Ignore Configs
     ".gitignore_amv_apps" = {
        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_amv_apps";

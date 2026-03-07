@@ -49,5 +49,6 @@
     "jq" # json parser
     "llvm" # llvm compiler for c++, c and rust
     "mobile-dev-inc/tap/maestro"
+    "yeet" # package manager/tool
   ];
 }
