@@ -1,9 +1,9 @@
 {...}: {
   # Homebrew formulae (brew install <name>)
+  # you can search by typing: `brew search <name>`
   homebrew.brews = [
     "fastlane"
     "zsh"
-    "nushell"
     "zsh-autosuggestions"
     "zsh-syntax-highlighting"
     "zsh-autocomplete"
@@ -18,11 +18,8 @@
     "libyaml"
     "openssl"
     "automake"
-    "zlib"
     "neovim"
     "helix"
-    "zstd" # zstd
-    "caddy" # caddy web server
     "glow" # markdown previewer in terminal
     "sk" # grep with preview
     "watchman" # watchman file system watcher
@@ -41,12 +38,9 @@
     "coreutils" # GNU core utilities
     "wget" # download tool
     "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
-    "aria2" # download tool supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink
     "httpie" # http client
     "tailscale"
     "file" # file command to determine file type
-    "jc" # json parser cli
-    "jq" # json parser
     "llvm" # llvm compiler for c++, c and rust
     "mobile-dev-inc/tap/maestro"
     "yeet" # package manager/tool

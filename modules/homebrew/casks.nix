@@ -5,8 +5,8 @@
   # `mas search <app name>`
   homebrew = {
     masApps = {
-      "Be Focused" = 973134470;
-      "Letter Opener" = 411897373;
+      # "Be Focused" = 973134470;
+      # "Letter Opener" = 411897373;
       "Notion Web Clipper" = 1559269364;
       "Okta Verify" = 490179405;
       "Slack" = 803453959;
@@ -16,24 +16,19 @@
 
     casks = [
       "nordpass"
-      "firefox"
-      "google-chrome"
+      # "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
-      "discord"
+      # "discord"
       "proxyman" # proxy manager
       "visual-studio-code" # IDE
       "bruno" # todo: do i need this?
-      "ghostty" # todo: do i need this?
       "alfred"  # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "bettertouchtool" # hotkey app
-      "obsidian" # markdown editor
       "notion" # markdown editor
       "alt-tab"
       "font-fira-code-nerd-font" # todo:  move this ups to important
-      "anki" # todo: ?
-      "iina" # video player todo: do i need this?
       "raycast" # launcher and automation
-      "stats" # system monitor
+      # "stats" # system monitor
       "zoom"
       "hammerspoon" # macOS automation
       "claude-code" # AI assistant

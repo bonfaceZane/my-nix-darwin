@@ -8,7 +8,8 @@ let
   ghosttyPath = ../dotfiles/ghostty;
   zedPath = ../dotfiles/zed;
   bashAliasesPath = ../dotfiles/.bash_aliases;
-in {
+in
+{
   # Central place to safely link repo-tracked dotfiles into $HOME.
   #
   # Goals:
@@ -47,42 +48,42 @@ in {
 
     # Zed config directory
     ".config/zed" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/zed";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/zed";
     };
 
     # Antigravity config files
     ".gemini/antigravity/mcp_config.json" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/mcp_config.json";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/mcp_config.json";
     };
     ".gemini/antigravity/user_settings.pb" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/user_settings.pb";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/user_settings.pb";
     };
     ".gemini/antigravity/browserAllowlist.txt" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/browserAllowlist.txt";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/browserAllowlist.txt";
     };
 
     # Global Git Ignore
     ".gitignore_global" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_global";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_global";
     };
 
     # Work Git Ignore
     ".gitignore_work" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_work";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_work";
     };
 
     # AMV Apps Git Ignore Configs
     ".gitignore_amv_apps" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_amv_apps";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitignore_amv_apps";
     };
     ".gitconfig_amv_apps" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_amv_apps";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_amv_apps";
     };
     ".gitconfig_work" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_work";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_work";
     };
     ".gitconfig_personal" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_personal";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/git/.gitconfig_personal";
     };
 
     # Neovim config directory (keep even if Neovim isn’t installed, harmless)
@@ -108,7 +109,7 @@ in {
 
     # AMV Apps mise config
     "Documents/work/amv-apps/mise.toml" = {
-       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/AMV/mise.toml";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/AMV/mise.toml";
     };
   };
 }
