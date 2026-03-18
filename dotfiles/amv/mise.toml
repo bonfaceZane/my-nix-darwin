@@ -121,7 +121,7 @@ run = [
   "yarn workspace @amv/tracking-sdk run format-check",
   "mkdir -p .mise/cache && touch .mise/cache/prettier-success"
 ]
-sources = ["apps/**/*.{js,ts,tsx}", "shared/**/*.{js,ts,tsx}", "modules/**/*.{js,ts,tsx}", "packages/**/*.{js,ts,tsx}", ".prettierrc.js"]
+sources = ["apps/**/*.{js,ts,tsx}", "shared/**/*.{js,ts,tsx}", "modules/**/*.{js,ts,tsx}", "packages/**/*.{js,ts,tsx}", ".prettierrc.js", "**/.prettierignore"]
 outputs = [".mise/cache/prettier-success"]
 
 [tasks."format:fix"]
@@ -146,6 +146,26 @@ run = [
 sources = ["apps/**/*.{js,ts,tsx}", "shared/**/*.{js,ts,tsx}", "modules/**/*.{js,ts,tsx}", "packages/**/*.{js,ts,tsx}", "**/package.json", "**/jest.config.js"]
 outputs = [".mise/cache/test-success"]
 
+[tasks."test:failed"]
+description = "Run only previously failed tests"
+run = [
+  "yarn workspace @amv/gaspedaal run test --onlyFailures",
+  "yarn workspace @amv/autotrack run test --onlyFailures",
+  "yarn workspace @amv/shared run test --onlyFailures"
+]
+
+[tasks."test:changed"]
+description = "Run only changed-related tests"
+run = [
+  "yarn workspace @amv/gaspedaal test --onlyChanged",
+  "yarn workspace @amv/autotrack test --onlyChanged",
+  "yarn workspace @amv/shared test --onlyChanged"
+]
+
+[tasks."test:watch"]
+description = "Run Jest in watch mode for Gaspedaal"
+run = "yarn workspace @amv/gaspedaal test --watch"
+
 [tasks."check"]
 description = "Run all static analysis (typecheck, lint, format)"
 depends = ["typecheck", "lint", "format:check"]
@@ -167,18 +187,22 @@ dir = "apps/gaspedaal"
 run = "./scripts/maestro-run.sh android {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}} {{arg(name='format', default='')}}"
 
 [tasks."clean"]
-description = "Nuclear clean: node_modules, Pods, Android builds, and Metro/Yarn caches"
+description = "Nuclear clean: node_modules, native folders, and caches"
 run = '''
 echo "🧹 Cleaning node_modules..."
 yarn node:clear
 
-echo "🧹 Cleaning iOS Pods & build folders..."
-find . -name "Pods" -type d -prune -exec rm -rf '{}' +
-find . -type d -name "build" -not -path "*/.eas/*" -prune -exec rm -rf "{}" +
+if [ -d apps/gaspedaal/ios ] || [ -d apps/gaspedaal/android ]; then
+  echo "🧹 Removing native folders..."
+  rm -rf apps/gaspedaal/ios apps/gaspedaal/android
+fi
+
+echo "🧹 Cleaning Expo and build folders..."
 find . -type d -name ".expo" -exec rm -rf "{}" +
+find . -type d -name "build" -not -path "*/.eas/*" -prune -exec rm -rf "{}" +
 
 echo "🧹 Cleaning Metro & Yarn caches..."
-rm -rf $TMPDIR/metro-*
+rm -rf "$TMPDIR"/metro-*
 yarn cache clean
 
 echo "🧹 Cleaning mise caches..."
@@ -187,7 +211,6 @@ rm -rf .mise/cache
 echo "✅ Clean pristine!"
 '''
 
-# you can run this task to setup your project quickly or onboard on a new machine
 [tasks.onboard]
 description = "Install dependencies and setup git hooks | quick onboarding"
 run = """

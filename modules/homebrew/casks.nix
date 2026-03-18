@@ -21,7 +21,6 @@
       # "discord"
       "proxyman" # proxy manager
       "visual-studio-code" # IDE
-      "bruno" # todo: do i need this?
       "alfred"  # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "bettertouchtool" # hotkey app
       "notion" # markdown editor

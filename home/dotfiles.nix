@@ -8,6 +8,7 @@ let
   ghosttyPath = ../dotfiles/ghostty;
   zedPath = ../dotfiles/zed;
   bashAliasesPath = ../dotfiles/.bash_aliases;
+  amvPath = ../dotfiles/amv;
 in
 {
   # Central place to safely link repo-tracked dotfiles into $HOME.
@@ -50,6 +51,7 @@ in
     ".config/zed" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/zed";
     };
+
 
     # Antigravity config files
     ".gemini/antigravity/mcp_config.json" = {
@@ -111,5 +113,20 @@ in
     "Documents/work/amv-apps/mise.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/AMV/mise.toml";
     };
+
+   # Husky pre commit config
+    "Documents/work/amv-apps/.husky/pre-commit" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/amv/pre-commit";
+    };
+
+   # Husky pre push config
+    "Documents/work/amv-apps/.husky/pre-push" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/amv/pre-commit";
+    };
+
+    "Documents/work/amv-apps/.lintstagedrc.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/amv/.lintstagedrc.json";
+    };
+
   };
 }

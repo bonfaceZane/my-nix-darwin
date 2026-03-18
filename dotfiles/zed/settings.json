@@ -59,6 +59,7 @@
             "args": ["-y", "@modelcontextprotocol/server-memory"],
         },
         "git": {
+            "env": {},
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-git"],
         },
@@ -84,5 +85,14 @@
     },
     "experimental.theme_overrides": {
         "editor.active_line.background": "#ADECE415",
+    },
+
+    // "preferred_line_length": 80,
+
+    "languages": {
+        "Zig": {
+            "preferred_line_length": 50,
+            "soft_wrap": "preferred_line_length",
+        },
     },
 }

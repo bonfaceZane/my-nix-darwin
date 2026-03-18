@@ -203,14 +203,14 @@ export ZSH="$HOME/.oh-my-zsh"
 source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 
 # Wrapper for just to automatically reload zsh environment after rebuild
-just() {
-  command just "$@"
-  local ret=$?
-  # If just was successful and it was a rebuild command (or default)
-  if [ $ret -eq 0 ] && [[ "$*" == *"rebuild"* || "$*" == *"update"* || "$*" == *"build"* || -z "$1" ]]; then
-    echo "Reloading zsh..."
-    source ~/.zshrc
-    rehash
-  fi
-  return $ret
-}
+# just() {
+#   command just "$@"
+#   local ret=$?
+#   # If just was successful and it was a rebuild command (or default)
+#   if [ $ret -eq 0 ] && [[ "$*" == *"rebuild"* || "$*" == *"update"* || "$*" == *"build"* || -z "$1" ]]; then
+#     echo "Reloading zsh..."
+#     source ~/.zshrc
+#     rehash
+#   fi
+#   return $ret
+# }

@@ -1,0 +1,35 @@
+[user]
+    name = rafiki
+    email = bonfacezane@gmail.com
+
+[core]
+    compression = 9
+    whitespace = error
+    preloadindex = true
+
+[init]
+    defaultBranch = main
+
+[advice]
+    addEmptyPathspec = false
+    pushNonFastForwards = false
+    statusHints = false
+
+[status]
+    showUntrackedFiles = all
+    branch = true
+    showStash = true
+
+[diff]
+    tool = hx
+    context = 3
+    renames = copies
+    interHunkContext = 10
+
+[pull]
+    rebase = true
+    ff = only
+
+[push]
+    default = current
+    autoStash = true
