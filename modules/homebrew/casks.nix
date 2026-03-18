@@ -16,13 +16,13 @@
 
     casks = [
       "nordpass"
-      "nordvpn"
+      # "nordvpn"
       # "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
       # "discord"
       "proxyman" # proxy manager
       "visual-studio-code" # IDE
-      "alfred"  # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
+      "alfred" # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "bettertouchtool" # hotkey app
       "notion" # markdown editor
       "alt-tab"
