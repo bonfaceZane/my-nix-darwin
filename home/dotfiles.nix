@@ -52,7 +52,6 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/zed";
     };
 
-
     # Antigravity config files
     ".gemini/antigravity/mcp_config.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/antigravity/mcp_config.json";
@@ -114,12 +113,12 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/AMV/mise.toml";
     };
 
-   # Husky pre commit config
+    # Husky pre commit config
     "Documents/work/amv-apps/.husky/pre-commit" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/amv/pre-commit";
     };
 
-   # Husky pre push config
+    # Husky pre push config
     "Documents/work/amv-apps/.husky/pre-push" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles/amv/pre-commit";
     };
