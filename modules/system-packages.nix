@@ -8,6 +8,7 @@
 
   environment.systemPackages = with pkgs; [
     mkalias
+    nixfmt-rfc-style # Nix code formatter
   ];
 
   # Global EDITOR; user can override in their shell if desired.

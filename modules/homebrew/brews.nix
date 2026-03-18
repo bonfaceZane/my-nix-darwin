@@ -3,10 +3,6 @@
   # you can search by typing: `brew search <name>`
   homebrew.brews = [
     "fastlane"
-    "zsh"
-    "zsh-autosuggestions"
-    "zsh-syntax-highlighting"
-    "zsh-autocomplete"
     "mole" # for cleaning your Mac computer
     "zellij"
     "htop"

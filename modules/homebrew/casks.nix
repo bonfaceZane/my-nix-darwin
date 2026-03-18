@@ -16,6 +16,7 @@
 
     casks = [
       "nordpass"
+      "nordvpn"
       # "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
       # "discord"
@@ -35,6 +36,7 @@
       "codex-app" # OpenAI Codex Desktop App
       "cmux" # terminal built on ghostty
       "affine" # workspace app
+      "whatsapp" # messaging app
     ];
   };
 }
