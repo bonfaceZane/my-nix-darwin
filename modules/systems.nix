@@ -21,12 +21,11 @@
       dock.persistent-apps = [
         "/Applications/Arc.app"
         "/Applications/slack.app"
-        "/Applications/Antigravity.app"
+        "/Applications/zed.app"
         "/Applications/Notion.app"
         "/Applications/Warp.app"
-        "/Applications/zed.app"
         "/Applications/Maestro Studio.app"
-        "/Applications/Proxyman.app"
+        "/Applications/WhatsApp.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
@@ -48,7 +47,7 @@
         AppleICUForce24HourTime = true;
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
 
-        NSAutomaticCapitalizationEnabled = true; # disable auto capitalization(自动大写)
+        NSAutomaticCapitalizationEnabled = true; # enable auto capitalization(自动大写)
 
         # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
         # This is very useful for vim users, they use `hjkl` to move cursor.
@@ -105,27 +104,28 @@
           SHOWFULLNAME = true; # show full name in login window
         };
 
-        # keyboard settings is not very useful on macOS
-        # the most important thing is to remap option key to alt key globally,
-        # but it's not supported by macOS yet.
-        keyboard = {
-          enableKeyMapping = true; # enable key mapping so that we can use `option` as `control`
-
-          # NOTE: do NOT support remap capslock to both control and escape at the same time
-          remapCapsLockToControl = true; # remap caps lock to control, useful for emac users
-          remapCapsLockToEscape = false; # remap caps lock to escape, useful for vim users
-
-          # swap left command and left alt
-          # so it matches common keyboard layout: `ctrl | command | alt`
-          #
-          # disabled, caused only problems!
-          swapLeftCommandAndLeftAlt = false;
-        };
       };
 
       # other macOS's defaults configuration.
       # ......
     };
+  };
+
+  # keyboard settings is not very useful on macOS
+  # the most important thing is to remap option key to alt key globally,
+  # but it's not supported by macOS yet.
+  system.keyboard = {
+    enableKeyMapping = true; # enable key mapping so that we can use `option` as `control`
+
+    # NOTE: do NOT support remap capslock to both control and escape at the same time
+    remapCapsLockToControl = true; # remap caps lock to control, useful for emac users
+    remapCapsLockToEscape = false; # remap caps lock to escape, useful for vim users
+
+    # swap left command and left alt
+    # so it matches common keyboard layout: `ctrl | command | alt`
+    #
+    # disabled, caused only problems!
+    swapLeftCommandAndLeftAlt = false;
   };
 
   # Add ability to used TouchID for sudo authentication

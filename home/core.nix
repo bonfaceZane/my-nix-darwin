@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Packages note:
   # User-local packages are now declared in `home/apps.nix` to keep app concerns
   # separate from program/module configuration. See that file to add/remove

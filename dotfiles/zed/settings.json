@@ -8,6 +8,11 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
+    "agent_servers": {
+        "claude-acp": {
+            "type": "registry"
+        }
+    },
     "session": {
         "trust_all_worktrees": true,
     },
@@ -31,7 +36,7 @@
         /* Use "compact" for more items or "comfortable" for more padding */
         "entry_spacing": "comfortable",
         "git_status": true,
-        "dock": "right",
+        "dock": "left",
     },
     "hard_tabs": false,
     "tab_size": 4,
@@ -66,6 +71,23 @@
     },
 
     "agent": {
+        "favorite_models": [
+            {
+                "provider": "anthropic",
+                "model": "claude-sonnet-4-6-latest",
+                "enable_thinking": false
+            },
+            {
+                "provider": "anthropic",
+                "model": "claude-sonnet-4-6-thinking-latest",
+                "enable_thinking": false
+            },
+            {
+                "provider": "anthropic",
+                "model": "claude-opus-4-5-thinking-latest",
+                "enable_thinking": false
+            }
+        ],
         "tool_permissions": {
             "default": "allow",
             "tools": {
@@ -75,21 +97,25 @@
             },
         },
         "default_model": {
-            "provider": "google",
-            "model": "gemini-2.5-flash",
+            "provider": "anthropic",
+            "model": "claude-sonnet-4-6",
         },
         "commit_message_model": {
-            "provider": "google",
-            "model": "gemini-2.5-flash",
+            "provider": "anthropic",
+            "model": "claude-haiku-4-5-20251001",
         },
     },
     "experimental.theme_overrides": {
         "editor.active_line.background": "#ADECE415",
     },
 
-    // "preferred_line_length": 80,
+    "preferred_line_length": 80,
 
     "languages": {
+        "Nix": {
+            "hard_tabs": true,
+            "tab_size": 4,
+        },
         "Zig": {
             "preferred_line_length": 50,
             "soft_wrap": "preferred_line_length",
