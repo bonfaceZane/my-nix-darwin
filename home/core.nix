@@ -17,15 +17,15 @@
     eza = {
       enable = true;
       git = true;
-      # Boolean is deprecated; use a string. Suggested: "auto"
       icons = "auto";
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
-    # terminal file manager
     yazi = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       settings = {
         manager = {
           show_hidden = true;

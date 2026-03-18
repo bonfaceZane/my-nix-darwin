@@ -132,7 +132,7 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
-  # this is required if you want to use darwin's default shell - zsh
+  # Kept enabled as a fallback shell for scripts and system processes.
   programs.zsh = {
     enable = true;
     interactiveShellInit = ''
@@ -141,4 +141,10 @@
       fi
     '';
   };
+
+  # Enable fish and register it in /etc/shells so it can be set as default.
+  programs.fish.enable = true;
+
+  # Set fish as the default login shell for the primary user.
+  users.users.obwoni000.shell = pkgs.fish;
 }

@@ -1,6 +1,7 @@
 [user]
 	name = rafiki
 	email = bonface.zane@autoscout24.com
+    signingKey = ~/.ssh/id_ed25519.pub
 
 [core]
     editor = hx
@@ -11,9 +12,6 @@
 
 [gpg "ssh"]
     allowedSignersFile = ~/.ssh/allowed_signers
-
-[user]
-    signingKey = ~/.ssh/id_ed25519.pub
 
 [commit]
     # To automatically sign all your commits
