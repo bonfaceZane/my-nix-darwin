@@ -92,6 +92,9 @@
   };
 
   home.shellAliases = {
+    # pnpm alias
+    p = "pnpm";
+
     # k8s
     k = "kubectl";
 
