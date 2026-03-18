@@ -6,8 +6,17 @@
     editor = hx
     excludesfile = ~/.gitignore_work
 
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    allowedSignersFile = ~/.ssh/allowed_signers
+
+[user]
+    signingKey = ~/.ssh/id_ed25519.pub
+
 [commit]
-    # To automatically sign all your personal commits
+    # To automatically sign all your commits
     gpgsign = true
 
 [rebase]
