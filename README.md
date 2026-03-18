@@ -133,6 +133,18 @@ my-secret: "my-password"
 
 After running `darwin-rebuild switch`, the secret will be available at the specified path.
 
+### Anthropic API Keys for IDEs (Cursor, Zed, etc.)
+
+We use `sops` combined with `direnv` to securely inject the correct Anthropic API key depending on whether you are in a work or personal project.
+
+1.  **Edit Secrets**: Run `sops secrets.yaml` to set `anthropic_api_key_work` (for work) and `anthropic_api_key` (for personal).
+2.  **Rebuild**: Run `darwin-rebuild switch --flake .#rafiki`.
+3.  **Project Setup**:
+    *   For a **Work Project**, create an `.envrc` file in the project root containing: `export ANTHROPIC_API_KEY=$ANTHROPIC_WORK_KEY`
+    *   For a **Personal Project**, create an `.envrc` file in the project root containing: `export ANTHROPIC_API_KEY=$ANTHROPIC_PERSONAL_KEY`
+4.  **Allow direnv**: Run `direnv allow` in your terminal inside the project folder.
+
+Your IDE will now automatically pick up the correct `ANTHROPIC_API_KEY` when you open the folder.
 
 ## Add another machine (recommended pattern)
 

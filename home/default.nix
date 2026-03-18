@@ -30,6 +30,8 @@
     defaultSopsFile = ../secrets.yaml;
     age.sshKeyPaths = [ "/Users/obwoni000/.ssh/id_ed25519" ];
     secrets.useremail = {};
+    secrets.anthropic_api_key = {};
+    secrets.anthropic_api_key_work = {};
   };
 
   # Home Manager needs a bit of information about you and the

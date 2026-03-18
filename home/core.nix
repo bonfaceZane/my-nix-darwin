@@ -40,5 +40,10 @@
       enable = true;
       enableBashIntegration = true;
     };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 }

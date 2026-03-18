@@ -34,6 +34,14 @@
         eval (/opt/homebrew/bin/brew shellenv)
       end
 
+      # Load Secrets
+      if test -f /run/secrets/anthropic_api_key
+          set -gx ANTHROPIC_PERSONAL_KEY (cat /run/secrets/anthropic_api_key)
+      end
+      if test -f /run/secrets/anthropic_api_key_work
+          set -gx ANTHROPIC_WORK_KEY (cat /run/secrets/anthropic_api_key_work)
+      end
+
       # ---------------------------------------------------
       # Environment Variables & PATHs Migrated from .zshrc
       # ---------------------------------------------------
@@ -70,6 +78,14 @@
 
         if [[ $(uname -m) == 'arm64' ]]; then
           eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
+        
+        # Load Secrets
+        if [ -f /run/secrets/anthropic_api_key ]; then
+            export ANTHROPIC_PERSONAL_KEY=$(cat /run/secrets/anthropic_api_key)
+        fi
+        if [ -f /run/secrets/anthropic_api_key_work ]; then
+            export ANTHROPIC_WORK_KEY=$(cat /run/secrets/anthropic_api_key_work)
         fi
         # --- End HM additions ---
       '';
