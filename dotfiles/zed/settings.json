@@ -10,8 +10,8 @@
     // editor
     "agent_servers": {
         "claude-acp": {
-            "type": "registry"
-        }
+            "type": "registry",
+        },
     },
     "session": {
         "trust_all_worktrees": true,
@@ -30,13 +30,16 @@
     "autosave": "on_focus_change",
     "project_panel": {
         // "button": true,
-        "default_width": 550.0,
+        "default_width": 500,
         /* This controls the horizontal indentation of folders */
-        "indent_size": 31.0,
+        "indent_size": 35.0,
         /* Use "compact" for more items or "comfortable" for more padding */
         "entry_spacing": "comfortable",
         "git_status": true,
         "dock": "left",
+        "indent_guides": {
+            "show": "always",
+        },
     },
     "hard_tabs": false,
     "tab_size": 4,
@@ -52,9 +55,13 @@
 
     // helix
     "helix_mode": true,
+    "which_key": {
+        "enabled": true,
+        "delay_ms": 200,
+    },
 
     // vim
-    "vim_mode": true,
+    // "vim_mode": true,
 
     "auto_signature_help": false,
 
@@ -75,18 +82,18 @@
             {
                 "provider": "anthropic",
                 "model": "claude-sonnet-4-6-latest",
-                "enable_thinking": false
+                "enable_thinking": true,
             },
             {
                 "provider": "anthropic",
                 "model": "claude-sonnet-4-6-thinking-latest",
-                "enable_thinking": false
+                "enable_thinking": true,
             },
             {
                 "provider": "anthropic",
                 "model": "claude-opus-4-5-thinking-latest",
-                "enable_thinking": false
-            }
+                "enable_thinking": true,
+            },
         ],
         "tool_permissions": {
             "default": "allow",
@@ -117,7 +124,6 @@
             "tab_size": 4,
         },
         "Zig": {
-            "preferred_line_length": 50,
             "soft_wrap": "preferred_line_length",
         },
     },

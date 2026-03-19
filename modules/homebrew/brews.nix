@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Homebrew formulae (brew install <name>)
   # you can search by typing: `brew search <name>`
   homebrew.brews = [
