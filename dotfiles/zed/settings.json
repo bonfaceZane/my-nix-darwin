@@ -78,6 +78,11 @@
     },
 
     "agent": {
+        "inline_assistant_model": {
+            "provider": "anthropic",
+            "model": "claude-opus-4-5-thinking-latest",
+            "enable_thinking": false
+        },
         "favorite_models": [
             {
                 "provider": "anthropic",

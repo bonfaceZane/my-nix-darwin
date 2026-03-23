@@ -5,3 +5,4 @@ mise.toml
 .lintstagedrc.json
 pre-commit
 pre-push
+.envrc
