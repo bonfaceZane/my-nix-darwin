@@ -70,19 +70,10 @@
       # Environment Variables & PATHs Migrated from .zshrc
       # ---------------------------------------------------
 
-      # Android Development
-      set -gx ANDROID_HOME $HOME/Library/Android/sdk
-      set -gx ANDROID_SDK_ROOT $HOME/Library/Android/sdk
-      fish_add_path $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools $HOME/Library/Android/sdk/emulator/
+      # Android Development paths (vars come from home.sessionVariables)
+      fish_add_path $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 
-      # Package Managers & Runtimes
-      set -gx PNPM_HOME "/Users/obwoni000/Library/pnpm"
-      set -gx BUN_INSTALL "$HOME/.bun"
-      set -gx MODULAR_HOME "/Users/obwoni000/.modular"
-      set -gx PROTO_HOME "$HOME/.proto"
-      set -gx GEM_HOME "$HOME/.gem"
-
-      # Add all standard bins to PATH
+      # Add all standard bins to PATH (vars come from home.sessionVariables)
       fish_add_path $PNPM_HOME $BUN_INSTALL/bin $MODULAR_HOME/pkg/packages.modular.com_mojo/bin $HOME/.pyenv/shims $PROTO_HOME/shims $PROTO_HOME/bin $HOME/.maestro/bin $HOME/.local/share/mise/shims $GEM_HOME/bin $HOME/bin $HOME/.local/bin $HOME/go/bin
     '';
   };
@@ -129,12 +120,30 @@
       '';
   };
 
+  # Persistent environment variables — available to Fish, Zsh, and all child processes.
+  # For one-off or Fish-specific vars use `set -gx` in interactiveShellInit instead.
+  home.sessionVariables = {
+    ANDROID_HOME = "$HOME/Library/Android/sdk";
+    ANDROID_SDK_ROOT = "$HOME/Library/Android/sdk";
+    PNPM_HOME = "/Users/obwoni000/Library/pnpm";
+    BUN_INSTALL = "$HOME/.bun";
+    MODULAR_HOME = "/Users/obwoni000/.modular";
+    PROTO_HOME = "$HOME/.proto";
+    GEM_HOME = "$HOME/.gem";
+  };
+
   home.shellAliases = {
-    # pnpm alias
+    # Package managers
     p = "pnpm";
 
-    # k8s
+    # Kubernetes
     k = "kubectl";
+
+    # Jump (autojump)
+    j = "jump";
+
+    # Use python3 as default python
+    python = "python3";
 
     urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
     urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";

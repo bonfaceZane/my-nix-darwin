@@ -108,6 +108,11 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/.lintstagedrc.json";
     };
 
+    # Fish extra config (auto-sourced by Fish via conf.d; edit dotfiles/fish/extra.fish)
+    ".config/fish/conf.d/extra.fish" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/fish/extra.fish";
+    };
+
     # Claude Code settings (only settings.json — runtime dirs stay untracked)
     ".claude/settings.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
