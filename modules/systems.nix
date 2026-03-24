@@ -26,6 +26,7 @@
         "/Applications/Warp.app"
         "/Applications/Maestro Studio.app"
         "/Applications/WhatsApp.app"
+        "/Applications/Claude.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
