@@ -110,6 +110,21 @@
         if [ -f /run/secrets/anthropic_api_key ]; then
             export ANTHROPIC_API_KEY=$(cat /run/secrets/anthropic_api_key)
         fi
+
+        # Auto-swap Claude settings based on directory (mirrors Fish _auto_claude_settings)
+        _auto_claude_settings() {
+          local settings="$HOME/.claude/settings.json"
+          local work_settings="$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude-work/settings.json"
+          local personal_settings="$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude/settings.json"
+          if [[ "$PWD" == "$HOME/Documents/work"* ]]; then
+            ln -sf "$work_settings" "$settings"
+          else
+            ln -sf "$personal_settings" "$settings"
+          fi
+        }
+        autoload -Uz add-zsh-hook
+        add-zsh-hook chpwd _auto_claude_settings
+        _auto_claude_settings  # run once on shell init
         # --- End HM additions ---
       '';
   };
