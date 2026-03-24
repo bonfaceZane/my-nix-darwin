@@ -159,6 +159,21 @@ in
     ".claude/skills/eas" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/eas";
     };
+    ".claude/skills/building-native-ui" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/building-native-ui";
+    };
+    ".claude/skills/explain-code" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/explain-code";
+    };
+    ".claude/skills/react-native-skills" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/react-native-skills";
+    };
+    ".claude/skills/skill-creator" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/skill-creator";
+    };
+    ".claude/skills/app-icon" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/app-icon";
+    };
 
   };
 }
