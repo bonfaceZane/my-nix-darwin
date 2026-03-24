@@ -114,5 +114,10 @@ in
       force = true;
     };
 
+    # Claude Code notes
+    ".claude/CLAUDE.md" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/CLAUDE.md";
+    };
+
   };
 }
