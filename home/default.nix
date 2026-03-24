@@ -2,7 +2,8 @@
   username,
   sops-nix,
   ...
-}: {
+}:
+{
   # Home Manager entrypoint for user `${username}`
   #
   # This file composes user-level modules that manage dotfiles and user packages.
@@ -29,9 +30,9 @@
   sops = {
     defaultSopsFile = ../secrets.yaml;
     age.sshKeyPaths = [ "/Users/obwoni000/.ssh/id_ed25519" ];
-    secrets.useremail = {};
-    secrets.anthropic_api_key = {};
-    secrets.anthropic_api_key_work = {};
+    secrets.useremail = { };
+    secrets.anthropic_api_key = { };
+    secrets.anthropic_api_key_work = { };
   };
 
   # Home Manager needs a bit of information about you and the
@@ -49,7 +50,7 @@
     #   double-management conflicts.
     # - External dotfiles are linked centrally in `home/dotfiles.nix` using
     #   out-of-store symlinks and force=true. Keep this attribute set empty here.
-    file = {};
+    file = { };
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
