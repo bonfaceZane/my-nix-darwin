@@ -8,6 +8,7 @@ mise.toml
 .idea/
 .vscode/
 .claude/
+CLAUDE.md
 .cursor/
 .cursorrules
 *.swp
