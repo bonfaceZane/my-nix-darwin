@@ -20,3 +20,7 @@
 [rebase]
     # Auto-stash uncommitted changes before rebasing
     autoStash = true
+
+[pull]
+    rebase = true
+    ff = only
