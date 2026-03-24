@@ -119,5 +119,16 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/CLAUDE.md";
     };
 
+    # Claude Code skills
+    ".claude/skills/nix-rebuild" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/nix-rebuild";
+    };
+    ".claude/skills/nix-update" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/nix-update";
+    };
+    ".claude/skills/sops-edit" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/sops-edit";
+    };
+
   };
 }
