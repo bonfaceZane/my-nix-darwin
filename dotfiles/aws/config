@@ -1,0 +1,10 @@
+[sso-session as24-sso]
+sso_start_url = https://as24-sso.awsapps.com/start/
+sso_region = eu-west-1
+sso_registration_scopes = sso:account:access
+
+[profile as24-bedrock-readonly]
+sso_session = as24-sso
+sso_account_id = 995555607601
+sso_role_name = BedrockReadAccess
+region = eu-west-1

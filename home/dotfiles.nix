@@ -37,6 +37,10 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/zellij";
     };
 
+    ".aws" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/aws";
+    };
+
     # Zed config directory
     ".config/zed" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/zed";
@@ -102,6 +106,12 @@ in
 
     "Documents/work/amv-apps/.lintstagedrc.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/.lintstagedrc.json";
+    };
+
+    # Claude Code settings (only settings.json — runtime dirs stay untracked)
+    ".claude/settings.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
+      force = true;
     };
 
   };
