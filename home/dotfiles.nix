@@ -129,6 +129,36 @@ in
     ".claude/skills/sops-edit" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/sops-edit";
     };
+    ".claude/skills/expo-react-native" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/expo-react-native";
+    };
+    ".claude/skills/tanstack-query" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/tanstack-query";
+    };
+    ".claude/skills/nx" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/nx";
+    };
+    ".claude/skills/swift" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/swift";
+    };
+    ".claude/skills/kotlin" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/kotlin";
+    };
+    ".claude/skills/zig" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/zig";
+    };
+    ".claude/skills/sqlite" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/sqlite";
+    };
+    ".claude/skills/rust" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/rust";
+    };
+    ".claude/skills/maestro" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/maestro";
+    };
+    ".claude/skills/eas" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/eas";
+    };
 
   };
 }
