@@ -9,6 +9,9 @@
 {
     // editor
     "agent_servers": {
+        "gemini": {
+            "type": "registry"
+        },
         "claude-acp": {
             "type": "registry",
         },
