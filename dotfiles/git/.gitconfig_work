@@ -1,26 +1,57 @@
 [user]
 	name = rafiki
 	email = bonface.zane@autoscout24.com
-    signingKey = ~/.ssh/id_ed25519.pub
+	signingKey = ~/.ssh/id_ed25519.pub
 
 [core]
-    editor = hx
-    excludesfile = ~/.gitignore_work
+	editor = hx
+	excludesfile = ~/.gitignore_work
 
 [gpg]
-    format = ssh
+	format = ssh
 
 [gpg "ssh"]
-    allowedSignersFile = ~/.ssh/allowed_signers
+	allowedSignersFile = ~/.ssh/allowed_signers
 
 [commit]
-    # To automatically sign all your commits
-    gpgsign = true
+	# To automatically sign all your commits
+	gpgsign = true
 
 [rebase]
-    # Auto-stash uncommitted changes before rebasing
-    autoStash = true
+	# Auto-stash uncommitted changes before rebasing
+	autoStash = true
+	missingCommitsCheck = true
 
 [pull]
-    rebase = true
-    ff = only
+	rebase = true
+	ff = only
+
+[push]
+	default = current
+	autoSetupRemote = true
+	followTags = true
+
+[log]
+	abbrevCommit = true
+	graphColors = blue,yellow,cyan,magenta,green,red
+
+[color "decorate"]
+	HEAD = red
+	branch = blue
+	tag = yellow
+	remoteBranch = magenta
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = -taggerdate
+
+[fetch]
+	prune = true
+
+[diff]
+	algorithm = histogram
+
+[merge]
+	conflictstyle = zdiff3
