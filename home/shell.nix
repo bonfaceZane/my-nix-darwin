@@ -1,17 +1,41 @@
-{ pkgs, username, ... }: {
+{ pkgs, username, ... }:
+{
   # Fish is the primary interactive shell.
   programs.fish = {
     enable = true;
 
     # Plugins
     plugins = [
-      { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
-      { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
-      { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
+      {
+        name = "sponge";
+        src = pkgs.fishPlugins.sponge.src;
+      }
+      {
+        name = "puffer";
+        src = pkgs.fishPlugins.puffer.src;
+      }
+      {
+        name = "pisces";
+        src = pkgs.fishPlugins.pisces.src;
+      }
     ];
 
     # Functions ported from .zshrc
     functions = {
+      _auto_claude_settings = {
+        onVariable = "PWD";
+        body = ''
+          set settings "$HOME/.claude/settings.json"
+          set work_settings "$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude-work/settings.json"
+          set personal_settings "$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude/settings.json"
+          if string match -q "$HOME/Documents/work*" "$PWD"
+            ln -sf $work_settings $settings
+          else
+            ln -sf $personal_settings $settings
+          end
+        '';
+      };
+
       prebuild = ''
         set app $argv[1]; if test -z "$app"; set app "gpd"; end
         yarn $app prebuild --clean
@@ -29,17 +53,17 @@
     };
 
     interactiveShellInit = ''
+      # Auto-swap Claude settings based on directory
+      _auto_claude_settings
+
       # Homebrew environment (Apple Silicon)
       if test (uname -m) = arm64
         eval (/opt/homebrew/bin/brew shellenv)
       end
 
-      # Load Secrets
+      # Load Secrets from sops-nix
       if test -f /run/secrets/anthropic_api_key
-          set -gx ANTHROPIC_PERSONAL_KEY (cat /run/secrets/anthropic_api_key)
-      end
-      if test -f /run/secrets/anthropic_api_key_work
-          set -gx ANTHROPIC_WORK_KEY (cat /run/secrets/anthropic_api_key_work)
+          set -gx ANTHROPIC_API_KEY (cat /run/secrets/anthropic_api_key)
       end
 
       # ---------------------------------------------------
@@ -68,24 +92,23 @@
     enable = true;
     enableCompletion = true;
 
-    initContent = let
-      userZshrc = ../dotfiles/zshrc/.zshrc;
-      userZshrcContent = if builtins.pathExists userZshrc then builtins.readFile userZshrc else "";
-    in
-      userZshrcContent + ''
+    initContent =
+      let
+        userZshrc = ../dotfiles/zshrc/.zshrc;
+        userZshrcContent = if builtins.pathExists userZshrc then builtins.readFile userZshrc else "";
+      in
+      userZshrcContent
+      + ''
         # --- Home Manager additions (appended) ---
         export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
 
         if [[ $(uname -m) == 'arm64' ]]; then
           eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
-        
-        # Load Secrets
+
+        # Load Secrets from sops-nix
         if [ -f /run/secrets/anthropic_api_key ]; then
-            export ANTHROPIC_PERSONAL_KEY=$(cat /run/secrets/anthropic_api_key)
-        fi
-        if [ -f /run/secrets/anthropic_api_key_work ]; then
-            export ANTHROPIC_WORK_KEY=$(cat /run/secrets/anthropic_api_key_work)
+            export ANTHROPIC_API_KEY=$(cat /run/secrets/anthropic_api_key)
         fi
         # --- End HM additions ---
       '';
