@@ -51,6 +51,30 @@ Recommended pattern (already implemented here):
   - starship: `programs.starship.settings` writes its config; do not link
     `~/.config/starship.toml` via `home.file`.
 
+Setting the login shell
+-----------------------
+
+Nix installs and configures Fish but **cannot change your login shell** on macOS — that requires a manual step.
+
+Check which shell is active:
+
+```zsh
+echo $SHELL          # shows the login shell path
+ps -p $$             # shows the current process
+```
+
+To switch to Fish (do this once after a fresh setup or macOS reinstall):
+
+```zsh
+# 1. Add nix-managed Fish to the list of allowed login shells
+sudo sh -c 'echo /run/current-system/sw/bin/fish >> /etc/shells'
+
+# 2. Set it as your login shell
+chsh -s /run/current-system/sw/bin/fish
+```
+
+Then open a new terminal — it should be Fish. Use the nix store path (`/run/current-system/sw/bin/fish`), not a Homebrew or system path, so your Nix-managed plugins and functions load correctly.
+
 Where to put packages?
 ----------------------
 
