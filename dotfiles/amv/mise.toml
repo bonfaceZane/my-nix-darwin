@@ -186,6 +186,25 @@ description = "Run Maestro Android — usage: mise run maestro:android [dev|acc|
 dir = "apps/gaspedaal"
 run = "./scripts/maestro-run.sh android {{arg(name='env', default='dev')}} {{arg(name='flow_path', default='.maestro')}} {{arg(name='format', default='')}}"
 
+[tasks."e2e:build:ios"]
+description = "Build iOS E2E app locally then run Maestro tests — usage: mise run e2e:build:ios [prod|dev|acc|qa]"
+dir = "apps/gaspedaal"
+run = '''
+eas build --platform ios --profile e2e-tests --local
+tar -xzf build-*.tar.gz
+open -a Simulator
+./scripts/maestro-run.sh ios {{arg(name='env', default='prod')}} .maestro
+'''
+
+[tasks."e2e:run:ios"]
+description = "Extract local iOS E2E build and run Maestro tests — usage: mise run e2e:run:ios [prod|dev|acc|qa]"
+dir = "apps/gaspedaal"
+run = '''
+tar -xzf build-*.tar.gz
+open -a Simulator
+./scripts/maestro-run.sh ios {{arg(name='env', default='prod')}} .maestro
+'''
+
 [tasks."clean"]
 description = "Nuclear clean: node_modules, native folders, and caches"
 run = '''

@@ -17,3 +17,8 @@ mise.toml
 .DS_Store
 Thumbs.db
 .envrc
+
+# Project tooling
+.lintstagedrc.json
+pre-commit
+pre-push

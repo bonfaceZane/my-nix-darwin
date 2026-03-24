@@ -63,13 +63,6 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/git/.gitignore_work";
     };
 
-    # AMV Apps Git Ignore Configs
-    ".gitignore_amv_apps" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/git/.gitignore_amv_apps";
-    };
-    ".gitconfig_amv_apps" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/git/.gitconfig_amv_apps";
-    };
     ".gitconfig_work" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/git/.gitconfig_work";
     };

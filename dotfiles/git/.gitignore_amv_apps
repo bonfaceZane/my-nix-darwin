@@ -1,8 +1,0 @@
-mise.toml
-.mise.toml
-.agents
-.mise/
-.lintstagedrc.json
-pre-commit
-pre-push
-.envrc

@@ -33,10 +33,6 @@
         path = "~/.gitconfig_work";
         condition = "gitdir:~/Documents/work/";
       }
-      {
-        path = "~/.gitconfig_amv_apps";
-        condition = "gitdir:~/Documents/work/amv-apps/";
-      }
     ];
 
   };
