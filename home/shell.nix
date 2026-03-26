@@ -18,6 +18,10 @@
         name = "pisces";
         src = pkgs.fishPlugins.pisces.src;
       }
+      {
+        name = "forgit";
+        src = pkgs.fishPlugins.forgit.src;
+      }
     ];
 
     # Functions ported from .zshrc
@@ -135,6 +139,9 @@
   home.shellAliases = {
     # Package managers
     p = "pnpm";
+    i = "pnpm i";
+    c = "pnpm cache";
+    d = "pnpx npkill -D -y";
 
     # Kubernetes
     k = "kubectl";
@@ -147,5 +154,28 @@
 
     urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
     urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+
+    # Terminal tools
+    gt = "ghostty";
+    dash = "gh dash";
+    y = "yazi";
+    ye = "yeet";
+
+    # ls
+    ls = "ls --color=auto";
+    ll = "ls -l";
+    la = "ls -A";
+    l = "ls -CF";
+
+    # grep
+    grep = "grep --color=auto";
+    fgrep = "fgrep --color=auto";
+    egrep = "egrep --color=auto";
+
+    # mise
+    m = "mise";
+    dev = "mise dev";
+    ios = "mise ios";
+    android = "mise android";
   };
 }
