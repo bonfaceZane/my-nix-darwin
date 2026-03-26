@@ -10,7 +10,7 @@
     // editor
     "agent_servers": {
         "gemini": {
-            "type": "registry"
+            "type": "registry",
         },
         "claude-acp": {
             "type": "registry",
@@ -84,7 +84,7 @@
         "inline_assistant_model": {
             "provider": "anthropic",
             "model": "claude-opus-4-5-thinking-latest",
-            "enable_thinking": false
+            "enable_thinking": false,
         },
         "favorite_models": [
             {

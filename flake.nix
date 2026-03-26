@@ -51,59 +51,62 @@
   # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nix-darwin,
-    nix-homebrew,
-    home-manager,
-    flake-utils,
-    sops-nix,
-    ...
-  }: let
-    username = "obwoni000";
-    system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
-    hostname = "rafiki";
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nix-darwin,
+      nix-homebrew,
+      home-manager,
+      flake-utils,
+      sops-nix,
+      ...
+    }:
+    let
+      username = "obwoni000";
+      system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
+      hostname = "rafiki";
 
-    specialArgs =
-      inputs
-      // {
+      specialArgs = inputs // {
         inherit username hostname sops-nix;
       };
-  in {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#rafiki
-    darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
-      inherit system specialArgs;
-      modules = [
-        # --- System modules (nix-darwin) ---
-        ./modules/apps.nix
-        ./modules/nix-core.nix
-        ./modules/systems.nix
-        ./modules/host-users.nix
+    in
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#rafiki
+      darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
+        inherit system specialArgs;
+        modules = [
+          # --- System modules (nix-darwin) ---
+          ./modules/apps.nix
+          ./modules/nix-core.nix
+          ./modules/systems.nix
+          ./modules/host-users.nix
 
-        # --- Sops (secrets management) ---
-        sops-nix.darwinModules.sops
+          # --- Sops (secrets management) ---
+          sops-nix.darwinModules.sops
 
-        # --- Home Manager (user) modules ---
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          # Safely handle existing dotfiles managed by Home Manager by creating backups
-          # instead of refusing to overwrite. This avoids clobber errors like for ~/.zshenv.
-          # The original file will be moved to filename.hm-bak on first write.
-          home-manager.backupFileExtension = ".hm-bak";
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users.${username} = { imports = [ ./home ]; };
-        }
-      ];
+          # --- Home Manager (user) modules ---
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            # Safely handle existing dotfiles managed by Home Manager by creating backups
+            # instead of refusing to overwrite. This avoids clobber errors like for ~/.zshenv.
+            # The original file will be moved to filename.hm-bak on first write.
+            home-manager.backupFileExtension = ".hm-bak";
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users.${username} = {
+              imports = [ ./home ];
+            };
+          }
+        ];
+      };
+
+      # nix code formatter
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = self.darwinConfigurations."${hostname}".pkgs;
     };
-
-    # nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
-
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."${hostname}".pkgs;
-  };
 }
