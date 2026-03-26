@@ -89,6 +89,11 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ghostty";
     };
 
+    # WezTerm config directory
+    ".config/wezterm" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/wezterm";
+    };
+
     # AMV Apps mise config
     "Documents/work/amv-apps/mise.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/AMV/mise.toml";

@@ -37,6 +37,7 @@
       "cmux" # terminal built on ghostty
       "affine" # workspace app
       "whatsapp" # messaging app
+      "wezterm" # terminal emulator
     ];
   };
 }
