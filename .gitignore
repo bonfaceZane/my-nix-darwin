@@ -4,3 +4,4 @@ result/
 .idea
 .vscode
 dotfiles/zed/prompts/
+dotfiles/aws/sso/cache/
