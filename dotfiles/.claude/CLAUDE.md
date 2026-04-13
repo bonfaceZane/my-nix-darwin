@@ -4,6 +4,7 @@
 
 - Always use atomic commits — each commit should contain one logical change only.
 - Do not bundle unrelated changes into a single commit.
+- Never commit automatically after making changes. Always wait for the user to explicitly ask to commit after they have reviewed the changes.
 
 ## Nix / Laptop Setup
 
