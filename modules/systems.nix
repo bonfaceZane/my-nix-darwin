@@ -22,11 +22,13 @@
         "/Applications/Arc.app"
         "/Applications/slack.app"
         "/Applications/zed.app"
+        "/Applications/WebStorm 2026.1.app"
         "/Applications/Notion.app"
+        "/Applications/WezTerm.app"
+        "/Applications/Claude.app"
         "/Applications/Warp.app"
         "/Applications/Maestro Studio.app"
         "/Applications/WhatsApp.app"
-        "/Applications/Claude.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
