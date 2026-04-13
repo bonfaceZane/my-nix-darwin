@@ -8,11 +8,17 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
+    "icon_theme": "Zed (Default)",
     "agent_servers": {
         "gemini": {
             "type": "registry",
         },
         "claude-acp": {
+            "favorite_config_option_values": {
+                "model": [
+                    "opus"
+                ]
+            },
             "type": "registry",
         },
     },
@@ -24,7 +30,7 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "dark",
+        "mode": "light",
         "light": "Ayu Light",
         "dark": "Rainbow (Dark)",
     },
@@ -49,7 +55,7 @@
 
     // git
     "git_panel": {
-        "tree_view": true,
+        "tree_view": false,
         "dock": "right",
         "default_width": 550.0,
     },
@@ -112,8 +118,9 @@
             },
         },
         "default_model": {
+            "enable_thinking": true,
             "provider": "anthropic",
-            "model": "claude-sonnet-4-6",
+            "model": "claude-opus-4-5-thinking-latest",
         },
         "commit_message_model": {
             "provider": "anthropic",
