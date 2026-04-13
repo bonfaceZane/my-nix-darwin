@@ -6,7 +6,7 @@ config.default_prog = { "/run/current-system/sw/bin/fish", "-l" }
 
 -- Font
 config.font = wezterm.font("FiraCode Nerd Font")
-config.font_size = 15.0
+config.font_size = 19.0
 
 -- Theme
 config.color_scheme = "Night Owl (Gogh)"
@@ -26,17 +26,17 @@ config.scrollback_lines = 10000
 
 -- Keys
 config.keys = {
-	-- Split pane horizontal
-	{ key = "d", mods = "CMD",       action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	-- Split pane vertical
-	{ key = "d", mods = "CMD|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	-- Close pane
-	{ key = "w", mods = "CMD",       action = wezterm.action.CloseCurrentPane({ confirm = false }) },
-	-- Navigate panes
-	{ key = "h", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Left") },
-	{ key = "l", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Right") },
-	{ key = "k", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Up") },
-	{ key = "j", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Down") },
+    -- Split pane horizontal
+    { key = "d", mods = "CMD",       action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    -- Split pane vertical
+    { key = "d", mods = "CMD|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    -- Close pane
+    { key = "w", mods = "CMD",       action = wezterm.action.CloseCurrentPane({ confirm = false }) },
+    -- Navigate panes
+    { key = "h", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Left") },
+    { key = "l", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Right") },
+    { key = "k", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Up") },
+    { key = "j", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Down") },
 }
 
 return config
