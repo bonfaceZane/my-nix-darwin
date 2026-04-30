@@ -15,7 +15,7 @@ If you're new to Nix, this is a friendly structure with docs and comments to gui
 
 ## Quick start
 
-1) Clone this repo to a permanent location, e.g. `~/Documents/baantu/my-nix-darwin`.
+1) Clone this repo to a permanent location, e.g. `~/Documents/subira/my-nix-darwin`.
 
 2) Review and, if needed, edit `flake.nix` for:
    - `username`, `useremail`, `system` (`aarch64-darwin` for Apple Silicon), `hostname`.

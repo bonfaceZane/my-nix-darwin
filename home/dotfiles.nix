@@ -2,7 +2,7 @@
 let
   bashAliasesPath = ../dotfiles/.bash_aliases;
   amvPath = ../dotfiles/amv;
-  dotfiles = "${config.home.homeDirectory}/Documents/baantu/my-nix-darwin/dotfiles";
+  dotfiles = "${config.home.homeDirectory}/Documents/subira/my-nix-darwin/dotfiles";
 in
 {
   # Central place to safely link repo-tracked dotfiles into $HOME.

@@ -4,7 +4,7 @@ Edits the encrypted `secrets.yaml` file. sops decrypts it in-memory, opens it in
 
 ## Secrets file location
 
-`~/Documents/baantu/my-nix-darwin/secrets.yaml`
+`~/Documents/subira/my-nix-darwin/secrets.yaml`
 
 ## Current secrets
 
@@ -16,7 +16,7 @@ Edits the encrypted `secrets.yaml` file. sops decrypts it in-memory, opens it in
 
 1. Edit the secrets file:
    ```bash
-   sops ~/Documents/baantu/my-nix-darwin/secrets.yaml
+   sops ~/Documents/subira/my-nix-darwin/secrets.yaml
    ```
    sops uses the SSH key at `~/.ssh/id_ed25519` for decryption (via age).
 

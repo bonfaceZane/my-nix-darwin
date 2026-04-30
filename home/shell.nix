@@ -30,8 +30,8 @@
         onVariable = "PWD";
         body = ''
           set settings "$HOME/.claude/settings.json"
-          set work_settings "$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude-work/settings.json"
-          set personal_settings "$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude/settings.json"
+          set work_settings "$HOME/Documents/subira/my-nix-darwin/dotfiles/.claude-work/settings.json"
+          set personal_settings "$HOME/Documents/subira/my-nix-darwin/dotfiles/.claude/settings.json"
           if string match -q "$HOME/Documents/work*" "$PWD"
             ln -sf $work_settings $settings
           else
@@ -109,8 +109,8 @@
         # Auto-swap Claude settings based on directory (mirrors Fish _auto_claude_settings)
         _auto_claude_settings() {
           local settings="$HOME/.claude/settings.json"
-          local work_settings="$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude-work/settings.json"
-          local personal_settings="$HOME/Documents/baantu/my-nix-darwin/dotfiles/.claude/settings.json"
+          local work_settings="$HOME/Documents/subira/my-nix-darwin/dotfiles/.claude-work/settings.json"
+          local personal_settings="$HOME/Documents/subira/my-nix-darwin/dotfiles/.claude/settings.json"
           if [[ "$PWD" == "$HOME/Documents/work"* ]]; then
             ln -sf "$work_settings" "$settings"
           else

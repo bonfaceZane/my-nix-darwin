@@ -10,7 +10,7 @@ Applies the current nix-darwin + home-manager configuration.
 
 ## Steps
 
-1. `cd ~/Documents/baantu/my-nix-darwin`
+1. `cd ~/Documents/subira/my-nix-darwin`
 2. Run the rebuild:
    ```bash
    darwin-rebuild switch --flake .#rafiki

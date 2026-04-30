@@ -10,7 +10,7 @@ Updates all flake inputs (nixpkgs, home-manager, sops-nix, etc.) then rebuilds.
 
 ## Steps
 
-1. `cd ~/Documents/baantu/my-nix-darwin`
+1. `cd ~/Documents/subira/my-nix-darwin`
 2. Update all inputs:
    ```bash
    nix flake update

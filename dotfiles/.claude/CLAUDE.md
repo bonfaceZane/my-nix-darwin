@@ -8,7 +8,7 @@
 
 ## Nix / Laptop Setup
 
-- All nix configuration and laptop setup changes must be made in `~/Documents/baantu/my-nix-darwin` — this is the single source of truth.
+- All nix configuration and laptop setup changes must be made in `~/Documents/subira/my-nix-darwin` — this is the single source of truth.
 - Do not edit nix or system config files directly outside of this repo.
 - After making nix changes, apply them with: `darwin-rebuild switch --flake .#rafiki`
 
@@ -32,18 +32,18 @@
 ## Directory Structure
 
 - `~/Documents/work/` — work projects (amv-apps monorepo and others). Git identity switches to work email automatically for repos here.
-- `~/Documents/baantu/` — personal projects.
+- `~/Documents/subira/` — personal projects.
 - Work git identity: `rafiki <bonface.zane@autoscout24.com>`
 - Personal git identity: in `~/.gitconfig_personal`
 
 ## Secrets
 
-- Secrets are managed with sops-nix and stored encrypted in `~/Documents/baantu/my-nix-darwin/secrets.yaml`.
+- Secrets are managed with sops-nix and stored encrypted in `~/Documents/subira/my-nix-darwin/secrets.yaml`.
 - Secrets are decrypted to `/run/secrets/` at activation time — do not hardcode keys in files.
 - SSH key at `~/.ssh/id_ed25519` is used for both git signing and sops age decryption.
 
 ## Claude Settings
 
-- Personal Claude settings: `~/Documents/baantu/my-nix-darwin/dotfiles/.claude/settings.json`
-- Work Claude settings: `~/Documents/baantu/my-nix-darwin/dotfiles/.claude-work/settings.json`
+- Personal Claude settings: `~/Documents/subira/my-nix-darwin/dotfiles/.claude/settings.json`
+- Work Claude settings: `~/Documents/subira/my-nix-darwin/dotfiles/.claude-work/settings.json`
 - `~/.claude/settings.json` auto-swaps based on current directory (Fish `_auto_claude_settings` function).
