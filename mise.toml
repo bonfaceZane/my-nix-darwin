@@ -1,22 +1,48 @@
+
+
 [tasks.build]
 description = "Build the system configuration"
 run = "sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure"
+alias = "b"
+
+[tasks.rebuild]
+description = "Alias for build"
+run = "mise run build"
+alias = "r"
+
+[tasks.darwin]
+description = "Alias for build"
+run = "mise run build"
 
 [tasks.update]
 description = "Update flake inputs and rebuild system"
 run = """
 nix flake update
-sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure
+mise run build
 """
+alias = "u"
 
 [tasks.clean]
-description = "Clean up old generations"
-run = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d"
+description = "Clean up old generations (system profile)"
+run = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d"
+alias = "c"
+
+[tasks.gc]
+description = "Nix garbage collection"
+run = "nix-collect-garbage -d"
+alias = "gc"
+
+[tasks.rollback]
+description = "Rollback to previous generation"
+run = "sudo darwin-rebuild --rollback"
+alias = "rb"
 
 [tasks.show]
 description = "Show flake outputs"
 run = "nix flake show"
+alias = "s"
 
 [tasks.check]
 description = "Check flake"
 run = "nix flake check"
+alias = "ch"

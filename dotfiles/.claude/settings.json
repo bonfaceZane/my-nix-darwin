@@ -1,5 +1,9 @@
 {
-	"permissions": {
-		"allow": ["mcp__pencil", "Bash"]
-	}
+  "permissions": {
+    "allow": [
+      "mcp__pencil",
+      "Bash"
+    ]
+  },
+  "theme": "dark-ansi"
 }

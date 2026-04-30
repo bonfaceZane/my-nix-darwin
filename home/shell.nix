@@ -172,6 +172,19 @@
     fgrep = "fgrep --color=auto";
     egrep = "egrep --color=auto";
 
+    # Docker
+    dk = "docker";
+    dkc = "docker-compose";
+    dps = "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'";
+    dkr = "docker run --rm -it";
+    dke = "docker exec -it";
+
+    # Devbox
+    db = "devbox";
+    dbs = "devbox shell";
+    dbi = "devbox init";
+    dba = "devbox add";
+
     # mise
     m = "mise";
     dev = "mise dev";

@@ -9,6 +9,7 @@
     gnutar
     sops
     zed-editor
+    devbox # Nix-based dev environment manager
 
     # Language Servers & Formatters
     nodePackages.typescript-language-server

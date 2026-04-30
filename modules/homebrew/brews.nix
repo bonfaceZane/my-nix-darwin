@@ -21,17 +21,15 @@
     "sk" # grep with preview
     "watchman" # watchman file system watcher
     "libtool"
-    "jump" # jump to frequently used directories
     "tree" # list files in tree structure
     "bat" # cat with syntax highlight
     "fd" # find with syntax highlight
     "ripgrep" # grep with syntax highlight
     "fzf" # fuzzy finder
-    "just" # justfile to simplify nix-darwin's commands
     "starship" # cross-shell prompt
     "scrcpy" # screen copy for android
     "mise" # package manager
-    "zoxide"
+    "zoxide" # jump to frequently used directories; a smarter cd command
     "coreutils" # GNU core utilities
     "wget" # download tool
     "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
@@ -41,5 +39,6 @@
     "llvm" # llvm compiler for c++, c and rust
     "mobile-dev-inc/tap/maestro"
     "yeet" # package manager/tool
+    "posting" # Modern API client that lives in your terminal
   ];
 }

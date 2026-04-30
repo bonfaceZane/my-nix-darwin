@@ -30,21 +30,21 @@ darwin-rebuild check --flake .#rafiki
 
 ```bash
 darwin-rebuild switch --flake .#rafiki
-# or with Justfile shortcuts if you prefer:
-just darwin
+# or with mise shortcuts:
+mise run darwin
 ```
 
-Common Just commands:
+Common mise tasks:
 
 ```bash
-# List all commands
-just
+# List all tasks
+mise tasks
 
 # Garbage collect old generations
-just gc
+mise run gc
 
 # Clean derived results
-just clean
+mise run clean
 ```
 
 ## Layout
@@ -69,7 +69,7 @@ just clean
 │  ├── host-users.nix  # Hostname, local user, trust settings
 │  ├── nix-core.nix    # Nix daemon and nixpkgs options
 │  └── systems.nix     # macOS defaults (Dock, Finder, keyboard, etc.)
-├── Justfile           # Task shortcuts
+├── mise.toml          # Task shortcuts
 ├── scripts/           # Optional helpers
 └── README.md
 ```

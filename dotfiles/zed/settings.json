@@ -8,6 +8,12 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
+    "outline_panel": {
+        "dock": "right",
+    },
+    "collaboration_panel": {
+        "dock": "right",
+    },
     "icon_theme": "Zed (Default)",
     "agent_servers": {
         "gemini": {
@@ -15,9 +21,7 @@
         },
         "claude-acp": {
             "favorite_config_option_values": {
-                "model": [
-                    "opus"
-                ]
+                "model": ["opus"],
             },
             "type": "registry",
         },
@@ -26,11 +30,11 @@
         "trust_all_worktrees": true,
     },
     "terminal": {
-        "font_size": 15.0,
+        "font_size": 19,
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "light",
+        "mode": "dark",
         "light": "Ayu Light",
         "dark": "Rainbow (Dark)",
     },
@@ -45,7 +49,7 @@
         /* Use "compact" for more items or "comfortable" for more padding */
         "entry_spacing": "comfortable",
         "git_status": true,
-        "dock": "left",
+        "dock": "right",
         "indent_guides": {
             "show": "always",
         },
@@ -87,6 +91,7 @@
     },
 
     "agent": {
+        "dock": "left",
         "inline_assistant_model": {
             "provider": "anthropic",
             "model": "claude-opus-4-5-thinking-latest",

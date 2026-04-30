@@ -21,13 +21,14 @@
       dock.persistent-apps = [
         "/Applications/Arc.app"
         "/Applications/slack.app"
+        "/Applications/zoom.us.app"
         "/Applications/zed.app"
+        "/Applications/Warp.app"
+        "/Applications/WezTerm.app"
+        "/Applications/Maestro Studio.app"
+        "/Applications/Claude.app"
         "/Applications/WebStorm 2026.1.app"
         "/Applications/Notion.app"
-        "/Applications/WezTerm.app"
-        "/Applications/Claude.app"
-        "/Applications/Warp.app"
-        "/Applications/Maestro Studio.app"
         "/Applications/WhatsApp.app"
       ];
 

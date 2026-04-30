@@ -5,14 +5,19 @@ local config = wezterm.config_builder()
 config.default_prog = { "/run/current-system/sw/bin/fish", "-l" }
 
 -- Font
-config.font = wezterm.font("FiraCode Nerd Font")
-config.font_size = 19.0
+-- config.font = wezterm.font("FiraCode Nerd Font")
+config.font = wezterm.font("DankMono Nerd Font")
+config.font = wezterm.font_with_fallback({
+    "FiraCode Nerd Font",
+})
+config.font_size = 20
+config.line_height = 1.2
 
 -- Theme
 config.color_scheme = "Night Owl (Gogh)"
 
 -- Window
-config.window_padding = { left = 8, right = 8, top = 8, bottom = 8 }
+config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.window_decorations = "RESIZE"
 config.initial_cols = 220
 config.initial_rows = 50
@@ -38,5 +43,9 @@ config.keys = {
     { key = "k", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Up") },
     { key = "j", mods = "CMD|ALT",   action = wezterm.action.ActivatePaneDirection("Down") },
 }
+
+-- Miscellaneous
+config.max_fps = 120
+config.prefer_egl = true
 
 return config

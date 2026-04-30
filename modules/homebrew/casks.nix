@@ -16,28 +16,30 @@
 
     casks = [
       "nordpass"
-      # "nordvpn"
-      # "google-chrome"
+      "nordvpn"
+      "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
-      # "discord"
+      "discord"
       "proxyman" # proxy manager
-      "visual-studio-code" # IDE
+      # "visual-studio-code" # IDE
       "alfred" # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "bettertouchtool" # hotkey app
       "notion" # markdown editor
       "alt-tab"
       "font-fira-code-nerd-font" # todo:  move this ups to important
       "raycast" # launcher and automation
-      # "stats" # system monitor
+      "stats" # system monitor
       "zoom"
-      "hammerspoon" # macOS automation
+      # "hammerspoon" # macOS automation
       "claude-code" # AI assistant
-      "cursor" # AI Code Editor
-      "codex-app" # OpenAI Codex Desktop App
-      "cmux" # terminal built on ghostty
-      "affine" # workspace app
+      # "cursor" # AI Code Editor
+      # "codex-app" # OpenAI Codex Desktop App
+      # "cmux" # terminal built on ghostty
+      # "affine" # workspace app
       "whatsapp" # messaging app
       "wezterm" # terminal emulator
+      # "docker" # Docker Desktop
+      # "orbstack" # fast, light, and easy-to-use alternative to Docker Desktop
     ];
   };
 }
