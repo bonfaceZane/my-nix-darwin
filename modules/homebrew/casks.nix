@@ -19,7 +19,7 @@
       "nordvpn"
       "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
-      "discord"
+      # "discord"
       "proxyman" # proxy manager
       # "visual-studio-code" # IDE
       "alfred" # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
