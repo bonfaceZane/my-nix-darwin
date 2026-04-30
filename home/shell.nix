@@ -129,9 +129,9 @@
   home.sessionVariables = {
     ANDROID_HOME = "$HOME/Library/Android/sdk";
     ANDROID_SDK_ROOT = "$HOME/Library/Android/sdk";
-    PNPM_HOME = "/Users/obwoni000/Library/pnpm";
+    PNPM_HOME = "/Users/rafiki/Library/pnpm";
     BUN_INSTALL = "$HOME/.bun";
-    MODULAR_HOME = "/Users/obwoni000/.modular";
+    MODULAR_HOME = "/Users/rafiki/.modular";
     PROTO_HOME = "$HOME/.proto";
     GEM_HOME = "$HOME/.gem";
   };

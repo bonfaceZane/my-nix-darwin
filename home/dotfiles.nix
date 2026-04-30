@@ -182,7 +182,12 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/skill-creator";
     };
     ".claude/skills/app-icon" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/app-icon";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/skills/app-icon";
+    };
+
+    # Mise config
+    ".config/mise/config.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
     };
 
   };

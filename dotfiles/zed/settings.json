@@ -7,144 +7,146 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    // editor
-    "outline_panel": {
-        "dock": "right",
+  // editor
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "icon_theme": "Zed (Default)",
+  "agent_servers": {
+    "gemini": {
+      "type": "registry"
     },
-    "collaboration_panel": {
-        "dock": "right",
-    },
-    "icon_theme": "Zed (Default)",
-    "agent_servers": {
-        "gemini": {
-            "type": "registry",
-        },
-        "claude-acp": {
-            "favorite_config_option_values": {
-                "model": ["opus"],
-            },
-            "type": "registry",
-        },
-    },
-    "session": {
-        "trust_all_worktrees": true,
-    },
-    "terminal": {
-        "font_size": 19,
-    },
-    "base_keymap": "JetBrains",
-    "theme": {
-        "mode": "dark",
-        "light": "Ayu Light",
-        "dark": "Rainbow (Dark)",
-    },
-    "ui_font_size": 18.0,
-    "buffer_font_size": 18.0,
-    "autosave": "on_focus_change",
-    "project_panel": {
-        // "button": true,
-        "default_width": 500,
-        /* This controls the horizontal indentation of folders */
-        "indent_size": 35.0,
-        /* Use "compact" for more items or "comfortable" for more padding */
-        "entry_spacing": "comfortable",
-        "git_status": true,
-        "dock": "right",
-        "indent_guides": {
-            "show": "always",
-        },
-    },
-    "hard_tabs": false,
-    "tab_size": 4,
+    "claude-acp": {
+      "favorite_config_option_values": {
+        "model": ["opus"]
+      },
+      "type": "registry"
+    }
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "terminal": {
+    "font_size": 19
+  },
+  "base_keymap": "JetBrains",
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "Rainbow (Dark)"
+  },
+  "ui_font_size": 18.0,
+  "buffer_font_size": 18.0,
+  "autosave": "on_focus_change",
+  "project_panel": {
+    // "button": true,
+    "default_width": 500,
+    /* This controls the horizontal indentation of folders */
+    "indent_size": 35.0,
+    /* Use "compact" for more items or "comfortable" for more padding */
+    "entry_spacing": "comfortable",
+    "git_status": true,
+    "dock": "right",
+    "indent_guides": {
+      "show": "always"
+    }
+  },
+  "hard_tabs": false,
+  "tab_size": 4,
 
-    // git
-    "git_panel": {
-        "tree_view": false,
-        "dock": "right",
-        "default_width": 550.0,
+  // git
+  "git_panel": {
+    "tree_view": false,
+    "dock": "right",
+    "default_width": 550.0
+  },
+
+  "show_whitespaces": "none",
+
+  // helix
+  "helix_mode": true,
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 200
+  },
+
+  // vim
+  // "vim_mode": true,
+
+  "auto_signature_help": false,
+
+  "context_servers": {
+    "memory": {
+      "source": "custom",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
     },
+    "git": {
+      "source": "custom",
+      "env": {},
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"]
+    }
+  },
 
-    "show_whitespaces": "none",
-
-    // helix
-    "helix_mode": true,
-    "which_key": {
-        "enabled": true,
-        "delay_ms": 200,
+  "agent": {
+    "dock": "left",
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-opus-4-5-thinking-latest",
+      "enable_thinking": false
     },
-
-    // vim
-    // "vim_mode": true,
-
-    "auto_signature_help": false,
-
-    "context_servers": {
-        "memory": {
-            "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-memory"],
-        },
-        "git": {
-            "env": {},
-            "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-git"],
-        },
+    "favorite_models": [
+      {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-6-latest",
+        "enable_thinking": true
+      },
+      {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-6-thinking-latest",
+        "enable_thinking": true
+      },
+      {
+        "provider": "anthropic",
+        "model": "claude-opus-4-5-thinking-latest",
+        "enable_thinking": true
+      }
+    ],
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {
+        "terminal": {
+          "default": "allow"
+        }
+      }
     },
-
-    "agent": {
-        "dock": "left",
-        "inline_assistant_model": {
-            "provider": "anthropic",
-            "model": "claude-opus-4-5-thinking-latest",
-            "enable_thinking": false,
-        },
-        "favorite_models": [
-            {
-                "provider": "anthropic",
-                "model": "claude-sonnet-4-6-latest",
-                "enable_thinking": true,
-            },
-            {
-                "provider": "anthropic",
-                "model": "claude-sonnet-4-6-thinking-latest",
-                "enable_thinking": true,
-            },
-            {
-                "provider": "anthropic",
-                "model": "claude-opus-4-5-thinking-latest",
-                "enable_thinking": true,
-            },
-        ],
-        "tool_permissions": {
-            "default": "allow",
-            "tools": {
-                "terminal": {
-                    "default": "allow",
-                },
-            },
-        },
-        "default_model": {
-            "enable_thinking": true,
-            "provider": "anthropic",
-            "model": "claude-opus-4-5-thinking-latest",
-        },
-        "commit_message_model": {
-            "provider": "anthropic",
-            "model": "claude-haiku-4-5-20251001",
-        },
+    "default_model": {
+      "enable_thinking": true,
+      "provider": "anthropic",
+      "model": "claude-opus-4-5-thinking-latest"
     },
-    "experimental.theme_overrides": {
-        "editor.active_line.background": "#ADECE415",
-    },
+    "commit_message_model": {
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5-20251001"
+    }
+  },
+  "experimental.theme_overrides": {
+    "editor.active_line.background": "#ADECE415"
+  },
 
-    "preferred_line_length": 80,
+  "preferred_line_length": 80,
 
-    "languages": {
-        "Nix": {
-            "hard_tabs": true,
-            "tab_size": 4,
-        },
-        "Zig": {
-            "soft_wrap": "preferred_line_length",
-        },
+  "languages": {
+    "Nix": {
+      "hard_tabs": true,
+      "tab_size": 4
     },
+    "Zig": {
+      "soft_wrap": "preferred_line_length"
+    }
+  }
 }

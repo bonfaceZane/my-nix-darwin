@@ -1,6 +1,6 @@
 
 
-[tasks.build]
+[tasks.switch]
 description = "Build the system configuration"
 run = "sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure"
 alias = "b"

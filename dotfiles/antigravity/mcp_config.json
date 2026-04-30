@@ -1,10 +1,14 @@
-{"mcpServers": {"GitKraken": {
-	"args": [
-		"mcp",
-		"--host=antigravity",
-		"--source=gitlens",
-		"--scheme=antigravity"
-	],
-	"command": "/Users/obwoni000/Library/Application Support/Antigravity/User/globalStorage/eamodio.gitlens/gk",
-	"type":    "stdio"
-}}}
+{
+	"mcpServers": {
+		"GitKraken": {
+			"args": [
+				"mcp",
+				"--host=antigravity",
+				"--source=gitlens",
+				"--scheme=antigravity"
+			],
+			"command": "/Users/obwoni000/Library/Application Support/Antigravity/User/globalStorage/eamodio.gitlens/gk",
+			"type": "stdio"
+		}
+	}
+}

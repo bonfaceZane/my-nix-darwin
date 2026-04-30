@@ -29,7 +29,7 @@
 
   sops = {
     defaultSopsFile = ../secrets.yaml;
-    age.sshKeyPaths = [ "/Users/obwoni000/.ssh/id_ed25519" ];
+    age.sshKeyPaths = [ "/Users/rafiki/.ssh/id_ed25519" ];
     secrets.useremail = { };
     secrets.anthropic_api_key = { };
     secrets.anthropic_api_key_work = { };

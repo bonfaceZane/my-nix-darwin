@@ -7,7 +7,7 @@
                 "--source=gitlens",
                 "--scheme=antigravity"
             ],
-            "command": "/Users/obwoni000/Library/Application Support/Antigravity/User/globalStorage/eamodio.gitlens/gk",
+            "command": "/Users/rafiki/Library/Application Support/Antigravity/User/globalStorage/eamodio.gitlens/gk",
             "type": "stdio"
         }
     }

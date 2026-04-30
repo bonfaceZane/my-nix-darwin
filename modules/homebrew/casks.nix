@@ -16,7 +16,7 @@
 
     casks = [
       "nordpass"
-      "nordvpn"
+      # "nordvpn"
       "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
       # "discord"
@@ -40,6 +40,7 @@
       "wezterm" # terminal emulator
       # "docker" # Docker Desktop
       # "orbstack" # fast, light, and easy-to-use alternative to Docker Desktop
+      "warp" # terminal emulator
     ];
   };
 }

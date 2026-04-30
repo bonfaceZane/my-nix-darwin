@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Common Homebrew configuration shared across brews and casks.
   # Splitting Homebrew concerns improves discoverability and avoids one giant file.
   homebrew = {
@@ -13,8 +14,5 @@
       # cleanup = "zap"; # optionally remove anything not declared here
     };
 
-    taps = [
-      "homebrew/services"
-    ];
   };
 }

@@ -63,7 +63,7 @@
       ...
     }:
     let
-      username = "obwoni000";
+      username = "rafiki";
       system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
       hostname = "rafiki";
 

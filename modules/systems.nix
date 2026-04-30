@@ -11,7 +11,7 @@
   system = {
     stateVersion = 5;
     # Set the primary user for options that require it
-    primaryUser = "obwoni000";
+    primaryUser = "rafiki";
 
     defaults = {
       menuExtraClock.Show24Hour = true; # show 24 hour clock
@@ -19,6 +19,7 @@
 
       # apps to show in dock
       dock.persistent-apps = [
+        "/Applications/Apps.app"
         "/Applications/Arc.app"
         "/Applications/slack.app"
         "/Applications/zoom.us.app"
@@ -73,16 +74,16 @@
           WebKitDeveloperExtras = true;
         };
 
-        "com.apple.Safari" = {
-          AutoFillPasswords = false;
-          AutoFillCreditCardData = false;
-          AutoFillFromAddressBook = false;
-          AutoFillMiscellaneousForms = false;
-        };
+        # "com.apple.Safari" = {
+        #   AutoFillPasswords = false;
+        #   AutoFillCreditCardData = false;
+        #   AutoFillFromAddressBook = false;
+        #   AutoFillMiscellaneousForms = false;
+        # };
 
-        "com.apple.Safari.SandboxBroker" = {
-          AutoFillPasswords = false;
-        };
+        # "com.apple.Safari.SandboxBroker" = {
+        #   AutoFillPasswords = false;
+        # };
 
         "com.apple.AuthenticationServices" = {
           EnabledProviders = [ "com.nordpass.macos" ];
@@ -150,5 +151,5 @@
   programs.fish.enable = true;
 
   # Set fish as the default login shell for the primary user.
-  users.users.obwoni000.shell = pkgs.fish;
+  users.users.rafiki.shell = pkgs.fish;
 }
