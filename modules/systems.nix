@@ -19,18 +19,16 @@
 
       # apps to show in dock
       dock.persistent-apps = [
-        "/Applications/Apps.app"
-        "/Applications/Arc.app"
         "/Applications/slack.app"
+        "/Applications/Safari.app"
         "/Applications/Zed.app"
         "/Applications/Antigravity.app"
         "/Applications/zoom.us.app"
-        "/Applications/Simulator.app"
         "/Applications/Warp.app"
         "/Applications/WezTerm.app"
         "/Applications/Maestro Studio.app"
         "/Applications/Claude.app"
-        # "/Applications/WebStorm 2026.1.app"
+        "/Applications/WebStorm.app"
         "/Applications/Notion.app"
         "/Applications/WhatsApp.app"
       ];

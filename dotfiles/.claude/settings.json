@@ -7,23 +7,41 @@
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "eu.anthropic.claude-opus-4-6-v1",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": 4096,
-    "MAX_THINKING_TOKENS": 1024
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096",
+    "MAX_THINKING_TOKENS": "1024"
   },
   "attribution": {
     "commit": "",
     "pr": ""
   },
-  "spinnerVerbs": {
-    "mode": "replace",
-    "verbs": [
-      "Working"
-    ]
-  },
   "permissions": {
     "allow": [
       "mcp__pencil",
       "Bash"
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": true
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Working"
     ]
   },
   "theme": "dark-ansi"
