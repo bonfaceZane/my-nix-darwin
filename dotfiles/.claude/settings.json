@@ -1,4 +1,25 @@
 {
+  "awsAuthRefresh": "aws sso login --profile as24-bedrock-readonly",
+  "env": {
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "AWS_REGION": "eu-west-1",
+    "AWS_PROFILE": "as24-bedrock-readonly",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "eu.anthropic.claude-opus-4-6-v1",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": 4096,
+    "MAX_THINKING_TOKENS": 1024
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Working"
+    ]
+  },
   "permissions": {
     "allow": [
       "mcp__pencil",
