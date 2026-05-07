@@ -20,6 +20,7 @@
       # apps to show in dock
       dock.persistent-apps = [
         "/Applications/slack.app"
+        "/Applications/Microsoft Outlook.app"
         "/Applications/Safari.app"
         "/Applications/Zed.app"
         "/Applications/Antigravity.app"

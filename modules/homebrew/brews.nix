@@ -40,5 +40,6 @@
     "mobile-dev-inc/tap/maestro"
     "yeet" # package manager/tool
     "posting" # Modern API client that lives in your terminal
+    "awscli" # AWS Command Line Interface
   ];
 }
