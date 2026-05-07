@@ -70,7 +70,7 @@ command = "typescript-language-server"
 args = ["--stdio"]
 
 [language-server.typescript-language-server.config]
-format.enable = false # Use Prettier instead
+format.enable = false                                                   # Use Prettier instead
 preferences.importModuleSpecifierPreference = "relative"
 inlayHints.includeInlayParameterNameHints = "all"
 inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName = true

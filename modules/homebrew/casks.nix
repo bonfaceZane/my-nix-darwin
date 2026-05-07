@@ -16,10 +16,9 @@
 
     casks = [
       "nordpass"
-      # "nordvpn"
+      "nordvpn"
       "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
-      # "proxyman" # proxy manager
       "alfred" # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "bettertouchtool" # hotkey app
       "notion" # markdown editor
@@ -28,7 +27,7 @@
       "raycast" # launcher and automation
       "stats" # system monitor
       "zoom"
-      # "hammerspoon" # macOS automation
+      "hammerspoon" # macOS automation
       "claude-code" # AI assistant
       "codex-app" # OpenAI Codex Desktop App
       "whatsapp" # messaging app
