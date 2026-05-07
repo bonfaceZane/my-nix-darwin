@@ -12,6 +12,7 @@
       "Tailscale" = 1475387142;
       "Xcode" = 497799835;
       "Microsoft Outlook" = 985367838;
+      "CodeX" = 6759583690;
     };
 
     casks = [
