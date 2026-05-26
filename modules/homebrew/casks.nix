@@ -12,7 +12,7 @@
       "Tailscale" = 1475387142;
       "Xcode" = 497799835;
       "Microsoft Outlook" = 985367838;
-      "CodeX" = 6759583690;
+#      "CodeX" = 6759583690;
     };
 
     casks = [
@@ -35,6 +35,10 @@
       "wezterm" # terminal emulator
       "warp" # terminal emulator
       "claude" # AI assistant for claude
+      "keyman" # for keyboard management
+      "visual-studio-code" # ide
+      "wezterm"
+      "codex"
     ];
   };
 }

@@ -159,5 +159,8 @@
     dev = "mise dev";
     ios = "mise ios";
     android = "mise android";
+    build = "mise build";
+    open = "mise open";
+    switch = "mise switch";
   };
 }

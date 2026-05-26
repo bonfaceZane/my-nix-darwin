@@ -17,12 +17,12 @@
   #
   # import sub modules
   imports = [
-    ./shell.nix
+    ./app-settings/shell.nix
+    ./app-settings/starship.nix
+    ./app-settings/git.nix
     ./dotfiles.nix
     ./apps.nix
     ./core.nix
-    ./git.nix
-    ./starship.nix
     ../modules/mise.nix
     sops-nix.homeManagerModules.sops
   ];

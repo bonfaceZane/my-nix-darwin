@@ -190,5 +190,9 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
     };
 
+    # codex
+    ".codex/config.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+    };
   };
 }

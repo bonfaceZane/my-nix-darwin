@@ -4,10 +4,11 @@
     "CLAUDE_CODE_USE_BEDROCK": "1",
     "AWS_REGION": "eu-west-1",
     "AWS_PROFILE": "as24-bedrock-readonly",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "eu.anthropic.claude-opus-4-6-v1",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096",
+    "ANTHROPIC_MODEL": "eu.anthropic.claude-opus-4-7[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "eu.anthropic.claude-opus-4-7[1m]",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096",
     "MAX_THINKING_TOKENS": "1024"
   },
   "attribution": {
@@ -20,6 +21,7 @@
       "Bash"
     ]
   },
+  "model": "eu.anthropic.claude-opus-4-7[1m]",
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
@@ -36,7 +38,16 @@
     "figma@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "chrome-devtools-mcp@claude-plugins-official": true
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "onboarding@agent-skills-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "agent-skills-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "AutoScout24/agent-skills-marketplace"
+      }
+    }
   },
   "spinnerVerbs": {
     "mode": "replace",
