@@ -106,14 +106,11 @@
   };
 
   home.shellAliases = {
-    # Package managers
+    # pnpm
     p = "pnpm";
     i = "pnpm i";
     c = "pnpm cache";
     d = "pnpx npkill -D -y";
-
-    # Kubernetes
-    k = "kubectl";
 
     # Jump (autojump)
     j = "jump";
@@ -161,6 +158,5 @@
     android = "mise android";
     build = "mise build";
     open = "mise open";
-    switch = "mise switch";
   };
 }

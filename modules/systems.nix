@@ -23,6 +23,8 @@
         "/Applications/Microsoft Outlook.app"
         "/Applications/Safari.app"
         "/Applications/Antigravity.app"
+        "/Applications/Visual Studio Code.app"
+        "/Applications/Maestro Studio.app"
         "/Applications/zoom.us.app"
         "/Applications/Warp.app"
         "/Applications/WezTerm.app"
@@ -30,6 +32,7 @@
         "/Applications/Claude.app"
         "/Applications/Notion.app"
         "/Applications/WhatsApp.app"
+        "/Applications/NordPass® Password Manager & Digital Vault.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";

@@ -32,7 +32,7 @@ run = "eas env:pull production --non-interactive"
 [tasks."watchman:reset"]
 description = "Clear watchman watches (Runs only when yarn.lock changes)"
 run = [
-  "watchman watch-del-all || true",
+  "watchman shutdown-server || true",
   "mkdir -p .mise/cache && touch .mise/cache/watchman-reset",
 ]
 sources = ["yarn.lock"]

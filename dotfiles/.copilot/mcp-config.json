@@ -1,0 +1,9 @@
+{
+    "mcpServers": {
+        "maestro": {
+            "type": "local",
+            "command": "maestro",
+            "args": ["mcp"]
+        }
+    }
+}

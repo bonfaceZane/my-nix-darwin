@@ -56,6 +56,17 @@ in
     ".gemini/antigravity/browserAllowlist.txt" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/antigravity/browserAllowlist.txt";
     };
+    # General Gemini settings
+    ".gemini/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.gemini/settings.json") {
+      source = "${dotfiles}/.gemini/settings.json";
+      force = true;
+    };
+
+    # Copilot MCP config
+    ".copilot/mcp-config.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.copilot/mcp-config.json") {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.copilot/mcp-config.json";
+      force = true;
+    };
 
     # Global Git Ignore
     ".gitignore_global" = {
@@ -127,6 +138,11 @@ in
     # Claude Code notes
     ".claude/CLAUDE.md" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/CLAUDE.md";
+    };
+    # Claude local config (e.g. MCP servers)
+    ".claude.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude.json";
+      force = true;
     };
 
     # Claude Code skills
