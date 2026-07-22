@@ -1,9 +1,0 @@
-model = "o3"
-approval_mode = "suggest"
-
-[providers]
-default = "chatgpt"
-
-[mcp_servers.maestro]
-command = "maestro"
-args = ["mcp"]

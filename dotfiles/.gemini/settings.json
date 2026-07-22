@@ -3,6 +3,10 @@
         "maestro": {
             "command": "maestro",
             "args": ["mcp"]
+        },
+        "radon": {
+            "command": "npx",
+            "args": ["-y", "radon-mcp@latest", "/Users/rafiki/Documents/work/amv-apps"]
         }
     }
 }

@@ -12,13 +12,13 @@
       "Tailscale" = 1475387142;
       "Xcode" = 497799835;
       "Microsoft Outlook" = 985367838;
-#      "CodeX" = 6759583690;
+      #      "CodeX" = 6759583690;
     };
 
     casks = [
       "nordpass"
       "nordvpn"
-      "google-chrome"
+      # "google-chrome"
       "fluor" # for managing fn keys for different keyboards in macOS
       "alfred" # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
       "bettertouchtool" # hotkey app
@@ -29,16 +29,17 @@
       "stats" # system monitor
       "zoom"
       "hammerspoon" # macOS automation
-      "claude-code" # AI assistant
+      # "claude-code" # AI assistant
       "codex-app" # OpenAI Codex Desktop App
       "whatsapp" # messaging app
       "wezterm" # terminal emulator
       "warp" # terminal emulator
-      "claude" # AI assistant for claude
+      # "claude" # AI assistant for claude
       "keyman" # for keyboard management
       "visual-studio-code" # ide
       "wezterm"
       "codex"
+      "supacode" # Supabase CLI terminal
     ];
   };
 }

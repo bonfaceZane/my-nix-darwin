@@ -128,79 +128,6 @@ in
     ".config/fish/conf.d/extra.fish" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/fish/extra.fish";
     };
-
-    # Claude Code settings (only settings.json — runtime dirs stay untracked)
-    ".claude/settings.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
-      force = true;
-    };
-
-    # Claude Code notes
-    ".claude/CLAUDE.md" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/CLAUDE.md";
-    };
-    # Claude local config (e.g. MCP servers)
-    ".claude.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude.json";
-      force = true;
-    };
-
-    # Claude Code skills
-    ".claude/skills/nix-rebuild" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/nix-rebuild";
-    };
-    ".claude/skills/nix-update" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/nix-update";
-    };
-    ".claude/skills/sops-edit" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/sops-edit";
-    };
-    ".claude/skills/expo-react-native" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/expo-react-native";
-    };
-    ".claude/skills/tanstack-query" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/tanstack-query";
-    };
-    ".claude/skills/nx" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/nx";
-    };
-    ".claude/skills/swift" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/swift";
-    };
-    ".claude/skills/kotlin" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/kotlin";
-    };
-    ".claude/skills/zig" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/zig";
-    };
-    ".claude/skills/sqlite" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/sqlite";
-    };
-    ".claude/skills/rust" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/rust";
-    };
-    ".claude/skills/maestro" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/maestro";
-    };
-    ".claude/skills/eas" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/eas";
-    };
-    ".claude/skills/building-native-ui" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/building-native-ui";
-    };
-    ".claude/skills/explain-code" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/explain-code";
-    };
-    ".claude/skills/react-native-skills" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/react-native-skills";
-    };
-    ".claude/skills/skill-creator" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/skills/skill-creator";
-    };
-    ".claude/skills/app-icon" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/skills/app-icon";
-    };
-
     # Mise config
     ".config/mise/config.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
@@ -209,6 +136,10 @@ in
     # codex
     ".codex/config.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+    };
+    ".codex/AGENTS.md" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/AGENTS.md";
+      force = true;
     };
   };
 }
