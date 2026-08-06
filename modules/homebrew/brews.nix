@@ -1,4 +1,3 @@
-{ ... }:
 {
   # Homebrew formulae (brew install <name>)
   # you can search by typing: `brew search <name>`
@@ -11,6 +10,7 @@
     "libksba" # libksba is a library to make X.509 certificates and CMS easily accessible by C programs
     "gh"
     "git"
+    "pkgconf" # canonical Homebrew formula (also provides pkg-config)
     "gmp"
     "libyaml"
     "openssl"

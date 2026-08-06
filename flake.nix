@@ -82,6 +82,7 @@
           ./modules/nix-core.nix
           ./modules/systems.nix
           ./modules/host-users.nix
+          ./services/postgres.nix
 
           # --- Sops (secrets management) ---
           sops-nix.darwinModules.sops

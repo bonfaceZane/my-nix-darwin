@@ -134,10 +134,10 @@ in
     };
 
     # codex
-    ".codex/config.toml" = {
+    ".codex/config.toml" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/config.toml") {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
     };
-    ".codex/AGENTS.md" = {
+    ".codex/AGENTS.md" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/AGENTS.md") {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/AGENTS.md";
       force = true;
     };
