@@ -1,8 +1,21 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 let
   bashAliasesPath = ../dotfiles/.bash_aliases;
   amvPath = ../dotfiles/amv;
   dotfiles = "${config.home.homeDirectory}/Documents/subira/my-nix-darwin/dotfiles";
+  ghStackSkill = pkgs.runCommand "gh-stack-agent-skill" { } ''
+    mkdir -p "$out"
+    cp -R ${pkgs.gh-stack.src}/skills/gh-stack/. "$out/"
+  '';
+  ghStackSkillTargets = [
+    ".agents/skills/gh-stack" # shared Agent Skills location
+    ".claude/skills/gh-stack"
+    ".codex/skills/gh-stack"
+    ".cursor/skills/gh-stack"
+    ".gemini/skills/gh-stack"
+    ".gemini/antigravity/skills/gh-stack"
+    ".windsurf/skills/gh-stack"
+  ];
 in
 {
   # Central place to safely link repo-tracked dotfiles into $HOME.
@@ -133,13 +146,38 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
     };
 
-    # codex
+    # Shared AI instructions
+    ".agents/AGENTS.md" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
+      force = true;
+    };
+    ".claude/CLAUDE.md" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/CLAUDE.md";
+      force = true;
+    };
+    ".codex/AGENTS.md" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
+      force = true;
+    };
+    # Gemini reads this filename because dotfiles/.gemini/settings.json sets
+    # contextFileName to AGENTS.md.
+    ".gemini/AGENTS.md" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
+      force = true;
+    };
+
+    # Codex configuration
     ".codex/config.toml" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/config.toml") {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
     };
-    ".codex/AGENTS.md" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/AGENTS.md") {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/AGENTS.md";
-      force = true;
-    };
-  };
+  } // builtins.listToAttrs (
+    map (target: {
+      name = target;
+      value = {
+        # Keep the upstream skill immutable while centralizing its home links here.
+        source = ghStackSkill;
+        force = true;
+      };
+    }) ghStackSkillTargets
+  );
 }

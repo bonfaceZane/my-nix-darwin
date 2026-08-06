@@ -10,6 +10,7 @@
     sops
     zed-editor
     devbox # Nix-based dev environment manager
+    gh-stack # GitHub CLI extension for stacked pull requests
 
     # Language Servers & Formatters
     nodePackages.typescript-language-server
