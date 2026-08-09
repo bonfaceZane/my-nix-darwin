@@ -19,7 +19,11 @@
     "collaboration_panel": {
         "dock": "right"
     },
-    "icon_theme": "Material Icon Theme",
+    "icon_theme": {
+        "mode": "light",
+        "light": "Material Icon Theme",
+        "dark": "Material Icon Theme"
+    },
     "session": {
         "trust_all_worktrees": true
     },
@@ -27,7 +31,11 @@
         "font_size": 19
     },
     "base_keymap": "JetBrains",
-    "theme": "One Dark Pro Glass",
+    "theme": {
+        "mode": "dark",
+        "light": "One Light",
+        "dark": "One Dark Pro Glass"
+    },
     "ui_font_size": 20.0,
     "buffer_font_size": 18.0,
     "autosave": "on_focus_change",
