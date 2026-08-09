@@ -8,17 +8,21 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
+    "agent": {
+        "dock": "right",
+        "favorite_models": [],
+        "model_parameters": []
+    },
     "outline_panel": {
         "dock": "right"
     },
     "collaboration_panel": {
         "dock": "right"
     },
-    "icon_theme": "Zed (Default)",
-    "agent_servers": {
-        "gemini": {
-            "type": "registry"
-        }
+    "icon_theme": {
+        "mode": "light",
+        "light": "Material Icon Theme",
+        "dark": "Material Icon Theme"
     },
     "session": {
         "trust_all_worktrees": true
@@ -29,10 +33,10 @@
     "base_keymap": "JetBrains",
     "theme": {
         "mode": "dark",
-        "light": "Ayu Light",
-        "dark": "Rainbow (Dark)"
+        "light": "One Light",
+        "dark": "One Dark Pro Glass"
     },
-    "ui_font_size": 18.0,
+    "ui_font_size": 20.0,
     "buffer_font_size": 18.0,
     "autosave": "on_focus_change",
     "project_panel": {
@@ -57,7 +61,9 @@
         "dock": "right",
         "default_width": 550.0
     },
+
     "show_whitespaces": "none",
+
     // helix
     "helix_mode": true,
     "which_key": {
@@ -65,28 +71,21 @@
         "delay_ms": 200
     },
     // vim
-    // "vim_mode": true,
+    "vim_mode": true,
+
     "auto_signature_help": false,
+
     "context_servers": {
         "memory": {
+            "source": "custom",
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-memory"]
         },
         "git": {
+            "source": "custom",
             "env": {},
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-git"]
-        }
-    },
-    "agent": {
-        "dock": "left",
-        "tool_permissions": {
-            "default": "allow",
-            "tools": {
-                "terminal": {
-                    "default": "allow"
-                }
-            }
         }
     },
     "experimental.theme_overrides": {
@@ -97,9 +96,6 @@
         "Nix": {
             "hard_tabs": true,
             "tab_size": 4
-        },
-        "Zig": {
-            "soft_wrap": "preferred_line_length"
         }
     }
 }
