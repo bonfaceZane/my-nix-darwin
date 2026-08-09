@@ -64,15 +64,12 @@
 
     "show_whitespaces": "none",
 
-    // helix
+    // Helix mode includes Vim mode and provides the space-prefix keymap.
     "helix_mode": true,
     "which_key": {
         "enabled": true,
         "delay_ms": 200
     },
-    // vim
-    "vim_mode": true,
-
     "auto_signature_help": false,
 
     "context_servers": {

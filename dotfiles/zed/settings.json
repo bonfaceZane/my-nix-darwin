@@ -11,7 +11,12 @@
     "agent": {
         "dock": "right",
         "favorite_models": [],
-        "model_parameters": []
+        "model_parameters": [],
+        "commit_message_model": {
+            "provider": "google",
+            "model": "gemini-3.5-flash"
+        },
+        "commit_message_instructions": "Generate a concise Conventional Commit message. Use an imperative subject in the format <type>(<scope>): <description>, keep the subject under 72 characters, and return only the commit message without quotes, Markdown, or explanation."
     },
     "outline_panel": {
         "dock": "right"
@@ -71,6 +76,9 @@
         "delay_ms": 200
     },
     "auto_signature_help": false,
+    "vim": {
+        "use_smartcase_find": true
+    },
 
     "context_servers": {
         "memory": {
