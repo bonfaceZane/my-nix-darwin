@@ -3,9 +3,15 @@ let
   bashAliasesPath = ../dotfiles/.bash_aliases;
   amvPath = ../dotfiles/amv;
   dotfiles = "${config.home.homeDirectory}/Documents/subira/my-nix-darwin/dotfiles";
+  ghStackSource = pkgs.fetchFromGitHub {
+    owner = "github";
+    repo = "gh-stack";
+    rev = "refs/tags/v0.1.0";
+    hash = "sha256-48JkOeqbvHlCZ2u3LnwJymw55xMQWLTPJLDbV44clGI=";
+  };
   ghStackSkill = pkgs.runCommand "gh-stack-agent-skill" { } ''
     mkdir -p "$out"
-    cp -R ${pkgs.gh-stack.src}/skills/gh-stack/. "$out/"
+    cp -R ${ghStackSource}/skills/gh-stack/. "$out/"
   '';
   ghStackSkillTargets = [
     ".agents/skills/gh-stack" # shared Agent Skills location
@@ -137,6 +143,22 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/.lintstagedrc.json";
     };
 
+    # AMV AI configuration. Keep the workspace's existing AGENTS.md/CLAUDE.md
+    # authoritative; only provide these files when the workspace does not own
+    # them yet.
+    "Documents/work/amv-apps/.gemini/settings.json" = lib.mkIf (
+      !builtins.pathExists "${config.home.homeDirectory}/Documents/work/amv-apps/.gemini/settings.json"
+    ) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/.gemini/settings.json";
+      force = true;
+    };
+    "Documents/work/amv-apps/.mcp.json" = lib.mkIf (
+      !builtins.pathExists "${config.home.homeDirectory}/Documents/work/amv-apps/.mcp.json"
+    ) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/.mcp.json";
+      force = true;
+    };
+
     # Fish extra config (auto-sourced by Fish via conf.d; edit dotfiles/fish/extra.fish)
     ".config/fish/conf.d/extra.fish" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/fish/extra.fish";
@@ -144,26 +166,6 @@ in
     # Mise config
     ".config/mise/config.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
-    };
-
-    # Shared AI instructions
-    ".agents/AGENTS.md" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
-      force = true;
-    };
-    ".claude/CLAUDE.md" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/CLAUDE.md";
-      force = true;
-    };
-    ".codex/AGENTS.md" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
-      force = true;
-    };
-    # Gemini reads this filename because dotfiles/.gemini/settings.json sets
-    # contextFileName to AGENTS.md.
-    ".gemini/AGENTS.md" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
-      force = true;
     };
 
     # Codex configuration

@@ -37,6 +37,7 @@
       # "claude" # AI assistant for claude
       "keyman" # for keyboard management
       "visual-studio-code" # ide
+      "zed" # IDE
       "wezterm"
       "codex"
       "supacode" # Supabase CLI terminal

@@ -21,6 +21,8 @@
       dock.persistent-apps = [
         "/Applications/slack.app"
         "/Applications/Microsoft Outlook.app"
+        "/Applications/Dia.app"
+        "/Applications/Zed.app"
         "/Applications/Safari.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/Maestro Studio.app"
