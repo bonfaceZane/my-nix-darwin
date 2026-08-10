@@ -12,6 +12,30 @@
       "shift-s": ["vim::PushSneakBackward", {}],
     },
   },
+  // VS Code-compatible shortcuts that do not replace core JetBrains bindings.
+  {
+    "context": "Workspace",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-shift-p": "command_palette::Toggle",
+      "cmd-shift-e": "project_panel::ToggleFocus",
+      "ctrl-shift-g": "git_panel::ToggleFocus",
+      "cmd-shift-d": "debug_panel::ToggleFocus",
+      "cmd-shift-x": "zed::Extensions",
+      "ctrl-`": "terminal_panel::Toggle",
+      "cmd-k z": "workspace::ToggleCenteredLayout",
+    },
+  },
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      "shift-alt-f": "editor::Format",
+      "cmd-k cmd-f": "editor::FormatSelections",
+      "alt-z": "editor::ToggleSoftWrap",
+      "cmd-k f12": "editor::GoToDefinitionSplit",
+    },
+  },
   {
     "bindings": {
       "cmd-j": "workspace::ToggleBottomDock",

@@ -8,6 +8,12 @@
         "min_line_number_digits": 0
     },
     "agent": {
+        "sandbox_permissions": {
+            "network_hosts": [
+                "github.com",
+                "api.github.com"
+            ]
+        },
         "tool_permissions": {
             "tools": {
                 "terminal": {
