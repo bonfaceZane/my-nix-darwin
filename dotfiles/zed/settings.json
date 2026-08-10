@@ -9,9 +9,16 @@
     },
     "agent": {
         "sandbox_permissions": {
+            "write_paths": [
+                {
+                    "requested": "/Users/rafiki/.cache/gh",
+                    "resolved": "/Users/rafiki/.cache/gh"
+                }
+            ],
             "network_hosts": [
                 "github.com",
-                "api.github.com"
+                "api.github.com",
+                "*.githubusercontent.com"
             ]
         },
         "tool_permissions": {
