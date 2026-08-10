@@ -17,7 +17,7 @@
 
 ## Nix as Source of Truth
 - All setup is done through Nix — no manual `brew install`/`npm -g`/`pip install`.
-- GUI apps & formulae: `modules/homebrew/casks.nix` + `modules/homebrew/brews.nix` (managed via `nix-homebrew`, `homebrew.onActivation.cleanup = "zap"` enforces declarative state).
+- GUI apps & formulae: `modules/homebrew/casks.nix` + `modules/homebrew/brews.nix` (managed via `nix-homebrew`; activation upgrades declared packages).
 - System packages: `modules/system-packages.nix`
 - User packages & language servers: `home/apps.nix` + `home/core.nix`
 - Dotfiles: `home/dotfiles.nix` links `dotfiles/*` via `mkOutOfStoreSymlink` — edit there, then `darwin-rebuild switch --flake .#rafiki`.
