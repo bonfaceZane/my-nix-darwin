@@ -44,6 +44,7 @@ in
     vscode-langservers-extracted # eslint, html, css, json
     nodePackages.prettier
     nil # Nix language server
+    nixd # Nix language server used by Zed's Nix extension
     biome
 
     # Add more user-only tools here, e.g.:

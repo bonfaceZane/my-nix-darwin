@@ -8,10 +8,47 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
+    "diff_view_style": "unified",
+    "minimap": {
+        "show": "auto",
+        "max_width_columns": 40
+    },
+    "gutter": {
+        "min_line_number_digits": 0
+    },
     "agent": {
+        "tool_permissions": {
+            "tools": {
+                "create_directory": {
+                    "default": "allow"
+                }
+            }
+        },
+        "default_model": {
+            "provider": "google",
+            "model": "gemini-3.6-flash"
+        },
         "dock": "right",
-        "favorite_models": [],
-        "model_parameters": []
+        "favorite_models": [
+            {
+                "provider": "google",
+                "model": "gemini-3.6-flash"
+            },
+            {
+                "provider": "google",
+                "model": "gemini-3.5-flash-lite"
+            },
+            {
+                "provider": "ollama",
+                "model": "qwen2.5-coder:7b"
+            }
+        ],
+        "model_parameters": [],
+        "commit_message_model": {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite"
+        },
+        "commit_message_instructions": "Generate a concise Conventional Commit message. Use an imperative subject in the format <type>(<scope>): <description>, keep the subject under 72 characters, and return only the commit message without quotes, Markdown, or explanation."
     },
     "outline_panel": {
         "dock": "right"
@@ -32,9 +69,9 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "dark",
+        "mode": "system",
         "light": "One Light",
-        "dark": "One Dark Pro Glass"
+        "dark": "Night Owl Dark"
     },
     "ui_font_size": 20.0,
     "buffer_font_size": 18.0,
@@ -54,6 +91,11 @@
     },
     "hard_tabs": false,
     "tab_size": 4,
+    "show_edit_predictions": true,
+    "edit_predictions": {
+        "provider": "zed",
+        "mode": "eager"
+    },
 
     // git
     "git_panel": {
@@ -71,6 +113,9 @@
         "delay_ms": 200
     },
     "auto_signature_help": false,
+    "vim": {
+        "use_smartcase_find": true
+    },
 
     "context_servers": {
         "memory": {
