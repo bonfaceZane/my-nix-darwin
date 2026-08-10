@@ -9,6 +9,7 @@
     },
     "agent": {
         "sandbox_permissions": {
+            "allow_unsandboxed": true,
             "write_paths": [
                 {
                     "requested": "/Users/rafiki/.cache/gh",
@@ -46,6 +47,7 @@
             }
         },
         "default_model": {
+            "effort": "max",
             "provider": "google",
             "model": "gemini-3.1-flash-lite"
         },
@@ -86,7 +88,7 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "system",
+        "mode": "dark",
         "light": "One Light",
         "dark": "Night Owl Dark"
     },
