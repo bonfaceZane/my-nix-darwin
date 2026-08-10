@@ -31,7 +31,6 @@
       "nordpass"
       "nordvpn"
       "notion" # markdown editor
-      "ollama-app" # local AI models for Zed edit predictions
       "proxyman"
       "raycast" # launcher and automation
       "stats" # system monitor

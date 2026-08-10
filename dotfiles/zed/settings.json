@@ -16,8 +16,10 @@
             }
         },
         "default_model": {
-            "provider": "google",
-            "model": "gemini-3.1-flash-lite"
+            "effort": "xhigh",
+            "enable_thinking": true,
+            "provider": "openai-subscribed",
+            "model": "gpt-5.6-sol"
         },
         "dock": "right",
         "favorite_models": [

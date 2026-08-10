@@ -37,10 +37,6 @@
             {
                 "provider": "google",
                 "model": "gemini-3.1-pro-preview"
-            },
-            {
-                "provider": "ollama",
-                "model": "qwen2.5-coder:7b"
             }
         ],
         "model_parameters": [],
@@ -93,13 +89,7 @@
     "tab_size": 4,
     "show_edit_predictions": true,
     "edit_predictions": {
-        "provider": "ollama",
-        "ollama": {
-            "api_url": "http://localhost:11434",
-            "model": "qwen2.5-coder:7b-base",
-            "prompt_format": "infer",
-            "max_output_tokens": 512
-        },
+        "provider": "zed",
         "mode": "eager"
     },
 
