@@ -10,16 +10,31 @@
     "agent": {
         "tool_permissions": {
             "tools": {
+                "terminal": {
+                    "default": "allow",
+                    "always_allow": [
+                        {
+                            "pattern": "^readlink\\s+/nix/store/6vz5bm1a9s68n23vdqk7nsrilg0hg375-hm_zed(\\s|$)"
+                        },
+                        {
+                            "pattern": "^git\\b"
+                        },
+                        {
+                            "pattern": "^nl\\b"
+                        },
+                        {
+                            "pattern": "^sed\\b"
+                        }
+                    ]
+                },
                 "create_directory": {
                     "default": "allow"
                 }
             }
         },
         "default_model": {
-            "effort": "xhigh",
-            "enable_thinking": true,
-            "provider": "openai-subscribed",
-            "model": "gpt-5.6-sol"
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite"
         },
         "dock": "right",
         "favorite_models": [
@@ -30,10 +45,6 @@
             {
                 "provider": "google",
                 "model": "gemini-3.1-pro-preview"
-            },
-            {
-                "provider": "ollama",
-                "model": "qwen2.5-coder:7b"
             }
         ],
         "model_parameters": [],
@@ -84,6 +95,7 @@
     "tab_size": 4,
     "show_edit_predictions": true,
     "edit_predictions": {
+        "allow_data_collection": "yes",
         "provider": "zed",
         "mode": "eager"
     },
@@ -108,12 +120,10 @@
 
     "context_servers": {
         "memory": {
-            "source": "custom",
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-memory"]
         },
         "git": {
-            "source": "custom",
             "env": {},
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-git"]
