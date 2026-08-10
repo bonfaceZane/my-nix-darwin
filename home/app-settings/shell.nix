@@ -158,5 +158,6 @@
     and = "mise android";
     build = "mise build";
     open = "mise open";
+    switch = "mise switch";
   };
 }
