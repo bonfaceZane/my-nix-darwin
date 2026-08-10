@@ -11,7 +11,7 @@
     onActivation = {
       autoUpdate = true; # Fetch newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
-      # cleanup = "zap"; # optionally remove anything not declared here
+      cleanup = "zap"; # enforce nix as source of truth: remove anything not declared in brews/casks
     };
 
   };

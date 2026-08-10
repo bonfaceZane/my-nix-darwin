@@ -12,3 +12,27 @@
 - For Nx plugin best practices, check `node_modules/@nx/<plugin>/PLUGIN.md`. Not all plugins have this file - proceed without it if unavailable.
 
 <!-- nx configuration end-->
+
+# Repo Conventions — my-nix-darwin
+
+## Nix as Source of Truth
+- All setup is done through Nix — no manual `brew install`/`npm -g`/`pip install`.
+- GUI apps & formulae: `modules/homebrew/casks.nix` + `modules/homebrew/brews.nix` (managed via `nix-homebrew`, `homebrew.onActivation.cleanup = "zap"` enforces declarative state).
+- System packages: `modules/system-packages.nix`
+- User packages & language servers: `home/apps.nix` + `home/core.nix`
+- Dotfiles: `home/dotfiles.nix` links `dotfiles/*` via `mkOutOfStoreSymlink` — edit there, then `darwin-rebuild switch --flake .#rafiki`.
+- Secrets: `sops-nix` (`secrets.yaml` + `home/default.nix:sops`).
+- After any change: `nix flake check` / `darwin-rebuild switch --flake .#rafiki` to verify.
+
+## Atomic Commits
+- Every commit is atomic: one logical change per commit, conventional commit message `<type>(<scope>): <description>` (imperative, <72 chars subject), as configured in `dotfiles/zed/settings.json:agent.commit_message_instructions` and `dotfiles/git/config`.
+- Group related file changes together; split unrelated changes into separate commits.
+- No fixup in a single atomic commit — use `git commit` per feature/fix/doc/refactor.
+
+## Auto-Permissions (non-sensitive)
+- By default, auto-allow file edits, builds, lints, tests, and safe reads that do not touch secrets, network exfiltration, or destructive system changes.
+- Require explicit approval for: writes to `secrets.yaml`/keychain, `sops` re-encryption, network publishes, `brew cleanup --zap` deletions, `nix store` GC, or any `rm -rf` outside the workspace.
+- This policy applies to Codex (`dotfiles/.codex/config.toml`), Muse (`dotfiles/.claude/settings.json` / `dotfiles/ai/.agent/settings.json`), and Gemini (`dotfiles/.gemini/settings.json` / `dotfiles/ai/.gemini/settings.json`).
+
+## Skills
+- This repo's AI skills are centrally documented here and mirror-linked via `home/dotfiles.nix:ghStackSkillTargets` to `.agents/skills`, `.codex/skills`, `.claude/skills`, etc. Keep skills immutable upstream, link them here.

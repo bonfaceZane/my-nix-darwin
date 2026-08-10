@@ -8,9 +8,40 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
     // editor
+    "diff_view_style": "unified",
+    "minimap": {
+        "show": "auto"
+    },
+    "gutter": {
+        "min_line_number_digits": 0
+    },
     "agent": {
+        "tool_permissions": {
+            "tools": {
+                "create_directory": {
+                    "default": "allow"
+                }
+            }
+        },
+        "default_model": {
+            "provider": "google",
+            "model": "gemini-2.5-flash-lite"
+        },
         "dock": "right",
-        "favorite_models": [],
+        "favorite_models": [
+            {
+                "provider": "google",
+                "model": "gemini-2.5-flash-lite"
+            },
+            {
+                "provider": "google",
+                "model": "gemini-2.0-flash"
+            },
+            {
+                "provider": "ollama",
+                "model": "qwen2.5-coder:7b"
+            }
+        ],
         "model_parameters": [],
         "commit_message_model": {
             "provider": "google",
@@ -37,9 +68,9 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "dark",
+        "mode": "system",
         "light": "One Light",
-        "dark": "One Dark Pro Glass"
+        "dark": "Night Owl Dark"
     },
     "ui_font_size": 20.0,
     "buffer_font_size": 18.0,
@@ -59,6 +90,11 @@
     },
     "hard_tabs": false,
     "tab_size": 4,
+    "show_edit_predictions": true,
+    "edit_predictions": {
+        "provider": "zed",
+        "mode": "eager"
+    },
 
     // git
     "git_panel": {

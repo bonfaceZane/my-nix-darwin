@@ -12,3 +12,22 @@
 - For Nx plugin best practices, check `node_modules/@nx/<plugin>/PLUGIN.md`. Not all plugins have this file - proceed without it if unavailable.
 
 <!-- nx configuration end-->
+
+# Repo Conventions — my-nix-darwin
+
+## Nix as Source of Truth
+- All setup is done through Nix — no manual `brew install`/`npm -g`/`pip install`.
+- GUI apps & formulae: `modules/homebrew/casks.nix` + `modules/homebrew/brews.nix` (managed via `nix-homebrew`, `homebrew.onActivation.cleanup = "zap"`).
+- System packages: `modules/system-packages.nix`
+- User packages: `home/apps.nix` + `home/core.nix`
+- Dotfiles: `home/dotfiles.nix` via `mkOutOfStoreSymlink`
+- After change: `darwin-rebuild switch --flake .#rafiki`
+
+## Atomic Commits
+- Every commit atomic: one logical change, conventional commit `<type>(<scope>): <description>` imperative <72 chars.
+- As in `dotfiles/zed/settings.json:agent.commit_message_instructions`.
+
+## Auto-Permissions
+- Auto-allow non-sensitive: file edits, builds, lints, tests, safe reads.
+- Require approval: secrets.yaml, keychain, sops, network publish, `brew cleanup --zap`, destructive `rm -rf`.
+- Applies to Codex, Muse, Gemini configs under `dotfiles/`.

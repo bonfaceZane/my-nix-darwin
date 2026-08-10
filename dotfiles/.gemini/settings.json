@@ -1,4 +1,11 @@
 {
+    // Gemini CLI — nix-managed (see dotfiles/ai/AGENTS.md: Nix as Source of Truth)
+    // Auto-allow non-sensitive: file edits, builds, lints, safe reads. Sensitive (secrets.yaml, keychain, network publish) requires approval.
+    // Atomic commits: one logical change per commit, conventional commits <72 chars.
+    "general": {
+        "previewFeatures": true,
+        "autoApproveSafeEdits": true
+    },
     "mcpServers": {
         "maestro": {
             "command": "maestro",
@@ -8,5 +15,9 @@
             "command": "npx",
             "args": ["-y", "radon-mcp@latest", "/Users/rafiki/Documents/work/amv-apps"]
         }
+    },
+    "permissions": {
+        "autoAllowNonSensitive": true,
+        "sensitivePaths": ["secrets.yaml", ".sops.yaml", "~/.ssh", "~/.config/sops"]
     }
 }

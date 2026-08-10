@@ -24,6 +24,9 @@
       push.autoSetupRemote = true;
       pull.rebase = true;
       fetch.prune = true;
+      # Atomic commits enforcement: one logical change per commit, conventional commits
+      commit.verbose = true;
+      # Help enforce atomic commits via commit template guidance (also in zed: agent.commit_message_instructions)
     };
 
     includes = [

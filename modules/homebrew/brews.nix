@@ -2,44 +2,47 @@
   # Homebrew formulae (brew install <name>)
   # you can search by typing: `brew search <name>`
   homebrew.brews = [
+    "automake"
+    "awscli" # AWS Command Line Interface
+    "bat" # cat with syntax highlight
+    "bun"
+    "coreutils" # GNU core utilities
+    "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
     "fastlane"
-    "mole" # for cleaning your Mac computer
-    "zellij"
-    "htop"
-    "mas"
-    "libksba" # libksba is a library to make X.509 certificates and CMS easily accessible by C programs
+    "fd" # find with syntax highlight
+    "file-formula" # file command to determine file type (replaces 'file')
+    "fzf" # fuzzy finder
+    "gemini-cli"
     "gh"
     "git"
-    "pkgconf" # canonical Homebrew formula (also provides pkg-config)
-    "gmp"
-    "libyaml"
-    "openssl"
-    "automake"
-    "neovim"
-    "helix"
     "glow" # markdown previewer in terminal
-    "sk" # grep with preview
-    "watchman" # watchman file system watcher
-    "libtool"
-    "tree" # list files in tree structure
-    "bat" # cat with syntax highlight
-    "fd" # find with syntax highlight
-    "ripgrep" # grep with syntax highlight
-    "fzf" # fuzzy finder
-    "starship" # cross-shell prompt
-    "scrcpy" # screen copy for android
-    "mise" # package manager
-    "zoxide" # jump to frequently used directories; a smarter cd command
-    "coreutils" # GNU core utilities
-    "wget" # download tool
-    "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
+    "gmp"
+    "helix"
+    "htop"
     "httpie" # http client
-    "tailscale"
-    "file" # file command to determine file type
+    "libksba" # libksba is a library to make X.509 certificates and CMS easily accessible by C programs
+    "libtool"
+    "libyaml"
     "llvm" # llvm compiler for c++, c and rust
-    "mobile-dev-inc/tap/maestro"
-    "yeet" # package manager/tool
+    "mas"
+    "mise" # package manager
+    "mole" # for cleaning your Mac computer
+    "neovim"
+    "openjdk"
+    "openssl"
+    "pkgconf" # canonical Homebrew formula (also provides pkg-config)
     "posting" # Modern API client that lives in your terminal
-    "awscli" # AWS Command Line Interface
+    "postgresql@18"
+    "ripgrep" # grep with syntax highlight
+    "scrcpy" # screen copy for android
+    "sk" # grep with preview
+    "starship" # cross-shell prompt
+    "tailscale"
+    "tree" # list files in tree structure
+    "watchman" # watchman file system watcher
+    "wget" # download tool
+    "yeet" # package manager/tool
+    "zellij"
+    "zoxide" # jump to frequently used directories; a smarter cd command
   ];
 }

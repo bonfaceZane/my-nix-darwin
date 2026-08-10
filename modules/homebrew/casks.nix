@@ -16,31 +16,31 @@
     };
 
     casks = [
+      "alfred"
+      "alt-tab"
+      "bettertouchtool"
+      "codex"
+      "codex-app"
+      "docker-desktop"
+      "fluor" # for managing fn keys for different keyboards in macOS
+      "font-fira-code-nerd-font"
+      # "google-chrome"
+      "hammerspoon" # macOS automation
+      "keyman" # for keyboard management
+      "maestro"
       "nordpass"
       "nordvpn"
-      # "google-chrome"
-      "fluor" # for managing fn keys for different keyboards in macOS
-      "alfred" # todo: for managing search and hotkeys, alternative for mac search ( uses Spotlight - * check if need )
-      "bettertouchtool" # hotkey app
       "notion" # markdown editor
-      "alt-tab"
-      "font-fira-code-nerd-font" # todo:  move this ups to important
+      "proxyman"
       "raycast" # launcher and automation
       "stats" # system monitor
-      "zoom"
-      "hammerspoon" # macOS automation
-      # "claude-code" # AI assistant
-      "codex-app" # OpenAI Codex Desktop App
-      "whatsapp" # messaging app
-      "wezterm" # terminal emulator
-      "warp" # terminal emulator
-      # "claude" # AI assistant for claude
-      "keyman" # for keyboard management
-      "visual-studio-code" # ide
-      "zed" # IDE
-      "wezterm"
-      "codex"
       "supacode" # Supabase CLI terminal
+      "visual-studio-code" # ide
+      "warp" # terminal emulator
+      "wezterm" # terminal emulator
+      "whatsapp" # messaging app
+      "zed" # IDE
+      "zoom"
     ];
   };
 }

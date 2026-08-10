@@ -168,9 +168,23 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
     };
 
-    # Codex configuration
+    # Codex configuration — auto-allow non-sensitive per dotfiles/ai/AGENTS.md
     ".codex/config.toml" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/config.toml") {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+    };
+    ".claude/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.claude/settings.json") {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
+    };
+    ".codex/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.claude/settings.json") {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
+    };
+
+    # Cursor configuration — MCP + agent permissions (mirrors .claude/.codex pattern)
+    ".cursor/mcp.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.cursor/mcp.json") {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/mcp.json";
+    };
+    ".cursor/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.cursor/settings.json") {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/settings.json";
     };
   } // builtins.listToAttrs (
     map (target: {

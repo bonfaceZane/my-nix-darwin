@@ -1,4 +1,24 @@
 {
+    // Muse — nix-managed. Auto-allow non-sensitive, atomic commits. See dotfiles/ai/AGENTS.md
+    "permissions": {
+        "defaultMode": "acceptEdits",
+        "allow": [
+            "Read",
+            "Glob",
+            "Grep",
+            "Bash(nix:*)",
+            "Bash(git status:*)",
+            "Bash(git diff:*)",
+            "Bash(git log:*)",
+            "Bash(npm:*)",
+            "Bash(yarn:*)",
+            "Bash(pnpm:*)",
+            "Edit",
+            "Write"
+        ],
+        "deny": ["Read(secrets.yaml)", "Read(**/.sops.yaml)", "Bash(sops:*)", "Bash(gh auth:*)"],
+        "ask": ["Bash(git push:*)", "Bash(git commit:*)", "Bash(brew:*)", "Bash(darwin-rebuild:*)"]
+    },
     "mcpServers": {
         "GitKraken": {
             "args": [

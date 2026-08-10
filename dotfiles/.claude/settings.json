@@ -1,0 +1,20 @@
+{
+    "permissions": {
+        "defaultMode": "acceptEdits",
+        "allow": [
+            "Read",
+            "Glob",
+            "Grep",
+            "Bash(nix:*)",
+            "Bash(git status:*)",
+            "Bash(git diff:*)",
+            "Bash(git log:*)",
+            "Bash(npm:*)",
+            "Bash(yarn:*)",
+            "Edit",
+            "Write"
+        ],
+        "deny": ["Read(secrets.yaml)", "Bash(sops:*)"],
+        "ask": ["Bash(git push:*)", "Bash(git commit:*)", "Bash(brew:*)", "Bash(darwin-rebuild:*)"]
+    }
+}
