@@ -1,13 +1,4 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
-    // editor
     "diff_view_style": "unified",
     "minimap": {
         "show": "auto",
@@ -26,17 +17,17 @@
         },
         "default_model": {
             "provider": "google",
-            "model": "gemini-3.6-flash"
+            "model": "gemini-3.1-flash-lite"
         },
         "dock": "right",
         "favorite_models": [
             {
                 "provider": "google",
-                "model": "gemini-3.6-flash"
+                "model": "gemini-3.1-flash-lite"
             },
             {
                 "provider": "google",
-                "model": "gemini-3.5-flash-lite"
+                "model": "gemini-3.1-pro-preview"
             },
             {
                 "provider": "ollama",
@@ -46,7 +37,7 @@
         "model_parameters": [],
         "commit_message_model": {
             "provider": "google",
-            "model": "gemini-3.5-flash-lite"
+            "model": "gemini-3.1-flash-lite"
         },
         "commit_message_instructions": "Generate a concise Conventional Commit message. Use an imperative subject in the format <type>(<scope>): <description>, keep the subject under 72 characters, and return only the commit message without quotes, Markdown, or explanation."
     },
@@ -77,11 +68,9 @@
     "buffer_font_size": 18.0,
     "autosave": "on_focus_change",
     "project_panel": {
-        // "button": true,
+        "button": true,
         "default_width": 500,
-        /* This controls the horizontal indentation of folders */
         "indent_size": 35.0,
-        /* Use "compact" for more items or "comfortable" for more padding */
         "entry_spacing": "comfortable",
         "git_status": true,
         "dock": "right",
@@ -97,7 +86,6 @@
         "mode": "eager"
     },
 
-    // git
     "git_panel": {
         "tree_view": false,
         "dock": "right",
@@ -106,7 +94,6 @@
 
     "show_whitespaces": "none",
 
-    // Helix mode includes Vim mode and provides the space-prefix keymap.
     "helix_mode": true,
     "which_key": {
         "enabled": true,

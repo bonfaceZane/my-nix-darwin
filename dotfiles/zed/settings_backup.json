@@ -26,17 +26,17 @@
         },
         "default_model": {
             "provider": "google",
-            "model": "gemini-3.6-flash"
+            "model": "gemini-3.1-flash-lite"
         },
         "dock": "right",
         "favorite_models": [
             {
                 "provider": "google",
-                "model": "gemini-3.6-flash"
+                "model": "gemini-3.1-flash-lite"
             },
             {
                 "provider": "google",
-                "model": "gemini-3.5-flash-lite"
+                "model": "gemini-3.1-pro-preview"
             },
             {
                 "provider": "ollama",
@@ -46,7 +46,7 @@
         "model_parameters": [],
         "commit_message_model": {
             "provider": "google",
-            "model": "gemini-3.5-flash-lite"
+            "model": "gemini-3.1-flash-lite"
         },
         "commit_message_instructions": "Generate a concise Conventional Commit message. Use an imperative subject in the format <type>(<scope>): <description>, keep the subject under 72 characters, and return only the commit message without quotes, Markdown, or explanation."
     },
