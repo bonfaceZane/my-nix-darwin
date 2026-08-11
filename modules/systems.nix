@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 ###################################################################################
 #
 #  macOS's System configuration
@@ -21,18 +21,18 @@
       dock.persistent-apps = [
         "/Applications/slack.app"
         "/Applications/Microsoft Outlook.app"
+        "/Applications/zoom.us.app"
         "/Applications/Dia.app"
-        "/Applications/Zed.app"
         "/Applications/Safari.app"
+        "/Applications/Zed.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/Maestro Studio.app"
-        "/Applications/zoom.us.app"
         "/Applications/Warp.app"
         "/Applications/Terax.app"
         # "/Applications/WezTerm.app"
         "/Applications/Notion.app"
         "/Applications/WhatsApp.app"
-        "/Applications/NordPass® Password Manager & Digital Vault.app"
+        "/Applications/NordPass.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
@@ -135,8 +135,15 @@
     swapLeftCommandAndLeftAlt = false;
   };
 
-  # Add ability to used TouchID for sudo authentication
+  # Add ability to use Touch ID for sudo authentication.
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  # Zed agents use a new pseudo-terminal for many commands. Share one sudo
+  # approval across those sessions for an hour instead of prompting per terminal.
+  security.sudo.extraConfig = ''
+    Defaults:${username} timestamp_type=global
+    Defaults:${username} timestamp_timeout=60
+  '';
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   # Kept enabled as a fallback shell for scripts and system processes.

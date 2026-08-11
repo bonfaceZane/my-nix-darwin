@@ -24,6 +24,12 @@
         },
         "tool_permissions": {
             "tools": {
+                "delete_path": {
+                    "default": "allow"
+                },
+                "fetch": {
+                    "default": "allow"
+                },
                 "terminal": {
                     "default": "allow",
                     "always_allow": [
@@ -110,7 +116,7 @@
     "tab_size": 4,
     "show_edit_predictions": true,
     "edit_predictions": {
-        "allow_data_collection": "yes",
+        "allow_data_collection": "no",
         "provider": "zed",
         "mode": "eager"
     },
