@@ -27,8 +27,7 @@
     # Functions ported from .zshrc
     functions = {
       prebuild = ''
-        set app $argv[1]; if test -z "$app"; set app "gpd"; end
-        yarn $app prebuild --clean
+        yarn prebuild --clean
       '';
 
       run = ''

@@ -79,7 +79,7 @@
         "dock": "right"
     },
     "collaboration_panel": {
-        "dock": "right"
+        "dock": "left"
     },
     "icon_theme": {
         "mode": "light",

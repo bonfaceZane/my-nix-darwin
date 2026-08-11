@@ -29,7 +29,7 @@
         "/Applications/Maestro Studio.app"
         "/Applications/Warp.app"
         "/Applications/Terax.app"
-        # "/Applications/WezTerm.app"
+        "/Applications/WezTerm.app"
         "/Applications/Notion.app"
         "/Applications/WhatsApp.app"
         "/Applications/NordPass.app"
