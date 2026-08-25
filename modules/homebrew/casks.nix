@@ -18,6 +18,7 @@
     casks = [
       "alfred"
       "alt-tab"
+      "caskhub"
       "bettertouchtool"
       "codex"
       "codex-app"

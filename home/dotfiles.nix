@@ -186,6 +186,11 @@ in
     ".cursor/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.cursor/settings.json") {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/settings.json";
     };
+
+    # Muse settings — persisted always auto-approve (approval_mode = never)
+    ".config/muse/settings.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/muse/settings.json";
+    };
   } // builtins.listToAttrs (
     map (target: {
       name = target;

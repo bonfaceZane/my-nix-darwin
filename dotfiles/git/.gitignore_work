@@ -13,6 +13,7 @@ CLAUDE.md
 .cursorrules
 *.swp
 *.swo
+.zed/
 
 # OS
 .DS_Store
@@ -24,3 +25,6 @@ Thumbs.db
 pre-commit
 pre-push
 .junie
+
+# ai
+.agent-artifacts

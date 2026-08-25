@@ -24,6 +24,9 @@
         },
         "tool_permissions": {
             "tools": {
+                "skill": {
+                    "default": "allow"
+                },
                 "delete_path": {
                     "default": "allow"
                 },
@@ -53,7 +56,8 @@
             }
         },
         "default_model": {
-            "effort": "max",
+            "effort": "minimal",
+            "enable_thinking": false,
             "provider": "google",
             "model": "gemini-3.1-flash-lite"
         },
@@ -61,11 +65,19 @@
         "favorite_models": [
             {
                 "provider": "google",
-                "model": "gemini-3.1-flash-lite"
+                "model": "gemini-3.1-flash-lite",
+                "enable_thinking": false
             },
             {
                 "provider": "google",
-                "model": "gemini-3.1-pro-preview"
+                "model": "gemini-3.1-pro-preview",
+                "enable_thinking": true
+            },
+            {
+                "provider": "openai-subscribed",
+                "model": "gpt-5.6-sol",
+                "enable_thinking": true,
+                "effort": "high"
             }
         ],
         "model_parameters": [],
@@ -96,7 +108,7 @@
     "theme": {
         "mode": "dark",
         "light": "One Light",
-        "dark": "Night Owl Dark"
+        "dark": "One Dark Pro Glass"
     },
     "ui_font_size": 20.0,
     "buffer_font_size": 18.0,

@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  username,
-  ...
-}:
+{ lib, ... }:
 {
   # `programs.git` will generate the config file: ~/.config/git/config
   # to make git use this config file, `~/.gitconfig` should not exist!
@@ -31,10 +26,12 @@
 
     includes = [
       {
+        # Use the personal identity for repositories under ~/Documents/subira/.
         path = "~/.gitconfig_personal";
+        condition = "gitdir:~/Documents/subira/";
       }
       {
-        # use diffrent email & name for work
+        # Use the work identity for repositories under ~/Documents/work/.
         path = "~/.gitconfig_work";
         condition = "gitdir:~/Documents/work/";
       }

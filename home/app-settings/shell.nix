@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 {
   # Fish is the primary interactive shell.
   programs.fish = {
@@ -91,6 +91,10 @@
         # --- End HM additions ---
       '';
   };
+
+  # Stable mise shims for GUI apps, non-interactive shells, and child processes.
+  # Individual mise install paths change whenever a tool version is upgraded.
+  home.sessionPath = [ "$HOME/.local/share/mise/shims" ];
 
   # Persistent environment variables — available to Fish, Zsh, and all child processes.
   # For one-off or Fish-specific vars use `set -gx` in interactiveShellInit instead.

@@ -33,6 +33,7 @@
         "/Applications/Notion.app"
         "/Applications/WhatsApp.app"
         "/Applications/NordPass.app"
+        "/Applications/CaskHub.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
