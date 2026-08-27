@@ -23,7 +23,11 @@
             ]
         },
         "tool_permissions": {
+            "default": "allow",
             "tools": {
+                "mcp:memory:read_graph": {
+                    "default": "allow"
+                },
                 "skill": {
                     "default": "allow"
                 },
@@ -56,10 +60,10 @@
             }
         },
         "default_model": {
-            "effort": "minimal",
-            "enable_thinking": false,
-            "provider": "google",
-            "model": "gemini-3.1-flash-lite"
+            "effort": "high",
+            "enable_thinking": true,
+            "provider": "openai-subscribed",
+            "model": "gpt-5.6-sol"
         },
         "dock": "right",
         "favorite_models": [
@@ -88,7 +92,7 @@
         "commit_message_instructions": "Generate a concise Conventional Commit message. Use an imperative subject in the format <type>(<scope>): <description>, keep the subject under 72 characters, and return only the commit message without quotes, Markdown, or explanation."
     },
     "outline_panel": {
-        "dock": "right"
+        "dock": "left"
     },
     "collaboration_panel": {
         "dock": "left"
@@ -102,7 +106,7 @@
         "trust_all_worktrees": true
     },
     "terminal": {
-        "font_size": 19
+        "font_size": 12.0
     },
     "base_keymap": "JetBrains",
     "theme": {
@@ -110,8 +114,8 @@
         "light": "One Light",
         "dark": "One Dark Pro Glass"
     },
-    "ui_font_size": 20.0,
-    "buffer_font_size": 18.0,
+    "ui_font_size": 15.0,
+    "buffer_font_size": 15.0,
     "autosave": "on_focus_change",
     "project_panel": {
         "button": true,

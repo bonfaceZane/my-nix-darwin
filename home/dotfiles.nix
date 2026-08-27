@@ -17,6 +17,7 @@ let
     ".agents/skills/gh-stack" # shared Agent Skills location
     ".claude/skills/gh-stack"
     ".codex/skills/gh-stack"
+    ".codex-work/skills/gh-stack"
     ".cursor/skills/gh-stack"
     ".gemini/skills/gh-stack"
     ".gemini/antigravity/skills/gh-stack"
@@ -168,8 +169,26 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
     };
 
+    # Select a separate Codex login based on the current project directory.
+    # Codex owns each auth.json; only CODEX_HOME and shared config are managed.
+    "Documents/subira/.mise.toml" = {
+      text = ''
+        [env]
+        CODEX_HOME = "${config.home.homeDirectory}/.codex"
+      '';
+    };
+    "Documents/work/.mise.toml" = {
+      text = ''
+        [env]
+        CODEX_HOME = "${config.home.homeDirectory}/.codex-work"
+      '';
+    };
+
     # Codex configuration — auto-allow non-sensitive per dotfiles/ai/AGENTS.md
     ".codex/config.toml" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/config.toml") {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+    };
+    ".codex-work/config.toml" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/config.toml") {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
     };
     ".claude/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.claude/settings.json") {
