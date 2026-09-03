@@ -41,4 +41,10 @@
       "cmd-j": "workspace::ToggleBottomDock",
     },
   },
+  {
+      "context": "(VimControl && ! menu)",
+      "bindings": {
+        "space": null
+      }
+  },
 ]
