@@ -76,9 +76,10 @@
             }
         },
         "default_model": {
+            "effort": "medium",
             "enable_thinking": true,
-            "provider": "google",
-            "model": "gemini-2.5-flash"
+            "provider": "openai-subscribed",
+            "model": "gpt-5.6-terra"
         },
         "dock": "right",
         "favorite_models": [
