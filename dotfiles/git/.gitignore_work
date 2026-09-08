@@ -28,3 +28,4 @@ pre-push
 
 # ai
 .agent-artifacts
+.codegraph

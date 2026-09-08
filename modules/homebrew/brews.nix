@@ -6,6 +6,7 @@
     "awscli" # AWS Command Line Interface
     "bat" # cat with syntax highlight
     "bun"
+    "nub"
     "coreutils" # GNU core utilities
     "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
     "fastlane"
