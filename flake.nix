@@ -89,18 +89,36 @@
 
           # --- Home Manager (user) modules ---
           home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            # Safely handle existing dotfiles managed by Home Manager by creating backups
-            # instead of refusing to overwrite. This avoids clobber errors like for ~/.zshenv.
-            # The original file will be moved to filename.hm-bak on first write.
-            home-manager.backupFileExtension = ".hm-bak";
-            home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users.${username} = {
-              imports = [ ./home ];
-            };
-          }
+          (
+            { pkgs, ... }:
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              # Preserve colliding dotfiles without failing when an earlier backup exists.
+              # Repeated backups receive a timestamp (and, if necessary, a counter).
+              home-manager.backupFileExtension = ".hm-bak";
+              home-manager.backupCommand = pkgs.writeShellScript "home-manager-backup" ''
+                source="$1"
+                backup="$source$HOME_MANAGER_BACKUP_EXT"
+
+                if [ -e "$backup" ] || [ -L "$backup" ]; then
+                  timestamp="$(/bin/date +%Y%m%d%H%M%S)"
+                  backup="$backup.$timestamp"
+                  counter=1
+                  while [ -e "$backup" ] || [ -L "$backup" ]; do
+                    backup="$source$HOME_MANAGER_BACKUP_EXT.$timestamp.$counter"
+                    counter=$((counter + 1))
+                  done
+                fi
+
+                /bin/mv "$source" "$backup"
+              '';
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.${username} = {
+                imports = [ ./home ];
+              };
+            }
+          )
         ];
       };
 

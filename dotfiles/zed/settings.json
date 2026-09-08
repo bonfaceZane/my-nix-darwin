@@ -1,4 +1,13 @@
 {
+    "cli_default_open_behavior": "new_window",
+    "agent_servers": {
+        "codex-acp": {
+            "default_config_options": {
+                "mode": "agent"
+            },
+            "type": "registry"
+        }
+    },
     "cursor_shape": "bar",
     "diff_view_style": "unified",
     "minimap": {
@@ -9,6 +18,7 @@
         "min_line_number_digits": 0
     },
     "agent": {
+        "thinking_display": "auto",
         "inline_assistant_model": {
             "provider": "google",
             "model": "gemini-3.1-flash-lite",
@@ -164,6 +174,14 @@
     },
 
     "context_servers": {
+        "maestro": {
+            "enabled": true,
+            "remote": false,
+            "command": "/bin/bash",
+            "args": [
+                "scripts/maestro-mcp.sh"
+            ]
+        },
         "memory": {
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-memory"]

@@ -14,6 +14,10 @@
 
     # Per Home Manager deprecations, user info now lives under `settings.user.*`
     settings = {
+      user = {
+        name = "rafiki";
+        email = "bonfacezane@gmail.com";
+      };
       core.excludesfile = "~/.gitignore_global";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
