@@ -1,192 +1,84 @@
 # my-nix-darwin
 
-Reproducible macOS setup using nix-darwin + Home Manager.
+Single-user Apple Silicon macOS configuration for `rafiki`, composed with nix-darwin and Home Manager. Keep the checkout at `~/Documents/subira/my-nix-darwin`: editable dotfile links intentionally refer to that location.
 
-This repository defines system-level configuration (Dock, Finder, TouchID for sudo, Homebrew apps, etc.) and user-level configuration (shell, Git, Neovim, dotfiles) in a clean, modular way so you can version and rebuild your machine from source.
+## Build and apply
 
-If you're new to Nix, this is a friendly structure with docs and comments to guide you. For deeper learning, see: https://github.com/ryan4yin/nixos-and-flakes-book
+Requires Nix, nix-darwin, and Homebrew for the declared Brew apps. Python 3.11+ runs the lightweight validation without installing anything.
 
-## Requirements
-
-- macOS with admin rights
-- Nix installed (multi-user/daemon)
-- nix-darwin installed (bootstrap once)
-- Optional: Homebrew pre-installed if you want to manage casks/formulae from this repo
-
-## Quick start
-
-1) Clone this repo to a permanent location, e.g. `~/Documents/subira/my-nix-darwin`.
-
-2) Review and, if needed, edit `flake.nix` for:
-   - `username`, `useremail`, `system` (`aarch64-darwin` for Apple Silicon), `hostname`.
-
-3) Dry-run to see what would change:
-
-```bash
-darwin-rebuild check --flake .#rafiki
+```sh
+python3 scripts/validate-config.py
+mise run build       # Build only; no system activation
+mise run switch      # Activate with sudo; may upgrade Homebrew apps
 ```
 
-4) Apply configuration:
+Without mise:
 
-```bash
-darwin-rebuild switch --flake .#rafiki
-# or with mise shortcuts:
-mise run darwin
+```sh
+darwin-rebuild build --flake .#rafiki --show-trace --impure
+sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure
 ```
 
-Common mise tasks:
+New files must be tracked by Git before a normal Git-backed flake build sees them. Review and stage only intended files. `mise tasks` lists additional commands; `update`, `gc`, `clean`, and `rollback` are explicit maintenance operations, not routine validation.
 
-```bash
-# List all tasks
-mise tasks
-
-# Garbage collect old generations
-mise run gc
-
-# Clean derived results
-mise run clean
-```
-
-## Layout
+## Structure and ownership
 
 ```text
-.
-├── flake.nix          # Entry point: inputs and the `darwinConfigurations` output
-├── home/              # Home Manager (user) modules — dotfiles and user packages
-│  ├── default.nix     # Home Manager entrypoint; imports submodules in this folder
-│  ├── apps.nix        # User-level CLI tools from nixpkgs (Home Manager)
-│  ├── core.nix        # Program configs (neovim, eza, yazi, skim, ...)
-│  ├── git.nix         # Git and delta config; email/name from flake `specialArgs`
-│  ├── shell.nix       # Zsh config and shell aliases
-│  └── starship.nix    # Starship prompt settings
-├── modules/           # System (nix-darwin) modules — affect the whole machine
-│  ├── apps.nix        # Aggregator for app concerns
-│  │   ├── homebrew/   # Split Homebrew setup
-│  │   │   ├── base.nix   # enable/taps/activation
-│  │   │   ├── brews.nix  # brew formulae (CLI)
-│  │   │   └── casks.nix  # casks (GUI) + mas
-│  │   └── system-packages.nix # global nixpkgs packages + EDITOR
-│  ├── host-users.nix  # Hostname, local user, trust settings
-│  ├── nix-core.nix    # Nix daemon and nixpkgs options
-│  └── systems.nix     # macOS defaults (Dock, Finder, keyboard, etc.)
-├── mise.toml          # Task shortcuts
-├── scripts/           # Optional helpers
-└── README.md
+flake.nix / flake.lock      Composition and pinned inputs
+modules/                   System nix-darwin modules
+  systems.nix              macOS defaults, keyboard, login shell, sudo
+  homebrew/                Brew taps, formulae, casks, activation policy
+  apps.nix                 System app aggregator
+  system-packages.nix      Global Nix packages
+  host-users.nix            Host/user configuration
+  nix-core.nix              Nix daemon configuration
+home/                      Home Manager modules
+  default.nix              Explicit imports and user SOPS declarations
+  app-settings/            Fish/Zsh, Git, Starship, mise
+  apps.nix / core.nix       User packages and program options
+  dotfiles.nix             Dotfile links and writable Codex seed
+services/                  System services
+packages/                  Local package definitions
+scripts/                   Validation and maintenance helpers
+dotfiles/                  Editable application configuration sources
+  ai/                      Shared AI instructions, MCP manifest, validation
+  .claude/ .gemini/         Client-native settings
+  .codex/config.base.toml   Portable seed, not a live configuration
+.agents/skills/             Repository-specific maintenance workflow
+AGENTS.md                  Contribution and safety instructions
+CLAUDE.md / GEMINI.md       Client entry points to those instructions
+mise.toml                  Build/activation/validation tasks
 ```
 
-See also:
-- modules/README.md — how to add/change system modules
-- home/README.md — how to add/change Home Manager modules
+Keep explicit imports and the current module boundaries; a single host does not need a generic host framework or automatic module discovery. See [home/README.md](home/README.md) and [modules/README.md](modules/README.md).
 
-## Typical edits you’ll make
+## Dotfile sync
 
-- Add or remove apps: edit `modules/apps.nix`.
-- Change macOS defaults (Dock, Finder, key repeat): edit `modules/systems.nix`.
-- Change Nix behavior (garbage collection, unfree packages): edit `modules/nix-core.nix`.
-- Add dotfiles or user programs: edit files in `home/` (e.g. `home/apps.nix` for user packages, `home/core.nix` for program configs, `home/shell.nix` for zsh).
+`home/dotfiles.nix` is the link inventory. Most app settings are out-of-store symlinks to this checkout, so edits to their sources are visible without rebuilding; the application may need reloading. Adding/changing links requires activation. Home Manager owns generated shell, Git, Starship, and other first-class program configuration—do not also symlink over these generated files.
 
-## Secrets Management
+Not every directory in `dotfiles/` is automatically deployed. App-specific paths are intentional: Zed/mise/Helix/Zellij/WezTerm/Ghostty use `~/.config`, Nushell uses `~/Library/Application Support/nushell`, while Claude/Codex/Gemini use their native hidden home directories. Do not force every app into `~/.config`.
 
-This project uses [sops-nix](https://github.com/Mic92/sops-nix) to manage secrets. Secrets are encrypted in `secrets.yaml` and can be decrypted using the `age` key specified in `.sops.yaml`.
+AI settings, instructions, and skills are linked individually so authentication and session state remain writable and outside Git. **Codex is seed-only:** existing config and app-generated integrations are preserved. During migration, only the old symlink resolving to this checkout's ignored Codex config is detached into a private local copy. Future seed edits do not overwrite local settings. See [dotfiles/ai/README.md](dotfiles/ai/README.md) for exact paths and MCP startup.
 
-### Viewing Secrets
+Work-project links under `~/Documents/work/amv-apps` are deliberately explicit. Review these before using this configuration for another user or machine.
 
-To view the decrypted secrets, run:
+## AI tooling
 
-```bash
-sops -d secrets.yaml
-```
+Claude Code, Codex, and Gemini CLI are declared through Nix-managed Homebrew. Shared instructions and `gh-stack` skills keep workflows consistent; the project maintenance skill explains this repository's module ownership and checks. Native file/search/shell/Git/Nix tools are sufficient for contributing here—more MCP servers or broader permissions do not automatically make an agent more capable.
 
-### Editing Secrets
+Maestro's mobile-testing CLI/MCP is declared separately from the unrelated `Maestro.app` GUI. MCP schemas differ per client; Claude loads the shared manifest explicitly, Gemini has native settings, and new Codex profiles get a native TOML definition. Existing Codex profiles require an intentional local merge. Gemini's existing work-specific Radon integration still uses `npx ...@latest`; it is not pinned or validated by this repository.
 
-To edit the secrets, run:
+## Secrets and account selection
 
-```bash
-sops secrets.yaml
-```
+Secrets are managed by SOPS. Edit encrypted secrets locally with `sops secrets.yaml`; never paste decrypted contents into chat, logs, tracked settings, or a Nix expression. Use `config.sops.secrets.<name>.path` for runtime consumers rather than reading secret values during Nix evaluation. Do not assume a `/run/secrets` path: Home Manager's configured paths are authoritative.
 
-This will open the file in your default editor. When you save and close the file, `sops` will automatically encrypt it again.
+Parent mise settings select `CODEX_HOME=~/.codex` under `~/Documents/subira` and `~/.codex-work` under `~/Documents/work`. Authentication stays separate and client-owned. This only affects processes receiving that environment; GUI-launched IDE AI providers do **not** automatically switch accounts by directory. API billing is separate from ChatGPT subscriptions. No OpenAI key provisioning is implied by these settings.
 
-### Using Secrets
+## Validation boundaries and remaining cleanup
 
-Secrets are made available to the system through the `sops` module. You can access them in your Nix configuration. For example, to use a secret in `home/core.nix`:
+- `python3 scripts/validate-config.py` checks named non-secret JSON/TOML, instruction references, MCP consistency, task references, and dotfile source existence/capitalization.
+- `nix-instantiate --parse PATH` checks syntax; a build/evaluation is needed for option types and integration.
+- `git diff --check` checks whitespace.
+- Runtime permissions, GUI behavior, authentication, and MCP handshakes require testing after activation. No check here guarantees a working live connection.
 
-```nix
-{ config, pkgs, ... }:
-
-{
-  sops.secrets.my-secret = {};
-
-  # Use the secret in a program
-  programs.my-program = {
-    enable = true;
-    passwordFile = config.sops.secrets.my-secret.path;
-  };
-}
-```
-
-Then, add the secret to `secrets.yaml`:
-
-```yaml
-my-secret: "my-password"
-```
-
-After running `darwin-rebuild switch`, the secret will be available at the specified path.
-
-### Anthropic API Keys for IDEs (Cursor, Zed, etc.)
-
-We use `sops` combined with `direnv` to securely inject the correct Anthropic API key depending on whether you are in a work or personal project.
-
-1.  **Edit Secrets**: Run `sops secrets.yaml` to set `anthropic_api_key_work` (for work) and `anthropic_api_key` (for personal).
-2.  **Rebuild**: Run `darwin-rebuild switch --flake .#rafiki`.
-3.  **Project Setup**:
-    *   For a **Work Project**, create an `.envrc` file in the project root containing: `export ANTHROPIC_API_KEY=$ANTHROPIC_WORK_KEY`
-    *   For a **Personal Project**, create an `.envrc` file in the project root containing: `export ANTHROPIC_API_KEY=$ANTHROPIC_PERSONAL_KEY`
-4.  **Allow direnv**: Run `direnv allow` in your terminal inside the project folder.
-
-Your IDE will now automatically pick up the correct `ANTHROPIC_API_KEY` when you open the folder.
-
-## Add another machine (recommended pattern)
-
-When you add a second Mac, it’s best to create a `hosts/` folder and split per-host modules. Example sketch:
-
-```text
-hosts/
-  rafiki/
-    darwin.nix      # Host-specific modules list
-  simba/
-    darwin.nix
-```
-
-Then in `flake.nix` expose multiple `darwinConfigurations`. This repo currently keeps a single host inline for simplicity; see comments in `flake.nix` for tips.
-
-## Safety notes
-
-- Home Manager will back up clashing dotfiles using `.hm-bak` extension to avoid clobbering your existing files (configured in `flake.nix`).
-- Be careful when enabling new macOS defaults; you can always `darwin-rebuild switch --rollback` if needed.
-
-## Troubleshooting
-
-- Missing app after rebuild?
-  - If it’s a GUI app, check `modules/homebrew/casks.nix` (aggregated via `modules/apps.nix`).
-  - If it’s a Homebrew CLI, check `modules/homebrew/brews.nix`.
-  - If it’s a user-local CLI, check `home/apps.nix`.
-  - If it’s a global nixpkgs CLI for all users, check `modules/system-packages.nix`.
-
-- Git name/email not picked up?
-  - Ensure you set `username`/`useremail` in `flake.nix`. Home Manager writes `~/.config/git/config`.
-
-- Homebrew integration not working?
-  - Make sure you have Homebrew installed already, then let nix-darwin manage packages via `homebrew` in `modules/apps.nix`.
-
-### Dotfile ownership & conflicts
-
-- Prefer first-class Home Manager modules to own their files (e.g. `programs.zsh` owns `~/.zshrc`, `programs.starship.settings` owns Starship’s config). Do not also link these via `home.file`.
-- Dotfiles are tracked inside this repository under `./dotfiles` and linked centrally by `home/dotfiles.nix` with `force = true` and existence checks to avoid conflicts.
-- Backups: `flake.nix` sets `home-manager.backupFileExtension = ".hm-bak"`. The first time Home Manager takes over an existing file, it will move it to `*.hm-bak`. This happens once; subsequent rebuilds won’t keep backing up the same file.
-
-## Learning resources
-
-- Nix and Flakes Book: https://github.com/ryan4yin/nixos-and-flakes-book
-- nix-darwin options search: https://daiderd.com/nix-darwin/manual/index.html#sec-options
-- Home Manager options: https://nix-community.github.io/home-manager/options.html
+Some tools are still declared through both Homebrew and Nix (including Git, mise, Starship, skim, and PostgreSQL). Choose a single owner in a deliberate package migration, not a broad cleanup that changes PATH or service data unexpectedly. `modules/gems.nix` is unused legacy code, not an active Ruby module. Unused inputs and legacy dotfiles can be retired separately once their consumers are confirmed.

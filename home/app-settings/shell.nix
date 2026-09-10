@@ -71,7 +71,7 @@
 
     initContent =
       let
-        userZshrc = ../dotfiles/zshrc/.zshrc;
+        userZshrc = ../../dotfiles/zshrc/.zshrc;
         userZshrcContent = if builtins.pathExists userZshrc then builtins.readFile userZshrc else "";
       in
       userZshrcContent
@@ -159,8 +159,9 @@
     dev = "mise dev";
     ios = "mise ios";
     and = "mise android";
-    build = "mise build";
+    b = "mise run build";
+    build = "mise run build";
     open = "mise open";
-    switch = "mise switch";
+    switch = "mise run switch";
   };
 }

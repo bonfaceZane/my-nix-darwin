@@ -1,82 +1,77 @@
-home/ — Home Manager (user) modules
-===================================
+# `home/` — Home Manager modules
 
-Home Manager controls your user-level configuration: shell, editors, Git, prompt, and dotfiles placed under your home directory. These only affect the configured user (see `flake.nix` → `home-manager.users.${username}`).
+Home Manager owns the configured user's packages, program configuration, and
+home-directory links. `flake.nix` imports `home/default.nix` through
+`home-manager.users.${username}`; these are not nix-darwin system modules.
+All repository paths below are relative to the repository root.
 
-Files
------
+## Files and ownership
 
-- default.nix — Home Manager entrypoint; imports submodules from this folder.
-- core.nix — Handy CLI tools you want available for the user via nixpkgs.
-- shell.nix — Zsh configuration and shell aliases.
-- git.nix — Git configuration (name/email taken from flake `specialArgs`).
-- starship.nix — Prompt settings.
-- dotfiles.nix — Centralized, safe links to dotfiles tracked inside this repo (Helix, Zellij, Nushell, Neovim). Uses guards to avoid conflicts.
+- `home/default.nix` — entrypoint and explicit imports; user home/state version,
+  Home Manager enablement, and user-level sops declarations.
+- `home/apps.nix` — user-local `home.packages`, including developer tools and
+  custom launchers/packages.
+- `home/core.nix` — Home Manager program options for eza, Yazi, skim, and direnv;
+  also contains the disabled Neovim configuration. It is not the package list.
+- `home/app-settings/shell.nix` — primary interactive Fish configuration, fallback
+  Zsh configuration, aliases, session variables, and session PATH. Zsh reads
+  `dotfiles/zshrc/.zshrc` via `../../dotfiles/zshrc/.zshrc`.
+- `home/app-settings/git.nix` — Git, Git LFS, delta, default identity, and
+  conditional personal/work Git includes. Identity is not passed from flake
+  `specialArgs`.
+- `home/app-settings/starship.nix` — prompt configuration and shell integration.
+- `home/app-settings/mise.nix` — Home Manager's `programs.mise` package and shell
+  integration. Zsh integration is explicit; Fish integration defaults to enabled
+  with the pinned Home Manager. This module was moved from `modules/mise.nix`
+  without changing its configuration.
+- `home/dotfiles.nix` — centralized external dotfile links and generated home files,
+  including agent skills and project-specific mise environment files.
 
-Add a new user module
----------------------
+## Dotfile policy
 
-1. Create a Nix module here, e.g. `alacritty.nix` or `wezterm.nix`.
-2. Add it to the `imports` array in `default.nix`.
-3. Rebuild:
+Prefer first-class `programs.*` options for supported program configuration.
+Keep external links in `home/dotfiles.nix`, and avoid managing the same target
+through both a program module and `home.file`:
 
-   darwin-rebuild check --flake .#rafiki
-   darwin-rebuild switch --flake .#rafiki
+- `programs.zsh` generates the Zsh configuration, incorporating the repository's
+  Zsh source through `home/app-settings/shell.nix`.
+- `programs.starship.settings` owns the Starship configuration.
+- The global mise configuration is linked by `home/dotfiles.nix`; avoid also
+  generating that target with `programs.mise.globalConfig`.
 
-Dotfiles
---------
+Most external links use `mkOutOfStoreSymlink` and the checkout under
+`~/Documents/subira/my-nix-darwin/dotfiles`. They are not all guarded by
+`pathExists` or set to `force = true`. Changes to out-of-store source contents are
+visible without rebuilding; changes to link definitions require a rebuild.
+Do not assume these links are portable to another checkout location.
 
-Prefer program-specific options (e.g. `programs.zsh.*`, `programs.git.*`,
-`programs.starship.settings`) over `home.file` when the program is supported by Home Manager. This avoids conflicts and keeps configs declarative.
+## Shell ownership
 
-Use `home.file` for configs that don’t yet have first-class modules. Example (dotfiles now live in this repo under `./dotfiles`):
+Home Manager configures interactive shells. `modules/systems.nix` enables Fish
+and Zsh at the system level, registers shells, and declares Fish as the user's
+shell. With the pinned nix-darwin, account changes apply to users managed through
+`users.knownUsers`; the existing primary account is not in that list. Do not add
+an existing admin account merely to change its shell.
 
-```
-home.file = {
-  ".config/helix".source = ../dotfiles/helix;
-};
-```
+After the system configuration has been activated, if the existing account still
+uses another login shell, verify Fish is listed in `/etc/shells`, then use
+`chsh -s /run/current-system/sw/bin/fish` and open a new terminal. There is no need
+to append a duplicate Fish entry to `/etc/shells` manually.
 
-Recommended pattern (already implemented here):
+## Extending the configuration
 
-- Do not scatter `home.file` across multiple modules. Instead, keep all
-  dotfile links in `home/dotfiles.nix`.
-- `home/dotfiles.nix` now references paths under `../dotfiles` inside this
-  repository. Edits to files there will be picked up on rebuild.
-- Links are guarded with `builtins.pathExists` and created with `force = true` to
-  avoid “conflicting managed target files” errors when files already exist.
-- Avoid managing targets owned by first-class modules:
-  - zsh: `programs.zsh` owns `~/.zshrc` (we read your personal zshrc content into
-    `initContent` in `home/shell.nix`).
-  - starship: `programs.starship.settings` writes its config; do not link
-    `~/.config/starship.toml` via `home.file`.
+Use the existing layout: user package additions go in `home/apps.nix`, and
+application-specific Home Manager configuration belongs in
+`home/app-settings/`. Add new modules explicitly to `home/default.nix`.
+Do not introduce a parallel user-module tree or automatic directory imports.
+System packages and machine-wide settings belong under `modules/`; see
+[`modules/README.md`](../modules/README.md).
 
-Setting the login shell
------------------------
+## Package ownership follow-up
 
-Nix installs and configures Fish but **cannot change your login shell** on macOS — that requires a manual step.
-
-Check which shell is active:
-
-```zsh
-echo $SHELL          # shows the login shell path
-ps -p $$             # shows the current process
-```
-
-To switch to Fish (do this once after a fresh setup or macOS reinstall):
-
-```zsh
-# 1. Add nix-managed Fish to the list of allowed login shells
-sudo sh -c 'echo /run/current-system/sw/bin/fish >> /etc/shells'
-
-# 2. Set it as your login shell
-chsh -s /run/current-system/sw/bin/fish
-```
-
-Then open a new terminal — it should be Fish. Use the nix store path (`/run/current-system/sw/bin/fish`), not a Homebrew or system path, so your Nix-managed plugins and functions load correctly.
-
-Where to put packages?
-----------------------
-
-- If the package is personal and for development convenience, put it in `home/core.nix` under `home.packages`.
-- If the package should be available to all users or needed system-wide, put it in `modules/apps.nix` under `environment.systemPackages` or Homebrew sections.
+Homebrew and Home Manager currently both provide Git, mise, Starship, and skim
+(Homebrew's `sk`). These installations are intentionally retained. A separate
+cleanup should choose one package owner for each tool while preserving required
+Home Manager configuration/integration and checking PATH/version behavior before
+removing any installation. System-level PostgreSQL overlap is documented in
+[`modules/README.md`](../modules/README.md).

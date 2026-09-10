@@ -1,47 +1,78 @@
-modules/ — system-wide (nix-darwin) modules
-===========================================
+# `modules/` — system-wide nix-darwin modules
 
-This folder contains nix-darwin modules. They affect the whole machine.
+Active modules here configure machine-wide settings and packages. User packages,
+interactive shell configuration, and dotfiles belong under `home/` (Home Manager).
+All repository paths below are relative to the repository root.
 
-- Use this for macOS defaults (Dock, Finder, keyboard), system services, Nix daemon settings, and global packages.
-- Prefer GUI apps and large CLI toolchains via Homebrew casks/formulae in apps.nix.
-- Keep user-specific, per-login shell settings and dotfiles inside home/ (Home Manager), not here.
+## Files and imports
 
-Files
------
+`flake.nix` explicitly imports:
 
-- apps.nix — Aggregator that imports the split app concerns below.
-- homebrew/
-  - base.nix — Common Homebrew enable/taps/activation settings.
-  - brews.nix — Homebrew formulae (CLI tools installed via `brew install`).
-  - casks.nix — Homebrew casks (GUI apps) and optional `mas` App Store entries.
-- system-packages.nix — Global nixpkgs packages (`environment.systemPackages`) and basic env vars like `EDITOR`.
-- host-users.nix — Hostname, local user attributes, and trusted-users for Nix.
-- nix-core.nix — Nix daemon and nixpkgs options (flakes, unfree, etc.).
-- systems.nix — macOS defaults: Dock, Finder, keyboard, login window, TouchID for sudo, etc.
+- `modules/apps.nix` — an aggregator, not a package list. It imports:
+  - `modules/system-packages.nix` — global nixpkgs packages through
+    `environment.systemPackages`, plus `EDITOR` and `VISUAL`.
+  - `modules/homebrew/base.nix` — Homebrew enablement, Brewfile generation, and
+    activation update/upgrade settings.
+  - `modules/homebrew/brews.nix` — Homebrew CLI formulae.
+  - `modules/homebrew/casks.nix` — Homebrew GUI casks and Mac App Store entries.
+- `modules/nix-core.nix` — nixpkgs policy and Nix settings. `nix.enable = false`
+  means nix-darwin does not manage Nix itself; settings declared here should not
+  be mistaken for an actively managed daemon configuration.
+- `modules/systems.nix` — macOS defaults, keyboard mappings, sudo/Touch ID,
+  system shell enablement, primary-user selection, and the user's shell setting.
+- `modules/host-users.nix` — hostname, user home/description, and the Nix
+  trusted-users declaration (also subject to `nix.enable = false`).
+- `services/postgres.nix` — the nix-darwin PostgreSQL service, explicitly pinned
+  to PostgreSQL 18. It remains in the existing `services/` directory.
 
-Where to put packages?
-----------------------
+`flake.nix` also imports the upstream Darwin sops and Home Manager modules.
+Home Manager then imports `home/default.nix` as a separate user-module graph.
 
-- System-wide via nixpkgs: modules/system-packages.nix → `environment.systemPackages = with pkgs; [ ... ];`
-  - Good for tools required by the OS or all users.
-- System-wide via Homebrew: modules/homebrew/{brews,casks}.nix → `homebrew.brews` / `homebrew.casks`
-  - Recommended for macOS GUI apps and many CLI tools with better macOS support.
-- User-local via Home Manager: home/apps.nix → `home.packages = with pkgs; [ ... ];`
-  - Good for developer convenience tools only the main user needs.
+### Legacy and user modules
 
-Add a new system module
------------------------
+- Mise now lives at `home/app-settings/mise.nix` and is imported only by
+  `home/default.nix`. Its `programs.mise` options belong to Home Manager, not the
+  Darwin module graph.
+- `modules/gems.nix` is an unimported legacy Home Manager fragment, not an active
+  system module. Its `home.environment` option is invalid for Home Manager; do
+  not import it as-is. Retire it or repair its Ruby environment separately if it
+  is still needed.
 
-1. Create modules/<name>.nix with the `{ pkgs, ... }: { /* options */ }` signature.
-2. Add it to the modules list in flake.nix under the “System modules (nix-darwin)” section.
-3. Rebuild:
+## Where to put changes
 
-   darwin-rebuild check --flake .#rafiki
-   darwin-rebuild switch --flake .#rafiki
+| Concern | Existing owner |
+| --- | --- |
+| Global nixpkgs packages | `modules/system-packages.nix` |
+| Homebrew formulae | `modules/homebrew/brews.nix` |
+| Homebrew casks / App Store apps | `modules/homebrew/casks.nix` |
+| macOS defaults and system shells | `modules/systems.nix` |
+| Host and user attributes | `modules/host-users.nix` |
+| User-local packages | `home/apps.nix` |
+| User application settings | `home/app-settings/` |
+| External dotfile links | `home/dotfiles.nix` |
 
-Tips
-----
+Keep the explicit import lists and current aggregators. Extend an existing owner
+when practical; add a focused system module to the `flake.nix` module list only
+when it introduces a distinct concern. No parallel `darwin/`, `user/`, or new
+module tree is needed for this single-host configuration. Do not move services
+or split macOS defaults merely for directory symmetry.
 
-- If you later add multiple hosts, move host-specific settings into hosts/<host>/darwin.nix and import per host.
-- Keep modules small and focused; it’s fine to split systems.nix into dock.nix, finder.nix, etc., once it grows.
+## Follow-up: duplicate package ownership
+
+These overlaps remain deliberately unchanged; documentation is not a request to
+uninstall or replace anything:
+
+- Git, mise, Starship, and skim are installed through both Homebrew and Home
+  Manager. Choose an owner per tool in a separate change, retaining shell/program
+  integration and checking executable precedence before removing packages.
+- Homebrew declares `postgresql@18`, while `services/postgres.nix` installs and
+  configures nix-darwin's PostgreSQL 18 service. The formula declaration alone
+  does not establish that a Homebrew service is running. Check service ownership,
+  data directories, ports, and migration/backup needs before consolidating.
+
+The `nix-homebrew` flake input is unused: ordinary nix-darwin `homebrew.*` options
+currently manage the Brewfile; the nix-homebrew module is not imported.
+`flake-utils` is also unused. Removing those inputs should be paired with
+lockfile cleanup in a separate change, not with package replacement.
+
+See [`home/README.md`](../home/README.md) for user-module and login-shell ownership.

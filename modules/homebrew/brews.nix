@@ -26,6 +26,7 @@
     "libyaml"
     "llvm" # llvm compiler for c++, c and rust
     "mas"
+    "mobile-dev-inc/tap/maestro" # Mobile-testing CLI and MCP server (not the Maestro GUI cask)
     "mise" # package manager
     "mole" # for cleaning your Mac computer
     "neovim"

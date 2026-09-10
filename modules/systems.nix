@@ -11,14 +11,14 @@
   system = {
     stateVersion = 5;
     # Set the primary user for options that require it
-    primaryUser = "rafiki";
+    primaryUser = username;
 
     defaults = {
       menuExtraClock.Show24Hour = true; # show 24 hour clock
       dock.autohide = true;
 
       # Keep Fn/globe as a modifier; pressing it alone must not change input sources.
-      hitoolbox.AppleFnUsageType = 0; # Do Nothing
+      hitoolbox.AppleFnUsageType = "Do Nothing";
 
       # apps to show in dock
       dock.persistent-apps = [
@@ -111,7 +111,6 @@
         };
 
         loginwindow = {
-          GuestEnabled = false; # disable guest user
           SHOWFULLNAME = true; # show full name in login window
         };
 
@@ -164,5 +163,5 @@
   programs.fish.enable = true;
 
   # Set fish as the default login shell for the primary user.
-  users.users.rafiki.shell = pkgs.fish;
+  users.users.${username}.shell = pkgs.fish;
 }

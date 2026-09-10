@@ -1,5 +1,5 @@
 {
-    // Muse — nix-managed. Auto-allow non-sensitive, atomic commits. See dotfiles/ai/AGENTS.md
+
     "permissions": {
         "defaultMode": "acceptEdits",
         "allow": [

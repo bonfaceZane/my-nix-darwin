@@ -1,38 +1,35 @@
-<!-- nx configuration start-->
-<!-- Leave the start & end comments to automatically receive updates. -->
+# Shared agent instructions
 
-# General Guidelines for working with Nx
+## Working safely
 
-- When running tasks (for example build, lint, test, e2e, etc.), always prefer running the task through `nx` (i.e. `nx run`, `nx run-many`, `nx affected`) instead of using the underlying tooling directly
-- You have access to the Nx MCP server and its tools, use them to help the user
-- When answering questions about the repository, use the `nx_workspace` tool first to gain an understanding of the workspace architecture where applicable.
-- When working in individual projects, use the `nx_project_details` mcp tool to analyze and understand the specific project structure and dependencies
-- For questions around nx configuration, best practices or if you're unsure, use the `nx_docs` tool to get relevant, up-to-date docs. Always use this instead of assuming things about nx configuration
-- If the user needs help with an Nx configuration or project graph error, use the `nx_workspace` tool to get any errors
-- For Nx plugin best practices, check `node_modules/@nx/<plugin>/PLUGIN.md`. Not all plugins have this file - proceed without it if unavailable.
+- Follow the current repository's instructions and use its existing dependencies and tooling. Preserve unrelated user changes and other agents' work.
+- Never read, print, copy, or commit credentials or secrets (including `secrets.yaml`, private `.env` files, keychain data, `~/.ssh`, and `~/.config/sops`). Treat `.sops.yaml` as sensitive configuration; do not change it without approval.
+- Work within the client's existing approval and sandbox controls. These instructions do not grant tool permissions or replace an enforced security policy.
+- Ask before publishing, pushing, committing, decrypting or re-encrypting secrets, activating system configuration, or performing destructive cleanup such as `brew cleanup --zap`, Nix garbage collection, or deletion outside the workspace.
+- Do not bypass a denied operation using another tool, shell command, or MCP server.
 
-<!-- nx configuration end-->
+## Nix-managed machine
 
-# Repo Conventions — my-nix-darwin
+- Manage machine setup through this Nix configuration, not manual `brew install`, global npm installs, or pip installs.
+- When working in `my-nix-darwin`, locate the current module and Home Manager declarations before editing; module paths may change during refactors.
+- Edit repository dotfile sources rather than generated files or symlink targets in the Nix store. Keep authentication and client-generated state outside version control.
+- Validate changed syntax and run appropriate checks. In this Nix repository, use `nix flake check` when feasible; report failures and limitations accurately. `darwin-rebuild switch` changes the live system and requires approval, not automatic execution after every edit.
 
-## Nix as Source of Truth
-- All setup is done through Nix — no manual `brew install`/`npm -g`/`pip install`.
-- GUI apps & formulae: `modules/homebrew/casks.nix` + `modules/homebrew/brews.nix` (managed via `nix-homebrew`; activation upgrades declared packages).
-- System packages: `modules/system-packages.nix`
-- User packages & language servers: `home/apps.nix` + `home/core.nix`
-- Dotfiles: `home/dotfiles.nix` links `dotfiles/*` via `mkOutOfStoreSymlink` — edit there, then `darwin-rebuild switch --flake .#rafiki`.
-- Secrets: `sops-nix` (`secrets.yaml` + `home/default.nix:sops`).
-- After any change: `nix flake check` / `darwin-rebuild switch --flake .#rafiki` to verify.
+## Git
 
-## Atomic Commits
-- Every commit is atomic: one logical change per commit, conventional commit message `<type>(<scope>): <description>` (imperative, <72 chars subject), as configured in `dotfiles/zed/settings.json:agent.commit_message_instructions` and `dotfiles/git/config`.
-- Group related file changes together; split unrelated changes into separate commits.
-- No fixup in a single atomic commit — use `git commit` per feature/fix/doc/refactor.
+- Commit only when requested. Keep each commit to one logical change and use a conventional commit subject: `<type>(<scope>): <description>`, imperative and under 72 characters.
+- Do not rewrite history or create branches without authorization.
 
-## Auto-Permissions (non-sensitive)
-- By default, auto-allow file edits, builds, lints, tests, and safe reads that do not touch secrets, network exfiltration, or destructive system changes.
-- Require explicit approval for: writes to `secrets.yaml`/keychain, `sops` re-encryption, network publishes, `brew cleanup --zap` deletions, `nix store` GC, or any `rm -rf` outside the workspace.
-- This policy applies to Codex (`dotfiles/.codex/config.toml`), Muse (`dotfiles/.claude/settings.json` / `dotfiles/ai/.agent/settings.json`), and Gemini (`dotfiles/.gemini/settings.json` / `dotfiles/ai/.gemini/settings.json`).
+## Nx workspaces
 
-## Skills
-- This repo's AI skills are centrally documented here and mirror-linked via `home/dotfiles.nix:ghStackSkillTargets` to `.agents/skills`, `.codex/skills`, `.claude/skills`, etc. Keep skills immutable upstream, link them here.
+- Apply Nx guidance only when the current repository actually uses Nx. Prefer its installed Nx tasks (`nx run`, `nx run-many`, `nx affected`) over invoking underlying tools directly.
+- Use Nx MCP tools only if available in the current session; discover the actual tool names rather than assuming a particular server version.
+- Consult current Nx documentation for configuration questions. Check `node_modules/@nx/<plugin>/PLUGIN.md` when present.
+- Do not install Nx or start workspace-specific MCP servers globally just to satisfy these instructions.
+
+## Skills and MCP
+
+- Use installed skills when their descriptions match the task. Load the skill's `SKILL.md` and follow its instructions, subject to the current task scope and permissions.
+- Shared user skills live in `~/.agents/skills`; Claude Code additionally uses `~/.claude/skills`. Keep Nix-fetched upstream skills immutable and link individual skill directories without replacing user-owned skill collections.
+- MCP configuration is client-specific. Do not assume that a shared `.mcp.json` is automatically loaded by every client, or that instructions alone enable a server.
+- Use native Git tools when no Git MCP server is configured. Do not download an unverified MCP package as a substitute.

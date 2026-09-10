@@ -1,0 +1,17 @@
+# Apple Silicon Homebrew seed for a missing CODEX_HOME/config.toml, not a live config layer.
+# Never overwrite an existing config, symlink, or user-selected model/integration.
+# Shared instructions belong in CODEX_HOME/AGENTS.md.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = false
+
+# Optional mobile/web UI testing; prerequisites are declared in Nix-managed Homebrew.
+# Native file, shell, Git, and Nix tools are sufficient for this repository.
+[mcp_servers.maestro]
+command = "/opt/homebrew/bin/maestro"
+args = ["mcp"]
+
+[mcp_servers.maestro.env]
+JAVA_HOME = "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"

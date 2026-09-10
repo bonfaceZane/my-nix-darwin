@@ -20,6 +20,7 @@
       "alt-tab"
       "caskhub"
       "bettertouchtool"
+      "claude-code"
       "codex"
       "codex-app"
       "docker-desktop"

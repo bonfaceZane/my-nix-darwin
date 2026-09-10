@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 let
   bashAliasesPath = ../dotfiles/.bash_aliases;
-  amvPath = ../dotfiles/amv;
+
   dotfiles = "${config.home.homeDirectory}/Documents/subira/my-nix-darwin/dotfiles";
   ghStackSource = pkgs.fetchFromGitHub {
     owner = "github";
@@ -28,8 +28,8 @@ in
   # Central place to safely link repo-tracked dotfiles into $HOME.
   #
   # Goals:
-  # - Avoid conflicts/failures when files already exist (use force = true).
-  # - Only attempt to link when the external source actually exists.
+  # - Let Home Manager back up collisions; never replace whole AI state directories.
+  # - Check optional sources in the repository, not against the live home directory.
   # - Dotfiles are tracked under ../dotfiles inside this repo; changes are
   #   picked up on rebuild.
   # - Do NOT manage targets that are already owned by first-class HM modules
@@ -38,7 +38,7 @@ in
   # Add new entries here instead of scattering `home.file` across modules.
 
   # Important: Starship is configured via programs.starship.settings in
-  # home/starship.nix. Do not link starship.toml here to avoid conflicts.
+  # home/app-settings/starship.nix. Do not link starship.toml here to avoid conflicts.
 
   home.file = {
     # Helix config directory
@@ -76,14 +76,13 @@ in
     ".gemini/antigravity/browserAllowlist.txt" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/antigravity/browserAllowlist.txt";
     };
-    # General Gemini settings
-    ".gemini/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.gemini/settings.json") {
-      source = "${dotfiles}/.gemini/settings.json";
-      force = true;
+    # Client settings are live links; credentials and sessions remain client-owned.
+    ".gemini/settings.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.gemini/settings.json";
     };
 
     # Copilot MCP config
-    ".copilot/mcp-config.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.copilot/mcp-config.json") {
+    ".copilot/mcp-config.json" = lib.mkIf (builtins.pathExists ../dotfiles/.copilot/mcp-config.json) {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.copilot/mcp-config.json";
       force = true;
     };
@@ -105,10 +104,6 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/git/.gitconfig_personal";
     };
 
-    # Neovim config directory
-    ".config/nvim" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
-    };
 
     # Nushell config directory
     "Library/Application Support/nushell" = {
@@ -127,7 +122,7 @@ in
 
     # AMV Apps mise config
     "Documents/work/amv-apps/mise.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/AMV/mise.toml";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/mise.toml";
     };
 
     # Husky pre commit config
@@ -137,7 +132,7 @@ in
 
     # Husky pre push config
     "Documents/work/amv-apps/.husky/pre-push" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/pre-commit";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/pre-push";
     };
 
     "Documents/work/amv-apps/.lintstagedrc.json" = {
@@ -184,25 +179,23 @@ in
       '';
     };
 
-    # Codex configuration — auto-allow non-sensitive per dotfiles/ai/AGENTS.md
-    ".codex/config.toml" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/config.toml") {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+    # Codex config is seeded below, not symlinked: the CLI/desktop app writes to it.
+    ".claude/mcp.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/.mcp.json";
     };
-    ".codex-work/config.toml" = lib.mkIf (builtins.pathExists "${dotfiles}/.codex/config.toml") {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+    ".claude/CLAUDE.md" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/CLAUDE.md";
     };
-    ".claude/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.claude/settings.json") {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
-    };
-    ".codex/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.claude/settings.json") {
+    ".claude/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/.claude/settings.json) {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
     };
 
+
     # Cursor configuration — MCP + agent permissions (mirrors .claude/.codex pattern)
-    ".cursor/mcp.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.cursor/mcp.json") {
+    ".cursor/mcp.json" = lib.mkIf (builtins.pathExists ../dotfiles/.cursor/mcp.json) {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/mcp.json";
     };
-    ".cursor/settings.json" = lib.mkIf (builtins.pathExists "${dotfiles}/.cursor/settings.json") {
+    ".cursor/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/.cursor/settings.json) {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/settings.json";
     };
 
@@ -219,5 +212,40 @@ in
         force = true;
       };
     }) ghStackSkillTargets
+  ) // builtins.listToAttrs (
+    map (target: {
+      name = "${target}/AGENTS.md";
+      value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
+    }) [ ".claude" ".codex" ".codex-work" ".gemini" ]
+  ) // builtins.listToAttrs (
+    map (target: {
+      name = "${target}/skills/nix-darwin-maintenance";
+      value.source = ../.agents/skills/nix-darwin-maintenance;
+    }) [ ".agents" ".claude" ]
   );
+
+  # Detach only our old repository link before HM removes obsolete managed links.
+  # Preserve its contents; leave other existing configs and dangling links untouched.
+  home.activation.detachLegacyCodexConfig = lib.hm.dag.entryBetween [ "linkGeneration" ] [ "writeBoundary" ] ''
+    for codexHome in "$HOME/.codex" "$HOME/.codex-work"; do
+      if [ -L "$codexHome/config.toml" ] && [ -f "$codexHome/config.toml" ] &&
+         [ "$(${pkgs.coreutils}/bin/readlink -f "$codexHome/config.toml")" = "${dotfiles}/.codex/config.toml" ]; then
+        if [ -z "''${DRY_RUN_CMD:-}" ]; then
+          temporary=$(${pkgs.coreutils}/bin/mktemp "$codexHome/config.toml.XXXXXX")
+          ${pkgs.coreutils}/bin/install -m 600 "$codexHome/config.toml" "$temporary"
+          ${pkgs.coreutils}/bin/mv "$temporary" "$codexHome/config.toml"
+        fi
+      fi
+    done
+  '';
+
+  # Seed after obsolete links are removed, including dangling links from old generations.
+  home.activation.seedCodexConfig = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    for codexHome in "$HOME/.codex" "$HOME/.codex-work"; do
+      if [ ! -e "$codexHome/config.toml" ] && [ ! -L "$codexHome/config.toml" ]; then
+        run ${pkgs.coreutils}/bin/mkdir -p "$codexHome"
+        run ${pkgs.coreutils}/bin/install -m 600 ${../dotfiles/.codex/config.base.toml} "$codexHome/config.toml"
+      fi
+    done
+  '';
 }

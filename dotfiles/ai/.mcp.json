@@ -1,13 +1,12 @@
 {
     "mcpServers": {
-        "nx-mcp": {
+        "maestro": {
             "type": "stdio",
-            "command": "npx",
-            "args": ["nx", "mcp"]
-        },
-        "git": {
-            "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-git"]
+            "command": "/opt/homebrew/bin/maestro",
+            "args": ["mcp"],
+            "env": {
+                "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+            }
         }
     }
 }

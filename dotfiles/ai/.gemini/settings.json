@@ -1,22 +1,5 @@
 {
-  // Gemini — nix-managed, mirrors dotfiles/.gemini/settings.json. See dotfiles/ai/AGENTS.md
-  "general": {
-    "previewFeatures": true,
-    "autoApproveSafeEdits": true
-  },
-  "permissions": {
-    "autoAllowNonSensitive": true,
-    "sensitivePaths": ["secrets.yaml", ".sops.yaml"]
-  },
-  "mcpServers": {
-    "nx-mcp": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "nx",
-        "mcp"
-      ]
+    "context": {
+        "fileName": ["AGENTS.md", "GEMINI.md"]
     }
-  },
-  "contextFileName": "AGENTS.md"
 }

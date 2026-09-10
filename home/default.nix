@@ -12,8 +12,8 @@
   # Tip: Prefer keeping system-wide apps in `modules/apps.nix` and user-specific
   # tools here in Home Manager.
   #
-  # Inputs provided via `specialArgs` from flake.nix include `username` and
-  # `useremail` (used by `home/git.nix`).
+  # Inputs provided via `specialArgs` from flake.nix include `username`,
+  # `hostname`, and the flake inputs.
   #
   # import sub modules
   imports = [
@@ -23,7 +23,7 @@
     ./dotfiles.nix
     ./apps.nix
     ./core.nix
-    ../modules/mise.nix
+    ./app-settings/mise.nix
     sops-nix.homeManagerModules.sops
   ];
 

@@ -1,21 +1,29 @@
 
 
 [tasks.switch]
-description = "Build the system configuration"
+description = "Build and activate the system configuration (requires sudo)"
 run = "sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure"
+
+[tasks.build]
+description = "Build without activating the system"
+run = "darwin-rebuild build --flake .#rafiki --show-trace --impure"
 alias = "b"
 
+[tasks.validate]
+description = "Validate repository AI config and dotfile wiring without activation"
+run = "python3 scripts/validate-config.py"
+
 [tasks.rebuild]
-description = "Alias for build"
+description = "Alias for build (no activation)"
 run = "mise run build"
 alias = "r"
 
 [tasks.darwin]
-description = "Alias for build"
+description = "Alias for build (no activation)"
 run = "mise run build"
 
 [tasks.update]
-description = "Update flake inputs and rebuild system"
+description = "Update flake inputs and build without activation"
 run = """
 nix flake update
 mise run build
@@ -34,7 +42,7 @@ alias = "gc"
 
 [tasks.rollback]
 description = "Rollback to previous generation"
-run = "sudo darwin-rebuild --rollback"
+run = "sudo darwin-rebuild switch --rollback"
 alias = "rb"
 
 [tasks.show]
