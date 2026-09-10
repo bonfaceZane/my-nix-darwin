@@ -20,6 +20,14 @@ Keep existing module boundaries and explicit imports. Prefer first-class Nix opt
 
 AI instructions are not permissions. Keep approval/sandbox protections; do not enable blanket auto-approval to make an agent more capable. Sync client-specific settings in their native format rather than copying Claude JSON into Codex. Keep existing writable Codex config separate from the tracked seed.
 
+## Atomic commits
+
+- Commit only when requested. Treat “commit” as a request to review staged and unstaged changes and split the authorized changes into atomic commits, one logical purpose per commit. Create multiple commits when changes have independent purposes; one cohesive change needs only one commit.
+- Atomic means one logical change, not one file. Keep related implementation, tests, and documentation together; split hunks within a file when needed. Do not group unrelated changes merely because they are already staged.
+- Preserve unrelated user work and its staging state. Ask if its inclusion is unclear. Inspect each staged diff before committing and run checks appropriate to that change.
+- Use a Conventional Commit subject: `<type>(<scope>): <description>`, imperative and under 72 characters. Summarize the resulting commits and validation.
+- Do not push, rewrite history, or create branches without explicit authorization. A request to commit does not authorize these operations.
+
 ## Validation
 
 1. `python3 scripts/validate-config.py` (Python 3.11+; named non-secret config files only).
