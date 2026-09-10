@@ -17,6 +17,9 @@
       menuExtraClock.Show24Hour = true; # show 24 hour clock
       dock.autohide = true;
 
+      # Keep Fn/globe as a modifier; pressing it alone must not change input sources.
+      hitoolbox.AppleFnUsageType = 0; # Do Nothing
+
       # apps to show in dock
       dock.persistent-apps = [
         "/Applications/slack.app"

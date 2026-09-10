@@ -3,6 +3,8 @@
     "agent_servers": {
         "codex-acp": {
             "default_config_options": {
+                "model": "gpt-6-astra",
+                "fast-mode": false,
                 "mode": "agent"
             },
             "type": "registry"
@@ -81,7 +83,7 @@
             "provider": "openai-subscribed",
             "model": "gpt-5.6-terra"
         },
-        "dock": "right",
+        "dock": "left",
         "favorite_models": [
             {
                 "provider": "google",
