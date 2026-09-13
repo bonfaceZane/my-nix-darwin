@@ -44,8 +44,8 @@ def validate_opencode_configs():
 
 
 def main():
-    runpy.run_path(str(ROOT / "dotfiles/ai/validate.py"), run_name="__main__")
     validate_opencode_configs()
+    runpy.run_path(str(ROOT / "dotfiles/ai/validate.py"), run_name="__main__")
     for relative in ("mise.toml", "dotfiles/mise/config.toml"):
         with (ROOT / relative).open("rb") as source:
             config = tomllib.load(source)
@@ -55,7 +55,7 @@ def main():
                 for called in re.findall(r"mise run ([\w-]+)", task.get("run", "")):
                     assert called in tasks, f"Missing mise task: {called}"
         else:
-            assert "aider-chat" in config["tools"], "Aider must be a declared mise tool"
+            assert "pipx:aider-chat" in config["tools"], "Aider must be a declared mise tool"
         print(f"TOML OK: {relative}")
 
     wiring = (ROOT / "home/dotfiles.nix").read_text()

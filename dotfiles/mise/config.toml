@@ -5,7 +5,7 @@ AIDER_MODEL = "deepseek/deepseek-reasoner"
 
 [tools]
 node = "lts"
-aider-chat = "latest"
+"pipx:aider-chat" = "latest"
 "npm:@openviking/opencode-plugin" = "latest"
 yarn = "1.22.22"
 rust = "latest"
