@@ -5,6 +5,9 @@
     "skills/ast-outline/SKILL.md",
     "skills/token-discipline/SKILL.md"
   ],
+  "plugin": [
+    "@openviking/opencode-plugin"
+  ],
   "lsp": {
     "nix": {
       "command": [ "nil" ],
