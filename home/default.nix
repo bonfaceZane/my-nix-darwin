@@ -33,6 +33,7 @@
     secrets.useremail = { };
     secrets.anthropic_api_key = { };
     secrets.anthropic_api_key_work = { };
+    secrets.deepseek_api_key = { };
   };
 
   # Home Manager needs a bit of information about you and the

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   # Fish is the primary interactive shell.
   programs.fish = {
@@ -47,9 +47,13 @@
         eval (/opt/homebrew/bin/brew shellenv)
       end
 
-      # Load Secrets from sops-nix
-      if test -f /run/secrets/anthropic_api_key
-          set -gx ANTHROPIC_API_KEY (cat /run/secrets/anthropic_api_key)
+      # Load secrets from their Home Manager-managed sops-nix paths.
+      if test -f "${config.sops.secrets.anthropic_api_key.path}"
+        set -gx ANTHROPIC_API_KEY (cat "${config.sops.secrets.anthropic_api_key.path}")
+      end
+
+      if test -f "${config.sops.secrets.deepseek_api_key.path}"
+        set -gx DEEPSEEK_API_KEY (cat "${config.sops.secrets.deepseek_api_key.path}")
       end
 
       # ---------------------------------------------------
@@ -83,9 +87,13 @@
           eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
 
-        # Load Secrets from sops-nix
-        if [ -f /run/secrets/anthropic_api_key ]; then
-            export ANTHROPIC_API_KEY=$(cat /run/secrets/anthropic_api_key)
+        # Load secrets from their Home Manager-managed sops-nix paths.
+        if [ -f "${config.sops.secrets.anthropic_api_key.path}" ]; then
+          export ANTHROPIC_API_KEY=$(cat "${config.sops.secrets.anthropic_api_key.path}")
+        fi
+
+        if [ -f "${config.sops.secrets.deepseek_api_key.path}" ]; then
+          export DEEPSEEK_API_KEY=$(cat "${config.sops.secrets.deepseek_api_key.path}")
         fi
 
         # --- End HM additions ---
