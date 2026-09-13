@@ -4,7 +4,7 @@
 # Auto-approve safe operations; escalate only for security-essential actions.
 # Destructive commands (rm, sudo, chmod, chown, force-push, reset --hard) and
 # secret access (secrets.yaml, .env*, .sops.yaml, ~/.ssh, ~/.aws) still prompt.
-approval_policy = "on-failure"
+approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 
 [sandbox_workspace_write]

@@ -31,10 +31,6 @@
             "env": {
                 "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
             }
-        },
-        "radon": {
-            "command": "npx",
-            "args": ["-y", "radon-mcp@latest", "/Users/rafiki/Documents/work/amv-apps"]
         }
     }
 }

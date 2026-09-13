@@ -110,12 +110,13 @@ activation.
   If the CLI is unavailable or unnecessary, exclude `maestro` using `mcp.excluded`
   in the appropriate settings scope, preserving other exclusions and user config.
 
-Gemini's existing Radon integration is also retained, not propagated to other
-clients. Its `npx -y radon-mcp@latest` command may download changing npm code and
-uses a work-project path; review it in that project's context rather than treating
-it as a reproducible Nix dependency. Neither Nx nor a separate Git MCP server is
-required here. Use native Git, and configure Nx MCP only in a workspace that
-already supplies Nx.
+The global Gemini settings declare only the shared Maestro server. The
+work-specific Radon integration was removed from that global file because its
+`npx -y radon-mcp@latest` command may download changing npm code and it used a
+fixed work-project path; configure it in that workspace's own Gemini settings
+instead of every session. Neither Nx nor a separate Git MCP server is required
+here. Use native Git, and configure Nx MCP only in a workspace that already
+supplies Nx.
 
 `dotfiles/ai/.gemini/settings.json` is a minimal project context overlay, not a
 replacement for the canonical user settings. The legacy `dotfiles/ai/.agent/settings.json`
