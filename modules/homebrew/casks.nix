@@ -33,6 +33,7 @@
       "nordpass"
       "nordvpn"
       "notion" # markdown editor
+      "opencode-desktop" # OpenCode desktop app
       "proxyman"
       "raycast" # launcher and automation
       "stats" # system monitor
