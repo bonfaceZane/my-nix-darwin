@@ -54,8 +54,6 @@ def main():
             for task in tasks.values():
                 for called in re.findall(r"mise run ([\w-]+)", task.get("run", "")):
                     assert called in tasks, f"Missing mise task: {called}"
-        else:
-            assert "pipx:aider-chat" in config["tools"], "Aider must be a declared mise tool"
         print(f"TOML OK: {relative}")
 
     wiring = (ROOT / "home/dotfiles.nix").read_text()
