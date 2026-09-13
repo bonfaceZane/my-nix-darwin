@@ -36,6 +36,9 @@ in
     gnutar
     sops
     aider-chat # AI pair-programming CLI; uses the SOPS-managed DEEPSEEK_API_KEY
+    opencode # Terminal AI coding agent (TUI + LSP)
+    ast-grep # AST-based structural search; powers OpenCode repo maps
+    repomix # Packs a codebase into a token-optimized context payload
     devbox # Nix-based dev environment manager
     ghStack # GitHub CLI extension for stacked pull requests
     gitkrakenMcp # Portable launcher for the GitKraken Antigravity MCP server

@@ -213,6 +213,11 @@ in
     ".config/muse/settings.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/muse/settings.json";
     };
+
+    # OpenCode config directory (opencode.json + skills)
+    ".config/opencode" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/opencode";
+    };
   } // builtins.listToAttrs (
     map (target: {
       name = target;
