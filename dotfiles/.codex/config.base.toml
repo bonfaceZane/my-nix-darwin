@@ -1,7 +1,10 @@
 # Apple Silicon Homebrew seed for a missing CODEX_HOME/config.toml, not a live config layer.
 # Never overwrite an existing config, symlink, or user-selected model/integration.
 # Shared instructions belong in CODEX_HOME/AGENTS.md.
-approval_policy = "on-request"
+# Auto-approve safe operations; escalate only for security-essential actions.
+# Destructive commands (rm, sudo, chmod, chown, force-push, reset --hard) and
+# secret access (secrets.yaml, .env*, .sops.yaml, ~/.ssh, ~/.aws) still prompt.
+approval_policy = "on-failure"
 sandbox_mode = "workspace-write"
 
 [sandbox_workspace_write]
