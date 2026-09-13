@@ -4,5 +4,65 @@
     "skills/repo-map/SKILL.md",
     "skills/ast-outline/SKILL.md",
     "skills/token-discipline/SKILL.md"
-  ]
+  ],
+  "plugin": [
+    "@openviking/opencode-plugin"
+  ],
+  "lsp": {
+    "nix": {
+      "command": [ "nil" ],
+      "extensions": [ ".nix" ]
+    },
+    "typescript": {
+      "command": [ "typescript-language-server", "--stdio" ],
+      "extensions": [ ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs" ]
+    },
+    "python": {
+      "command": [ "pyright-langserver", "--stdio" ],
+      "extensions": [ ".py", ".pyi" ]
+    },
+    "rust": {
+      "command": [ "rust-analyzer" ],
+      "extensions": [ ".rs" ]
+    },
+    "go": {
+      "command": [ "gopls" ],
+      "extensions": [ ".go" ]
+    },
+    "ruby": {
+      "command": [ "solargraph", "stdio" ],
+      "extensions": [ ".rb" ]
+    },
+    "json": {
+      "command": [ "vscode-json-language-server", "--stdio" ],
+      "extensions": [ ".json", ".jsonc" ]
+    },
+    "yaml": {
+      "command": [ "yaml-language-server", "--stdio" ],
+      "extensions": [ ".yaml", ".yml" ]
+    },
+    "lua": {
+      "command": [ "lua-language-server" ],
+      "extensions": [ ".lua" ]
+    }
+  },
+  "provider": {
+    "deepseek": {
+      "npm": "@ai-sdk/deepseek",
+      "name": "DeepSeek",
+      "options": {
+        "apiKey": "{env:DEEPSEEK_API_KEY}"
+      },
+      "models": {
+        "deepseek-chat": {
+          "name": "DeepSeek Chat"
+        },
+        "deepseek-reasoner": {
+          "name": "DeepSeek Reasoner",
+          "reasoning": true
+        }
+      }
+    }
+  },
+  "model": "deepseek/deepseek-reasoner"
 }

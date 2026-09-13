@@ -9,7 +9,15 @@ Apply these rules by default; they are not optional.
 - Prefer the repo map (`skills/repo-map`) and AST outlines (`skills/ast-outline`)
   over raw file dumps.
 - Read files by symbol or line range once the map locates them.
+- Prefer LSP (`documentSymbol`, `hover`, `diagnostics`) over reading bodies.
 - Drop stale context: run `/compact` when history grows or topics change.
+
+## Memory
+
+- Durable preferences and architecture decisions belong in the OpenViking
+  store, not in the context window.
+- Query the store at session start; write only long-lived facts, never
+  transient task state.
 
 ## Editing
 

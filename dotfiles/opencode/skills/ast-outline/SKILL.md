@@ -15,6 +15,8 @@ to the repo map.
 - `ast-grep` — AST-based structural search (Tree-sitter under the hood).
 - `ctags` / `universal-ctags` — fast symbol index for many languages.
 - `tree-sitter` CLI — parse and query when ast-grep patterns are awkward.
+- LSP (configured in `opencode.json`) — `documentSymbol`, `hover`, and
+  `diagnostics` answer per-symbol questions far more cheaply than a body dump.
 
 ## Workflow
 
@@ -46,6 +48,7 @@ to the repo map.
 
 ## Rules
 
+- Ask the LSP for symbols/diagnostics before reading a file body.
 - Never dump full file bodies when an outline suffices.
 - Prefer line ranges over whole-file includes.
 - Re-run the outline after edits instead of re-reading the whole file.

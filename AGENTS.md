@@ -10,17 +10,20 @@ This is a single-user Apple Silicon macOS configuration, not a Node/Nx applicati
 - `home/app-settings/`: shell, Git, Starship, and mise settings.
 - `home/dotfiles.nix`: links to this checkout's `dotfiles/` and initial Codex configs.
 - `dotfiles/`: editable application config sources. Do not move them without updating their consumers.
+- `dotfiles/opencode/`: global OpenCode config (LSP servers, skills, OpenViking plugin) linked to `~/.config/opencode`; `opencode.local.json` is the per-project template and `memory/` is the plugin's persistent store.
+- `dotfiles/setup.sh`: idempotently wires the OpenCode config globally and, for projects that lack one, writes a local `opencode.json`.
+- `dotfiles/mise/config.toml`: declares CLI tools, including Aider; the Aider BYOK environment lives in the per-shell configs under `dotfiles/`.
 - `.agents/skills/nix-darwin-maintenance/`: focused maintenance workflow.
 - `.github/copilot-instructions.md` and `dotfiles/.cursor/rules/agents.mdc`: client entry points that defer to this file.
 - `.junie/memory/`: local agent memory; keep it out of commits unless explicitly requested.
 
 ## Safe changes
 
-Inspect Git status and preserve unrelated work. Do not read, print, copy, decrypt, or commit credentials, private environment files, `secrets.yaml`, or client auth/session state. Do not edit `.sops.yaml` without approval. Do not bypass denied operations through another tool.
+Inspect Git status and preserve unrelated work. Do not read, print, copy, decrypt, or commit credentials, private environment files, `secrets.yaml`, or client auth/session state. Do not edit `.sops.yaml` without approval. Do not bypass denied operations through another tool. Treat OpenViking memory under `dotfiles/opencode/memory/` as user data: review it before committing and never store credentials or secrets in it.
 
 Keep existing module boundaries and explicit imports. Prefer first-class Nix options; verify option names/types against pinned inputs. Do not install tools manually with Brew/npm/pip when the package can be declared here. No branch creation, commits, pushes, input updates, garbage collection, destructive cleanup, or system activation unless requested.
 
-AI instructions are not permissions. Keep approval/sandbox protections; do not enable blanket auto-approval to make an agent more capable. Sync client-specific settings in their native format rather than copying Claude JSON into Codex. Keep existing writable Codex config separate from the tracked seed.
+AI instructions are not permissions. Keep approval/sandbox protections; do not enable blanket auto-approval to make an agent more capable. Sync client-specific settings in their native format rather than copying Claude JSON into Codex. Keep existing writable Codex config separate from the tracked seed. Do not commit `opencode.json` files written by `dotfiles/setup.sh`; only `dotfiles/opencode/opencode.json` and `opencode.local.json` are tracked.
 
 ## Atomic commits
 
@@ -34,6 +37,7 @@ AI instructions are not permissions. Keep approval/sandbox protections; do not e
 
 1. `python3 scripts/validate-config.py` (Python 3.11+; named non-secret config files only).
 2. `nix-instantiate --parse <changed-file.nix>` and `git diff --check`.
+3. The validator also parses `dotfiles/opencode/opencode.json` and `opencode.local.json`; do not run `dotfiles/setup.sh` (or `mise run oc-setup`) as a validation step, since it writes to live config locations.
 3. `mise run build` or `darwin-rebuild build --flake .#rafiki --show-trace --impure` when feasible; this builds but does not activate. `nix flake check --impure` is another broader check.
 4. Report any unavailable tools, network/build failures, and untested runtime behavior. Never claim a syntax check validates the deployed system or live MCP connections.
 

@@ -54,7 +54,7 @@ in
 
     # Aider uses the SOPS-managed DEEPSEEK_API_KEY loaded by the shell.
     ".aider.conf.yml".text = ''
-      model: deepseek/deepseek-coder
+      model: deepseek/deepseek-reasoner
       auto-commits: false
       check-update: false
     '';
@@ -217,6 +217,13 @@ in
     # OpenCode config directory (opencode.json + skills)
     ".config/opencode" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/opencode";
+    };
+
+    # Persistent cross-session memory for the OpenViking OpenCode plugin.
+    # The plugin writes through this symlink into the repo so memory survives
+    # rebuilds; only the directory itself is managed by Home Manager.
+    ".local/share/opencode/memory" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/opencode/memory";
     };
   } // builtins.listToAttrs (
     map (target: {

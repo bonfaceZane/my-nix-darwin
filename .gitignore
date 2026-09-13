@@ -8,3 +8,9 @@ dotfiles/aws/**/cache/
 dotfiles/.codex/config.toml
 .aider*
 .opencode/
+# Local OpenCode config written by dotfiles/setup.sh; the tracked template is
+# dotfiles/opencode/opencode.local.json.
+/opencode.json
+.env
+.env.*
+!.env.example

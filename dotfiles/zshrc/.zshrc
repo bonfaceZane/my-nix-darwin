@@ -36,4 +36,8 @@ function osha() {
   npx npkill -D -y
 }
 
+# Aider BYOK (DeepSeek). DEEPSEEK_API_KEY comes from the SOPS-managed shell env.
+export AIDER_MODEL="deepseek/deepseek-reasoner"
+alias aider-byok='aider --model deepseek/deepseek-reasoner --no-auto-commits --no-check-update --no-show-model-warnings'
+
 eval "$(starship init zsh)"

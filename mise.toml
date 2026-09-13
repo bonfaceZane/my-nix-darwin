@@ -1,5 +1,17 @@
 
 
+[tasks.aider]
+description = "Run Aider with BYOK (DeepSeek); pass target files after --"
+run = "aider --model deepseek/deepseek-reasoner --no-auto-commits --no-check-update"
+
+[tasks.opencode]
+description = "Launch OpenCode with the global skills + LSP config"
+run = "opencode"
+
+[tasks.oc-setup]
+description = "Wire OpenCode globally and write a local config for the given directories"
+run = "./dotfiles/setup.sh all ."
+
 [tasks.switch]
 description = "Build and activate the system configuration (requires sudo)"
 run = "sudo -E darwin-rebuild switch --flake .#rafiki --show-trace --impure"

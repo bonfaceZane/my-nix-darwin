@@ -102,3 +102,6 @@ $env.NU_PLUGIN_DIRS = [
 
 # Add mise shims to PATH
 $env.PATH = ($env.PATH | split row (char esep) | prepend ($env.HOME | path join ".local" "share" "mise" "shims"))
+
+# Aider BYOK (DeepSeek). DEEPSEEK_API_KEY comes from the SOPS-managed shell env.
+$env.AIDER_MODEL = "deepseek/deepseek-reasoner"

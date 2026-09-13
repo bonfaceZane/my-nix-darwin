@@ -39,7 +39,12 @@ def main():
     for name in (".gemini/settings.json", "ai/.gemini/settings.json"):
         config = configs[name]
         assert config["context"]["fileName"] == ["AGENTS.md", "GEMINI.md"]
-        assert "permissions" not in config
+        permissions = config.get("permissions", {})
+        assert permissions.get("allow", []) == []
+        assert permissions.get("ask", []) == []
+        if permissions:
+            for denied in ("Read(secrets.yaml)", "Read(.env*)", "Bash(sops:*)"):
+                assert denied in permissions["deny"], f"Missing Gemini deny rule: {denied}"
         assert "contextFileName" not in config
         assert "autoApproveSafeEdits" not in config.get("general", {})
     assert configs[".gemini/settings.json"]["general"]["defaultApprovalMode"] == "default"

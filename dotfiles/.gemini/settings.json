@@ -1,33 +1,8 @@
 {
     "general": {
-        "defaultApprovalMode": "auto_edit"
+        "defaultApprovalMode": "default"
     },
     "permissions": {
-        "allow": [
-            "Read",
-            "Glob",
-            "Grep",
-            "Edit",
-            "Write",
-            "Bash(nix:*)",
-            "Bash(git status:*)",
-            "Bash(git diff:*)",
-            "Bash(git log:*)",
-            "Bash(git show:*)",
-            "Bash(git add:*)",
-            "Bash(git commit:*)",
-            "Bash(ls:*)",
-            "Bash(cat:*)",
-            "Bash(rg:*)",
-            "Bash(fd:*)",
-            "Bash(jq:*)",
-            "Bash(ast-grep:*)",
-            "Bash(repomix:*)",
-            "Bash(mkdir:*)",
-            "Bash(touch:*)",
-            "Bash(npm:*)",
-            "Bash(yarn:*)"
-        ],
         "deny": [
             "Read(secrets.yaml)",
             "Read(.env*)",
@@ -44,13 +19,6 @@
             "Bash(git clean:*)",
             "Bash(curl:* | sh)",
             "Bash(curl:* | bash)"
-        ],
-        "ask": [
-            "Bash(git push:*)",
-            "Bash(brew:*)",
-            "Bash(darwin-rebuild:*)",
-            "Bash(npm install -g:*)",
-            "Bash(pip install:*)"
         ]
     },
     "context": {
