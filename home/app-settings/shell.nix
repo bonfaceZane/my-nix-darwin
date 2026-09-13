@@ -106,6 +106,8 @@
     MODULAR_HOME = "/Users/rafiki/.modular";
     PROTO_HOME = "$HOME/.proto";
     GEM_HOME = "$HOME/.gem";
+    # Allow the SOPS CLI to decrypt this repo without repeating the SSH key path.
+    SOPS_AGE_SSH_PRIVATE_KEY_FILE = "/Users/rafiki/.ssh/id_ed25519";
   };
 
   home.shellAliases = {
