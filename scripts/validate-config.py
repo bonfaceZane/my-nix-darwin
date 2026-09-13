@@ -24,7 +24,6 @@ def validate_opencode_configs():
     global_config = json.loads(
         (ROOT / global_relative).read_text(), object_pairs_hook=unique_keys
     )
-    assert global_config["plugin"] == ["@openviking/opencode-plugin"]
     assert global_config["lsp"], "OpenCode LSP servers must be declared"
     for instruction in global_config["instructions"]:
         assert (ROOT / "dotfiles/opencode" / instruction).is_file(), (

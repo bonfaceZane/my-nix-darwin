@@ -5,9 +5,6 @@
     "skills/ast-outline/SKILL.md",
     "skills/token-discipline/SKILL.md"
   ],
-  "plugin": [
-    "@openviking/opencode-plugin"
-  ],
   "lsp": {
     "nix": {
       "command": [ "nil" ],
@@ -46,23 +43,5 @@
       "extensions": [ ".lua" ]
     }
   },
-  "provider": {
-    "deepseek": {
-      "npm": "@ai-sdk/deepseek",
-      "name": "DeepSeek",
-      "options": {
-        "apiKey": "{env:DEEPSEEK_API_KEY}"
-      },
-      "models": {
-        "deepseek-chat": {
-          "name": "DeepSeek Chat"
-        },
-        "deepseek-reasoner": {
-          "name": "DeepSeek Reasoner",
-          "reasoning": true
-        }
-      }
-    }
-  },
-  "model": "deepseek/deepseek-reasoner"
+  "model": "deepseek/deepseek-v4-pro"
 }

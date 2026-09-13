@@ -28,6 +28,7 @@
         "/Applications/Dia.app"
         "/Applications/Safari.app"
         "/Applications/Zed.app"
+        "/Applications/OpenCode.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/Maestro Studio.app"
         "/Applications/Warp.app"
