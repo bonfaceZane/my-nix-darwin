@@ -35,6 +35,7 @@ in
     gnused
     gnutar
     sops
+    aider-chat # AI pair-programming CLI; uses the SOPS-managed DEEPSEEK_API_KEY
     devbox # Nix-based dev environment manager
     ghStack # GitHub CLI extension for stacked pull requests
     gitkrakenMcp # Portable launcher for the GitKraken Antigravity MCP server

@@ -36,6 +36,8 @@ def main():
     assert '".codex/settings.json"' not in wiring
     for name in ("AGENTS.md", "CLAUDE.md", "GEMINI.md"):
         assert (ROOT / name).is_file(), f"Missing project instructions: {name}"
+    assert (ROOT / ".github/copilot-instructions.md").is_file(), "Missing Copilot instructions"
+    assert (ROOT / "dotfiles/.cursor/rules/agents.mdc").is_file(), "Missing Cursor rules"
     skill = ROOT / ".agents/skills/nix-darwin-maintenance/SKILL.md"
     assert skill.read_text().startswith("---\nname: nix-darwin-maintenance\n")
     print(f"Dotfile sources OK: {len(sources)} references; project instructions and skill OK")

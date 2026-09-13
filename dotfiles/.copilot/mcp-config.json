@@ -2,8 +2,11 @@
     "mcpServers": {
         "maestro": {
             "type": "local",
-            "command": "maestro",
-            "args": ["mcp"]
+            "command": "/opt/homebrew/bin/maestro",
+            "args": ["mcp"],
+            "env": {
+                "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+            }
         }
     }
 }

@@ -6,3 +6,4 @@ result/
 dotfiles/zed/prompts/
 dotfiles/aws/**/cache/
 dotfiles/.codex/config.toml
+.aider*

@@ -13,6 +13,10 @@ alias = "b"
 description = "Validate repository AI config and dotfile wiring without activation"
 run = "python3 scripts/validate-config.py"
 
+[tasks.validate-ai]
+description = "Validate only the shared AI configuration sources"
+run = "python3 dotfiles/ai/validate.py"
+
 [tasks.rebuild]
 description = "Alias for build (no activation)"
 run = "mise run build"

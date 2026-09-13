@@ -52,6 +52,13 @@ in
       force = true;
     };
 
+    # Aider uses the SOPS-managed DEEPSEEK_API_KEY loaded by the shell.
+    ".aider.conf.yml".text = ''
+      model: deepseek/deepseek-coder
+      auto-commits: false
+      check-update: false
+    '';
+
     # Zellij config directory
     ".config/zellij" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/zellij";
@@ -197,6 +204,9 @@ in
     };
     ".cursor/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/.cursor/settings.json) {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/settings.json";
+    };
+    ".cursor/rules" = lib.mkIf (builtins.pathExists ../dotfiles/.cursor/rules) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/rules";
     };
 
     # Muse settings — persisted always auto-approve (approval_mode = never)

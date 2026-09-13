@@ -26,6 +26,10 @@ directories; preserve user-owned files when resolving collisions.
 | `.codex/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
 | `.gemini/settings.json` | `dotfiles/.gemini/settings.json` |
 | `.gemini/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
+| `.cursor/mcp.json` | `dotfiles/.cursor/mcp.json` |
+| `.cursor/settings.json` | `dotfiles/.cursor/settings.json` |
+| `.cursor/rules/` | `dotfiles/.cursor/rules/` |
+| `.copilot/mcp-config.json` | `dotfiles/.copilot/mcp-config.json` |
 
 If using a separate `CODEX_HOME`, such as `~/.codex-work`, give it its own
 `AGENTS.md` link and mutable configuration. Codex's `AGENTS.override.md`, when
@@ -114,8 +118,9 @@ required here. Use native Git, and configure Nx MCP only in a workspace that
 already supplies Nx.
 
 `dotfiles/ai/.gemini/settings.json` is a minimal project context overlay, not a
-replacement for the canonical user settings. `dotfiles/ai/.agent/settings.json`
-is a legacy other-client configuration, not a Claude/Codex/Gemini settings source.
+replacement for the canonical user settings. The legacy `dotfiles/ai/.agent/settings.json`
+has been removed; Cursor and Copilot now use their native entry points
+(`dotfiles/.cursor/rules/agents.mdc` and `.github/copilot-instructions.md`).
 
 ## CLI availability and declarative installation
 

@@ -9,9 +9,10 @@ DOTFILES = Path(__file__).resolve().parent.parent
 JSON_FILES = (
     ".claude/settings.json",
     ".gemini/settings.json",
+    ".cursor/mcp.json",
+    ".copilot/mcp-config.json",
     "ai/.mcp.json",
     "ai/.gemini/settings.json",
-    "ai/.agent/settings.json",
 )
 
 
@@ -50,6 +51,8 @@ def main():
     servers = (
         configs["ai/.mcp.json"]["mcpServers"]["maestro"],
         configs[".gemini/settings.json"]["mcpServers"]["maestro"],
+        configs[".cursor/mcp.json"]["mcpServers"]["maestro"],
+        configs[".copilot/mcp-config.json"]["mcpServers"]["maestro"],
         codex["mcp_servers"]["maestro"],
     )
     for server in servers:

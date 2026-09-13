@@ -43,6 +43,7 @@ scripts/                   Validation and maintenance helpers
 dotfiles/                  Editable application configuration sources
   ai/                      Shared AI instructions, MCP manifest, validation
   .claude/ .gemini/         Client-native settings
+  .cursor/ .copilot/        Cursor rules/MCP and Copilot MCP
   .codex/config.base.toml   Portable seed, not a live configuration
 .agents/skills/             Repository-specific maintenance workflow
 AGENTS.md                  Contribution and safety instructions
@@ -64,7 +65,7 @@ Work-project links under `~/Documents/work/amv-apps` are deliberately explicit. 
 
 ## AI tooling
 
-Claude Code, Codex, and Gemini CLI are declared through Nix-managed Homebrew. Shared instructions and `gh-stack` skills keep workflows consistent; the project maintenance skill explains this repository's module ownership and checks. Native file/search/shell/Git/Nix tools are sufficient for contributing here—more MCP servers or broader permissions do not automatically make an agent more capable.
+Claude Code, Codex, and Gemini CLI are declared through Nix-managed Homebrew. Shared instructions and `gh-stack` skills keep workflows consistent; the project maintenance skill explains this repository's module ownership and checks. Cursor and Copilot consume the same shared instructions through their native entry points. Native file/search/shell/Git/Nix tools are sufficient for contributing here—more MCP servers or broader permissions do not automatically make an agent more capable.
 
 Maestro's mobile-testing CLI/MCP is declared separately from the unrelated `Maestro.app` GUI. MCP schemas differ per client; Claude loads the shared manifest explicitly, Gemini has native settings, and new Codex profiles get a native TOML definition. Existing Codex profiles require an intentional local merge. Gemini's existing work-specific Radon integration still uses `npx ...@latest`; it is not pinned or validated by this repository.
 

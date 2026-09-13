@@ -168,10 +168,10 @@
     m = "mise";
     dev = "mise dev";
     ios = "mise ios";
-    and = "mise android";
+    android = "mise android";
     b = "mise run build";
     build = "mise run build";
     open = "mise open";
-    switch = "mise run switch";
+    sw = "mise run switch";
   };
 }

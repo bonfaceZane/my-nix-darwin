@@ -11,6 +11,8 @@ This is a single-user Apple Silicon macOS configuration, not a Node/Nx applicati
 - `home/dotfiles.nix`: links to this checkout's `dotfiles/` and initial Codex configs.
 - `dotfiles/`: editable application config sources. Do not move them without updating their consumers.
 - `.agents/skills/nix-darwin-maintenance/`: focused maintenance workflow.
+- `.github/copilot-instructions.md` and `dotfiles/.cursor/rules/agents.mdc`: client entry points that defer to this file.
+- `.junie/memory/`: local agent memory; keep it out of commits unless explicitly requested.
 
 ## Safe changes
 
