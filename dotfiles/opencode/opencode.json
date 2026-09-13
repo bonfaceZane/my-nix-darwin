@@ -1,6 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "instructions": [
-    "skills/repo-map/SKILL.md"
+    "skills/repo-map/SKILL.md",
+    "skills/ast-outline/SKILL.md",
+    "skills/token-discipline/SKILL.md"
   ]
 }
