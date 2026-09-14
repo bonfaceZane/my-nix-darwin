@@ -87,8 +87,8 @@ def main():
     assert "enabled" not in codex["mcp_servers"]["maestro"]
 
     for name in MAESTRO_MANIFESTS:
-        assert set(configs[name]["mcpServers"]) == {"maestro"}, (
-            f"{name} must declare only the shared Maestro server"
+        assert set(configs[name]["mcpServers"]) <= {"maestro", "openviking"}, (
+            f"{name} must declare only shared servers (maestro/openviking)"
         )
 
     for name, transport in MAESTRO_CLIENT_TYPES.items():

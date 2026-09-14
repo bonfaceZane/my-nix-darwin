@@ -7,6 +7,10 @@
             "env": {
                 "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
             }
+        },
+        "openviking": {
+            "type": "http",
+            "url": "http://localhost:1933/mcp"
         }
     }
 }
