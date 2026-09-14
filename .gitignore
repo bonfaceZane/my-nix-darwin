@@ -3,6 +3,8 @@ result/
 .DS_Store
 .idea
 .vscode
+__pycache__/
+*.pyc
 dotfiles/zed/prompts/
 dotfiles/aws/**/cache/
 dotfiles/.codex/config.toml
