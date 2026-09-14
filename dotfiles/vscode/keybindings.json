@@ -1,0 +1,15 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "alt+k",
+        "command": "bookmarks.list"
+    },
+    {
+        "key": "cmd+k",
+        "command": "bookmarks.listFromAllFiles"
+    },
+    {
+        "key": "cmd+shift+a",
+        "command": "aider-composer.SidebarProvider.focus"
+    }
+]

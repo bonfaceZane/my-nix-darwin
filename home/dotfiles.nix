@@ -239,6 +239,18 @@ in
     "Library/Application Support/Code/User/settings.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/settings.json";
     };
+
+    # VS Code keybindings (bookmarks + Aider Composer focus)
+    "Library/Application Support/Code/User/keybindings.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/keybindings.json";
+    };
+
+    # VS Code user MCP servers. Copilot Chat and other MCP-aware extensions read
+    # this file, and VS Code rewrites it when servers are added through the UI;
+    # the out-of-store symlink keeps those edits in the repository.
+    "Library/Application Support/Code/User/mcp.json" = lib.mkIf (builtins.pathExists ../dotfiles/vscode/mcp.json) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/mcp.json";
+    };
   } // builtins.listToAttrs (
     map (target: {
       name = target;
