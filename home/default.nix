@@ -24,12 +24,18 @@
     ./apps.nix
     ./core.nix
     ./app-settings/mise.nix
+
+    # Global agent config: Cline MCP servers
+    # (~/Library/Application Support/Code/.../cline_mcp_settings.json).
+    # Lives outside home/ because it is not a dotfile module.
+    ../modules/homebrew/agents.nix
+
     sops-nix.homeManagerModules.sops
   ];
 
   sops = {
     defaultSopsFile = ../secrets.yaml;
-    age.sshKeyPaths = [ "/Users/rafiki/.ssh/id_ed25519" ];
+    age.sshKeyPaths = [ "/Users/${username}/.ssh/id_ed25519" ];
     secrets.useremail = { };
     secrets.anthropic_api_key = { };
     secrets.anthropic_api_key_work = { };

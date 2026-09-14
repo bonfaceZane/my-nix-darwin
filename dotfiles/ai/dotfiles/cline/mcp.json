@@ -1,0 +1,135 @@
+{
+  "mcpServers": {
+    "codegraph": {
+      "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
+      "args": [
+        "serve",
+        "--mcp"
+      ],
+      "type": "stdio",
+      "disabled": false,
+      "autoApprove": []
+    },
+    "context7": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "type": "stdio",
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "expo": {
+      "url": "https://mcp.expo.dev/mcp",
+      "type": "streamableHttp",
+      "disabled": false,
+      "autoApprove": []
+    },
+    "ios-simulator": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "ios-simulator-mcp@latest"
+      ],
+      "type": "stdio",
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "maestro": {
+      "command": "/opt/homebrew/bin/maestro",
+      "args": [
+        "mcp"
+      ],
+      "type": "stdio",
+      "env": {
+        "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "mobile-mcp": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@mobilenext/mobile-mcp@latest"
+      ],
+      "type": "stdio",
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MOBILEMCP_DISABLE_TELEMETRY": "1"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "memory": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "type": "stdio",
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "sequential-thinking": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "type": "stdio",
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "playwright": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ],
+      "type": "stdio",
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "type": "streamableHttp",
+      "disabled": false,
+      "autoApprove": []
+    },
+    "storybook": {
+      "url": "http://localhost:6006/mcp",
+      "type": "streamableHttp",
+      "disabled": false,
+      "autoApprove": []
+    },
+    "figma": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "type": "streamableHttp",
+      "disabled": false,
+      "autoApprove": []
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp",
+      "type": "streamableHttp",
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
