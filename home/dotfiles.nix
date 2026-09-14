@@ -53,13 +53,48 @@ in
     };
 
     # Aider uses the SOPS-managed DEEPSEEK_API_KEY loaded by the shell.
+    # This is the global config, so the VS Code Aider extension picks up the
+    # same auto-lint/auto-test behavior as the CLI.
     ".aider.conf.yml".text = ''
+      # Aider global config. Shared by the CLI and the VS Code extension.
+      # API keys are never stored here: DEEPSEEK_API_KEY is rendered from SOPS
+      # into ~/.config/aider/env, which the shell sources at login.
+
+      # Router/architect mode: the reasoner plans, the chat model applies diffs.
       model: deepseek/deepseek-reasoner
       architect: true
       editor-model: deepseek/deepseek-chat
       editor-edit-format: diff
+
       auto-commits: false
       check-update: false
+      show-release-notes: false
+      show-model-warnings: false
+      analytics: false
+
+      # Quieter output: no spinner redraws, no startup banner, no per-token repaint.
+      pretty: false
+      stream: false
+      show-diffs: false
+
+      # Keep a small repo map. 0 disables it, which is only safe when you /add
+      # every file you intend to edit; without it the model frequently cannot see
+      # the exact lines a SEARCH/REPLACE edit has to match.
+      map-tokens: 1024
+
+      # Feed linter and compiler errors back into the edit loop after each change.
+      auto-lint: true
+      # Aider keys these by language prefix, so a second `python:` entry replaces
+      # the first; chain the Python linters instead.
+      lint-cmd:
+        - "python: ruff check --output-format=concise && radon cc -s -n C"
+        - "typescript: npx tsc --noEmit"
+        - "rust: cargo check --quiet"
+
+      # Run this repo's own config validator after each edit and feed failures
+      # back. There is no pytest suite here, so `python -m pytest` was noise.
+      auto-test: true
+      test-cmd: "python dotfiles/ai/validate.py"
     '';
 
     # Zellij config directory
