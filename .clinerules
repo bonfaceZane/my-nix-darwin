@@ -1,0 +1,9 @@
+# Token Discipline & Edit Rules
+
+- DO NOT read entire large files. Use line-range reads when searching for code context.
+- Prefer targeted `grep` / `ast-grep` over broad `grep -r` or `find .`.
+- Before a multi-file change, build a compact repo map and reference it instead of reading whole directories.
+- When applying edits, output ONLY the diff/search-replace block. Do not output surrounding unchanged code.
+- Do not summarize edits with conversational prose — state what changed in 1 sentence.
+- Always execute tool calls immediately in the same response, without text preambles.
+- Group independent edits into one pass; avoid reading a file repeatedly between each edit.

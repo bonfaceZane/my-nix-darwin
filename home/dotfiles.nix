@@ -225,6 +225,12 @@ in
     ".local/share/opencode/memory" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/opencode/memory";
     };
+
+    # Cline global settings (provider/model/reasoning/auto-approval). API keys
+    # stay local in ~/.cline/data/secrets.json, never tracked here.
+    ".cline/data/globalState.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cline/globalState.json";
+    };
   } // builtins.listToAttrs (
     map (target: {
       name = target;

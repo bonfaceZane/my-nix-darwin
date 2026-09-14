@@ -1,0 +1,84 @@
+{
+  "welcomeViewCompleted": true,
+  "__vscodeMigrationVersion": 1,
+  "clineVersion": "4.1.17",
+  "remoteRulesToggles": {},
+  "remoteWorkflowToggles": {},
+  "remoteSkillsToggles": {},
+  "openAiHeaders": {},
+  "sapAiCoreUseOrchestrationMode": true,
+  "ocaMode": "internal",
+  "planModeApiProvider": "deepseek",
+  "actModeApiProvider": "deepseek",
+  "planActSeparateModelsSetting": true,
+  "actModeApiModelId": "deepseek-v4-pro",
+  "actModeReasoningEffort": "medium",
+  "lastShownAnnouncementId": "4.1",
+  "planModeApiModelId": "deepseek-v4-pro",
+  "planModeReasoningEffort": "medium",
+  "dismissedBanners": [
+    {
+      "bannerId": "cline-pass-home-promo-v2",
+      "dismissedAt": 1789343843469
+    }
+  ],
+  "autoApprovalSettings": {
+    "version": 10,
+    "enabled": true,
+    "favorites": [],
+    "maxRequests": 20,
+    "actions": {
+      "readFiles": true,
+      "readFilesExternally": true,
+      "editFiles": true,
+      "editFilesExternally": true,
+      "executeSafeCommands": true,
+      "executeAllCommands": false,
+      "useBrowser": true,
+      "useMcp": true
+    },
+    "enableNotifications": true
+  },
+  "workspaceRoots": [
+    {
+      "path": "/Users/rafiki/Documents/subira/polaris",
+      "name": "polaris",
+      "vcs": "git",
+      "commitHash": "3863822050a089b5749546acbbf78c75e1fd5ecd"
+    }
+  ],
+  "primaryRootIndex": 0,
+  "globalWorkflowToggles": {},
+  "globalClineRulesToggles": {},
+  "enableParallelToolCalling": false,
+  "actModeClinePassModelId": "cline-pass/glm-5.2",
+  "actModeClinePassModelInfo": {
+    "maxTokens": 131072,
+    "contextWindow": 1048576,
+    "supportsImages": false,
+    "supportsPromptCache": false,
+    "inputPrice": 0.966,
+    "outputPrice": 3.036,
+    "cacheReadsPrice": 0.1932,
+    "description": "GLM 5.2 is a large-scale reasoning model from Z.ai. It supports text input and output with a 1M-token context window, and is suited for long-horizon agent workflows, project-level software engineering,...",
+    "thinkingConfig": {
+      "maxBudget": 6000
+    }
+  },
+  "mode": "act",
+  "browserSettings": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "remoteBrowserEnabled": false,
+    "remoteBrowserHost": "http://localhost:9222",
+    "chromeExecutablePath": "",
+    "disableToolUse": false,
+    "customArgs": ""
+  },
+  "subagentsEnabled": true,
+  "useAutoCondense": true,
+  "backgroundEditEnabled": true,
+  "doubleCheckCompletionEnabled": false
+}
