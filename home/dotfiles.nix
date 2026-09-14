@@ -55,6 +55,9 @@ in
     # Aider uses the SOPS-managed DEEPSEEK_API_KEY loaded by the shell.
     ".aider.conf.yml".text = ''
       model: deepseek/deepseek-reasoner
+      architect: true
+      editor-model: deepseek/deepseek-chat
+      editor-edit-format: diff
       auto-commits: false
       check-update: false
     '';
@@ -230,6 +233,11 @@ in
     # stay local in ~/.cline/data/secrets.json, never tracked here.
     ".cline/data/globalState.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cline/globalState.json";
+    };
+
+    # VS Code user settings (Aider Composer + editor prefs)
+    "Library/Application Support/Code/User/settings.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/settings.json";
     };
   } // builtins.listToAttrs (
     map (target: {
