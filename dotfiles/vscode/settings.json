@@ -56,6 +56,9 @@
     "RadonIDE.deviceSettings.contentSize": "small",
     "redhat.telemetry.enabled": true,
     "chat.mcp.gallery.enabled": true,
+    // MCP tools must never run unattended: VS Code asks before each tool call
+    // unless global auto-approval is on, so it stays explicitly off.
+    "chat.tools.global.autoApprove": false,
     "diffEditor.renderSideBySide": false,
     "diffEditor.experimental.showMoves": true,
     "git.confirmSync": false,
@@ -78,11 +81,23 @@
             ".continue/**/*.yaml"
         ]
     },
-    "diffEditor.hideUnchangedRegions.enabled": true,
     "aider-composer.pythonPath": "/Users/rafiki/.venvs/aider/bin",
     "aider-composer.inlineDiff.enable": true,
     "github.copilot.chat.enabled": false,
     "github.copilot.enable": {
         "*": false
-    }
+    },
+    "chat.tools.urls.autoApprove": {
+        "https://code.visualstudio.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
+        "https://www.google.com/search": {
+            "approveRequest": true,
+            "approveResponse": false
+        },
+        "https://www.google.com": {
+            "approveRequest": false,
+            "approveResponse": true
+        }
+    },
+    "diffEditor.hideUnchangedRegions.enabled": true
 }

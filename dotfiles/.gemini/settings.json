@@ -1,36 +1,98 @@
 {
-    "general": {
-        "defaultApprovalMode": "default"
+  "general": {
+    "defaultApprovalMode": "default"
+  },
+  "permissions": {
+    "deny": [
+      "Read(secrets.yaml)",
+      "Read(.env*)",
+      "Read(.sops.yaml)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Bash(sops:*)",
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Bash(chmod:*)",
+      "Bash(chown:*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean:*)",
+      "Bash(curl:* | sh)",
+      "Bash(curl:* | bash)"
+    ]
+  },
+  "context": {
+    "fileName": [
+      "AGENTS.md",
+      "GEMINI.md"
+    ]
+  },
+  "mcpServers": {
+    "codegraph": {
+      "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
+      "args": [
+        "serve",
+        "--mcp"
+      ]
     },
-    "permissions": {
-        "deny": [
-            "Read(secrets.yaml)",
-            "Read(.env*)",
-            "Read(.sops.yaml)",
-            "Read(~/.ssh/**)",
-            "Read(~/.aws/**)",
-            "Bash(sops:*)",
-            "Bash(rm:*)",
-            "Bash(sudo:*)",
-            "Bash(chmod:*)",
-            "Bash(chown:*)",
-            "Bash(git push --force:*)",
-            "Bash(git reset --hard:*)",
-            "Bash(git clean:*)",
-            "Bash(curl:* | sh)",
-            "Bash(curl:* | bash)"
-        ]
+    "context7": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
     },
-    "context": {
-        "fileName": ["AGENTS.md", "GEMINI.md"]
+    "expo": {
+      "httpUrl": "https://mcp.expo.dev/mcp",
+      "trust": false,
+      "excludeTools": [
+        "add_library",
+        "workflow_create",
+        "workflow_run",
+        "workflow_cancel",
+        "build_run",
+        "build_cancel",
+        "build_submit",
+        "appstore_reply_review",
+        "appstore_delete_review_response",
+        "playstore_reply_review",
+        "automation_tap",
+        "automation_take_screenshot",
+        "collect_app_logs"
+      ]
     },
-    "mcpServers": {
-        "maestro": {
-            "command": "/opt/homebrew/bin/maestro",
-            "args": ["mcp"],
-            "env": {
-                "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
-            }
-        }
+    "ios-simulator": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "ios-simulator-mcp@latest"
+      ],
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
+    "maestro": {
+      "command": "/opt/homebrew/bin/maestro",
+      "args": [
+        "mcp"
+      ],
+      "env": {
+        "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+      }
+    },
+    "mobile-mcp": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@mobilenext/mobile-mcp@latest"
+      ],
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MOBILEMCP_DISABLE_TELEMETRY": "1"
+      }
     }
+  }
 }

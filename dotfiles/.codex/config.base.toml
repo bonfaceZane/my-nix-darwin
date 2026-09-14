@@ -12,6 +12,15 @@ network_access = false
 
 # Optional mobile/web UI testing; prerequisites are declared in Nix-managed Homebrew.
 # Native file, shell, Git, and Nix tools are sufficient for this repository.
+#
+# The npm-backed servers (mobile-mcp, ios-simulator, context7) and the remote Expo
+# server are registered in the mutable CODEX_HOME/config.toml instead, because this
+# seed disables sandbox network access. If you add the Expo server there, keep its
+# guard: `default_tools_approval_mode = "prompt"` so nothing runs unattended, plus a
+# `disabled_tools` list refusing add_library, workflow_create/run/cancel,
+# build_run/cancel/submit, the store reply/delete tools, and automation_tap,
+# automation_take_screenshot, collect_app_logs. dotfiles/ai/validate.py holds the
+# full list and the per-client policy.
 [mcp_servers.maestro]
 command = "/opt/homebrew/bin/maestro"
 args = ["mcp"]

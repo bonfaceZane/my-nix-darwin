@@ -21,6 +21,14 @@ description = "Build without activating the system"
 run = "darwin-rebuild build --flake .#rafiki --show-trace --impure"
 alias = "b"
 
+[tasks.mcp-render]
+description = "Re-render every client MCP config from dotfiles/ai/mcp/servers.json"
+run = "python3 dotfiles/ai/mcp/render.py --write"
+
+[tasks.mcp-check]
+description = "Check MCP configs against the root config without writing"
+run = "python3 dotfiles/ai/mcp/render.py --check"
+
 [tasks.validate]
 description = "Validate repository AI config and dotfile wiring without activation"
 run = "python3 scripts/validate-config.py"

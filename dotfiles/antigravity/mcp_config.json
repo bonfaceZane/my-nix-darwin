@@ -1,5 +1,57 @@
 {
 	"mcpServers": {
+		"codegraph": {
+			"command": "/Users/rafiki/.local/share/mise/shims/codegraph",
+			"args": [
+				"serve",
+				"--mcp"
+			],
+			"type": "stdio"
+		},
+		"context7": {
+			"command": "/opt/homebrew/bin/npx",
+			"args": [
+				"-y",
+				"@upstash/context7-mcp@latest"
+			],
+			"type": "stdio",
+			"env": {
+				"PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+			}
+		},
+		"ios-simulator": {
+			"command": "/opt/homebrew/bin/npx",
+			"args": [
+				"-y",
+				"ios-simulator-mcp@latest"
+			],
+			"type": "stdio",
+			"env": {
+				"PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+			}
+		},
+		"maestro": {
+			"command": "/opt/homebrew/bin/maestro",
+			"args": [
+				"mcp"
+			],
+			"type": "stdio",
+			"env": {
+				"JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+			}
+		},
+		"mobile-mcp": {
+			"command": "/opt/homebrew/bin/npx",
+			"args": [
+				"-y",
+				"@mobilenext/mobile-mcp@latest"
+			],
+			"type": "stdio",
+			"env": {
+				"PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+				"MOBILEMCP_DISABLE_TELEMETRY": "1"
+			}
+		},
 		"GitKraken": {
 			"args": [
 				"mcp",

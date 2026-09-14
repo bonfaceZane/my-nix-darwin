@@ -194,15 +194,12 @@
         "provider": "zed",
         "mode": "eager"
     },
-
     "git_panel": {
         "tree_view": false,
         "dock": "right",
         "default_width": 550.0
     },
-
     "show_whitespaces": "none",
-
     "helix_mode": true,
     "which_key": {
         "enabled": true,
@@ -212,24 +209,65 @@
     "vim": {
         "use_smartcase_find": true
     },
-
     "context_servers": {
+        "codegraph": {
+            "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
+            "args": [
+                "serve",
+                "--mcp"
+            ]
+        },
+        "context7": {
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp@latest"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+            }
+        },
+        "ios-simulator": {
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "ios-simulator-mcp@latest"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+            }
+        },
         "maestro": {
             "enabled": true,
             "remote": false,
-            "command": "/bin/bash",
+            "command": "/opt/homebrew/bin/maestro",
             "args": [
-                "scripts/maestro-mcp.sh"
-            ]
+                "mcp"
+            ],
+            "env": {
+                "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+            }
+        },
+        "mobile-mcp": {
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "@mobilenext/mobile-mcp@latest"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+                "MOBILEMCP_DISABLE_TELEMETRY": "1"
+            }
         },
         "memory": {
-            "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-memory"]
-        },
-        "git": {
-            "env": {},
-            "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-git"]
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-memory"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+            }
         }
     },
     "experimental.theme_overrides": {

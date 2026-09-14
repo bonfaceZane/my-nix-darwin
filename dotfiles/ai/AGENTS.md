@@ -36,3 +36,10 @@
 - Shared user skills live in `~/.agents/skills`; Claude Code additionally uses `~/.claude/skills`. Keep Nix-fetched upstream skills immutable and link individual skill directories without replacing user-owned skill collections.
 - MCP configuration is client-specific. Do not assume that a shared `.mcp.json` is automatically loaded by every client, or that instructions alone enable a server.
 - Use native Git tools when no Git MCP server is configured. Do not download an unverified MCP package as a substitute.
+
+## Code intelligence
+
+- `codegraph` is the primary MCP server for code intelligence and is configured for every client. Prefer its tools over ad-hoc searching when the question is about symbols, definitions, callers/callees, impact, or "where is this used".
+- Run `codegraph init` once in a project that is not indexed yet, and `codegraph sync` after large changes; `codegraph status` shows index freshness. Without an index the server has nothing to answer from.
+- Fall back to `ripgrep`/`grep` and the file tools for plain-text, configuration, documentation, and dependency files, which are not part of the symbol graph.
+- Do not let codegraph answers replace reading the code you are about to change.

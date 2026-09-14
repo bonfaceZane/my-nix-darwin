@@ -10,41 +10,149 @@
   ],
   "lsp": {
     "nix": {
-      "command": [ "nil" ],
-      "extensions": [ ".nix" ]
+      "command": [
+        "nil"
+      ],
+      "extensions": [
+        ".nix"
+      ]
     },
     "typescript": {
-      "command": [ "typescript-language-server", "--stdio" ],
-      "extensions": [ ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs" ]
+      "command": [
+        "typescript-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".mjs",
+        ".cjs"
+      ]
     },
     "python": {
-      "command": [ "pyright-langserver", "--stdio" ],
-      "extensions": [ ".py", ".pyi" ]
+      "command": [
+        "pyright-langserver",
+        "--stdio"
+      ],
+      "extensions": [
+        ".py",
+        ".pyi"
+      ]
     },
     "rust": {
-      "command": [ "rust-analyzer" ],
-      "extensions": [ ".rs" ]
+      "command": [
+        "rust-analyzer"
+      ],
+      "extensions": [
+        ".rs"
+      ]
     },
     "go": {
-      "command": [ "gopls" ],
-      "extensions": [ ".go" ]
+      "command": [
+        "gopls"
+      ],
+      "extensions": [
+        ".go"
+      ]
     },
     "ruby": {
-      "command": [ "solargraph", "stdio" ],
-      "extensions": [ ".rb" ]
+      "command": [
+        "solargraph",
+        "stdio"
+      ],
+      "extensions": [
+        ".rb"
+      ]
     },
     "json": {
-      "command": [ "vscode-json-language-server", "--stdio" ],
-      "extensions": [ ".json", ".jsonc" ]
+      "command": [
+        "vscode-json-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".json",
+        ".jsonc"
+      ]
     },
     "yaml": {
-      "command": [ "yaml-language-server", "--stdio" ],
-      "extensions": [ ".yaml", ".yml" ]
+      "command": [
+        "yaml-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".yaml",
+        ".yml"
+      ]
     },
     "lua": {
-      "command": [ "lua-language-server" ],
-      "extensions": [ ".lua" ]
+      "command": [
+        "lua-language-server"
+      ],
+      "extensions": [
+        ".lua"
+      ]
     }
   },
-  "model": "deepseek/deepseek-v4-pro"
+  "model": "deepseek/deepseek-v4-pro",
+  "mcp": {
+    "codegraph": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "/Users/rafiki/.local/share/mise/shims/codegraph",
+        "serve",
+        "--mcp"
+      ]
+    },
+    "context7": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
+    "ios-simulator": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "ios-simulator-mcp@latest"
+      ],
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
+    "maestro": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "/opt/homebrew/bin/maestro",
+        "mcp"
+      ],
+      "environment": {
+        "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+      }
+    },
+    "mobile-mcp": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "@mobilenext/mobile-mcp@latest"
+      ],
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MOBILEMCP_DISABLE_TELEMETRY": "1"
+      }
+    }
+  }
 }

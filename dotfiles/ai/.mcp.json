@@ -1,11 +1,59 @@
 {
     "mcpServers": {
+        "codegraph": {
+            "type": "stdio",
+            "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
+            "args": [
+                "serve",
+                "--mcp"
+            ]
+        },
+        "context7": {
+            "type": "stdio",
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp@latest"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+            }
+        },
+        "expo": {
+            "type": "http",
+            "url": "https://mcp.expo.dev/mcp"
+        },
+        "ios-simulator": {
+            "type": "stdio",
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "ios-simulator-mcp@latest"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+            }
+        },
         "maestro": {
             "type": "stdio",
             "command": "/opt/homebrew/bin/maestro",
-            "args": ["mcp"],
+            "args": [
+                "mcp"
+            ],
             "env": {
                 "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+            }
+        },
+        "mobile-mcp": {
+            "type": "stdio",
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "@mobilenext/mobile-mcp@latest"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+                "MOBILEMCP_DISABLE_TELEMETRY": "1"
             }
         },
         "openviking": {

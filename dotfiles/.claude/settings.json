@@ -41,14 +41,28 @@
             "Bash(git reset --hard:*)",
             "Bash(git clean:*)",
             "Bash(curl:* | sh)",
-            "Bash(curl:* | bash)"
+            "Bash(curl:* | bash)",
+            "mcp__expo__add_library",
+            "mcp__expo__workflow_create",
+            "mcp__expo__workflow_run",
+            "mcp__expo__workflow_cancel",
+            "mcp__expo__build_run",
+            "mcp__expo__build_cancel",
+            "mcp__expo__build_submit",
+            "mcp__expo__appstore_reply_review",
+            "mcp__expo__appstore_delete_review_response",
+            "mcp__expo__playstore_reply_review",
+            "mcp__expo__automation_tap",
+            "mcp__expo__automation_take_screenshot",
+            "mcp__expo__collect_app_logs"
         ],
         "ask": [
             "Bash(git push:*)",
             "Bash(brew:*)",
             "Bash(darwin-rebuild:*)",
             "Bash(npm install -g:*)",
-            "Bash(pip install:*)"
+            "Bash(pip install:*)",
+            "mcp__expo"
         ]
     }
 }

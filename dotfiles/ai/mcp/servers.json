@@ -1,0 +1,60 @@
+{
+  "$comment": "Single source of truth for the shared MCP server set. dotfiles/ai/mcp/render.py renders every client config from these definitions (--write) and checks it (--check); dotfiles/ai/validate.py runs that check, so drift fails the build. Commands are absolute because Dock- and Finder-launched editors inherit a minimal PATH, and the mise shim is preferred over CodeGraph's own --print-config value: a bare `codegraph` is not on a GUI client's PATH, and the versioned install path (installs/node/<version>/bin) breaks on the next Node upgrade.",
+  "primary": "codegraph",
+  "primaryRationale": "Code intelligence is the first tool for symbol, call-graph, and impact questions; plain-text search stays the fallback for config, docs, and un-indexed projects. AGENTS.md carries the instruction so every agent applies it.",
+  "servers": {
+    "codegraph": {
+      "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
+      "args": ["serve", "--mcp"]
+    },
+    "maestro": {
+      "command": "/opt/homebrew/bin/maestro",
+      "args": ["mcp"],
+      "env": {
+        "JAVA_HOME": "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+      }
+    },
+    "mobile-mcp": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "@mobilenext/mobile-mcp@latest"],
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MOBILEMCP_DISABLE_TELEMETRY": "1"
+      }
+    },
+    "ios-simulator": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "ios-simulator-mcp@latest"],
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
+    "context7": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
+    "expo": {
+      "url": "https://mcp.expo.dev/mcp",
+      "env": {}
+    }
+  },
+  "expoCriticalTools": [
+    "add_library",
+    "workflow_create",
+    "workflow_run",
+    "workflow_cancel",
+    "build_run",
+    "build_cancel",
+    "build_submit",
+    "appstore_reply_review",
+    "appstore_delete_review_response",
+    "playstore_reply_review",
+    "automation_tap",
+    "automation_take_screenshot",
+    "collect_app_logs"
+  ],
+  "expoPolicyRationale": "Expo is the only remote, account-scoped server here: it can spend EAS compute, publish to public store listings, rewrite project dependencies, and proxy simulator screenshots and device logs off the machine. Clients with a deny mechanism refuse these outright; every other expo tool still needs explicit per-call approval."
+}
