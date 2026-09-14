@@ -10,6 +10,7 @@
     "coreutils" # GNU core utilities
     "curl" # do not install curl via nixpkgs; works better via Homebrew on macOS
     "fastlane"
+    "facebook/fb/idb-companion" # Simulator/device control backend for ios-simulator-mcp (idb)
     "fd" # find with syntax highlight
     "file-formula" # file command to determine file type (replaces 'file')
     "fzf" # fuzzy finder
