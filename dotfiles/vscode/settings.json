@@ -1,5 +1,4 @@
 {
-    "editor.fontSize": 14,
     "workbench.colorTheme": "Night Owl",
     "chat.tools.terminal.autoApprove": {
         "/^node -v && which pod \\|\\| true\nif command -v pod >/dev/null 2>&1; then pod --version; else echo \"pod not found\"; fi$/": {
@@ -35,7 +34,12 @@
         "mise": true,
         "cargo run": true,
         "nub": true,
-        "test": true
+        "test": true,
+        "nx": true,
+        "/^cd /Users/rafiki/Documents/work/gp-apps && eas workflow:list --json 2>/dev/null \\| node -e '\nlet s=\"\";process\\.stdin\\.on\\(\"data\",d=>s\\+=d\\);process\\.stdin\\.on\\(\"end\",\\(\\)=>\\{\n let runs; try\\{runs=JSON\\.parse\\(s\\)\\}catch\\(e\\)\\{console\\.log\\(\"RAW:\",s\\.slice\\(0,3000\\)\\);process\\.exit\\(0\\)\\}\n const list=Array\\.isArray\\(runs\\)\\?runs:\\(runs\\.data\\|\\|runs\\.runs\\|\\|\\[\\]\\);\n console\\.log\\(\"count:\",list\\.length\\);\n list\\.slice\\(0,10\\)\\.forEach\\(r=>console\\.log\\(\\[r\\.id,r\\.name\\|\\|r\\.workflowName,r\\.status,r\\.gitBranch\\|\\|\"\",r\\.createdAt\\|\\|r\\.created_at\\]\\.join\\(\" \\| \"\\)\\)\\);\n\\}\\);'$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     },
     "workbench.tree.indent": 25,
     "[yaml]": {
@@ -51,9 +55,8 @@
     "RadonIDE.userInterface.showDeviceFrame": false,
     "RadonIDE.deviceControl.stopPreviousDevices": true,
     "RadonIDE.deviceSettings.appearance": "light",
-    "workbench.sideBar.location": "right",
     "git.autofetch": true,
-    "RadonIDE.deviceSettings.contentSize": "small",
+    "RadonIDE.deviceSettings.contentSize": "normal",
     "redhat.telemetry.enabled": true,
     "chat.mcp.gallery.enabled": true,
     // MCP tools must never run unattended: VS Code asks before each tool call
@@ -71,9 +74,6 @@
       "bookmarks.overviewRuler": "#157EFB88"
     },
     "RadonIDE.userInterface.panelLocation": "side-panel",
-    "rust-analyzer.server.extraEnv": {
-        "RUSTUP_TOOLCHAIN": "stable"
-    },
     "editor.defaultFormatter": "MylesMurphy.prettify-ts",
     "git.ignoreRebaseWarning": true,
     "yaml.schemas": {
@@ -97,7 +97,63 @@
         "https://www.google.com": {
             "approveRequest": false,
             "approveResponse": true
+        },
+        "https://fallow.mintlify.app": {
+            "approveRequest": false,
+            "approveResponse": true
+        },
+        "https://docs.fallow.tools": {
+            "approveRequest": false,
+            "approveResponse": true
+        },
+        "https://www.npmjs.com": {
+            "approveRequest": true,
+            "approveResponse": false
+        },
+        "https://docs.shuttle.dev": {
+            "approveRequest": true,
+            "approveResponse": false
+        },
+        "https://www.shuttle.dev": {
+            "approveRequest": true,
+            "approveResponse": false
+        },
+        "https://loco.rs": true
+    },
+    "chat.mcp.serverSampling": {
+        "Global in Code: expo": {
+            "allowedModels": [
+                "agent-host-copilotcli:auto",
+                "copilotcli/auto",
+                "copilot/auto",
+                "agent-host-copilotcli:customendpoint/DeepSeek/deepseek-chat",
+                "customendpoint/DeepSeek/deepseek-chat",
+                "agent-host-copilotcli:customendpoint/DeepSeek/deepseek-reasoner",
+                "customendpoint/DeepSeek/deepseek-reasoner",
+                "agent-host-copilotcli:deepseek/deepseek-v4-flash",
+                "deepseek/deepseek-v4-flash",
+                "agent-host-copilotcli:deepseek/deepseek-v4-flash-vision-exp",
+                "deepseek/deepseek-v4-flash-vision-exp",
+                "agent-host-copilotcli:deepseek/deepseek-v4-pro",
+                "deepseek/deepseek-v4-pro",
+                "agent-host-copilotcli:deepseek/deepseek-flash",
+                "deepseek/deepseek-flash"
+            ]
         }
     },
-    "diffEditor.hideUnchangedRegions.enabled": true
+    "deepseek-copilot.visionModel": "deepseek/deepseek-v4-flash-vision-exp",
+    "editor.fontSize": 13,
+    "yaml.disableSchemaDetection": [
+        "**/.github/workflows/*.yml",
+        "**/.github/workflows/*.yaml",
+        "**/.gitea/workflows/*.yml",
+        "**/.gitea/workflows/*.yaml",
+        "**/.forgejo/workflows/*.yml",
+        "**/.forgejo/workflows/*.yaml"
+    ],
+    "window.newWindowProfile": "work",
+    "chat.agent.maxRequests": 100,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
+    "playwright.reuseBrowser": false
 }
