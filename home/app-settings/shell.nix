@@ -56,6 +56,10 @@
         set -gx DEEPSEEK_API_KEY (cat "${config.sops.secrets.deepseek_api_key.path}")
       end
 
+      if test -f "${config.sops.secrets.typesafe_api_key.path}"
+        set -gx TYPESAFE_API_KEY (cat "${config.sops.secrets.typesafe_api_key.path}")
+      end
+
       # ---------------------------------------------------
       # Environment Variables & PATHs Migrated from .zshrc
       # ---------------------------------------------------
@@ -90,6 +94,10 @@
         # Load secrets from their Home Manager-managed sops-nix paths.
         if [ -f "${config.sops.secrets.anthropic_api_key.path}" ]; then
           export ANTHROPIC_API_KEY=$(cat "${config.sops.secrets.anthropic_api_key.path}")
+        fi
+
+        if [ -f "${config.sops.secrets.typesafe_api_key.path}" ]; then
+          export TYPESAFE_API_KEY=$(cat "${config.sops.secrets.typesafe_api_key.path}")
         fi
 
         if [ -f "${config.sops.secrets.deepseek_api_key.path}" ]; then
