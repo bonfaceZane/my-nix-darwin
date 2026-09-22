@@ -95,6 +95,13 @@
             },
             "gallery": "https://api.mcp.github.com",
             "version": "1.0.31"
+        },
+        "Neon": {
+            "type": "http",
+            "url": "https://mcp.neon.tech/mcp",
+            "headers": {
+                "Authorization": "Bearer napi_nbpn8jkvsfj763a0shi6v6aacn7wobr2kd6faxq8a42mpqpzoxwg5d21sy3a723f"
+            }
         }
     }
 }

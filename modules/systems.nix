@@ -38,6 +38,7 @@
         "/Applications/WhatsApp.app"
         "/Applications/NordPass.app"
         "/Applications/CaskHub.app"
+        # "/Applications/Device Hub.app"
       ];
 
       finder.FXPreferredViewStyle = "clmv";
