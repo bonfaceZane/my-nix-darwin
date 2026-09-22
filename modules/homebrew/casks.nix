@@ -8,7 +8,7 @@
       "Be Focused" = 973134470;
       "Notion Web Clipper" = 1559269364;
       "Okta Verify" = 490179405;
-      "Slack" = 803453959;
+      # "Slack" = 803453959;
       "Tailscale" = 1475387142;
       # "Xcode" = 497799835;
       "Microsoft Outlook" = 985367838;
