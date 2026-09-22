@@ -15,6 +15,7 @@
     "file-formula" # file command to determine file type (replaces 'file')
     "fzf" # fuzzy finder
     "gemini-cli"
+    "flyctl" # Fly.io CLI
     "gh"
     "git"
     "glow" # markdown previewer in terminal
