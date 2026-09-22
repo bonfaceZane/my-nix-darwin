@@ -44,7 +44,7 @@ dotfiles/                  Editable application configuration sources
   ai/                      Shared AI instructions, MCP manifest, validation
   .claude/ .gemini/         Client-native settings
   .cursor/ .copilot/        Cursor rules/MCP and Copilot MCP
-  .codex/config.base.toml   Portable seed, not a live configuration
+  .codex/config.toml        Live personal Codex configuration (symlinked to ~/.codex)
 .agents/skills/             Repository-specific maintenance workflow
 AGENTS.md                  Contribution and safety instructions
 CLAUDE.md / GEMINI.md       Client entry points to those instructions

@@ -23,6 +23,10 @@ let
     ".gemini/antigravity/skills/gh-stack"
     ".windsurf/skills/gh-stack"
   ];
+  sharedSkillTargets = [
+    "agent-device"
+    "ios-simulator"
+  ];
 in
 {
   # Central place to safely link repo-tracked dotfiles into $HOME.
@@ -224,7 +228,12 @@ in
       '';
     };
 
-    # Codex config is seeded below, not symlinked: the CLI/desktop app writes to it.
+    # Keep the personal Codex configuration under version control. Codex CLI and
+    # desktop changes to this file are written back into the dotfiles repository.
+    ".codex/config.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+    };
+
     ".claude/mcp.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/.mcp.json";
     };
@@ -234,6 +243,7 @@ in
     ".claude/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/.claude/settings.json) {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
     };
+
 
 
     # Cursor configuration — MCP + agent permissions (mirrors .claude/.codex pattern)
@@ -296,6 +306,15 @@ in
       };
     }) ghStackSkillTargets
   ) // builtins.listToAttrs (
+    map (skill: {
+      name = ".claude/skills/${skill}";
+      value = {
+        # Codex discovers these from ~/.agents/skills; Claude needs its own link.
+        source = "${config.home.homeDirectory}/.agents/skills/${skill}";
+        force = true;
+      };
+    }) sharedSkillTargets
+  ) // builtins.listToAttrs (
     map (target: {
       name = "${target}/AGENTS.md";
       value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
@@ -307,28 +326,4 @@ in
     }) [ ".agents" ".claude" ]
   );
 
-  # Detach only our old repository link before HM removes obsolete managed links.
-  # Preserve its contents; leave other existing configs and dangling links untouched.
-  home.activation.detachLegacyCodexConfig = lib.hm.dag.entryBetween [ "linkGeneration" ] [ "writeBoundary" ] ''
-    for codexHome in "$HOME/.codex" "$HOME/.codex-work"; do
-      if [ -L "$codexHome/config.toml" ] && [ -f "$codexHome/config.toml" ] &&
-         [ "$(${pkgs.coreutils}/bin/readlink -f "$codexHome/config.toml")" = "${dotfiles}/.codex/config.toml" ]; then
-        if [ -z "''${DRY_RUN_CMD:-}" ]; then
-          temporary=$(${pkgs.coreutils}/bin/mktemp "$codexHome/config.toml.XXXXXX")
-          ${pkgs.coreutils}/bin/install -m 600 "$codexHome/config.toml" "$temporary"
-          ${pkgs.coreutils}/bin/mv "$temporary" "$codexHome/config.toml"
-        fi
-      fi
-    done
-  '';
-
-  # Seed after obsolete links are removed, including dangling links from old generations.
-  home.activation.seedCodexConfig = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    for codexHome in "$HOME/.codex" "$HOME/.codex-work"; do
-      if [ ! -e "$codexHome/config.toml" ] && [ ! -L "$codexHome/config.toml" ]; then
-        run ${pkgs.coreutils}/bin/mkdir -p "$codexHome"
-        run ${pkgs.coreutils}/bin/install -m 600 ${../dotfiles/.codex/config.base.toml} "$codexHome/config.toml"
-      fi
-    done
-  '';
 }

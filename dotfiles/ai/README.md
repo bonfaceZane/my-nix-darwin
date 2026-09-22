@@ -48,46 +48,23 @@ upstream directory to `~/.agents/skills/gh-stack` for Codex and Gemini, and
 also supports `~/.gemini/skills`, but does not need a duplicate link. The current
 documented Codex user discovery directory is `~/.agents/skills`.
 
-## Codex: initial seed, mutable local settings
+`agent-device` and `ios-simulator` remain individually installed in that shared
+Codex directory and are linked into `~/.claude/skills/` for Claude discovery.
+Do not link the whole skill directory: it would take ownership of user-installed
+skills that Home Manager does not manage.
 
-`dotfiles/.codex/config.base.toml` is the version-controlled **initial seed**, not
-a continuously enforced configuration layer. It contains only:
+## Codex: tracked personal configuration
 
-- `on-request` approvals and the `workspace-write` sandbox;
-- sandbox network access disabled;
-- an enabled Maestro MCP definition using the declared Apple Silicon Homebrew
-  executable and Java runtime paths.
+`dotfiles/.codex/config.toml` is symlinked to `~/.codex/config.toml` by Home
+Manager. Changes made through the Codex CLI or desktop app therefore write back
+to this repository for review and version control.
 
-Home activation handles migration and seeding in this order:
+The work profile remains independent at `~/.codex-work/config.toml`, selected by
+`CODEX_HOME` inside `~/Documents/work`; it may use a different login and local
+client state.
 
-1. **Before `linkGeneration`:** detach a legacy config symlink only if its
-   resolved target is exactly this checkout's `dotfiles/.codex/config.toml`,
-   preserving its contents in a private, writable local config before Home
-   Manager removes the obsolete managed link. This is a content-preserving
-   migration, not replacement with the seed. The ignored source is not modified.
-2. **During `linkGeneration`:** Home Manager removes obsolete links it owns,
-   including dangling old Home Manager links. The migration does not remove
-   unrelated user-owned symlinks.
-3. **After `linkGeneration`:** copy the seed into `CODEX_HOME/config.toml`
-   **only when the destination is absent**. Thus an obsolete dangling Home
-   Manager link can be removed first and its now-absent destination seeded.
-   Existing files and remaining symlinks, including user-owned dangling
-   symlinks, are not overwritten.
-
-Do not symlink the live config to the immutable seed or reapply defaults on each
-activation. Existing configurations retain their contents; seed changes affect
-only destinations that are absent after Home Manager's link cleanup.
-
-`dotfiles/.codex/config.toml` is intentionally ignored and remains local. It can
-contain desktop-generated plugin settings, runtime paths, notifications, project
-trust, and model selections. Do not track it, replace it with the seed, or validate
-it as repository-owned configuration. Model selection belongs to the user and the
-client's available model catalog; the seed imposes no model ID.
-
-Keep authentication, caches, and client-generated state out of version control.
-In particular, do not manage `auth.json` or mutable `~/.claude.json` as repository
-symlinks. The seed policy and instruction links are separate: changing shared
-instructions does not require rewriting a user's live Codex config.
+Keep authentication, caches, and other credentials out of version control. In
+particular, do not manage `auth.json` as a repository symlink.
 
 ## MCP servers
 
