@@ -97,10 +97,10 @@
             }
         },
         "default_model": {
-            "effort": "low",
+            "effort": "high",
             "enable_thinking": true,
-            "provider": "openai-subscribed",
-            "model": "gpt-5.6-terra"
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro"
         },
         "dock": "left",
         "favorite_models": [
