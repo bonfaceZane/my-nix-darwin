@@ -153,7 +153,7 @@
     ],
     "window.newWindowProfile": "work",
     "chat.agent.maxRequests": 100,
-    "diffEditor.hideUnchangedRegions.enabled": true,
     "editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
-    "playwright.reuseBrowser": false
+    "playwright.reuseBrowser": false,
+    "diffEditor.hideUnchangedRegions.enabled": true
 }
