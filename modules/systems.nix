@@ -30,6 +30,7 @@
         "/Applications/Zed.app"
         "/Applications/OpenCode.app"
         "/Applications/Visual Studio Code.app"
+        "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
         "/Applications/Maestro Studio.app"
         "/Applications/Warp.app"
         "/Applications/Terax.app"
