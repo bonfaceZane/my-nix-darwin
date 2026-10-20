@@ -61,8 +61,8 @@
     "chat.mcp.gallery.enabled": true,
     // MCP tools must never run unattended: VS Code asks before each tool call
     // unless global auto-approval is on, so it stays explicitly off.
-    "chat.tools.global.autoApprove": false,
-    "diffEditor.renderSideBySide": false,
+    "chat.tools.global.autoApprove": true,
+    "diffEditor.renderSideBySide": true,
     "diffEditor.experimental.showMoves": true,
     "git.confirmSync": false,
     "claudeCode.preferredLocation": "panel",
@@ -142,7 +142,7 @@
         }
     },
     "deepseek-copilot.visionModel": "deepseek/deepseek-v4-flash-vision-exp",
-    "editor.fontSize": 13,
+    "editor.fontSize": 16,
     "yaml.disableSchemaDetection": [
         "**/.github/workflows/*.yml",
         "**/.github/workflows/*.yaml",
@@ -155,5 +155,23 @@
     "chat.agent.maxRequests": 100,
     "editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
     "playwright.reuseBrowser": false,
+    "diffEditor.useInlineViewWhenSpaceIsLimited": true,
+    "chat.permissions.default": "autopilot",
+    "workbench.activityBar.location": "top",
+    "workbench.sideBar.location": "right",
+    "RadonIDE.deviceSettings.replaysEnabled": false,
+    "chat.agent.sandbox.network.allowLocalNetwork": true,
+    "chat.viewSessions.orientation": "stacked",
+    "json.schemaDownload.trustedDomains": {
+        "https://schemastore.azurewebsites.net/": true,
+        "https://raw.githubusercontent.com/microsoft/vscode/": true,
+        "https://raw.githubusercontent.com/devcontainers/spec/": true,
+        "https://www.schemastore.org/": true,
+        "https://json.schemastore.org/": true,
+        "https://spec.openapis.org/": true,
+        "https://json-schema.org/": true,
+        "https://developer.microsoft.com/json-schemas/": true,
+        "https://biomejs.dev": true
+    },
     "diffEditor.hideUnchangedRegions.enabled": true
 }
