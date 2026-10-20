@@ -34,6 +34,7 @@
       "nordvpn"
       "notion" # markdown editor
       "opencode-desktop" # OpenCode desktop app
+      "pi-gui" # Pi coding agent GUI
       "proxyman"
       "raycast" # launcher and automation
       "stats" # system monitor

@@ -29,6 +29,7 @@
         "/Applications/Safari.app"
         "/Applications/Zed.app"
         "/Applications/OpenCode.app"
+        "/Applications/pi-gui.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
         "/Applications/Maestro Studio.app"

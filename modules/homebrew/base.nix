@@ -4,7 +4,7 @@
   # Splitting Homebrew concerns improves discoverability and avoids one giant file.
   homebrew = {
     enable = true;
-    taps = [ "mobile-dev-inc/tap" "facebook/fb" ];
+    taps = [ "mobile-dev-inc/tap" "facebook/fb" "minghinmatthewlam/tap" ];
 
     # Generate a Brewfile snapshot on each activation (handy for manual review).
     global.brewfile = true;
