@@ -100,7 +100,7 @@
             "effort": "high",
             "enable_thinking": true,
             "provider": "deepseek",
-            "model": "deepseek-v4-pro"
+            "model": "deepseek-flash"
         },
         "dock": "left",
         "favorite_models": [
@@ -138,6 +138,12 @@
                 "model": "deepseek-v4-pro",
                 "enable_thinking": true,
                 "effort": "high"
+            },
+            {
+                "provider": "deepseek",
+                "model": "deepseek-flash",
+                "enable_thinking": true,
+                "effort": "high"
             }
         ],
         "model_parameters": [],
@@ -148,7 +154,7 @@
         "commit_message_instructions": "Generate a concise Conventional Commit message. Use an imperative subject in the format <type>(<scope>): <description>, keep the subject under 72 characters, and return only the commit message without quotes, Markdown, or explanation."
     },
     "outline_panel": {
-        "dock": "right"
+        "dock": "left"
     },
     "collaboration_panel": {
         "dock": "right"
