@@ -26,6 +26,7 @@
       "cursor" # AI-first IDE
       "docker-desktop"
       "fluor" # for managing fn keys for different keyboards in macOS
+      "grok-bot" # xAI Grok desktop bot
       "font-fira-code-nerd-font"
       # "google-chrome"
       "hammerspoon" # macOS automation
