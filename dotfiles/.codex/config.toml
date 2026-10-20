@@ -25,6 +25,9 @@ trust_level = "trusted"
 [projects."/Users/rafiki/Documents/Codex/2026-09-22/review-recent-email-and-calendar-activity"]
 trust_level = "trusted"
 
+[projects."/Users/rafiki/Documents/subira/polaris"]
+trust_level = "trusted"
+
 [desktop]
 followUpQueueMode = "queue"
 dock-icon-preference = "codex-system"
