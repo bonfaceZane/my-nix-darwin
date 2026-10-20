@@ -65,6 +65,85 @@
             "headers": {
                 "Authorization": "Bearer napi_nbpn8jkvsfj763a0shi6v6aacn7wobr2kd6faxq8a42mpqpzoxwg5d21sy3a723f"
             }
+        },
+        "com.atlassian/atlassian-mcp-server": {
+            "type": "http",
+            "url": "https://mcp.atlassian.com/v1/mcp",
+            "tools": [
+                "*"
+            ]
+        },
+        "io.github.ChromeDevTools/chrome-devtools-mcp": {
+            "type": "local",
+            "command": "npx",
+            "args": [
+                "--registry",
+                "https://registry.npmjs.org",
+                "chrome-devtools-mcp@1.1.1"
+            ],
+            "tools": [
+                "*"
+            ]
+        },
+        "io.github.github/github-mcp-server": {
+            "type": "http",
+            "url": "https://api.githubcopilot.com/mcp/",
+            "tools": [
+                "*"
+            ]
+        },
+        "io.github.upstash/context7": {
+            "type": "local",
+            "command": "/opt/homebrew/bin/npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp@latest"
+            ],
+            "tools": [
+                "*"
+            ],
+            "env": {
+                "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+            }
+        },
+        "io.github.wonderwhy-er/desktop-commander": {
+            "type": "local",
+            "command": "npx",
+            "args": [
+                "--registry",
+                "https://registry.npmjs.org",
+                "@wonderwhy-er/desktop-commander@0.2.52"
+            ],
+            "tools": [
+                "*"
+            ]
+        },
+        "makenotion/notion-mcp-server": {
+            "type": "http",
+            "url": "https://mcp.notion.com/sse",
+            "tools": [
+                "*"
+            ]
+        },
+        "microsoft/markitdown": {
+            "type": "local",
+            "command": "uvx",
+            "args": [
+                "markitdown-mcp@0.0.1a4"
+            ],
+            "tools": [
+                "*"
+            ]
+        },
+        "microsoft/playwright-mcp": {
+            "type": "local",
+            "command": "npx",
+            "args": [
+                "@playwright/mcp@latest"
+            ],
+            "tools": [
+                "*"
+            ]
         }
     }
 }

@@ -154,6 +154,30 @@
         "MOBILEMCP_DISABLE_TELEMETRY": "1"
       }
     },
+    "radon": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "radon-mcp@latest"
+      ],
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
+    "expo": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "expo-mcp@latest"
+      ],
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
     "Neon": {
       "type": "remote",
       "url": "https://mcp.neon.tech/mcp",
