@@ -37,7 +37,7 @@
         "/Applications/Terax.app"
         "/Applications/WezTerm.app"
         "/Applications/Notion.app"
-        "/Applications/WhatsApp.app"
+        # "/Applications/WhatsApp.app"
         "/Applications/NordPass.app"
         "/Applications/CaskHub.app"
         # "/Applications/Device Hub.app"
