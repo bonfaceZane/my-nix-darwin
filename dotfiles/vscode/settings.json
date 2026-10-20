@@ -142,7 +142,7 @@
         }
     },
     "deepseek-copilot.visionModel": "deepseek/deepseek-v4-flash-vision-exp",
-    "editor.fontSize": 16,
+    "editor.fontSize": 17,
     "yaml.disableSchemaDetection": [
         "**/.github/workflows/*.yml",
         "**/.github/workflows/*.yaml",
@@ -173,5 +173,6 @@
         "https://developer.microsoft.com/json-schemas/": true,
         "https://biomejs.dev": true
     },
-    "diffEditor.hideUnchangedRegions.enabled": true
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "chat.editor.fontSize": 15
 }
