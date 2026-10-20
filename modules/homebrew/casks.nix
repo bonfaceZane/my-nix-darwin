@@ -23,6 +23,7 @@
       "claude-code"
       "codex"
       "codex-app"
+      "cursor" # AI-first IDE
       "docker-desktop"
       "fluor" # for managing fn keys for different keyboards in macOS
       "font-fira-code-nerd-font"
