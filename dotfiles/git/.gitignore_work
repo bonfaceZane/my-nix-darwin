@@ -30,3 +30,4 @@ pre-push
 .agent-artifacts
 .codegraph
 .aider*
+.pi

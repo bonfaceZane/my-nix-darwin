@@ -6,6 +6,7 @@ AIDER_MODEL = "deepseek/deepseek-reasoner"
 [tools]
 node = "lts"
 "npm:@openviking/opencode-plugin" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 yarn = "1.22.22"
 rust = "latest"
 ruby = "3.2.2"
