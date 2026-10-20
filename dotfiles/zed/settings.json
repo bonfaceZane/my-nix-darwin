@@ -148,10 +148,10 @@
         "commit_message_instructions": "Generate a concise Conventional Commit message. Use an imperative subject in the format <type>(<scope>): <description>, keep the subject under 72 characters, and return only the commit message without quotes, Markdown, or explanation."
     },
     "outline_panel": {
-        "dock": "left"
+        "dock": "right"
     },
     "collaboration_panel": {
-        "dock": "left"
+        "dock": "right"
     },
     "icon_theme": {
         "mode": "light",
@@ -165,7 +165,7 @@
         "shell": {
             "program": "fish"
         },
-        "font_size": 14.0
+        "font_size": 15.0
     },
     "base_keymap": "JetBrains",
     "theme": {
@@ -173,8 +173,8 @@
         "light": "One Light",
         "dark": "One Dark Pro Glass"
     },
-    "ui_font_size": 16.0,
-    "buffer_font_size": 14.0,
+    "ui_font_size": 15.0,
+    "buffer_font_size": 16.0,
     "autosave": "on_focus_change",
     "project_panel": {
         "button": true,
