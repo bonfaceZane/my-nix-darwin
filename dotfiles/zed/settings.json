@@ -1,4 +1,6 @@
 {
+    "ui_font_family": "JetBrains Mono NL",
+    "buffer_font_family": "JetBrains Mono NL",
     "lsp": {
         "vtsls": {
             "settings": {
@@ -97,7 +99,7 @@
             }
         },
         "default_model": {
-            "effort": "high",
+            "effort": "low",
             "enable_thinking": true,
             "provider": "deepseek",
             "model": "deepseek-flash"
@@ -110,22 +112,10 @@
                 "enable_thinking": false
             },
             {
-                "provider": "google",
-                "model": "gemini-3.7-flash",
-                "enable_thinking": true,
-                "effort": "medium"
-            },
-            {
                 "provider": "openai-subscribed",
                 "model": "gpt-5.6-terra",
                 "enable_thinking": true,
                 "effort": "low"
-            },
-            {
-                "provider": "openai-subscribed",
-                "model": "gpt-5.6-sol",
-                "enable_thinking": true,
-                "effort": "medium"
             },
             {
                 "provider": "openai-subscribed",
@@ -135,15 +125,9 @@
             },
             {
                 "provider": "deepseek",
-                "model": "deepseek-v4-pro",
-                "enable_thinking": true,
-                "effort": "high"
-            },
-            {
-                "provider": "deepseek",
                 "model": "deepseek-flash",
                 "enable_thinking": true,
-                "effort": "high"
+                "effort": "low"
             }
         ],
         "model_parameters": [],
@@ -175,12 +159,12 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "dark",
-        "light": "One Light",
-        "dark": "One Dark Pro Glass"
+        "mode": "system",
+        "light": "Night Owl Light",
+        "dark": "Night Owl Dark"
     },
-    "ui_font_size": 15.0,
-    "buffer_font_size": 16.0,
+    "ui_font_size": 17.0,
+    "buffer_font_size": 17.0,
     "autosave": "on_focus_change",
     "project_panel": {
         "button": true,
