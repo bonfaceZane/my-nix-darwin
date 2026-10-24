@@ -19,3 +19,6 @@ dotfiles/opencode/node_modules/
 .env
 .env.*
 !.env.example
+
+# Editor/agent backup files (e.g. Orca rewrites)
+*.bak
