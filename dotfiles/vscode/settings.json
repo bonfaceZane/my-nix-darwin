@@ -173,6 +173,7 @@
         "https://developer.microsoft.com/json-schemas/": true,
         "https://biomejs.dev": true
     },
-    "diffEditor.hideUnchangedRegions.enabled": true,
-    "chat.editor.fontSize": 15
+    "chat.editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    "diffEditor.hideUnchangedRegions.enabled": true
 }
