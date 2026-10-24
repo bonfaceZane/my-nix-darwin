@@ -26,6 +26,7 @@
         "/Applications/Microsoft Outlook.app"
         "/Applications/zoom.us.app"
         "/Applications/Dia.app"
+        "/Applications/Orca.app"
         "/Applications/Safari.app"
         "/Applications/Zed.app"
         "/Applications/OpenCode.app"
