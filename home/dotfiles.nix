@@ -213,6 +213,12 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
     };
 
+    # Homebrew tap trust state (required for third-party taps/casks).
+    # Homebrew writes through this link when `brew trust` is used.
+    ".homebrew/trust.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/homebrew/trust.json";
+    };
+
     # Select a separate Codex login based on the current project directory.
     # Codex owns each auth.json; only CODEX_HOME and shared config are managed.
     "Documents/subira/.mise.toml" = {

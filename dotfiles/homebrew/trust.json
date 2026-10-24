@@ -1,0 +1,10 @@
+{
+  "trustedformulae": [
+    "facebook/fb/idb-companion",
+    "mobile-dev-inc/tap/maestro"
+  ],
+  "trustedcasks": [
+    "minghinmatthewlam/tap/pi-gui",
+    "stablyai/orca/orca"
+  ]
+}
