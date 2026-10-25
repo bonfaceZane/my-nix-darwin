@@ -18,33 +18,7 @@ def unique_keys(pairs):
     return result
 
 
-def validate_opencode_configs():
-    """Check the global OpenCode config and its per-project template."""
-    global_relative = "dotfiles/opencode/opencode.json"
-    global_config = json.loads(
-        (ROOT / global_relative).read_text(), object_pairs_hook=unique_keys
-    )
-    assert global_config["plugin"] == ["@openviking/opencode-plugin"]
-    assert global_config["lsp"], "OpenCode LSP servers must be declared"
-    for instruction in global_config["instructions"]:
-        assert (ROOT / "dotfiles/opencode" / instruction).is_file(), (
-            f"Missing OpenCode instruction: {instruction}"
-        )
-    print(f"JSON OK: {global_relative} ({len(global_config['lsp'])} LSP servers)")
-
-    local_relative = "dotfiles/opencode/opencode.local.json"
-    local_config = json.loads(
-        (ROOT / local_relative).read_text(), object_pairs_hook=unique_keys
-    )
-    assert local_config["model"] == global_config["model"], (
-        "Local OpenCode model must match the global model"
-    )
-    assert local_config["instructions"] == ["AGENTS.md"]
-    print(f"JSON OK: {local_relative}")
-
-
 def main():
-    validate_opencode_configs()
     runpy.run_path(str(ROOT / "dotfiles/ai/validate.py"), run_name="__main__")
     for relative in ("mise.toml", "dotfiles/mise/config.toml"):
         with (ROOT / relative).open("rb") as source:

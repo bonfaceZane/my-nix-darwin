@@ -40,8 +40,8 @@ PRIMARY: str = CONFIG_DATA["primary"]
 EXPO_CRITICAL_TOOLS: tuple = tuple(CONFIG_DATA["expoCriticalTools"])
 
 # Every client that receives the shared set. `remote` is None where the client's
-# remote-server schema is unverified (Zed, Antigravity) or unenforceable
-# (opencode), so the Expo server is deliberately not rendered there.
+# remote-server schema is unverified (Zed, Antigravity), so the Expo server is
+# deliberately not rendered there.
 CLIENTS: dict = {
     "ai/.mcp.json": {
         "attribute": "mcpServers",
@@ -93,12 +93,6 @@ CLIENTS: dict = {
         "remote": None,
         "context7": True,
     },
-    "opencode/opencode.json": {
-        "attribute": "mcp",
-        "flavour": "opencode",
-        "remote": None,
-        "context7": True,
-    },
 }
 
 
@@ -121,15 +115,6 @@ def render_entry(name: str, flavour: str, remote) -> dict:
 
     args = list(definition.get("args", []))
     env = dict(definition.get("env", {}))
-    if flavour == "opencode":
-        entry = {
-            "type": "local",
-            "enabled": True,
-            "command": [definition["command"], *args],
-        }
-        if env:
-            entry["environment"] = env
-        return entry
     entry = {"command": definition["command"], "args": args}
     if env:
         entry["env"] = env
@@ -144,12 +129,6 @@ def render_entry(name: str, flavour: str, remote) -> dict:
 
 def launch_fields(entry: dict, flavour: str) -> dict:
     """The subset of a client entry that the root config owns."""
-    if flavour == "opencode":
-        command, *args = entry.get("command", [])
-        fields = {"command": command, "args": args}
-        if entry.get("environment"):
-            fields["env"] = entry["environment"]
-        return fields
     return {
         key: value
         for key, value in entry.items()

@@ -268,18 +268,6 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/muse/settings.json";
     };
 
-    # OpenCode config directory (opencode.json + skills)
-    ".config/opencode" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/opencode";
-    };
-
-    # Persistent cross-session memory for the OpenViking OpenCode plugin.
-    # The plugin writes through this symlink into the repo so memory survives
-    # rebuilds; only the directory itself is managed by Home Manager.
-    ".local/share/opencode/memory" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/opencode/memory";
-    };
-
     # Cline global settings (provider/model/reasoning/auto-approval). API keys
     # stay local in ~/.cline/data/secrets.json, never tracked here.
     ".cline/data/globalState.json" = {

@@ -35,7 +35,6 @@
       "nordpass"
       "nordvpn"
       "notion" # markdown editor
-      "opencode-desktop" # OpenCode desktop app
       "stablyai/orca/orca" # AI agent orchestrator IDE (fully qualified; core `orca` is a disabled plotly tool)
       "pi-gui" # Pi coding agent GUI
       "proxyman"

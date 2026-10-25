@@ -1,7 +1,7 @@
 # AI client configuration
 
 Shared instructions, client settings, and MCP configuration for Claude Code,
-Codex, Gemini CLI, Copilot CLI, Cline, Cursor, Zed, OpenCode, and Antigravity.
+Codex, Gemini CLI, Copilot CLI, Cline, Cursor, Zed, and Antigravity.
 Native file, search, shell, Git, and Nix tools are sufficient to work on this Nix
 repository. MCP is optional here: the mobile set below is useful for app UI
 testing and device automation, not a prerequisite for editing or checking Nix
@@ -35,7 +35,6 @@ directories; preserve user-owned files when resolving collisions.
 | `Library/Application Support/Code/User/mcp.json` | `dotfiles/vscode/mcp.json` |
 | `~/Library/.../saoudrizwan.claude-dev/settings/cline_mcp_settings.json` | generated from `dotfiles/ai/dotfiles/cline/mcp.json` by `modules/homebrew/agents.nix` (copied, never symlinked) |
 | `~/.config/zed` (MCP in `context_servers`) | `dotfiles/zed/settings.json` |
-| `~/.config/opencode` (MCP in `mcp`) | `dotfiles/opencode/opencode.json` |
 | `~/.gemini/antigravity/mcp_config.json` | `dotfiles/antigravity/mcp_config.json` |
 
 If using a separate `CODEX_HOME`, such as `~/.codex-work`, give it its own
@@ -113,10 +112,6 @@ Notes that matter when editing these files:
 - Antigravity and Zed declare the stdio servers only. Their remote-server schema
   key is not verified for the installed versions, and an unverified key would
   silently drop the server, so `expo` is omitted there on purpose.
-- opencode declares the stdio servers only, for the same reason plus one more:
-  its documented `permission` keys cover built-in tools, not MCP tools, and its
-  defaults are permissive, so registering `expo` there would grant unattended
-  actions. See "Expo MCP restrictions" below.
 - VS Code keeps its gallery-managed `io.github.upstash/context7` entry (pinned
   version, `${input:CONTEXT7_API_KEY}`) instead of the canonical `context7`, and
   that entry is excluded from the strict comparison in the validator.
@@ -149,7 +144,7 @@ still requires explicit per-call approval, so nothing runs unattended.
 | VS Code | `chat.tools.global.autoApprove: false`, so every MCP tool call is confirmed before it runs. |
 | Cline | `autoApprove` stays `[]` for every server, which is the only approval control Cline offers. The validator asserts it. |
 | Cursor, Copilot CLI | Registered with the client's default per-call confirmation. The apps are not installed on this machine, so nothing enforces policy beyond that default. |
-| Zed, Antigravity, opencode | The Expo server is not registered at all: their remote-server key is unverified, and opencode's documented `permission` keys cover built-in tools rather than MCP tools. |
+| Zed, Antigravity | The Expo server is not registered at all because their remote-server key is unverified. |
 
 Two additional guards are worth knowing:
 
@@ -199,8 +194,6 @@ Client-specific behaviour:
 - **Gemini and Copilot:** both retain the shared `maestro` server plus the stdio
   set. Gemini spells remote servers `httpUrl`, Copilot CLI uses
   `type: local`/`http`.
-- **OpenCode:** `mcp` entries use a command array plus `environment`. The Expo
-  server is deliberately absent; see "Expo MCP restrictions" above.
 
 Local prerequisites are declared in Nix-managed Homebrew (see below). The
 work-specific Radon integration stays out of the global files because its

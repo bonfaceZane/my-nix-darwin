@@ -19,7 +19,6 @@ JSON_FILES = (
     "antigravity/mcp_config.json",
     "ai/dotfiles/cline/mcp.json",
     "muse/settings.json",
-    "opencode/opencode.json",
     "vscode/mcp.json",
     "vscode/settings.json",
     "zed/settings.json",
@@ -175,11 +174,6 @@ def main():
     vscode_settings = configs["vscode/settings.json"]
     assert vscode_settings.get("chat.tools.global.autoApprove") is False, (
         "VS Code must not auto-approve MCP tools globally"
-    )
-
-    opencode = configs["opencode/opencode.json"]
-    assert "expo" not in opencode.get("mcp", {}), (
-        "opencode has no verified per-MCP-tool permission key; keep expo out"
     )
 
     assert PRIMARY_SERVER in configs["ai/.mcp.json"]["mcpServers"], (

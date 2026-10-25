@@ -179,7 +179,6 @@
     android = "mise android";
     b = "mise run build";
     build = "mise run build";
-    open = "opencode";
     sw = "mise run switch";
   };
 }
