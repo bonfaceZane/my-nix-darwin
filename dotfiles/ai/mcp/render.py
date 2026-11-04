@@ -41,25 +41,25 @@ PRIMARY: str = CONFIG_DATA["primary"]
 # Every client that receives the shared set. `remote` is None where the client's
 # remote-server schema is unverified (Zed, Antigravity).
 CLIENTS: dict = {
-    "ai/.mcp.json": {
+    "ai/clients/claude/mcp.json": {
         "attribute": "mcpServers",
         "flavour": "plain",
         "remote": ("url", "http"),
         "context7": True,
     },
-    ".cursor/mcp.json": {
+    "ai/clients/cursor/mcp.json": {
         "attribute": "mcpServers",
         "flavour": "plain",
         "remote": ("url", "http"),
         "context7": True,
     },
-    ".gemini/settings.json": {
+    "ai/clients/gemini/settings.json": {
         "attribute": "mcpServers",
         "flavour": "gemini",
         "remote": ("httpUrl", None),
         "context7": True,
     },
-    ".copilot/mcp-config.json": {
+    "ai/clients/copilot/mcp-config.json": {
         "attribute": "mcpServers",
         "flavour": "copilot",
         "remote": ("url", "http"),
@@ -71,13 +71,13 @@ CLIENTS: dict = {
         "remote": ("url", "streamableHttp"),
         "context7": True,
     },
-    "antigravity/mcp_config.json": {
+    "ai/clients/antigravity/mcp_config.json": {
         "attribute": "mcpServers",
         "flavour": "plain",
         "remote": None,
         "context7": True,
     },
-    "vscode/mcp.json": {
+    "ai/clients/vscode/mcp.json": {
         "attribute": "servers",
         "flavour": "plain",
         "remote": ("url", "http"),

@@ -18,10 +18,14 @@
 ## Git
 
 - Commit only when requested. Treat “commit” as a request to review staged and unstaged changes and split the authorized changes into atomic commits, one logical purpose per commit. Create multiple commits when changes have independent purposes; one cohesive change needs only one commit.
-- Atomic means one logical change, not one file. Keep related implementation, tests, and documentation together; split hunks within a file when needed. Do not group unrelated changes merely because they are already staged.
-- Preserve unrelated user work and its staging state. Ask if its inclusion is unclear. Inspect each staged diff before committing and run checks appropriate to that change.
-- Use a Conventional Commit subject: `<type>(<scope>): <description>`, imperative and under 72 characters. Summarize the resulting commits and validation.
-- Do not push, rewrite history, or create branches without explicit authorization. A request to commit does not authorize these operations.
+- Never create a commit unless the user explicitly requests one. A request to change instructions is not a request to commit.
+- Before committing, inspect the complete Git status and both staged and unstaged diffs. Inventory every changed path and hunk, then identify which changes the user authorized. Do not infer authorization from staging, file proximity, or a request to commit other work.
+- Preserve unrelated work exactly, including its staged or unstaged state. Do not stage, unstage, reset, restore, amend, or otherwise alter unrelated work. If a hunk mixes authorized and unrelated edits, stage only the authorized hunk; ask if ownership or inclusion is unclear.
+- Make each commit one independently reviewable purpose, not one file. Keep implementation, directly related tests, and necessary documentation together. Split independently reviewable or revertible changes, including hunks within a file. Never bundle unrelated changes to reduce commit count.
+- Stage only paths and hunks for the current purpose; never use blanket staging such as `git add .` or `git add -A`. Inspect the staged diff to confirm it contains only that purpose and no secrets or generated state. Run relevant checks before committing.
+- Use one Conventional Commit subject per purpose: `<type>(<scope>): <description>`, imperative, specific, and under 72 characters. Do not combine purposes in one subject or body.
+- After each commit, inspect the commit and Git status to confirm the intended changes were committed and unrelated work remains untouched. Summarize each commit and validation performed.
+- Do not push, rewrite history, amend existing commits, or create branches without explicit authorization. A request to commit does not authorize these operations.
 
 ## Nx workspaces
 

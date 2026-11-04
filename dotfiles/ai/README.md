@@ -21,21 +21,25 @@ directories; preserve user-owned files when resolving collisions.
 
 | Destination | Source |
 | --- | --- |
-| `.claude/settings.json` | `dotfiles/.claude/settings.json` |
+| `.claude/settings.json` | `dotfiles/ai/clients/claude/settings.json` |
 | `.claude/CLAUDE.md` | `dotfiles/ai/CLAUDE.md` |
 | `.claude/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
-| `.claude/mcp.json` | `dotfiles/ai/.mcp.json` (optional, explicit CLI input) |
+| `.claude/mcp.json` | `dotfiles/ai/clients/claude/mcp.json` (optional, explicit CLI input) |
 | `.codex/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
-| `.gemini/settings.json` | `dotfiles/.gemini/settings.json` |
+| `.gemini/settings.json` | `dotfiles/ai/clients/gemini/settings.json` |
 | `.gemini/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
-| `.cursor/mcp.json` | `dotfiles/.cursor/mcp.json` |
-| `.cursor/settings.json` | `dotfiles/.cursor/settings.json` |
-| `.cursor/rules/` | `dotfiles/.cursor/rules/` |
-| `.copilot/mcp-config.json` | `dotfiles/.copilot/mcp-config.json` |
-| `Library/Application Support/Code/User/mcp.json` | `dotfiles/vscode/mcp.json` |
+| `Documents/work/amv-apps/.gemini/settings.json` (fallback only) | `dotfiles/ai/clients/gemini/workspace-settings.json` |
+| `Documents/work/amv-apps/.mcp.json` (fallback only) | `dotfiles/ai/clients/claude/mcp.json` |
+| `.cursor/mcp.json` | `dotfiles/ai/clients/cursor/mcp.json` |
+| `.cursor/settings.json` | `dotfiles/ai/clients/cursor/settings.json` |
+| `.cursor/rules/` | `dotfiles/ai/clients/cursor/rules/` |
+| `.copilot/mcp-config.json` | `dotfiles/ai/clients/copilot/mcp-config.json` |
+| `Library/Application Support/Code/User/mcp.json` | `dotfiles/ai/clients/vscode/mcp.json` |
 | `~/Library/.../saoudrizwan.claude-dev/settings/cline_mcp_settings.json` | generated from `dotfiles/ai/dotfiles/cline/mcp.json` by `modules/homebrew/agents.nix` (copied, never symlinked) |
 | `~/.config/zed` (MCP in `context_servers`) | `dotfiles/zed/settings.json` |
-| `~/.gemini/antigravity/mcp_config.json` | `dotfiles/antigravity/mcp_config.json` |
+| `~/.gemini/antigravity/mcp_config.json` | `dotfiles/ai/clients/antigravity/mcp_config.json` |
+| `~/.gemini/antigravity/browserAllowlist.txt` | `dotfiles/ai/clients/antigravity/browserAllowlist.txt` |
+| `~/.config/muse/settings.json` | `dotfiles/ai/clients/muse/settings.json` |
 
 If using a separate `CODEX_HOME`, such as `~/.codex-work`, give it its own
 `AGENTS.md` link and mutable configuration. Codex's `AGENTS.override.md`, when
@@ -77,7 +81,7 @@ skills that Home Manager does not manage.
 
 ## Codex: tracked personal configuration
 
-`dotfiles/.codex/config.toml` is symlinked to `~/.codex/config.toml` by Home
+`dotfiles/ai/clients/codex/config.toml` is symlinked to `~/.codex/config.toml` by Home
 Manager. Changes made through the Codex CLI or desktop app therefore write back
 to this repository for review and version control.
 
@@ -184,10 +188,11 @@ work-project path; configure it in that workspace's own settings instead. Neithe
 Nx nor a separate Git MCP server is required here: use native Git, and configure
 Nx MCP only in a workspace that already supplies Nx.
 
-`dotfiles/ai/.gemini/settings.json` is a minimal project context overlay, not a
-replacement for the canonical user settings. The legacy `dotfiles/ai/.agent/settings.json`
+`dotfiles/ai/clients/gemini/workspace-settings.json` is a minimal project context
+overlay, not a replacement for the canonical user settings. The legacy
+`dotfiles/ai/.agent/settings.json`
 has been removed; Cursor and Copilot now use their native entry points
-(`dotfiles/.cursor/rules/agents.mdc` and `.github/copilot-instructions.md`).
+(`dotfiles/ai/clients/cursor/rules/agents.mdc` and `.github/copilot-instructions.md`).
 
 ## CLI availability and declarative installation
 

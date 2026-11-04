@@ -131,22 +131,22 @@ in
 
     # Antigravity config files
     ".gemini/antigravity/mcp_config.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/antigravity/mcp_config.json";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/antigravity/mcp_config.json";
     };
     ".gemini/antigravity/user_settings.pb" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/antigravity/user_settings.pb";
     };
     ".gemini/antigravity/browserAllowlist.txt" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/antigravity/browserAllowlist.txt";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/antigravity/browserAllowlist.txt";
     };
     # Client settings are live links; credentials and sessions remain client-owned.
     ".gemini/settings.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.gemini/settings.json";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/gemini/settings.json";
     };
 
     # Copilot MCP config
-    ".copilot/mcp-config.json" = lib.mkIf (builtins.pathExists ../dotfiles/.copilot/mcp-config.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.copilot/mcp-config.json";
+    ".copilot/mcp-config.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/copilot/mcp-config.json) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/copilot/mcp-config.json";
       force = true;
     };
 
@@ -203,13 +203,13 @@ in
     "Documents/work/amv-apps/.gemini/settings.json" = lib.mkIf (
       !builtins.pathExists "${config.home.homeDirectory}/Documents/work/amv-apps/.gemini/settings.json"
     ) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/.gemini/settings.json";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/gemini/workspace-settings.json";
       force = true;
     };
     "Documents/work/amv-apps/.mcp.json" = lib.mkIf (
       !builtins.pathExists "${config.home.homeDirectory}/Documents/work/amv-apps/.mcp.json"
     ) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/.mcp.json";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/claude/mcp.json";
       force = true;
     };
 
@@ -246,35 +246,35 @@ in
     # Keep the personal Codex configuration under version control. Codex CLI and
     # desktop changes to this file are written back into the dotfiles repository.
     ".codex/config.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.codex/config.toml";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/codex/config.toml";
     };
 
     ".claude/mcp.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/.mcp.json";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/claude/mcp.json";
     };
     ".claude/CLAUDE.md" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/CLAUDE.md";
     };
-    ".claude/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/.claude/settings.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.claude/settings.json";
+    ".claude/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/claude/settings.json) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/claude/settings.json";
     };
 
 
 
     # Cursor configuration — MCP + agent permissions (mirrors .claude/.codex pattern)
-    ".cursor/mcp.json" = lib.mkIf (builtins.pathExists ../dotfiles/.cursor/mcp.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/mcp.json";
+    ".cursor/mcp.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/cursor/mcp.json) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/cursor/mcp.json";
     };
-    ".cursor/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/.cursor/settings.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/settings.json";
+    ".cursor/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/cursor/settings.json) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/cursor/settings.json";
     };
-    ".cursor/rules" = lib.mkIf (builtins.pathExists ../dotfiles/.cursor/rules) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cursor/rules";
+    ".cursor/rules" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/cursor/rules) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/cursor/rules";
     };
 
     # Muse settings — persisted always auto-approve (approval_mode = never)
     ".config/muse/settings.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/muse/settings.json";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/muse/settings.json";
     };
 
     # Cline global settings (provider/model/reasoning/auto-approval). API keys
@@ -296,8 +296,8 @@ in
     # VS Code user MCP servers. Copilot Chat and other MCP-aware extensions read
     # this file, and VS Code rewrites it when servers are added through the UI;
     # the out-of-store symlink keeps those edits in the repository.
-    "Library/Application Support/Code/User/mcp.json" = lib.mkIf (builtins.pathExists ../dotfiles/vscode/mcp.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/mcp.json";
+    "Library/Application Support/Code/User/mcp.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/vscode/mcp.json) {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/vscode/mcp.json";
     };
   } // builtins.listToAttrs (
     map (target: {

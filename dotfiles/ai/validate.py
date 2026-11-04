@@ -9,17 +9,17 @@ import tomllib
 
 DOTFILES = Path(__file__).resolve().parent.parent
 JSON_FILES = (
-    ".claude/settings.json",
-    ".gemini/settings.json",
-    ".cursor/mcp.json",
-    ".cursor/settings.json",
-    ".copilot/mcp-config.json",
-    "ai/.mcp.json",
-    "ai/.gemini/settings.json",
-    "antigravity/mcp_config.json",
+    "ai/clients/claude/settings.json",
+    "ai/clients/gemini/settings.json",
+    "ai/clients/cursor/mcp.json",
+    "ai/clients/cursor/settings.json",
+    "ai/clients/copilot/mcp-config.json",
+    "ai/clients/claude/mcp.json",
+    "ai/clients/gemini/workspace-settings.json",
+    "ai/clients/antigravity/mcp_config.json",
     "ai/dotfiles/cline/mcp.json",
-    "muse/settings.json",
-    "vscode/mcp.json",
+    "ai/clients/muse/settings.json",
+    "ai/clients/vscode/mcp.json",
     "vscode/settings.json",
     "zed/settings.json",
 )
@@ -105,10 +105,13 @@ def main():
             )
         print(f"JSON OK: dotfiles/{name}")
 
-    codex = tomllib.loads((DOTFILES / ".codex/config.base.toml").read_text())
-    print("TOML OK: dotfiles/.codex/config.base.toml")
+    codex = tomllib.loads((DOTFILES / "ai/clients/codex/config.base.toml").read_text())
+    print("TOML OK: dotfiles/ai/clients/codex/config.base.toml")
 
-    for name in (".gemini/settings.json", "ai/.gemini/settings.json"):
+    for name in (
+        "ai/clients/gemini/settings.json",
+        "ai/clients/gemini/workspace-settings.json",
+    ):
         config = configs[name]
         assert config["context"]["fileName"] == ["AGENTS.md", "GEMINI.md"]
         permissions = config.get("permissions", {})
@@ -121,7 +124,10 @@ def main():
                 )
         assert "contextFileName" not in config
         assert "autoApproveSafeEdits" not in config.get("general", {})
-    assert configs[".gemini/settings.json"]["general"]["defaultApprovalMode"] == "default"
+    assert (
+        configs["ai/clients/gemini/settings.json"]["general"]["defaultApprovalMode"]
+        == "default"
+    )
 
     cline_servers = configs["ai/dotfiles/cline/mcp.json"]["mcpServers"]
     assert cline_servers["maestro"]["disabled"] is False, (
@@ -157,7 +163,7 @@ def main():
         "VS Code must not auto-approve MCP tools globally"
     )
 
-    assert PRIMARY_SERVER in configs["ai/.mcp.json"]["mcpServers"], (
+    assert PRIMARY_SERVER in configs["ai/clients/claude/mcp.json"]["mcpServers"], (
         "the primary server must be available to every client"
     )
     assert "@AGENTS.md" in (DOTFILES / "ai/CLAUDE.md").read_text().splitlines()

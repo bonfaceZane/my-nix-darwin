@@ -41,11 +41,9 @@ services/                  System services
 packages/                  Local package definitions
 scripts/                   Validation and maintenance helpers
 dotfiles/                  Editable application configuration sources
-  ai/                      Shared AI instructions, MCP manifest, validation
-    skills/                Nix-managed skill sources linked into user discovery paths
-  .claude/ .gemini/         Client-native settings
-  .cursor/ .copilot/        Cursor rules/MCP and Copilot MCP
-  .codex/config.toml        Live personal Codex configuration (symlinked to ~/.codex)
+  ai/                      Shared AI instructions, skills, MCP, validation, client configs
+    clients/                AI-specific settings grouped by client; linked to native paths
+  vscode/ zed/              Editor settings and keybindings; mixed AI/editor configuration
 AGENTS.md                  Contribution and safety instructions
 CLAUDE.md / GEMINI.md       Client entry points to those instructions
 mise.toml                  Build/activation/validation tasks
@@ -59,7 +57,7 @@ Keep explicit imports and the current module boundaries; a single host does not 
 
 Not every directory in `dotfiles/` is automatically deployed. App-specific paths are intentional: Zed/mise/Helix/Zellij/Ghostty use `~/.config`, Nushell uses `~/Library/Application Support/nushell`, while Claude/Codex/Gemini use their native hidden home directories. Do not force every app into `~/.config`.
 
-AI settings, instructions, and skills are linked individually so authentication and session state remain writable and outside Git. **Codex is seed-only:** existing config and app-generated integrations are preserved. During migration, only the old symlink resolving to this checkout's ignored Codex config is detached into a private local copy. Future seed edits do not overwrite local settings. See [dotfiles/ai/README.md](dotfiles/ai/README.md) for exact paths and MCP startup.
+AI settings, instructions, and skills are grouped under `dotfiles/ai/` and linked individually to each client's native paths, so authentication and session state remain writable and outside Git. **Codex is seed-only:** existing config and app-generated integrations are preserved. During migration, only the old symlink resolving to this checkout's ignored Codex config is detached into a private local copy. Future seed edits do not overwrite local settings. See [dotfiles/ai/README.md](dotfiles/ai/README.md) for exact paths and MCP startup.
 
 Work-project links under `~/Documents/work/amv-apps` are deliberately explicit. Review these before using this configuration for another user or machine.
 

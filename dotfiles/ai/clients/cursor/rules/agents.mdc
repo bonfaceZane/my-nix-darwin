@@ -5,4 +5,4 @@ alwaysApply: true
 
 # Shared agent instructions
 
-@../../ai/AGENTS.md
+@../../../AGENTS.md

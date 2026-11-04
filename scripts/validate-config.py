@@ -47,7 +47,7 @@ def main():
     for name in ("AGENTS.md", "CLAUDE.md", "GEMINI.md"):
         assert (ROOT / name).is_file(), f"Missing project instructions: {name}"
     assert (ROOT / ".github/copilot-instructions.md").is_file(), "Missing Copilot instructions"
-    assert (ROOT / "dotfiles/.cursor/rules/agents.mdc").is_file(), "Missing Cursor rules"
+    assert (ROOT / "dotfiles/ai/clients/cursor/rules/agents.mdc").is_file(), "Missing Cursor rules"
     for name in (
         "nix-darwin-maintenance",
         "expo-mobile",
