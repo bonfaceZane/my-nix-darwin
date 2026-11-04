@@ -65,6 +65,11 @@ while `react-native-testing` covers behavior-focused tests across component,
 platform, and device levels. Both defer to each project's installed tooling and
 local conventions.
 
+The curated Figma skills cover using Figma, creating files and designs, generating
+libraries and design-system rules, implementing designs, and working with Code
+Connect components. They are linked individually into `~/.agents/skills/` and
+`~/.claude/skills/` alongside the other repo-managed shared skills.
+
 `agent-device` and `ios-simulator` remain individually installed in that shared
 Codex directory and are linked into `~/.claude/skills/` for Claude discovery.
 Do not link the whole skill directory: it would take ownership of user-installed

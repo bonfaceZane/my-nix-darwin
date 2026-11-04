@@ -28,6 +28,14 @@ let
     "ios-simulator"
   ];
   managedSkills = [
+    "figma"
+    "figma-code-connect-components"
+    "figma-create-design-system-rules"
+    "figma-create-new-file"
+    "figma-generate-design"
+    "figma-generate-library"
+    "figma-implement-design"
+    "figma-use"
     "expo-mobile"
     "radon-ide"
     "component-first"
