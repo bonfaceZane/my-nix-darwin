@@ -27,6 +27,12 @@ let
     "agent-device"
     "ios-simulator"
   ];
+  managedSkills = [
+    "expo-mobile"
+    "radon-ide"
+    "component-first"
+    "react-native-testing"
+  ];
 in
 {
   # Central place to safely link repo-tracked dotfiles into $HOME.
@@ -313,6 +319,13 @@ in
       name = "${target}/skills/nix-darwin-maintenance";
       value.source = ../.agents/skills/nix-darwin-maintenance;
     }) [ ".agents" ".claude" ]
+  ) // builtins.listToAttrs (
+    lib.concatMap (skill:
+      map (target: {
+        name = "${target}/skills/${skill}";
+        value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/${skill}";
+      }) [ ".agents" ".claude" ]
+    ) managedSkills
   );
 
 }

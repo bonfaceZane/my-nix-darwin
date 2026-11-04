@@ -47,6 +47,17 @@ upstream directory to `~/.agents/skills/gh-stack` for Codex and Gemini, and
 also supports `~/.gemini/skills`, but does not need a duplicate link. The current
 documented Codex user discovery directory is `~/.agents/skills`.
 
+The shared `expo-mobile` skill gives cross-project Expo and React Native
+workflow guidance. `radon-ide` documents the optional Radon IDE workflow when a
+project already has Radon available; it does not configure or install a global
+Radon MCP server. Both are linked individually into `~/.agents/skills/` and
+`~/.claude/skills/`.
+
+`component-first` offers general React component reuse and extraction guidance,
+while `react-native-testing` covers behavior-focused tests across component,
+platform, and device levels. Both defer to each project's installed tooling and
+local conventions.
+
 `agent-device` and `ios-simulator` remain individually installed in that shared
 Codex directory and are linked into `~/.claude/skills/` for Claude discovery.
 Do not link the whole skill directory: it would take ownership of user-installed
