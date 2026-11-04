@@ -57,7 +57,7 @@ Keep explicit imports and the current module boundaries; a single host does not 
 
 `home/dotfiles.nix` is the link inventory. Most app settings are out-of-store symlinks to this checkout, so edits to their sources are visible without rebuilding; the application may need reloading. Adding/changing links requires activation. Home Manager owns generated shell, Git, Starship, and other first-class program configuration—do not also symlink over these generated files.
 
-Not every directory in `dotfiles/` is automatically deployed. App-specific paths are intentional: Zed/mise/Helix/Zellij/WezTerm/Ghostty use `~/.config`, Nushell uses `~/Library/Application Support/nushell`, while Claude/Codex/Gemini use their native hidden home directories. Do not force every app into `~/.config`.
+Not every directory in `dotfiles/` is automatically deployed. App-specific paths are intentional: Zed/mise/Helix/Zellij/Ghostty use `~/.config`, Nushell uses `~/Library/Application Support/nushell`, while Claude/Codex/Gemini use their native hidden home directories. Do not force every app into `~/.config`.
 
 AI settings, instructions, and skills are linked individually so authentication and session state remain writable and outside Git. **Codex is seed-only:** existing config and app-generated integrations are preserved. During migration, only the old symlink resolving to this checkout's ignored Codex config is detached into a private local copy. Future seed edits do not overwrite local settings. See [dotfiles/ai/README.md](dotfiles/ai/README.md) for exact paths and MCP startup.
 

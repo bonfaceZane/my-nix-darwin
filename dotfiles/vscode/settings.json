@@ -142,7 +142,7 @@
         }
     },
     "deepseek-copilot.visionModel": "deepseek/deepseek-v4-flash-vision-exp",
-    "editor.fontSize": 17,
+    "editor.fontSize": 17.5,
     "yaml.disableSchemaDetection": [
         "**/.github/workflows/*.yml",
         "**/.github/workflows/*.yaml",
@@ -175,5 +175,6 @@
     },
     "chat.editor.fontSize": 15,
     "terminal.integrated.fontSize": 15,
-    "diffEditor.hideUnchangedRegions.enabled": true
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "@azure.argTenant": ""
 }

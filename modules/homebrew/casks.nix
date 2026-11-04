@@ -25,6 +25,7 @@
       "codex-app"
       "cursor" # AI-first IDE
       "docker-desktop"
+      "emacs-app" # GNU Emacs editor
       "fluor" # for managing fn keys for different keyboards in macOS
       "grok-bot" # xAI Grok desktop bot
       "font-fira-code-nerd-font"
@@ -43,7 +44,6 @@
       "supacode" # Supabase CLI terminal
       "visual-studio-code" # ide
       "warp" # terminal emulator
-      "wezterm" # terminal emulator
       "whatsapp" # messaging app
       "zed" # IDE
       "zoom"
