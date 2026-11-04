@@ -37,11 +37,9 @@ def load_config() -> dict:
 CONFIG_DATA = load_config()
 SERVERS: dict = CONFIG_DATA["servers"]
 PRIMARY: str = CONFIG_DATA["primary"]
-EXPO_CRITICAL_TOOLS: tuple = tuple(CONFIG_DATA["expoCriticalTools"])
 
 # Every client that receives the shared set. `remote` is None where the client's
-# remote-server schema is unverified (Zed, Antigravity), so the Expo server is
-# deliberately not rendered there.
+# remote-server schema is unverified (Zed, Antigravity).
 CLIENTS: dict = {
     "ai/.mcp.json": {
         "attribute": "mcpServers",
@@ -110,7 +108,6 @@ def render_entry(name: str, flavour: str, remote) -> dict:
             entry["type"] = remote_type
         if flavour == "gemini":
             entry["trust"] = False
-            entry["excludeTools"] = list(EXPO_CRITICAL_TOOLS)
         return entry
 
     args = list(definition.get("args", []))
@@ -149,17 +146,12 @@ def check() -> list:
     for relative, spec in CLIENTS.items():
         document = json.loads((DOTFILES / relative).read_text())
         servers = document.get(spec["attribute"], {})
+        if "expo" in servers:
+            problems.append(f"{relative}: expo must be configured per project")
         for name in ordered_server_names():
             if name == "context7" and not spec["context7"]:
                 if "context7" not in servers and "io.github.upstash/context7" not in servers:
                     problems.append(f"{relative}: context7 is missing")
-                continue
-            if name == "expo" and spec["remote"] is None:
-                if "expo" in servers:
-                    problems.append(
-                        f"{relative}: expo must not be registered "
-                        "(no verified per-tool control)"
-                    )
                 continue
             if name not in servers:
                 problems.append(f"{relative}: {name} is missing")
@@ -198,14 +190,14 @@ def write(dry_run: bool = False) -> list:
         servers = document.get(spec["attribute"], {})
         updated = {}
         for name in ordered_server_names():
-            if name == "expo" and spec["remote"] is None:
-                continue
             if name == "context7" and not spec["context7"]:
                 continue
             updated[name] = merge_entry(
                 name, spec["flavour"], spec["remote"], servers.get(name)
             )
         for name, entry in servers.items():
+            if name == "expo":
+                continue
             if name not in updated:
                 updated[name] = entry
         if servers == updated and list(servers) == list(updated):

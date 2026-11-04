@@ -45,25 +45,6 @@
         "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
       }
     },
-    "expo": {
-      "httpUrl": "https://mcp.expo.dev/mcp",
-      "trust": false,
-      "excludeTools": [
-        "add_library",
-        "workflow_create",
-        "workflow_run",
-        "workflow_cancel",
-        "build_run",
-        "build_cancel",
-        "build_submit",
-        "appstore_reply_review",
-        "appstore_delete_review_response",
-        "playstore_reply_review",
-        "automation_tap",
-        "automation_take_screenshot",
-        "collect_app_logs"
-      ]
-    },
     "ios-simulator": {
       "command": "/opt/homebrew/bin/npx",
       "args": [

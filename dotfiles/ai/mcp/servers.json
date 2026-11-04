@@ -35,26 +35,6 @@
       "env": {
         "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
       }
-    },
-    "expo": {
-      "url": "https://mcp.expo.dev/mcp",
-      "env": {}
     }
-  },
-  "expoCriticalTools": [
-    "add_library",
-    "workflow_create",
-    "workflow_run",
-    "workflow_cancel",
-    "build_run",
-    "build_cancel",
-    "build_submit",
-    "appstore_reply_review",
-    "appstore_delete_review_response",
-    "playstore_reply_review",
-    "automation_tap",
-    "automation_take_screenshot",
-    "collect_app_logs"
-  ],
-  "expoPolicyRationale": "Expo is the only remote, account-scoped server here: it can spend EAS compute, publish to public store listings, rewrite project dependencies, and proxy simulator screenshots and device logs off the machine. Clients with a deny mechanism refuse these outright; every other expo tool still needs explicit per-call approval."
+  }
 }

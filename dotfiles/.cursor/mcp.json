@@ -19,10 +19,6 @@
         "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
       }
     },
-    "expo": {
-      "type": "http",
-      "url": "https://mcp.expo.dev/mcp"
-    },
     "ios-simulator": {
       "type": "stdio",
       "command": "/opt/homebrew/bin/npx",

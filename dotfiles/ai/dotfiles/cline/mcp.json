@@ -23,12 +23,6 @@
       "disabled": false,
       "autoApprove": []
     },
-    "expo": {
-      "url": "https://mcp.expo.dev/mcp",
-      "type": "streamableHttp",
-      "disabled": false,
-      "autoApprove": []
-    },
     "ios-simulator": {
       "command": "/opt/homebrew/bin/npx",
       "args": [

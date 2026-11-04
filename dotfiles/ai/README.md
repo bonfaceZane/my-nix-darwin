@@ -78,8 +78,8 @@ particular, do not manage `auth.json` as a repository symlink.
 
 ## MCP servers
 
-Every MCP-capable client on this machine declares the same mobile, React Native,
-and Expo toolchain, using absolute Homebrew/mise paths because Dock- and
+Every MCP-capable client on this machine declares the same mobile and React Native
+toolchain, using absolute Homebrew/mise paths because Dock- and
 Finder-launched editors inherit a minimal `PATH`. `dotfiles/ai/validate.py` holds
 the canonical definitions and fails the build when a client drifts, drops a
 server, or changes an argument.
@@ -91,7 +91,6 @@ server, or changes an argument.
 | `ios-simulator` | `/opt/homebrew/bin/npx -y ios-simulator-mcp@latest` | Simulator lifecycle, UI taps/typing, `simctl` output |
 | `codegraph` | `/Users/rafiki/.local/share/mise/shims/codegraph serve --mcp` | Cross-language code intelligence for the current project |
 | `context7` | `/opt/homebrew/bin/npx -y @upstash/context7-mcp@latest` | Current React Native/Expo/library documentation |
-| `expo` | remote `https://mcp.expo.dev/mcp` (restricted, see below) | Expo docs, EAS build/workflow/EAS metadata, TestFlight and store read data |
 
 Notes that matter when editing these files:
 
@@ -117,12 +116,9 @@ Notes that matter when editing these files:
 - `MOBILEMCP_DISABLE_TELEMETRY=1` is set for `mobile-mcp`: the upstream server
   otherwise reports anonymous usage telemetry. Keep it unless you deliberately
   opt in.
-- The remote Expo server authenticates with OAuth and needs `https://mcp.expo.dev/mcp`.
-  Sign in once per client (`/mcp` in Claude Code, `codex mcp login expo`, the
-  client's own login flow elsewhere).
-- Antigravity and Zed declare the stdio servers only. Their remote-server schema
-  key is not verified for the installed versions, and an unverified key would
-  silently drop the server, so `expo` is omitted there on purpose.
+- Expo MCP is not part of the global set. Configure it in an Expo project when
+  that workspace needs EAS or store tooling, and review that client's OAuth and
+  tool-approval behavior there.
 - VS Code keeps its gallery-managed `io.github.upstash/context7` entry (pinned
   version, `${input:CONTEXT7_API_KEY}`) instead of the canonical `context7`, and
   that entry is excluded from the strict comparison in the validator.
@@ -130,43 +126,6 @@ Notes that matter when editing these files:
   `dotfiles/ai/dotfiles/cline/mcp.json` and merged server by server, so servers
   Cline added itself, OAuth tokens, and UI approval state survive. `radon` stays
   `disabled` until its invocation is verified.
-
-## Expo MCP restrictions
-
-The Expo server is the one remote, account-scoped entry in this set. Its 31 tools
-include actions that spend EAS compute, publish to public store listings, rewrite
-project dependencies, or move device data off the machine. Every client that can
-express a deny rule refuses these outright:
-
-`add_library`, `workflow_create`, `workflow_run`, `workflow_cancel`, `build_run`,
-`build_cancel`, `build_submit`, `appstore_reply_review`,
-`appstore_delete_review_response`, `playstore_reply_review`, `automation_tap`,
-`automation_take_screenshot`, `collect_app_logs`.
-
-Everything else (documentation, `learn`, build/workflow read tools, TestFlight and
-store read tools, `expo_router_sitemap`, `automation_find_view`, `open_devtools`)
-still requires explicit per-call approval, so nothing runs unattended.
-
-| Client | Enforcement |
-| --- | --- |
-| Claude Code | `permissions.deny` lists all 13 tools as `mcp__expo__<tool>`; `permissions.ask` adds server-level `mcp__expo`, so any other expo tool still prompts. Deny rules hold even in auto mode. |
-| Codex | `[mcp_servers.expo]` sets `default_tools_approval_mode = "prompt"` plus the 13-name `disabled_tools` list. This lives in the mutable `CODEX_HOME/config.toml` (`~/.codex` and `~/.codex-work`), which seeding never overwrites. |
-| Gemini CLI | `trust: false` on the server, plus the 13 names in `excludeTools`. `trust: true` is what bypasses confirmations, so it must stay false. |
-| VS Code | `chat.tools.global.autoApprove: false`, so every MCP tool call is confirmed before it runs. |
-| Cline | `autoApprove` stays `[]` for every server, which is the only approval control Cline offers. The validator asserts it. |
-| Cursor, Copilot CLI | Registered with the client's default per-call confirmation. The apps are not installed on this machine, so nothing enforces policy beyond that default. |
-| Zed, Antigravity | The Expo server is not registered at all because their remote-server key is unverified. |
-
-Two additional guards are worth knowing:
-
-- **Local capabilities are off.** They require the `expo-mcp` package in the app's
-  dependencies plus `EXPO_UNSTABLE_MCP_SERVER=1`. The gp-apps project has neither,
-  so simulator screenshots, device logs, and the React Native DevTools bridge are
-  unavailable regardless of the client. The deny list also covers those tools, so
-  enabling local capabilities later does not silently re-open them.
-- **Reads are still data egress.** `build_logs` and `workflow_logs` can contain CI
-  environment output, and store read tools return user reviews. Treat their
-  results as sensitive and do not paste them into other tools.
 
 ### Removed entries
 

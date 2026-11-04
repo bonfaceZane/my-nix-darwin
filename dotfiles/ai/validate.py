@@ -27,7 +27,7 @@ JSON_FILES = (
 # VS Code settings files are JSONC: they legitimately contain comments.
 JSONC_FILES = ("vscode/settings.json",)
 
-# The shared MCP server set (definitions, primary server, Expo policy) lives in
+# The shared MCP server set (definitions and primary server) lives in
 # dotfiles/ai/mcp/servers.json and is rendered and checked by dotfiles/ai/mcp/
 # render.py. This validator delegates that check and reads the canonical
 # definitions from the same place, so there is exactly one source of truth for
@@ -39,7 +39,6 @@ _RENDER_SPEC = importlib.util.spec_from_file_location("mcp_render", _RENDER_PATH
 render = importlib.util.module_from_spec(_RENDER_SPEC)
 _RENDER_SPEC.loader.exec_module(render)
 
-EXPO_CRITICAL_TOOLS = render.EXPO_CRITICAL_TOOLS
 CANONICAL_SERVERS = render.SERVERS
 PRIMARY_SERVER = render.PRIMARY
 
@@ -142,8 +141,8 @@ def main():
         "Codex Maestro definition drifted from the canonical definition"
     )
     # The Codex seed disables sandbox network access, so npm-backed servers
-    # (mobile-mcp, ios-simulator, context7) and the remote Expo server are
-    # configured in the live CODEX_HOME instead of the seed.
+    # (mobile-mcp, ios-simulator, context7) are configured in the live CODEX_HOME
+    # instead of the seed.
     assert set(codex["mcp_servers"]) == {"maestro"}, (
         "Codex seed must declare only Maestro; use the live config for npm servers"
     )
@@ -152,24 +151,6 @@ def main():
     # failure here rather than a server that silently stops working in one client.
     problems = render.check()
     assert not problems, "MCP configuration drift:\n  " + "\n  ".join(problems)
-
-    # Expo restriction policy. A missing rule must fail here rather than quietly
-    # handing a client the ability to spend compute or publish to a store.
-    claude_permissions = configs[".claude/settings.json"]["permissions"]
-    for tool in EXPO_CRITICAL_TOOLS:
-        rule = f"mcp__expo__{tool}"
-        assert rule in claude_permissions["deny"], f"Claude must deny {rule}"
-    assert "mcp__expo" in claude_permissions["ask"], (
-        "Claude must require approval for every non-denied expo tool"
-    )
-
-    gemini_expo = configs[".gemini/settings.json"]["mcpServers"]["expo"]
-    assert gemini_expo.get("trust") is False, (
-        "Gemini must not trust the expo server (trust bypasses tool prompts)"
-    )
-    assert set(EXPO_CRITICAL_TOOLS) <= set(gemini_expo.get("excludeTools", [])), (
-        "Gemini excludeTools is missing critical expo tools"
-    )
 
     vscode_settings = configs["vscode/settings.json"]
     assert vscode_settings.get("chat.tools.global.autoApprove") is False, (
@@ -182,7 +163,7 @@ def main():
     assert "@AGENTS.md" in (DOTFILES / "ai/CLAUDE.md").read_text().splitlines()
     assert (DOTFILES / "ai/AGENTS.md").is_file()
     print(
-        f"Instruction, MCP, and Expo-policy consistency OK "
+        f"Instruction and MCP consistency OK "
         f"(primary: {PRIMARY_SERVER}, {len(CANONICAL_SERVERS)} shared servers)"
     )
 
