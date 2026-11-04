@@ -60,6 +60,12 @@
         set -gx TYPESAFE_API_KEY (cat "${config.sops.secrets.typesafe_api_key.path}")
       end
 
+      # Rex sets REX_BIN_DIR before starting its shells. Preserve the server-matched
+      # CLI ahead of Nix's fixed PATH when shell initialization rebuilds PATH.
+      if set -q REX_BIN_DIR
+        fish_add_path --path --prepend --move $REX_BIN_DIR
+      end
+
       # ---------------------------------------------------
       # Environment Variables & PATHs Migrated from .zshrc
       # ---------------------------------------------------
@@ -102,6 +108,12 @@
 
         if [ -f "${config.sops.secrets.deepseek_api_key.path}" ]; then
           export DEEPSEEK_API_KEY=$(cat "${config.sops.secrets.deepseek_api_key.path}")
+        fi
+
+        # Rex sets REX_BIN_DIR before starting its shells. Keep its server-matched
+        # CLI ahead of Nix's fixed PATH.
+        if [[ -n "$REX_BIN_DIR" ]]; then
+          export PATH="$REX_BIN_DIR:$PATH"
         fi
 
         # --- End HM additions ---
