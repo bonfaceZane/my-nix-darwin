@@ -47,6 +47,13 @@ upstream directory to `~/.agents/skills/gh-stack` for Codex and Gemini, and
 also supports `~/.gemini/skills`, but does not need a duplicate link. The current
 documented Codex user discovery directory is `~/.agents/skills`.
 
+Store skills maintained by this Nix configuration under `dotfiles/ai/skills/`.
+Home Manager links each skill directory individually into `~/.agents/skills/`
+for Codex and Gemini and into `~/.claude/skills/` when Claude discovery is
+needed. Keep repo-only skills in the repository's `.agents/skills/` directory.
+The `nix-darwin-maintenance` skill is globally discoverable, but its description
+limits its workflow to this repository.
+
 The shared `expo-mobile` skill gives cross-project Expo and React Native
 workflow guidance. `radon-ide` documents the optional Radon IDE workflow when a
 project already has Radon available; it does not configure or install a global

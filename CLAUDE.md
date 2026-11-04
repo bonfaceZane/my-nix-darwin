@@ -2,4 +2,4 @@
 
 @AGENTS.md
 
-The repository maintenance skill is in `.agents/skills/nix-darwin-maintenance/SKILL.md`; read it when changing this Nix configuration.
+The repository maintenance skill is in `dotfiles/ai/skills/nix-darwin-maintenance/SKILL.md`; read it when changing this Nix configuration.

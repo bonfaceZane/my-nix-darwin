@@ -48,12 +48,16 @@ def main():
         assert (ROOT / name).is_file(), f"Missing project instructions: {name}"
     assert (ROOT / ".github/copilot-instructions.md").is_file(), "Missing Copilot instructions"
     assert (ROOT / "dotfiles/.cursor/rules/agents.mdc").is_file(), "Missing Cursor rules"
-    skill = ROOT / ".agents/skills/nix-darwin-maintenance/SKILL.md"
-    assert skill.read_text().startswith("---\nname: nix-darwin-maintenance\n")
-    for name in ("expo-mobile", "radon-ide", "component-first", "react-native-testing"):
+    for name in (
+        "nix-darwin-maintenance",
+        "expo-mobile",
+        "radon-ide",
+        "component-first",
+        "react-native-testing",
+    ):
         skill = ROOT / f"dotfiles/ai/skills/{name}/SKILL.md"
         assert skill.read_text().startswith(f"---\nname: {name}\n"), f"Invalid skill: {name}"
-    print(f"Dotfile sources OK: {len(sources)} references; project instructions and skill OK")
+    print(f"Dotfile sources OK: {len(sources)} references; project instructions and skills OK")
 
 
 if __name__ == "__main__":

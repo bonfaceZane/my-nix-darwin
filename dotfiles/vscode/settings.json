@@ -175,6 +175,9 @@
     },
     "chat.editor.fontSize": 15,
     "terminal.integrated.fontSize": 15,
-    "diffEditor.hideUnchangedRegions.enabled": true,
-    "@azure.argTenant": ""
+    "@azure.argTenant": "",
+    "[typescriptreact]": {
+        
+    },
+    "diffEditor.hideUnchangedRegions.enabled": true
 }

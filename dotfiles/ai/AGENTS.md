@@ -32,6 +32,7 @@
 
 ## Skills and MCP
 
+- Before using a skill supplied by the current repository, read the global `AGENTS.md` first, then the current repository's applicable `AGENTS.md`, then the skill's `SKILL.md`. Follow all three; user authorization and applicable agent instructions take precedence if they conflict with a skill.
 - Use installed skills when their descriptions match the task. Load the skill's `SKILL.md` and follow its instructions, subject to the current task scope and permissions.
 - Shared user skills live in `~/.agents/skills`; Claude Code additionally uses `~/.claude/skills`. Keep Nix-fetched upstream skills immutable and link individual skill directories without replacing user-owned skill collections.
 - MCP configuration is client-specific. Do not assume that a shared `.mcp.json` is automatically loaded by every client, or that instructions alone enable a server.

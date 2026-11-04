@@ -317,7 +317,7 @@ in
   ) // builtins.listToAttrs (
     map (target: {
       name = "${target}/skills/nix-darwin-maintenance";
-      value.source = ../.agents/skills/nix-darwin-maintenance;
+      value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/nix-darwin-maintenance";
     }) [ ".agents" ".claude" ]
   ) // builtins.listToAttrs (
     lib.concatMap (skill:
