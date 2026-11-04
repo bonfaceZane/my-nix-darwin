@@ -277,12 +277,6 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/muse/settings.json";
     };
 
-    # Cline global settings (provider/model/reasoning/auto-approval). API keys
-    # stay local in ~/.cline/data/secrets.json, never tracked here.
-    ".cline/data/globalState.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.cline/globalState.json";
-    };
-
     # VS Code user settings (Aider Composer + editor prefs)
     "Library/Application Support/Code/User/settings.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/settings.json";
