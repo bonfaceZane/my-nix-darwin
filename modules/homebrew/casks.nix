@@ -19,7 +19,6 @@
       "alfred"
       "alt-tab"
       "caskhub"
-      "bettertouchtool"
       "claude-code"
       "codex"
       "codex-app"
@@ -27,21 +26,17 @@
       "docker-desktop"
       "emacs-app" # GNU Emacs editor
       "fluor" # for managing fn keys for different keyboards in macOS
-      "grok-bot" # xAI Grok desktop bot
       "font-fira-code-nerd-font"
       # "google-chrome"
-      "hammerspoon" # macOS automation
       "keyman" # for keyboard management
       "maestro"
       "nordpass"
       "nordvpn"
       "notion" # markdown editor
       "stablyai/orca/orca" # AI agent orchestrator IDE (fully qualified; core `orca` is a disabled plotly tool)
-      "pi-gui" # Pi coding agent GUI
       "proxyman"
       "raycast" # launcher and automation
       "stats" # system monitor
-      "supacode" # Supabase CLI terminal
       "visual-studio-code" # ide
       "warp" # terminal emulator
       "whatsapp" # messaging app

@@ -29,7 +29,6 @@
         "/Applications/Orca.app"
         "/Applications/Safari.app"
         "/Applications/Zed.app"
-        # "/Applications/pi-gui.app"
         "/Applications/Visual Studio Code.app"
         # "/Applications/Maestro Studio.app"
         "/Applications/Warp.app"
