@@ -29,6 +29,7 @@
         "/Applications/Orca.app"
         "/Applications/Safari.app"
         "/Applications/Zed.app"
+        "/Applications/Hammerspoon.app"
         "/Applications/Visual Studio Code.app"
         # "/Applications/Maestro Studio.app"
         "/Applications/Warp.app"

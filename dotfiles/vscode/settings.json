@@ -179,5 +179,6 @@
     "[typescriptreact]": {
         
     },
-    "diffEditor.hideUnchangedRegions.enabled": true
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "workbench.startupEditor": "none"
 }

@@ -120,6 +120,11 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/zellij";
     };
 
+    # Hammerspoon automation config
+    ".hammerspoon/init.lua" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hammerspoon/init.lua";
+    };
+
     ".aws" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/aws";
     };
