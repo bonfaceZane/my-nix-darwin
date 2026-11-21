@@ -1,4 +1,5 @@
 {
+    "agent_ui_font_size": 18.0,
     "ui_font_family": "JetBrains Mono NL",
     "buffer_font_family": "JetBrains Mono NL",
     "lsp": {
@@ -32,7 +33,7 @@
         }
     },
     "cursor_shape": "bar",
-    "diff_view_style": "unified",
+    "diff_view_style": "split",
     "minimap": {
         "show": "auto",
         "max_width_columns": 40
@@ -145,7 +146,7 @@
         "dock": "right"
     },
     "icon_theme": {
-        "mode": "light",
+        "mode": "dark",
         "light": "Material Icon Theme",
         "dark": "Material Icon Theme"
     },
@@ -160,12 +161,12 @@
     },
     "base_keymap": "JetBrains",
     "theme": {
-        "mode": "system",
+        "mode": "dark",
         "light": "Night Owl Light",
         "dark": "Night Owl Dark"
     },
-    "ui_font_size": 17.0,
-    "buffer_font_size": 16.5,
+    "ui_font_size": 14.0,
+    "buffer_font_size": 14.5,
     "autosave": "on_focus_change",
     "project_panel": {
         "button": true,
@@ -202,7 +203,10 @@
         "use_smartcase_find": true
     },
     "context_servers": {
-        "codegraph": {
+                "storybook": {
+            "url": "http://localhost:6006/mcp"
+        },
+"codegraph": {
             "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
             "args": [
                 "serve",
