@@ -189,6 +189,7 @@
     dev = "mise dev";
     ios = "mise ios";
     android = "mise android";
+    story = "mise story";
     b = "mise run build";
     build = "mise run build";
     sw = "mise run switch";
