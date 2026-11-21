@@ -43,6 +43,7 @@
     "starship" # cross-shell prompt
     "tailscale"
     "tree" # list files in tree structure
+    "tuios" # terminal window manager and persistent session daemon
     "watchman" # watchman file system watcher
     "wget" # download tool
     "yeet" # package manager/tool
