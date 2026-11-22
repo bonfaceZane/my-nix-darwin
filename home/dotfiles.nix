@@ -40,6 +40,10 @@ let
     "radon-ide"
     "component-first"
     "react-native-testing"
+    "adhd-focus-sprint"
+    "adhd-context-keeper"
+    "adhd-ai-collaboration"
+    "adhd-code-map"
   ];
 in
 {

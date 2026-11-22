@@ -54,6 +54,10 @@ def main():
         "radon-ide",
         "component-first",
         "react-native-testing",
+        "adhd-focus-sprint",
+        "adhd-context-keeper",
+        "adhd-ai-collaboration",
+        "adhd-code-map",
     ):
         skill = ROOT / f"dotfiles/ai/skills/{name}/SKILL.md"
         assert skill.read_text().startswith(f"---\nname: {name}\n"), f"Invalid skill: {name}"

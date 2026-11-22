@@ -69,6 +69,12 @@ while `react-native-testing` covers behavior-focused tests across component,
 platform, and device levels. Both defer to each project's installed tooling and
 local conventions.
 
+`adhd-focus-sprint`, `adhd-context-keeper`, `adhd-ai-collaboration`, and
+`adhd-code-map` are personal working-style skills: short verifiable sprints,
+external working memory, low-friction AI collaboration, and structured code
+reading. They are linked individually into `~/.agents/skills/` and
+`~/.claude/skills/` like the other managed skills.
+
 The curated Figma skills cover using Figma, creating files and designs, generating
 libraries and design-system rules, implementing designs, and working with Code
 Connect components. They are linked individually into `~/.agents/skills/` and
