@@ -41,7 +41,6 @@
       # "google-chrome"
       "hammerspoon" # macOS automation
       "jetbrains-toolbox"
-      "keyman" # for keyboard management
       "logi-options+" # Logitech Options+
       "maestro"
       "notion" # markdown editor
