@@ -12,6 +12,14 @@ particular Expo SDK, router, UI kit, or folder layout.
 
 ## Strict baseline
 
+- Treat this skill and the target repository's instructions as required policy
+  for every Expo or React Native change. Load `vercel-react-native` for UI,
+  rendering, list, animation, or mobile performance work.
+- For SDK, config-plugin, EAS, Router, or native-module behavior that can vary
+  by version, consult the current official Expo documentation for the app's
+  installed SDK before choosing an API. Use Expo's official agent skills when
+  they are available and directly match the task; do not install plugins or
+  skills as part of an unrelated code change.
 - Check the app's actual SDK, dependencies, scripts, and platform support before
   recommending or changing an API. Do not guess version compatibility.
 - Search for existing screens, components, hooks, and native integrations before
@@ -23,6 +31,14 @@ particular Expo SDK, router, UI kit, or folder layout.
   `EXPO_PUBLIC_*` variables.
 - Treat accessibility, loading/error states, and platform differences as part
   of the feature, not optional polish.
+- Follow the shared code-style rules: prefer functional composition and
+  immutable data flow, and give each React component its own source file,
+  including feature-local components. Keep only tightly related types, styles,
+  constants, and non-component helpers beside their owning component.
+- Before changing navigation, state, styling, or data-fetching architecture,
+  identify the established project pattern and explain why the change is needed.
+  Do not introduce a new framework or dependency just to follow a generic
+  recommendation.
 - Do not claim a native behavior is verified by Metro reload or a component
   test alone; use the project's device workflow when the behavior depends on
   the OS or a native module.
@@ -54,12 +70,20 @@ particular Expo SDK, router, UI kit, or folder layout.
 
 - Use `npx expo install <package>` for Expo and React Native packages when the
   project uses Expo; it selects versions compatible with the installed SDK.
+- Before adding a native dependency, verify Expo SDK compatibility, config
+  plugin requirements, iOS and Android support, and whether a development build
+  is required. Keep native dependencies in the app package in a monorepo unless
+  its documented workspace setup says otherwise.
 - Follow the repository's package manager and lockfile. Do not update unrelated
   dependencies as part of a feature change.
 - Native dependency or app-config changes may require a development-client
   rebuild. A Metro reload alone does not apply native code changes.
 - Run `npx expo-doctor` when checking Expo dependency/configuration health, if the
   project supports it.
+- Treat EAS build, submit, and production deployment as release operations:
+  inspect the selected profile, destination, credentials flow, and affected
+  environment before running them. Never submit or deploy without explicit user
+  authorization.
 
 ## Configuration and data safety
 

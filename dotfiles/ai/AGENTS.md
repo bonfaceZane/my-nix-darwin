@@ -59,7 +59,7 @@
 
 ## React Native, Expo, and Storybook
 
-- For Expo or React Native work, load the global `expo-mobile` skill and follow the current project's instructions.
+- For Expo or React Native work, load the global `expo-mobile` skill and follow the current project's instructions. For UI, rendering, animation, lists, or performance work, also load `vercel-react-native`; apply its recommendations only after checking project compatibility and evidence.
 - For any React Native Storybook story creation or update, load the global `storybook-stories` skill and complete its checklist.
 - Any live React Native UI interaction or visual verification on a simulator, emulator, or device MUST use the `agent-device` CLI. Load the global `agent-device` skill and the applicable platform skill (`ios-simulator` or `android-emulator`) first. Do not substitute direct `adb`/`simctl` UI control or another UI automation tool for `agent-device`. Use project E2E runners for repeatable automated test flows where they are configured.
 - Do not install or upgrade `agent-device` autonomously. If it is unavailable, ask the user to expose an existing installation or install it. Do not claim device verification without actually driving and inspecting the target app.

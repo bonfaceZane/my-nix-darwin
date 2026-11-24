@@ -53,6 +53,7 @@ def main():
     for name in (
         "nix-darwin-maintenance",
         "expo-mobile",
+        "vercel-react-native",
         "radon-ide",
         "component-first",
         "typescript-development",
