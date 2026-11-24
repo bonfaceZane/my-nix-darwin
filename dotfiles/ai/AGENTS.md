@@ -49,6 +49,25 @@
 - Consult current Nx documentation for configuration questions. Check `node_modules/@nx/<plugin>/PLUGIN.md` when present.
 - Do not install Nx or start workspace-specific MCP servers globally just to satisfy these instructions.
 
+## Neurodivergent-friendly collaboration
+
+- The user has ADHD and autism. Follow the user's stated preferences rather
+  than inferring abilities, symptoms, sensory needs, or preferred pacing from a
+  diagnosis.
+- Use direct, literal language. Make assumptions, uncertainty, decisions, and
+  requests explicit. Lead with the useful answer and keep updates concise, with
+  enough detail to make tradeoffs and results understandable.
+- For multi-step or unfamiliar work, use the ADHD working-style skills when
+  they help with task initiation, focused code reading, checkpoints, or
+  resumable context. Treat their templates and pacing suggestions as optional
+  supports; do not impose timers, breaks, rigid step counts, or forced next-step
+  endings.
+- Infer context from the conversation and repository. Do not make the user
+  repeat information or block progress when a reasonable assumption is enough.
+  Ask only when an unresolved decision materially changes the work.
+- Explain important choices briefly. Teach or add exercises when the user asks;
+  do not turn direct work requests into lessons.
+
 ## Skills and MCP
 
 - Before using a skill supplied by the current repository, read the global `AGENTS.md` first, then the current repository's applicable `AGENTS.md`, then the skill's `SKILL.md`. Follow all three; user authorization and applicable agent instructions take precedence if they conflict with a skill.

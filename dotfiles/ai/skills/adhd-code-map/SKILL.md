@@ -1,12 +1,12 @@
 ---
 name: adhd-code-map
-description: Navigate unfamiliar or large code without losing the thread — build a small map, choose one entry point, follow one call path, and summarize before changing anything. Use when onboarding, debugging across files, or reading a large file or repository; not when editing a file you already understand.
+description: Navigate unfamiliar or large code with a small, resumable map. Use when onboarding, debugging across files, or tracing behavior; not when editing code whose ownership is already clear.
 ---
 
-# ADHD-friendly code mapping
+# ADHD/autism-informed code mapping
 
-Understanding is a sequence of small, closed questions. Do not open the whole
-repository at once.
+Use a small map to keep the investigation oriented. Do not scan the whole
+repository when one targeted path can answer the question.
 
 ## Before reading
 
@@ -16,8 +16,9 @@ State the question in one sentence:
 - "Why is this screen empty when the API is down?"
 - "Which component owns this sheet?"
 
-If you cannot state the question, the task is not ready to read code. Use
-`adhd-focus-sprint` to narrow it first.
+If the question is not explicit, infer the likely goal from the request and
+state that interpretation briefly. Ask only if a different interpretation
+would change the result materially.
 
 ## Build a three-level map
 
@@ -26,7 +27,7 @@ If you cannot state the question, the task is not ready to read code. Use
 2. **Owning module** — the file or folder that owns the logic.
 3. **One call path** — the next two or three calls, not the whole graph.
 
-Write a five-line map card:
+When it helps preserve context, write a compact map card (up to five lines):
 
 ```
 Question:
@@ -38,24 +39,28 @@ What I still do not know:
 
 ## Read in small passes
 
-- Use `grep` and symbols before full-file reads.
+- For symbols, callers, and impact, use CodeGraph first as required by the
+  shared instructions. Use `rg` for plain-text, config, and documentation
+  searches; read the relevant code before drawing conclusions.
 - Read only the sections that answer the current question.
-- After each file, add one line to the map card. If you cannot, you are reading
-  without a question.
-- Stop when you can explain the behaviour in five lines.
-- If you have opened more than a handful of files without a summary, stop and
-  write the map card.
+- Update the map at meaningful checkpoints, not after every file.
+- Stop when the behavior and owning module are clear enough for the requested
+  change. Expand the map if the task genuinely needs more depth.
 
 ## Before changing code
 
-- Say which file owns the change and which files only consume it.
+- Identify the likely owner and affected consumers when that helps scope the
+  change.
 - Identify the smallest edit that answers the question.
-- List what must not change.
-- Then make one change and verify it.
+- Note important boundaries or behavior that must not change when scope
+  depends on them.
+- Make the focused change and verify it according to the user's request and
+  project policy.
 
 ## If you get lost
 
-- Return to the map card and restate the question.
+- Return to the map card, or briefly restate the current question if no card is
+  needed.
 - Drop the current thread; do not keep opening files hoping for clarity.
 - Ask one targeted question, or run one targeted search.
 - If the answer is still unclear, write down the hypothesis and design the

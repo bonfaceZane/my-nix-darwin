@@ -1,5 +1,7 @@
 # Working memory
 
+<!-- Keep only useful sections and remove blanks. -->
+
 **Goal:**
 
 **Done when:**
@@ -22,6 +24,6 @@
 
 -
 
-## Next action
+## Resume point (if work is active)
 
 - [ ]

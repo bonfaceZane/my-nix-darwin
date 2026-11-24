@@ -1,16 +1,17 @@
 ---
 name: adhd-context-keeper
-description: Maintain a compact external working memory for multi-step or multi-session coding work — goal, state, decisions, open questions, parked ideas, and the next action. Use at session start or end, before a context switch, after a decision, or when the user seems to have lost the thread; not for single-step questions.
+description: Keep a concise, resumable brief for multi-step or multi-session work, capturing the goal, verified state, decisions, open questions, and a useful resume point. Use when work spans sessions, changes direction, or risks losing important context; not for single-step questions.
 ---
 
-# ADHD-friendly context keeper
+# ADHD/autism-informed context keeper
 
-Do not make the user hold the task in their head. Keep a short, current brief
-that anyone, including a fresh session, can resume from.
+Reduce the amount of task state the user must keep in working memory. Keep a
+brief only when it saves more effort than it adds, and make it easy for a fresh
+session to resume.
 
 ## The brief
 
-Keep it to 15 lines or fewer, with these sections:
+Keep it short and scannable. Include only the sections useful for this task:
 
 - **Goal** — one sentence.
 - **Done when** — observable outcome.
@@ -18,14 +19,16 @@ Keep it to 15 lines or fewer, with these sections:
 - **Decisions** — what was chosen and why, one line each.
 - **Open questions** — what is genuinely unresolved.
 - **Parked** — ideas deliberately deferred.
-- **Next action** — exactly one.
+- **Resume point** — the most useful next action, when work is still active.
 
-Template: `templates/working-memory.md`.
+Use `templates/working-memory.md` as an optional aid. Omit sections that do not
+help; this is a working note, not a form the user must fill in.
 
 ## Where to keep it
 
-- Default: in the conversation. Put the brief at the top of the first substantive
-  update and refresh it at checkpoints.
+- Default: in the conversation. Share or refresh it at useful checkpoints,
+  context switches, or when the user asks for status; do not prepend it to every
+  update.
 - If the work spans sessions and the user wants persistence, propose **one**
   scratch file, for example `NOTES.md` or `.agent/working-memory.md`.
   - Ask before creating a file in a repository.
@@ -36,11 +39,12 @@ Template: `templates/working-memory.md`.
 
 ## When to update
 
-- At the start of any task expected to span more than one turn.
+- At the start of a task expected to span sessions, or when the active context
+  is already crowded.
 - After a real decision, discovery, or failed approach.
 - Before switching tasks or files.
-- At the end of a session: write a **Resume here** line with the next action and
-  any command to run first.
+- At the end of a session: include a **Resume here** line with the next action
+  and any command to run first.
 - When the user asks "where were we?" — read the brief back before doing
   anything else.
 
@@ -48,7 +52,7 @@ Template: `templates/working-memory.md`.
 
 - The brief is a dashboard, not a diary. Prune resolved items.
 - Record **why**, not a transcript.
-- Keep the next action concrete enough to start without rereading the
+- Keep the resume point concrete enough to start without rereading the whole
   conversation.
 - If the brief and the conversation disagree, trust the code and the latest
   verified result, then update the brief.

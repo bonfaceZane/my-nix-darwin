@@ -93,10 +93,11 @@ and `grill-with-docs` are explicit-use skills; `grilling` is their shared
 interview protocol. The teaching and grilling workflows do not run by default.
 
 `adhd-focus-sprint`, `adhd-context-keeper`, `adhd-ai-collaboration`, and
-`adhd-code-map` are personal working-style skills: short verifiable sprints,
-external working memory, low-friction AI collaboration, and structured code
-reading. They are linked individually into `~/.agents/skills/` like the other
-managed skills.
+`adhd-code-map` are personal working-style skills for ADHD/autism-informed
+collaboration: manageable checkpoints, resumable context, direct communication,
+and focused code reading. They are adjustable supports based on the user's
+stated preferences, not assumptions about everyone with either condition. They
+are linked individually into `~/.agents/skills/` like the other managed skills.
 
 The curated Figma skills cover using Figma, creating files and designs, generating
 libraries and design-system rules, implementing designs, and working with Code
