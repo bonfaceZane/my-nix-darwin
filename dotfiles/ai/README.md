@@ -70,8 +70,10 @@ These skills are linked individually into `~/.agents/skills/`.
 
 `component-first` offers general React component reuse and extraction guidance,
 while `react-native-testing` covers behavior-focused tests across component,
-platform, and device levels. Both defer to each project's installed tooling and
-local conventions.
+platform, and device levels. The shared house rules prefer functional,
+immutable data flow and require one React component per source file, while
+allowing closely related types, styles, and helpers to stay with their owner.
+These skills defer to each project's installed tooling and folder conventions.
 
 `typescript-development`, `rust-development`, and `nix-development` provide
 language-specific workflows that respect each repository's toolchain and

@@ -57,6 +57,29 @@
 - MCP configuration is client-specific. Do not assume that a shared `.mcp.json` is automatically loaded by every client, or that instructions alone enable a server.
 - Use native Git tools when no Git MCP server is configured. Do not download an unverified MCP package as a substitute.
 
+## Code style and structure
+
+- Prefer functional programming across languages: small functions with explicit
+  inputs and outputs, pure transformations, composition, and immutable data
+  flow. Keep side effects at clear boundaries such as I/O, framework hooks, or
+  service adapters. Avoid shared mutable state and classes for ordinary
+  application logic unless the language, framework, or existing project design
+  gives a concrete reason.
+- Keep each function, module, and component focused on one responsibility. Use
+  clear names, shallow control flow, and small cohesive files. Separate
+  unrelated concerns instead of growing a file into a catch-all module.
+- In React projects, one component per source file is the rule. Give every
+  named component its own file, including private or feature-local components;
+  do not nest component definitions or place multiple components in one file.
+  Colocate only the owning component's closely related props/types, styles,
+  constants, and non-component helpers when doing so improves readability.
+- Follow the project's established feature and platform folder structure.
+  Keep screens focused on composition and move substantial domain logic,
+  data access, and reusable UI into clearly owned modules.
+- Do not split code into tiny files mechanically: each file should have one
+  understandable owner and responsibility. Prefer a small cohesive module over
+  either a giant file or a scattering of trivial helpers.
+
 ## React Native, Expo, and Storybook
 
 - For Expo or React Native work, load the global `expo-mobile` skill and follow the current project's instructions. For UI, rendering, animation, lists, or performance work, also load `vercel-react-native`; apply its recommendations only after checking project compatibility and evidence.

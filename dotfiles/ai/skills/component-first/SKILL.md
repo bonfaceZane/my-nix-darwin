@@ -24,11 +24,19 @@ Follow the project's documented exceptions.
 
 ## Component boundaries
 
+- Use one component per source file. This applies to exported, private,
+  feature-local, wrapper, and compound subcomponents. Give each component a
+  focused name and file; do not place multiple component declarations in a
+  screen or barrel file.
+- Colocate that component's props/types, styles, constants, and small
+  non-component helpers when they are only used by it. Move independently
+  useful logic into a clearly named module. Do not split every helper into its
+  own file mechanically.
 - Put JSX in a React component file and non-UI logic in ordinary modules where
   the project supports that separation.
-- Keep screen or page components focused on composing feature UI. Small local
-  helpers are fine when they do not obscure the screen or create unstable
-  component identity.
+- Keep screen or page components focused on composing feature UI. Extract every
+  secondary component into its own file; ordinary local functions are fine when
+  they remain small, focused, and do not obscure the component.
 - Do not define component functions inside another component's render path.
   This creates a new component type on each render and can remount its subtree.
 - Place shared components according to the repository's established structure;
@@ -39,6 +47,9 @@ Follow the project's documented exceptions.
   a supported variant to the owning component or compose existing primitives.
 - Do not create generic wrappers, boolean prop matrices, or speculative
   component frameworks for a single use case.
+- Prefer functional composition and immutable data flow. Keep rendering and
+  domain transformations pure where practical, and isolate side effects in the
+  appropriate hooks, event handlers, or service modules.
 
 ## Props and variation
 
