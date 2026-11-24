@@ -8,3 +8,6 @@ model_reasoning_effort = "medium"
 
 [sandbox_workspace_write]
 network_access = true
+
+[projects."/Users/rafiki/Documents/work/gp-apps"]
+trust_level = "trusted"

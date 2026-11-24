@@ -11,6 +11,7 @@ notify = [
     "/Users/rafiki/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
     "turn-ended",
 ]
+model_reasoning_effort = "medium"
 
 [projects."/Users/rafiki/Documents/subira/my-nix-darwin"]
 trust_level = "trusted"
