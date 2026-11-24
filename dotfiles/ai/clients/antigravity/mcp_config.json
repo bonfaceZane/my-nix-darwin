@@ -8,6 +8,13 @@
 			],
 			"type": "stdio"
 		},
+		"agent-device": {
+			"type": "stdio",
+			"command": "/Users/rafiki/.local/share/mise/shims/agent-device",
+			"args": [
+				"mcp"
+			]
+		},
 		"context7": {
 			"command": "/opt/homebrew/bin/npx",
 			"args": [

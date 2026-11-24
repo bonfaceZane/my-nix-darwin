@@ -10,6 +10,15 @@
       "disabled": false,
       "autoApprove": []
     },
+    "agent-device": {
+      "type": "stdio",
+      "command": "/Users/rafiki/.local/share/mise/shims/agent-device",
+      "args": [
+        "mcp"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    },
     "context7": {
       "command": "/opt/homebrew/bin/npx",
       "args": [

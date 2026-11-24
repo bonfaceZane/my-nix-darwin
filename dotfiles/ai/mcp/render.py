@@ -150,8 +150,8 @@ def check() -> list:
             problems.append(f"{relative}: expo must be configured per project")
         for name in ordered_server_names():
             if name == "context7" and not spec["context7"]:
-                if "context7" not in servers and "io.github.upstash/context7" not in servers:
-                    problems.append(f"{relative}: context7 is missing")
+                # VS Code owns its Context7 gallery entry separately; it is
+                # optional in the checked-in server list.
                 continue
             if name not in servers:
                 problems.append(f"{relative}: {name} is missing")

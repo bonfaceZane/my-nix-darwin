@@ -7,6 +7,10 @@
       "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
       "args": ["serve", "--mcp"]
     },
+    "agent-device": {
+      "command": "/Users/rafiki/.local/share/mise/shims/agent-device",
+      "args": ["mcp"]
+    },
     "maestro": {
       "command": "/opt/homebrew/bin/maestro",
       "args": ["mcp"],

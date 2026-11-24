@@ -87,6 +87,10 @@ rmcp_client = true
 [mcp_servers.figma]
 url = "https://mcp.figma.com/mcp"
 
+[mcp_servers.agent-device]
+command = "/Users/rafiki/.local/share/mise/shims/agent-device"
+args = ["mcp"]
+
 [mcp_servers.node_repl]
 args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"

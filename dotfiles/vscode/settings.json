@@ -61,7 +61,7 @@
     "chat.mcp.gallery.enabled": true,
     // MCP tools must never run unattended: VS Code asks before each tool call
     // unless global auto-approval is on, so it stays explicitly off.
-    "chat.tools.global.autoApprove": true,
+    "chat.tools.global.autoApprove": false,
     "diffEditor.renderSideBySide": true,
     "diffEditor.experimental.showMoves": true,
     "git.confirmSync": false,

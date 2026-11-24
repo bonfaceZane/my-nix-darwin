@@ -116,6 +116,7 @@ server, or changes an argument.
 
 | Server | Definition | Purpose |
 | --- | --- | --- |
+| `agent-device` | `/Users/rafiki/.local/share/mise/shims/agent-device mcp` | General device, simulator, and app UI interaction; preferred for live verification |
 | `maestro` | `/opt/homebrew/bin/maestro mcp`, `JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home` | Maestro E2E flows, view hierarchy, screenshots |
 | `mobile-mcp` | `/opt/homebrew/bin/npx -y @mobilenext/mobile-mcp@latest` | iOS and Android device/simulator control (accessibility-first) |
 | `ios-simulator` | `/opt/homebrew/bin/npx -y ios-simulator-mcp@latest` | Simulator lifecycle, UI taps/typing, `simctl` output |
@@ -146,6 +147,9 @@ Notes that matter when editing these files:
 - `MOBILEMCP_DISABLE_TELEMETRY=1` is set for `mobile-mcp`: the upstream server
   otherwise reports anonymous usage telemetry. Keep it unless you deliberately
   opt in.
+- `agent-device` is the preferred general-purpose interface for live app/device
+  interaction. Keep its CLI and skills available for workflows the MCP server
+  does not expose, including local setup and troubleshooting.
 - Expo MCP is not part of the global set. Configure it in an Expo project when
   that workspace needs EAS or store tooling, and review that client's OAuth and
   tool-approval behavior there.
@@ -185,7 +189,8 @@ Client-specific behaviour:
   servers. Avoid `--strict-mcp-config` unless you deliberately want to exclude
   other configured servers. User-scope registration instead lives in mutable
   `~/.claude.json`, not in Claude's `settings.json`.
-- **Codex:** the tracked seed keeps only `[mcp_servers.maestro]`. The seed sets
+- **Codex:** the tracked personal config includes `agent-device` and `maestro`.
+  Its separate work profile is user-managed. The seed sets
   `sandbox_workspace_write.network_access = false`, so the npm-backed servers
   (`mobile-mcp`, `ios-simulator`, `context7`) belong in the mutable
   `CODEX_HOME/config.toml`, which enables network access. Register them there with

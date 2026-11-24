@@ -206,14 +206,17 @@
         "use_smartcase_find": true
     },
     "context_servers": {
-                "storybook": {
-            "url": "http://localhost:6006/mcp"
-        },
-"codegraph": {
+        "codegraph": {
             "command": "/Users/rafiki/.local/share/mise/shims/codegraph",
             "args": [
                 "serve",
                 "--mcp"
+            ]
+        },
+        "agent-device": {
+            "command": "/Users/rafiki/.local/share/mise/shims/agent-device",
+            "args": [
+                "mcp"
             ]
         },
         "context7": {
@@ -257,6 +260,9 @@
                 "PATH": "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
                 "MOBILEMCP_DISABLE_TELEMETRY": "1"
             }
+        },
+        "storybook": {
+            "url": "http://localhost:6006/mcp"
         },
         "memory": {
             "command": "/opt/homebrew/bin/npx",

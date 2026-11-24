@@ -8,6 +8,13 @@
                 "--mcp"
             ]
         },
+        "agent-device": {
+            "type": "local",
+            "command": "/Users/rafiki/.local/share/mise/shims/agent-device",
+            "args": [
+                "mcp"
+            ]
+        },
         "context7": {
             "type": "local",
             "command": "/opt/homebrew/bin/npx",
