@@ -18,6 +18,9 @@ The shared Home Manager file links are implemented below and take effect on
 activation. Sources are relative to this repository; destinations are relative
 to the user's home. Individual files are linked rather than entire client state
 directories; preserve user-owned files when resolving collisions.
+Antigravity loads shared instructions from `~/.gemini/AGENTS.md` and global
+skills from `~/.gemini/config/skills/`; both are linked to this Nix checkout.
+The `~/.gemini/antigravity/skills/` links remain for older Antigravity versions.
 
 | Destination | Source |
 | --- | --- |
@@ -28,6 +31,7 @@ directories; preserve user-owned files when resolving collisions.
 | `.codex/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
 | `.gemini/settings.json` | `dotfiles/ai/clients/gemini/settings.json` |
 | `.gemini/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
+| `.gemini/config/skills/<name>/` | individual Nix-managed skills from `dotfiles/ai/skills/` |
 | `Documents/work/amv-apps/.gemini/settings.json` (fallback only) | `dotfiles/ai/clients/gemini/workspace-settings.json` |
 | `Documents/work/amv-apps/.mcp.json` (fallback only) | `dotfiles/ai/clients/claude/mcp.json` |
 | `.cursor/mcp.json` | `dotfiles/ai/clients/cursor/mcp.json` |
@@ -55,8 +59,8 @@ Store skills maintained by this Nix configuration under `dotfiles/ai/skills/`.
 Home Manager links each skill directory individually into `~/.agents/skills/`
 for Codex and Gemini and into `~/.claude/skills/` when Claude discovery is
 needed. Keep repo-only skills in the repository's `.agents/skills/` directory.
-The `nix-darwin-maintenance` skill is globally discoverable, but its description
-limits its workflow to this repository.
+The `nix-darwin-maintenance` skill is globally discoverable in Codex, Claude, and
+Antigravity, but its description limits its workflow to this repository.
 
 The shared `expo-mobile` skill gives cross-project Expo and React Native
 workflow guidance. `radon-ide` documents the optional Radon IDE workflow when a

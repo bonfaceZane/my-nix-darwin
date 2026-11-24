@@ -1,5 +1,20 @@
 # Shared agent instructions
 
+## Machine and AI configuration ownership
+
+- This Mac's operating-system, package, and AI-client configuration is managed
+  from `/Users/rafiki/Documents/subira/my-nix-darwin` with nix-darwin and Home
+  Manager. Treat that checkout as the source of truth.
+- Make persistent changes to the tracked Nix modules or dotfile sources there;
+  do not configure the host or AI clients manually. User authentication,
+  credentials, and client-generated state stay in their native writable files
+  and must not be copied into the repository.
+- Before changing machine setup, read the repository's `AGENTS.md` and follow
+  its ownership, safety, and validation rules. Do not activate the system
+  unless the user explicitly asks.
+- Antigravity and other clients inherit these instructions through their
+  globally linked `AGENTS.md`. Use the globally linked skills when relevant.
+
 ## Working safely
 
 - Follow the current repository's instructions and use its existing dependencies and tooling. Preserve unrelated user changes and other agents' work.

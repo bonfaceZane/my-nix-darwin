@@ -21,6 +21,7 @@ let
     ".cursor/skills/gh-stack"
     ".gemini/skills/gh-stack"
     ".gemini/antigravity/skills/gh-stack"
+    ".gemini/config/skills/gh-stack"
     ".windsurf/skills/gh-stack"
   ];
   sharedSkillTargets = [
@@ -329,14 +330,15 @@ in
       };
     }) ghStackSkillTargets
   ) // builtins.listToAttrs (
-    map (skill: {
-      name = ".claude/skills/${skill}";
-      value = {
-        # Codex discovers these from ~/.agents/skills; Claude needs its own link.
-        source = "${config.home.homeDirectory}/.agents/skills/${skill}";
-        force = true;
-      };
-    }) sharedSkillTargets
+    lib.concatMap (skill:
+      map (target: {
+        name = "${target}/skills/${skill}";
+        value = {
+          source = "${config.home.homeDirectory}/.agents/skills/${skill}";
+          force = true;
+        };
+      }) [ ".claude" ".gemini/config" ".gemini/antigravity" ]
+    ) sharedSkillTargets
   ) // builtins.listToAttrs (
     map (target: {
       name = "${target}/AGENTS.md";
@@ -346,13 +348,13 @@ in
     map (target: {
       name = "${target}/skills/nix-darwin-maintenance";
       value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/nix-darwin-maintenance";
-    }) [ ".agents" ".claude" ".gemini/antigravity" ]
+    }) [ ".agents" ".claude" ".gemini/config" ".gemini/antigravity" ]
   ) // builtins.listToAttrs (
     lib.concatMap (skill:
       map (target: {
         name = "${target}/skills/${skill}";
         value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/${skill}";
-      }) [ ".agents" ".claude" ".gemini/antigravity" ]
+      }) [ ".agents" ".claude" ".gemini/config" ".gemini/antigravity" ]
     ) managedSkills
   );
 
