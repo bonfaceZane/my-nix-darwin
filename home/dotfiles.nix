@@ -36,6 +36,7 @@ let
     "figma-use"
     "expo-mobile"
     "vercel-react-native"
+    "react-native-accessibility"
     "storybook-stories"
     "radon-ide"
     "component-first"

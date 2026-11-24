@@ -56,7 +56,10 @@ but its description limits its workflow to this repository.
 The shared `expo-mobile` skill gives cross-project Expo and React Native
 workflow guidance, requires current SDK-aware official documentation for
 version-sensitive choices, and requires `agent-device` for live UI
-verification. `vercel-react-native` distills Vercel Labs' React Native
+verification. `react-native-accessibility` provides a cross-platform workflow
+for semantics, screen-reader navigation, touch, text scaling, motion, and native
+verification, grounded in React Native, Apple, Android, and W3C guidance.
+`vercel-react-native` distills Vercel Labs' React Native
 performance guidance into a strict, evidence-based checklist: recommendations
 must fit installed dependencies and the project's architecture, and performance
 claims require before/after measurements. Both are linked individually into

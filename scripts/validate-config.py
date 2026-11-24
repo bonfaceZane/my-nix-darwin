@@ -54,6 +54,7 @@ def main():
         "nix-darwin-maintenance",
         "expo-mobile",
         "vercel-react-native",
+        "react-native-accessibility",
         "radon-ide",
         "component-first",
         "codebase-design",
