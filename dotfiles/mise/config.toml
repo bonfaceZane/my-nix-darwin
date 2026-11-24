@@ -7,7 +7,7 @@ MISE_RUBY_COMPILE = "false"
 node = "lts"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 yarn = "1.22.22"
-rust = { version = "latest", profile = "minimal", components = ["clippy", "rustfmt"] }
+rust = { version = "latest", profile = "default" }
 ruby = "3.2.2"
 java = "17"
 # zig = "latest"
