@@ -1,6 +1,6 @@
 ---
 name: nix-darwin-maintenance
-description: Audit, change, and validate this my-nix-darwin macOS configuration, including Home Manager dotfile links, shell integration, AI client settings, and Nix activation failures.
+description: Manage, audit, change, and validate this my-nix-darwin macOS configuration, including system packages, macOS defaults, Home Manager dotfiles, and AI client settings. Use whenever asked to configure or inspect the system or machine setup.
 ---
 
 # Nix Darwin maintenance
