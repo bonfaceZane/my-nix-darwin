@@ -80,6 +80,17 @@ language-specific workflows that respect each repository's toolchain and
 conventions. `e2e-testing` helps choose and maintain a small, deterministic
 end-to-end suite; for React Native, it pairs Maestro for repeatable flows with
 `agent-device` for interactive exploration and visual/accessibility review.
+`codebase-design` helps choose cohesive module interfaces when architecture
+work calls for it, and `diagnosing-bugs` gives reported failures a focused
+reproduction and evidence loop. These are adapted from Matt Pocock's skills
+and are linked alongside the other managed skills.
+`domain-modeling` helps clarify domain terms, invariants, and state types when
+the model itself is changing; it follows each project's existing glossary and
+architecture-decision practices.
+The Matt Pocock-inspired `tdd` skill is for explicit test-first requests, and
+`research` is for source-backed technical investigations. `teach`, `grill-me`,
+and `grill-with-docs` are explicit-use skills; `grilling` is their shared
+interview protocol. The teaching and grilling workflows do not run by default.
 
 `adhd-focus-sprint`, `adhd-context-keeper`, `adhd-ai-collaboration`, and
 `adhd-code-map` are personal working-style skills: short verifiable sprints,

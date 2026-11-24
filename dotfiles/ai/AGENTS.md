@@ -79,6 +79,16 @@
 - Do not split code into tiny files mechanically: each file should have one
   understandable owner and responsibility. Prefer a small cohesive module over
   either a giant file or a scattering of trivial helpers.
+- For architecture and module-boundary work, load `codebase-design`; for
+  reported bugs, failures, or regressions, load `diagnosing-bugs`. Apply these
+  workflows only to those tasks and follow project and user testing policy.
+- For changes to domain concepts, naming, state transitions, or model types,
+  load `domain-modeling` and follow the project's existing glossary and
+  architecture-decision conventions.
+- Use `tdd` only when the user asks for test-first development; use `research`
+  for requested source-backed research. Load `teach`, `grill-me`, and
+  `grill-with-docs` only when the user explicitly asks for teaching or a grill
+  workflow.
 
 ## React Native, Expo, and Storybook
 

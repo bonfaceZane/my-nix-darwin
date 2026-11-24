@@ -56,6 +56,15 @@ def main():
         "vercel-react-native",
         "radon-ide",
         "component-first",
+        "codebase-design",
+        "diagnosing-bugs",
+        "domain-modeling",
+        "tdd",
+        "research",
+        "teach",
+        "grill-me",
+        "grill-with-docs",
+        "grilling",
         "typescript-development",
         "rust-development",
         "nix-development",
@@ -68,6 +77,11 @@ def main():
     ):
         skill = ROOT / f"dotfiles/ai/skills/{name}/SKILL.md"
         assert skill.read_text().startswith(f"---\nname: {name}\n"), f"Invalid skill: {name}"
+    for name in ("teach", "grill-me", "grill-with-docs", "grilling"):
+        policy = ROOT / f"dotfiles/ai/skills/{name}/agents/openai.yaml"
+        assert policy.read_text() == "policy:\n  allow_implicit_invocation: false\n", (
+            f"Invalid invocation policy: {name}"
+        )
     print(f"Dotfile sources OK: {len(sources)} references; project instructions and skills OK")
 
 
