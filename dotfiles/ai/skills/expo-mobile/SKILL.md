@@ -27,6 +27,14 @@ particular Expo SDK, router, UI kit, or folder layout.
   test alone; use the project's device workflow when the behavior depends on
   the OS or a native module.
 
+## Required live-device workflow
+
+- When a React Native or Expo task requires live UI interaction, simulator/emulator inspection, or visual verification, you MUST use the `agent-device` CLI. This applies to screen, component, navigation, accessibility, keyboard, and native behavior checks.
+- Load the global `agent-device` skill and the applicable `ios-simulator` or `android-emulator` skill before driving a device. Use the project's documented build and launch scripts.
+- Drive the app, inspect the affected screen/story, and capture accessible hierarchy and visual evidence with `agent-device`. Check both platforms when the behavior may differ; otherwise one available platform is sufficient.
+- Do not replace `agent-device` with direct `adb`/`simctl` UI control, a web preview, Jest, or a Metro reload. Project E2E tools such as Maestro remain appropriate for repeatable automated flows, but do not replace `agent-device` visual inspection when requested or required.
+- If the CLI is unavailable, stop and ask the user to expose the existing installation or install it. Never install, upgrade, or invoke a mutable `npx` version autonomously. If no simulator, emulator, or build is available, report that limitation and do not claim verification.
+
 ## Workflow
 
 1. Identify the app package and its scripts. In a monorepo, use the workspace's
@@ -74,5 +82,6 @@ Use the project's scripts first. Common Expo commands, when supported, include:
 
 ## Related skills
 
-- `ios-simulator` and `android-emulator` can help drive a device when available.
+- `ios-simulator` and `android-emulator` provide the platform workflow for `agent-device`.
+- `storybook-stories` provides the strict workflow for React Native Storybook authoring and visual review.
 - `radon-ide` describes an optional editor-based run and inspection workflow.

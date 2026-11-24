@@ -57,6 +57,13 @@
 - MCP configuration is client-specific. Do not assume that a shared `.mcp.json` is automatically loaded by every client, or that instructions alone enable a server.
 - Use native Git tools when no Git MCP server is configured. Do not download an unverified MCP package as a substitute.
 
+## React Native, Expo, and Storybook
+
+- For Expo or React Native work, load the global `expo-mobile` skill and follow the current project's instructions.
+- For any React Native Storybook story creation or update, load the global `storybook-stories` skill and complete its checklist.
+- Any live React Native UI interaction or visual verification on a simulator, emulator, or device MUST use the `agent-device` CLI. Load the global `agent-device` skill and the applicable platform skill (`ios-simulator` or `android-emulator`) first. Do not substitute direct `adb`/`simctl` UI control or another UI automation tool for `agent-device`. Use project E2E runners for repeatable automated test flows where they are configured.
+- Do not install or upgrade `agent-device` autonomously. If it is unavailable, ask the user to expose an existing installation or install it. Do not claim device verification without actually driving and inspecting the target app.
+
 ## Code intelligence
 
 - `codegraph` is the primary MCP server for code intelligence and is configured for every client. Prefer its tools over ad-hoc searching when the question is about symbols, definitions, callers/callees, impact, or "where is this used".

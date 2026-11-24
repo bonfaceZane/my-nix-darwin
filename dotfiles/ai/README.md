@@ -63,9 +63,13 @@ The `nix-darwin-maintenance` skill is globally discoverable in Codex, Claude, an
 Antigravity, but its description limits its workflow to this repository.
 
 The shared `expo-mobile` skill gives cross-project Expo and React Native
-workflow guidance. `radon-ide` documents the optional Radon IDE workflow when a
-project already has Radon available; it does not configure or install a global
-Radon MCP server. Both are linked individually into `~/.agents/skills/` and
+workflow guidance and requires `agent-device` for live UI verification. The
+`storybook-stories` skill gives strict React Native Storybook authoring and
+visual-review guidance, including Controls, notes, backgrounds, Actions, state
+coverage, accessibility, and simulator verification through `agent-device`.
+`radon-ide` documents the optional Radon IDE workflow when a project already has
+Radon available; it does not configure or install a global Radon MCP server.
+These skills are linked individually into `~/.agents/skills/` and
 `~/.claude/skills/`.
 
 `component-first` offers general React component reuse and extraction guidance,

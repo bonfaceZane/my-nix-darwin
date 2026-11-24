@@ -38,6 +38,7 @@ let
     "figma-implement-design"
     "figma-use"
     "expo-mobile"
+    "storybook-stories"
     "radon-ide"
     "component-first"
     "react-native-testing"

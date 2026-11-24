@@ -59,6 +59,12 @@ test. Use a simulator, emulator, or device when that behavior is in scope.
 - For end-to-end checks, use existing device skills and scripts such as the
   project's Maestro or simulator workflows when configured.
 
+## Required device interaction
+
+- When testing requires live interaction with a React Native app, a simulator/emulator, or OS-owned UI, you MUST use the `agent-device` CLI for navigation, gestures, snapshots, and screenshots. Load the global `agent-device` skill and applicable `ios-simulator` or `android-emulator` skill first.
+- Do not use direct `adb`/`simctl` UI automation or another UI-control tool as a substitute. Keep project-configured E2E runners for deterministic automated suites; use `agent-device` for interactive exploration and visual/accessibility evidence.
+- If `agent-device` is unavailable, ask the user to expose the existing installation or install it. Do not install or upgrade it autonomously. Never report device verification unless the app was actually opened and inspected.
+
 ## Verification
 
 Run the narrowest relevant test first, then the project's broader typecheck,
