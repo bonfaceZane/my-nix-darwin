@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   ##########################################################################
   # System-wide packages and environment variables (nixpkgs)
   # - These tools are available to all users.
@@ -11,6 +12,8 @@
     nixfmt-rfc-style # Nix code formatter
     cocoapods
   ];
+
+  # fonts.packages = [ ];
 
   # Global EDITOR; user can override in their shell if desired.
   # Helix's CLI is `hx`.
