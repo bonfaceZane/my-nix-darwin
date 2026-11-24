@@ -5,10 +5,12 @@
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 model = "gpt-6-luna"
-model_reasoning_effort = "medium"
 
 # Atomic commits: one logical change per commit, conventional commits
-notify = ["/Users/rafiki/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+notify = [
+    "/Users/rafiki/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+    "turn-ended",
+]
 
 [projects."/Users/rafiki/Documents/subira/my-nix-darwin"]
 trust_level = "trusted"

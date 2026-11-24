@@ -257,6 +257,23 @@ in
     ".codex/config.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/codex/config.toml";
     };
+    ".codex-work/config.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/codex/config-work.toml";
+    };
+
+    # Declarative project-level defaults for GP apps and Polaris
+    "Documents/work/gp-apps/.codex/config.toml" = {
+      text = ''
+        model = "gpt-6-luna"
+        model_reasoning_effort = "medium"
+        approval_policy = "on-request"
+      '';
+    };
+    "Documents/subira/polaris/.codex/config.toml" = {
+      text = ''
+        model = "deepseek-chat"
+      '';
+    };
 
     ".claude/mcp.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/claude/mcp.json";
@@ -329,13 +346,13 @@ in
     map (target: {
       name = "${target}/skills/nix-darwin-maintenance";
       value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/nix-darwin-maintenance";
-    }) [ ".agents" ".claude" ]
+    }) [ ".agents" ".claude" ".gemini/antigravity" ]
   ) // builtins.listToAttrs (
     lib.concatMap (skill:
       map (target: {
         name = "${target}/skills/${skill}";
         value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/${skill}";
-      }) [ ".agents" ".claude" ]
+      }) [ ".agents" ".claude" ".gemini/antigravity" ]
     ) managedSkills
   );
 
