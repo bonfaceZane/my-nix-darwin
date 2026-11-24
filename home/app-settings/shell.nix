@@ -188,7 +188,7 @@
     m = "mise";
     dev = "mise dev";
     ios = "mise ios";
-    android = "mise android";
+    andy = "mise android";
     story = "mise story";
     b = "mise run build";
     build = "mise run build";
