@@ -64,6 +64,18 @@ Follow the project's documented exceptions.
   hard to understand, keep that UI feature-local instead.
 - Keep one source of truth for repeated interaction behavior, accessibility,
   styling, and gesture handling when those pieces must stay consistent.
+- **Style variants:** When a component has multiple meaningful visual variants
+  or interaction states (for example orientation, size, selected/pressed/hovered,
+  or emphasis), define a typed variant map near its styles and resolve the
+  active variant through that map. Type the map against the complete variant
+  union (such as `Record<Variant, StyleProp<ViewStyle>>`) so adding a variant
+  requires handling its styles. Keep each variant's style bundle together and
+  compose it with shared base styles; avoid scattering variant-specific
+  ternaries or boolean style conditions through JSX. Keep a single, simple
+  conditional inline when a map would add indirection without making the
+  variants easier to understand. Do not create a generic styling framework or
+  move a component's private variant map into another module without a real
+  shared owner.
 
 ## Refactor safely
 
