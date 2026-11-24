@@ -1,0 +1,10 @@
+# Codex config — work profile (gp-apps)
+# Managed via Nix; see dotfiles/ai/AGENTS.md
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+model = "gpt-6-luna"
+model_reasoning_effort = "medium"
+
+[sandbox_workspace_write]
+network_access = true
