@@ -14,7 +14,7 @@ This is a single-user Apple Silicon macOS configuration, not a Node/Nx applicati
 - `dotfiles/`: editable application config sources. Do not move them without updating their consumers.
 - `dotfiles/mise/config.toml`: declares CLI tools, including Aider; the Aider BYOK environment lives in the per-shell configs under `dotfiles/`.
 - `dotfiles/ai/skills/nix-darwin-maintenance/`: shared, Nix-managed maintenance workflow; linked into user skill discovery paths.
-- `.github/copilot-instructions.md` and `dotfiles/ai/clients/cursor/rules/agents.mdc`: client entry points that defer to this file.
+- `.github/copilot-instructions.md`: Copilot entry point that defers to this file.
 - `.junie/memory/`: local agent memory; keep it out of commits unless explicitly requested.
 
 ## Safe changes

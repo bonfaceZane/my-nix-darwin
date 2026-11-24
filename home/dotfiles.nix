@@ -15,14 +15,11 @@ let
   '';
   ghStackSkillTargets = [
     ".agents/skills/gh-stack" # shared Agent Skills location
-    ".claude/skills/gh-stack"
     ".codex/skills/gh-stack"
     ".codex-work/skills/gh-stack"
-    ".cursor/skills/gh-stack"
     ".gemini/skills/gh-stack"
     ".gemini/antigravity/skills/gh-stack"
     ".gemini/config/skills/gh-stack"
-    ".windsurf/skills/gh-stack"
   ];
   sharedSkillTargets = [
     "agent-device"
@@ -41,6 +38,10 @@ let
     "storybook-stories"
     "radon-ide"
     "component-first"
+    "typescript-development"
+    "rust-development"
+    "nix-development"
+    "e2e-testing"
     "react-native-testing"
     "adhd-focus-sprint"
     "adhd-context-keeper"
@@ -184,11 +185,6 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nushell";
     };
 
-    # Ghostty config directory
-    ".config/ghostty" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ghostty";
-    };
-
     # AMV Apps mise config
     "Documents/work/amv-apps/mise.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/mise.toml";
@@ -208,19 +204,13 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/amv/.lintstagedrc.json";
     };
 
-    # AMV AI configuration. Keep the workspace's existing AGENTS.md/CLAUDE.md
+    # AMV AI configuration. Keep the workspace's existing AGENTS.md
     # authoritative; only provide these files when the workspace does not own
     # them yet.
     "Documents/work/amv-apps/.gemini/settings.json" = lib.mkIf (
       !builtins.pathExists "${config.home.homeDirectory}/Documents/work/amv-apps/.gemini/settings.json"
     ) {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/gemini/workspace-settings.json";
-      force = true;
-    };
-    "Documents/work/amv-apps/.mcp.json" = lib.mkIf (
-      !builtins.pathExists "${config.home.homeDirectory}/Documents/work/amv-apps/.mcp.json"
-    ) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/claude/mcp.json";
       force = true;
     };
 
@@ -277,29 +267,6 @@ in
       '';
     };
 
-    ".claude/mcp.json" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/claude/mcp.json";
-    };
-    ".claude/CLAUDE.md" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/CLAUDE.md";
-    };
-    ".claude/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/claude/settings.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/claude/settings.json";
-    };
-
-
-
-    # Cursor configuration — MCP + agent permissions (mirrors .claude/.codex pattern)
-    ".cursor/mcp.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/cursor/mcp.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/cursor/mcp.json";
-    };
-    ".cursor/settings.json" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/cursor/settings.json) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/cursor/settings.json";
-    };
-    ".cursor/rules" = lib.mkIf (builtins.pathExists ../dotfiles/ai/clients/cursor/rules) {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/cursor/rules";
-    };
-
     # Muse settings — persisted always auto-approve (approval_mode = never)
     ".config/muse/settings.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/clients/muse/settings.json";
@@ -338,24 +305,24 @@ in
           source = "${config.home.homeDirectory}/.agents/skills/${skill}";
           force = true;
         };
-      }) [ ".claude" ".gemini/config" ".gemini/antigravity" ]
+      }) [ ".gemini/config" ".gemini/antigravity" ]
     ) sharedSkillTargets
   ) // builtins.listToAttrs (
     map (target: {
       name = "${target}/AGENTS.md";
       value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/AGENTS.md";
-    }) [ ".claude" ".codex" ".codex-work" ".gemini" ]
+    }) [ ".codex" ".codex-work" ".gemini" ]
   ) // builtins.listToAttrs (
     map (target: {
       name = "${target}/skills/nix-darwin-maintenance";
       value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/nix-darwin-maintenance";
-    }) [ ".agents" ".claude" ".gemini/config" ".gemini/antigravity" ]
+    }) [ ".agents" ".gemini/config" ".gemini/antigravity" ]
   ) // builtins.listToAttrs (
     lib.concatMap (skill:
       map (target: {
         name = "${target}/skills/${skill}";
         value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ai/skills/${skill}";
-      }) [ ".agents" ".claude" ".gemini/config" ".gemini/antigravity" ]
+      }) [ ".agents" ".gemini/config" ".gemini/antigravity" ]
     ) managedSkills
   );
 

@@ -1,8 +1,0 @@
----
-description: Shared agent instructions for Cursor
-alwaysApply: true
----
-
-# Shared agent instructions
-
-@../../../AGENTS.md

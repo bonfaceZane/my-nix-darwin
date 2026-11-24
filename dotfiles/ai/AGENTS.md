@@ -53,7 +53,7 @@
 
 - Before using a skill supplied by the current repository, read the global `AGENTS.md` first, then the current repository's applicable `AGENTS.md`, then the skill's `SKILL.md`. Follow all three; user authorization and applicable agent instructions take precedence if they conflict with a skill.
 - Use installed skills when their descriptions match the task. Load the skill's `SKILL.md` and follow its instructions, subject to the current task scope and permissions.
-- Shared user skills live in `~/.agents/skills`; Claude Code additionally uses `~/.claude/skills`. Keep Nix-fetched upstream skills immutable and link individual skill directories without replacing user-owned skill collections.
+- Shared user skills live in `~/.agents/skills`. Keep Nix-fetched upstream skills immutable and link individual skill directories without replacing user-owned skill collections.
 - MCP configuration is client-specific. Do not assume that a shared `.mcp.json` is automatically loaded by every client, or that instructions alone enable a server.
 - Use native Git tools when no Git MCP server is configured. Do not download an unverified MCP package as a substitute.
 
@@ -63,6 +63,13 @@
 - For any React Native Storybook story creation or update, load the global `storybook-stories` skill and complete its checklist.
 - Any live React Native UI interaction or visual verification on a simulator, emulator, or device MUST use the `agent-device` CLI. Load the global `agent-device` skill and the applicable platform skill (`ios-simulator` or `android-emulator`) first. Do not substitute direct `adb`/`simctl` UI control or another UI automation tool for `agent-device`. Use project E2E runners for repeatable automated test flows where they are configured.
 - Do not install or upgrade `agent-device` autonomously. If it is unavailable, ask the user to expose an existing installation or install it. Do not claim device verification without actually driving and inspecting the target app.
+
+## Language and E2E workflows
+
+- For TypeScript work, use the `typescript-development` skill; preserve the project's runtime-specific compiler and module settings.
+- For Rust work, use `rust-development`; follow the workspace toolchain/MSRV and run its Cargo checks.
+- For Nix work, use `nix-development`. In this checkout, use `nix-darwin-maintenance` as the more specific workflow and never activate without explicit instruction.
+- For repeatable end-to-end flows, use `e2e-testing` and the project's configured runner. For mobile, Maestro covers repeatable flows; `agent-device` covers interactive exploration and visual/accessibility inspection.
 
 ## Code intelligence
 

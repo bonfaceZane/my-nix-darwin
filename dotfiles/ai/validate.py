@@ -9,12 +9,8 @@ import tomllib
 
 DOTFILES = Path(__file__).resolve().parent.parent
 JSON_FILES = (
-    "ai/clients/claude/settings.json",
     "ai/clients/gemini/settings.json",
-    "ai/clients/cursor/mcp.json",
-    "ai/clients/cursor/settings.json",
     "ai/clients/copilot/mcp-config.json",
-    "ai/clients/claude/mcp.json",
     "ai/clients/gemini/workspace-settings.json",
     "ai/clients/antigravity/mcp_config.json",
     "ai/dotfiles/cline/mcp.json",
@@ -163,10 +159,6 @@ def main():
         "VS Code must not auto-approve MCP tools globally"
     )
 
-    assert PRIMARY_SERVER in configs["ai/clients/claude/mcp.json"]["mcpServers"], (
-        "the primary server must be available to every client"
-    )
-    assert "@AGENTS.md" in (DOTFILES / "ai/CLAUDE.md").read_text().splitlines()
     assert (DOTFILES / "ai/AGENTS.md").is_file()
     print(
         f"Instruction and MCP consistency OK "

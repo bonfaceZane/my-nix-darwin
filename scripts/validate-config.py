@@ -33,6 +33,9 @@ def main():
     wiring = (ROOT / "home/dotfiles.nix").read_text()
     sources = set(re.findall(r'\$\{dotfiles\}/([^"\n]+)', wiring))
     for relative in sorted(sources):
+        # Home Manager generates these individual skill links from a list.
+        if "${" in relative:
+            continue
         path = ROOT / "dotfiles" / relative
         # This is a legacy migration comparison, not a required source.
         if relative == ".codex/config.toml":
@@ -44,15 +47,18 @@ def main():
             current = current / part
     assert '"${dotfiles}/amv/pre-push"' in wiring
     assert '".codex/settings.json"' not in wiring
-    for name in ("AGENTS.md", "CLAUDE.md", "GEMINI.md"):
+    for name in ("AGENTS.md", "GEMINI.md"):
         assert (ROOT / name).is_file(), f"Missing project instructions: {name}"
     assert (ROOT / ".github/copilot-instructions.md").is_file(), "Missing Copilot instructions"
-    assert (ROOT / "dotfiles/ai/clients/cursor/rules/agents.mdc").is_file(), "Missing Cursor rules"
     for name in (
         "nix-darwin-maintenance",
         "expo-mobile",
         "radon-ide",
         "component-first",
+        "typescript-development",
+        "rust-development",
+        "nix-development",
+        "e2e-testing",
         "react-native-testing",
         "adhd-focus-sprint",
         "adhd-context-keeper",

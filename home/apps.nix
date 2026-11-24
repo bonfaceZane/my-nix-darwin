@@ -43,6 +43,7 @@ in
 
     # Language Servers & Formatters
     nodePackages.typescript-language-server
+    rust-analyzer
     vscode-langservers-extracted # eslint, html, css, json
     nodePackages.prettier
     nil # Nix language server

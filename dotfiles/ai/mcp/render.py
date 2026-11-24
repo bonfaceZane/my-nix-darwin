@@ -41,18 +41,6 @@ PRIMARY: str = CONFIG_DATA["primary"]
 # Every client that receives the shared set. `remote` is None where the client's
 # remote-server schema is unverified (Zed, Antigravity).
 CLIENTS: dict = {
-    "ai/clients/claude/mcp.json": {
-        "attribute": "mcpServers",
-        "flavour": "plain",
-        "remote": ("url", "http"),
-        "context7": True,
-    },
-    "ai/clients/cursor/mcp.json": {
-        "attribute": "mcpServers",
-        "flavour": "plain",
-        "remote": ("url", "http"),
-        "context7": True,
-    },
     "ai/clients/gemini/settings.json": {
         "attribute": "mcpServers",
         "flavour": "gemini",

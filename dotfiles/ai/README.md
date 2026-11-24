@@ -1,7 +1,7 @@
 # AI client configuration
 
-Shared instructions, client settings, and MCP configuration for Claude Code,
-Codex, Gemini CLI, Copilot CLI, Cline, Cursor, Zed, and Antigravity.
+Shared instructions, client settings, and MCP configuration for Codex, Gemini
+CLI, Copilot CLI, Cline, VS Code, Zed, and Antigravity.
 Native file, search, shell, Git, and Nix tools are sufficient to work on this Nix
 repository. MCP is optional here: the mobile set below is useful for app UI
 testing and device automation, not a prerequisite for editing or checking Nix
@@ -9,10 +9,10 @@ files.
 
 ## Instructions and skills
 
-`AGENTS.md` is the shared instruction source. Claude's `CLAUDE.md` imports it with
-`@AGENTS.md`; Gemini loads both `AGENTS.md` and existing `GEMINI.md` files. Repository
-instructions still provide project-specific guidance. Nx guidance applies only to
-actual Nx workspaces, not every project on the machine.
+`AGENTS.md` is the shared instruction source. Gemini loads both `AGENTS.md` and
+existing `GEMINI.md` files. Repository instructions still provide project-specific
+guidance. Nx guidance applies only to actual Nx workspaces, not every project on
+the machine.
 
 The shared Home Manager file links are implemented below and take effect on
 activation. Sources are relative to this repository; destinations are relative
@@ -24,19 +24,11 @@ The `~/.gemini/antigravity/skills/` links remain for older Antigravity versions.
 
 | Destination | Source |
 | --- | --- |
-| `.claude/settings.json` | `dotfiles/ai/clients/claude/settings.json` |
-| `.claude/CLAUDE.md` | `dotfiles/ai/CLAUDE.md` |
-| `.claude/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
-| `.claude/mcp.json` | `dotfiles/ai/clients/claude/mcp.json` (optional, explicit CLI input) |
 | `.codex/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
 | `.gemini/settings.json` | `dotfiles/ai/clients/gemini/settings.json` |
 | `.gemini/AGENTS.md` | `dotfiles/ai/AGENTS.md` |
 | `.gemini/config/skills/<name>/` | individual Nix-managed skills from `dotfiles/ai/skills/` |
 | `Documents/work/amv-apps/.gemini/settings.json` (fallback only) | `dotfiles/ai/clients/gemini/workspace-settings.json` |
-| `Documents/work/amv-apps/.mcp.json` (fallback only) | `dotfiles/ai/clients/claude/mcp.json` |
-| `.cursor/mcp.json` | `dotfiles/ai/clients/cursor/mcp.json` |
-| `.cursor/settings.json` | `dotfiles/ai/clients/cursor/settings.json` |
-| `.cursor/rules/` | `dotfiles/ai/clients/cursor/rules/` |
 | `.copilot/mcp-config.json` | `dotfiles/ai/clients/copilot/mcp-config.json` |
 | `Library/Application Support/Code/User/mcp.json` | `dotfiles/ai/clients/vscode/mcp.json` |
 | `~/Library/.../saoudrizwan.claude-dev/settings/cline_mcp_settings.json` | generated from `dotfiles/ai/dotfiles/cline/mcp.json` by `modules/homebrew/agents.nix` (copied, never symlinked) |
@@ -50,17 +42,16 @@ If using a separate `CODEX_HOME`, such as `~/.codex-work`, give it its own
 present, takes precedence over `AGENTS.md`; do not overwrite local overrides.
 
 For the existing Nix-fetched `gh-stack` skill, link its complete immutable
-upstream directory to `~/.agents/skills/gh-stack` for Codex and Gemini, and
-`~/.claude/skills/gh-stack` for Claude. Preserve other installed skills. Gemini
-also supports `~/.gemini/skills`, but does not need a duplicate link. The current
-documented Codex user discovery directory is `~/.agents/skills`.
+upstream directory to `~/.agents/skills/gh-stack` for Codex and Gemini. Preserve
+other installed skills. Gemini also supports `~/.gemini/skills`, but does not need
+a duplicate link. The current documented Codex user discovery directory is
+`~/.agents/skills`.
 
 Store skills maintained by this Nix configuration under `dotfiles/ai/skills/`.
 Home Manager links each skill directory individually into `~/.agents/skills/`
-for Codex and Gemini and into `~/.claude/skills/` when Claude discovery is
-needed. Keep repo-only skills in the repository's `.agents/skills/` directory.
-The `nix-darwin-maintenance` skill is globally discoverable in Codex, Claude, and
-Antigravity, but its description limits its workflow to this repository.
+for Codex and Gemini. Keep repo-only skills in the repository's `.agents/skills/`
+directory. The `nix-darwin-maintenance` skill is also discoverable in Antigravity,
+but its description limits its workflow to this repository.
 
 The shared `expo-mobile` skill gives cross-project Expo and React Native
 workflow guidance and requires `agent-device` for live UI verification. The
@@ -69,29 +60,33 @@ visual-review guidance, including Controls, notes, backgrounds, Actions, state
 coverage, accessibility, and simulator verification through `agent-device`.
 `radon-ide` documents the optional Radon IDE workflow when a project already has
 Radon available; it does not configure or install a global Radon MCP server.
-These skills are linked individually into `~/.agents/skills/` and
-`~/.claude/skills/`.
+These skills are linked individually into `~/.agents/skills/`.
 
 `component-first` offers general React component reuse and extraction guidance,
 while `react-native-testing` covers behavior-focused tests across component,
 platform, and device levels. Both defer to each project's installed tooling and
 local conventions.
 
+`typescript-development`, `rust-development`, and `nix-development` provide
+language-specific workflows that respect each repository's toolchain and
+conventions. `e2e-testing` helps choose and maintain a small, deterministic
+end-to-end suite; for React Native, it pairs Maestro for repeatable flows with
+`agent-device` for interactive exploration and visual/accessibility review.
+
 `adhd-focus-sprint`, `adhd-context-keeper`, `adhd-ai-collaboration`, and
 `adhd-code-map` are personal working-style skills: short verifiable sprints,
 external working memory, low-friction AI collaboration, and structured code
-reading. They are linked individually into `~/.agents/skills/` and
-`~/.claude/skills/` like the other managed skills.
+reading. They are linked individually into `~/.agents/skills/` like the other
+managed skills.
 
 The curated Figma skills cover using Figma, creating files and designs, generating
 libraries and design-system rules, implementing designs, and working with Code
-Connect components. They are linked individually into `~/.agents/skills/` and
-`~/.claude/skills/` alongside the other repo-managed shared skills.
+Connect components. They are linked individually into `~/.agents/skills/`
+alongside the other repo-managed shared skills.
 
 `agent-device` and `ios-simulator` remain individually installed in that shared
-Codex directory and are linked into `~/.claude/skills/` for Claude discovery.
-Do not link the whole skill directory: it would take ownership of user-installed
-skills that Home Manager does not manage.
+Codex directory. Do not link the whole skill directory: it would take ownership
+of user-installed skills that Home Manager does not manage.
 
 ## Codex: tracked personal configuration
 
@@ -140,8 +135,8 @@ Notes that matter when editing these files:
   the command: a bare `codegraph` is not on a GUI-launched editor's `PATH` (their
   Antigravity snippet uses the versioned `installs/node/<version>/bin` path, which
   breaks on the next Node upgrade), so every client uses the stable mise shim
-  `/Users/rafiki/.local/share/mise/shims/codegraph`. `codegraph install` also writes
-  an auto-allow permission list for Claude Code, which this setup does not want.
+  `/Users/rafiki/.local/share/mise/shims/codegraph`. Avoid installer commands that
+  also broaden MCP tool auto-approval.
   Note that the npm package literally named `codegraph` is an unrelated 469-byte
   package by a different author, so never replace the shim with `npx codegraph`.
 - `MOBILEMCP_DISABLE_TELEMETRY=1` is set for `mobile-mcp`: the upstream server
@@ -183,12 +178,6 @@ explicit `PATH`.
 
 Client-specific behaviour:
 
-- **Claude:** with the optional manifest link above, use
-  `claude --mcp-config ~/.claude/mcp.json`. Claude does not automatically discover
-  that filename as user MCP configuration. Omit the flag when not using these
-  servers. Avoid `--strict-mcp-config` unless you deliberately want to exclude
-  other configured servers. User-scope registration instead lives in mutable
-  `~/.claude.json`, not in Claude's `settings.json`.
 - **Codex:** the tracked personal config includes `agent-device` and `maestro`.
   Its separate work profile is user-managed. The seed sets
   `sandbox_workspace_write.network_access = false`, so the npm-backed servers
@@ -210,8 +199,8 @@ Nx MCP only in a workspace that already supplies Nx.
 `dotfiles/ai/clients/gemini/workspace-settings.json` is a minimal project context
 overlay, not a replacement for the canonical user settings. The legacy
 `dotfiles/ai/.agent/settings.json`
-has been removed; Cursor and Copilot now use their native entry points
-(`dotfiles/ai/clients/cursor/rules/agents.mdc` and `.github/copilot-instructions.md`).
+has been removed; Copilot uses its native entry point
+(`.github/copilot-instructions.md`).
 
 ## CLI availability and declarative installation
 
@@ -224,25 +213,24 @@ The Nix-managed Homebrew setup declares these prerequisites, pending activation:
   simulator-lifecycle tools work without it; the UI tools do not.
 - Formula `openjdk` for Maestro's Java runtime (Java 17+ required). The MCP
   definitions explicitly supply its `JAVA_HOME`.
-- Cask `claude-code`, which provides the standalone `claude` executable in
-  Homebrew's `bin` directory.
+- Home Manager package `rust-analyzer` for editor language-server support; the
+  Rust compiler, Cargo, Clippy, and rustfmt remain managed by mise's Rust toolchain.
 
 The separate `maestro` cask is the unrelated **runmaestro.ai AI-agent command
 center** (`Maestro.app`), not the testing CLI. A Dock entry for `Maestro Studio.app`
 or a Fish PATH entry for `~/.maestro/bin` does not supply the testing CLI either.
 The fully qualified formula avoids confusing these products.
 
-Neither `maestro` nor `claude` was found on the audit process's PATH before these
-changes. Declaring packages and explicit paths is not proof of a working local
-runtime: activation and subsequent client/MCP checks remain necessary. No packages
-were installed or live MCP connections attempted as part of the dotfile audit.
-Missing optional CLIs do not block normal Nix/Git work.
+Declaring packages and explicit paths is not proof of a working local runtime:
+activation and subsequent client/MCP checks remain necessary. No packages were
+installed or live MCP connections attempted as part of the dotfile audit. Missing
+optional CLIs do not block normal Nix/Git work.
 
 ## Permissions and validation
 
 Shared instructions describe sensitive-path and approval expectations, but prose
-is not an enforced security boundary. Claude retains its existing permission
-rules; Gemini uses normal `default` approval mode, not auto-edit or YOLO. The
+is not an enforced security boundary. Gemini uses normal `default` approval mode,
+not auto-edit or YOLO. The
 Codex seed does not loosen existing local permissions because it must never be
 applied over an existing configuration.
 
@@ -260,8 +248,7 @@ links are available, check instruction/skill discovery and `/mcp` in each client
 
 ## References
 
-- [Claude MCP scopes](https://code.claude.com/docs/en/mcp), [memory](https://code.claude.com/docs/en/memory), and [skills](https://code.claude.com/docs/en/skills)
 - [Codex configuration](https://developers.openai.com/codex/config-reference/) and [skill discovery](https://developers.openai.com/codex/skills/)
 - [Gemini configuration](https://geminicli.com/docs/reference/configuration) and [skills](https://geminicli.com/docs/cli/skills/)
 - [Maestro CLI installation](https://docs.maestro.dev/maestro-cli/how-to-install-maestro-cli) and [MCP](https://docs.maestro.dev/get-started/maestro-mcp)
-- Homebrew metadata: [Maestro GUI cask](https://formulae.brew.sh/api/cask/maestro.json), [Claude Code CLI cask](https://formulae.brew.sh/api/cask/claude-code.json)
+- Homebrew metadata: [Maestro GUI cask](https://formulae.brew.sh/api/cask/maestro.json)
