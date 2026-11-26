@@ -182,3 +182,6 @@ trust_level = "trusted"
 
 [projects."/Users/rafiki"]
 trust_level = "trusted"
+
+[projects."/Users/rafiki/Documents/work/amv-apps"]
+trust_level = "trusted"
