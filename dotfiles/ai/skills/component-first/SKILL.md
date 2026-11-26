@@ -77,6 +77,17 @@ Follow the project's documented exceptions.
   move a component's private variant map into another module without a real
   shared owner.
 
+## Visibility and state
+
+- Prefer conditional rendering when hidden UI should unmount or has no state that
+  needs to survive.
+- Consider React's `Activity` when content should switch between visible and
+  hidden while retaining React state, or when hidden content should be pre-rendered
+  at lower priority.
+- Activity retains hidden child state while cleaning up its effects. Check the
+  project's React and React Native versions and account for effect cleanup and
+  reactivation before using it.
+
 ## Refactor safely
 
 1. Find the existing implementations and their callers.
