@@ -18,9 +18,25 @@ workspace boundaries.
 3. Keep types precise at boundaries. Prefer `unknown` plus validation for
    untrusted data; avoid introducing `any`, unsafe casts, or duplicated models
    when existing schemas or API types define the contract.
-4. Add or update behavior-focused tests using the project's existing runner.
+4. Model mutually exclusive states with discriminated unions so invalid
+   combinations are difficult to represent.
+5. Use service factory functions to create and configure services when
+   applicable, following the project's established architecture and patterns.
+6. Keep side effects at clear boundaries. Separate I/O and framework work from
+   pure transformations, and pass dependencies into services instead of hiding
+   them in module-level state.
+7. Handle errors intentionally: preserve useful context, define how errors
+   cross module boundaries, and avoid silently discarding failures.
+8. Handle async cancellation, stale results, and cleanup when required by the
+   runtime or UI lifecycle.
+9. Avoid unnecessary abstractions. Follow existing project patterns and add
+   helpers or generics when they make behavior or ownership clearer.
+10. Avoid nested ternary operators. Use named intermediate values, `if`/`else`,
+   a `switch`, helper functions, or a lookup map when a conditional choice has
+   multiple levels so the logic stays easy to read and change.
+11. Add or update behavior-focused tests using the project's existing runner.
    Cover error and edge states when the changed behavior owns them.
-5. Run the narrowest relevant typecheck and tests, then the project lint or
+12. Run the narrowest relevant typecheck and tests, then the project lint or
    build task when useful. Report skipped checks and their reason.
 
 Use `strict` checking for new configurations when the runtime supports it, but
