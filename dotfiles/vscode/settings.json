@@ -142,7 +142,7 @@
         }
     },
     "deepseek-copilot.visionModel": "deepseek/deepseek-v4-flash-vision-exp",
-    "editor.fontSize": 17.5,
+    "editor.fontSize": 15,
     "yaml.disableSchemaDetection": [
         "**/.github/workflows/*.yml",
         "**/.github/workflows/*.yaml",
